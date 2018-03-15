@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2018 sp1 (x64) (http://www.altova.com) by Eric Boisvert (Natural Resources Canada) -->
+<xs:schema xmlns:p="urn:x-gsip:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:x-gsip:1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="data" type="p:DataType">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="MatchType">
+		<xs:sequence>
+			<xs:element name="mime-type" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="source">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="useAnonFtp" type="xs:boolean" default="false"/>
+							<xs:attribute name="header" type="xs:string"/>
+							<xs:attribute name="proxy" type="xs:boolean" default="false"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="pattern" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="DataType">
+		<xs:sequence>
+			<xs:element name="match" type="p:MatchType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:data xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 file:///C:/java64_8/gsip/WebContent/schemas/data.xsd">
+	<!--  each elements are parsed into p0 to p{n}.  p0 = "data" -->
+	<p:match pattern="catchment/HYF/WSCSSSDA/NRCAN/.*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html" proxy="true" useAnonFtp="true">ftp://ftp.cits.rncan.gc.ca/pub/hydro/GeEau/tests/gsip/prod/${p5?replace("*","_")}.html</p:source>
+	</p:match>
+	<p:match pattern="catchment/HYF/WSCSSSDA/NRCAN/.*">
+		<p:mime-type>application/vnd.geo+json</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html" proxy="true" useAnonFtp="true">ftp://ftp.cits.rncan.gc.ca/pub/hydro/GeEau/tests/gsip/prod/${p5?replace("*","_")}.json</p:source>
+	</p:match>
+</p:data>

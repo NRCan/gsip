@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Prototype: Linked Data Viewer</title>
+	
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Other meta tags -->
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	
+	<!-- OpenLayers CSS -->
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.4.2/css/ol.css" type="text/css">
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+	
+    <style type="text/css">
+      #map {
+        position: relative;
+      }
+      .chyf {
+        top: 80px;
+        left: .5em;
+      }
+     #leftmenu {
+       /*width: 50%;*/
+       background: #eee;
+       display: none;
+       z-index: 700;
+       position: absolute;
+       /*position: relative*/
+       top: 0px;
+       float: right;
+       /*opacity: 0.9;*/
+       /*padding: 0.4em;*/
+       min-width: 40%;*/
+       /*width: inherit;*/
+     }
+
+      html, body, #map {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      #text {
+        position: absolute;
+        bottom: 1em;
+        left: 1em;
+        width: 512px;
+        z-index: 20000;
+        background-color: white;
+        padding: 0 0.5em 0.5em 0.5em;
+      }
+      #logo {
+        position: absolute;
+        z-index: 100000;
+        bottom: 10px;
+        left: 30px;
+        cursor: default;
+        opacity: 1;
+        max-width: 450px;
+        visibility: visible;
+      }
+
+
+    </style>
+  </head>
+  <body>
+
+	<div id="map" class="map" style="width: 100%, height: 450px">
+    <div id="popup"></div>
+ </div>
+ <div id="logo"><img style="max-width:175px" class="img-fluid" src="img/GOCcolouren.png"</div>
+
+<div id="inputModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+     <!--  <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>--> 
+    </div>
+  </div>
+</div>
+
+
+<!-- Openlayers: The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"> </script>
+
+<!-- OpenLayers JS -->
+<!--<script src="https://openlayers.org/en/v4.4.2/build/ol.js"> </script>-->
+<script src="https://openlayers.org/en/v4.4.2/build/ol-debug.js"> </script>
+
+<!-- JQuery & Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"> </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" crossorigin="anonymous"> </script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" crossorigin="anonymous"> </script>
+
+<!-- Event Listener/Emitter (Pub/Sub)-->
+<script src="js/eventemitter2.js"> </script> 
+
+<!-- Custom JS - HJulien 2018 --> 
+<script src="js/apps.js"> </script> <!-- Initialize my custom applications -->
+<script src="js/jsonldhelper.js"> </script> <!-- Functions to help manipulate JSON-LD -->
+<script src="js/mapViewer.js"> </script> <!-- Custom OpenLayers Map -->
+<script src="js/urimodal.js"> </script> <!-- Custom Linked Data Modal Viewer -->
+
+  </body>
+</html>

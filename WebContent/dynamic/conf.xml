@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:Templates xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 ../schemas/DynamicTemplates.xsd ">
+  <p:template name="wells" pattern="^https?://.*/id/waterwells/.*$" template="waterwell.ftl" requiresEntry="false"/>
+ <p:template name="watershed" pattern="^https?://.*/id/up_watershed/.*$" template="watershed.ftl" requiresEntry="false"/>
+  <p:template name="watershed" pattern="^https?://.*/id/waterbody/.*$" template="waterbody.ftl" requiresEntry="false"/>
+  <p:template name="catchment" pattern="^https?://.*/id/catchment/.*$" template="catchment.ftl" requiresEntry="false"/>
+  <p:template name="swmonitoringq" pattern="^https?://.*/id/swmonitoring/MDDELCC.*$" template="swmonitoringq.ftl" requiresEntry="false"/>
+  <p:template name="swmonitoringf" pattern="^https?://.*/id/swmonitoring/WSC.*$" template="swmonitoringf.ftl" requiresEntry="false"/>
+  <p:template name="wellcatch" pattern="^https?://.*/id/featureCollection/wellsIn.*$" template="wellcatch.ftl" requiresEntry="false"/>
+  <p:template name="aquifer" pattern="^https?://.*/id/hydrogeounits/.*$" template="aquifer.ftl" requiresEntry="false"/>
+</p:Templates>

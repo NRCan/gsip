@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:data xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 file:///C:/java64_8/gsip/WebContent/schemas/data.xsd">
+	<!--  each elements are parsed into p0 to p{n}.  p0 = "data" -->
+	<p:match pattern="waterbody/CGNDB/CGNDB/CGNDB/.*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html">http://www4.rncan.gc.ca/search-place-names/unique?id=${p5}</p:source>
+	</p:match>
+	<p:match pattern="waterbody/CGNDB/CGNDB/CGNDB/.*">
+		<p:mime-type>application/json</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html" proxy="true">http://geogratis.gc.ca/services/geoname/en/features/${p5}.json</p:source>
+	</p:match>
+	<p:match pattern="waterbody/CGNDB/CGNDB/CGNDB/.*">
+		<p:mime-type>application/vnd.google-earth.kml+xml</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:application/vnd.google-earth.kml+xml" proxy="true">http://geogratis.gc.ca/services/geoname/en/features/${p5}.kml</p:source>
+	</p:match>
+	
+	<!--  CHyF representations -->
+	<p:match pattern="waterbody/CHYF/CHYF/CHYF/.*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html">http://chyf.ca/chyf/eflowpath/filter.html?property=nameID&amp;predicate=equals&amp;value=${p5}</p:source>
+	</p:match>
+	<p:match pattern="waterbody/CHYF/CHYF/CHYF/.*">
+		<p:mime-type>application/vnd.geo+json</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html" proxy="true">http://chyf.ca/chyf/eflowpath/filter.json?property=nameID&amp;predicate=equals&amp;value=${p5}</p:source>
+	</p:match>
+	<!--  by position  -->
+	<p:match pattern="waterbody/CHYF/POS/CHYF/.*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html">http://chyf.ca/chyf/ecatchment/upstreamOf.html?point=${p5}</p:source>
+	</p:match>
+     <p:match pattern="waterbody/CHYF/POS/CHYF/.*">
+		<p:mime-type>application/vnd.geo+json</p:mime-type>
+		<p:source proxy="true">http://chyf.ca/chyf/ecatchment/upstreamOf.json?point=${p5}</p:source>
+	</p:match>
+	
+
+</p:data>

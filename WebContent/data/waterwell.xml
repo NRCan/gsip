@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:data xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 file:///C:/java64_8/gsip/WebContent/schemas/data.xsd">
+	<!--  each elements are parsed into p0 to p{n}.  p0 = "data" -->
+	<p:match pattern="gwml/gwml1/gsip/gin/qc\..*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html">http://gin.gw-info.net/service/api_ngwds:gin2/en/waterMLData/index.html?PROFILE=gin&amp;REQUEST=GetFeature&amp;INFO_FORMAT=text/html&amp;FID=${p5?replace("qc.","urn.ngwd.qc.mef.well_")}&amp;LOCALE=en</p:source>
+	</p:match>
+	<p:match pattern="gwml/gwml1/gsip/gin/qc\..*">
+		<p:mime-type>text/xml</p:mime-type>
+		<p:source header="text/xml">http://gin.gw-info.net/service/gin/wfs/gin?REQUEST=GetFeature&amp;INFO_FORMAT=xml&amp;FID=${p5?replace("qc.","urn.ngwd.qc.mef.well_")}</p:source>
+	</p:match>
+	<p:match pattern="gwml/gwml1/gsip/gin/qc\..*">
+		<p:mime-type>application/vnd.geo+json</p:mime-type>
+		<p:source proxy="true">http://gin.gw-info.net/service/ngwds/en/data/geojson/wells?URL=https://geoconnex.ca/id/waterwells/${p5}</p:source>
+	</p:match>
+</p:data>

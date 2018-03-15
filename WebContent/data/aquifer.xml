@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:data xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 file:///C:/java64_8/gsip/WebContent/schemas/data.xsd">
+	<!--  each elements are parsed into p0 to p{n}.  p0 = "data" -->
+	<p:match pattern="aquifer/gwml/gwml/GIN/.*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html">http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit.html?ID=${p5?replace("Richelieu","")}</p:source>
+	</p:match>
+	<p:match pattern="aquifer/gwml/gwml/GIN/.*">
+		<p:mime-type>application/vnd.geo+json</p:mime-type>
+		<p:source>${gsip}/resources/aq/${p5?replace("Richelieu","aq")}</p:source>
+	</p:match>
+</p:data>
