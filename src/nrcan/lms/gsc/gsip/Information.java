@@ -30,12 +30,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.cocoon.pipeline.NonCachingPipeline;
-import org.apache.cocoon.pipeline.Pipeline;
-import org.apache.cocoon.sax.SAXPipelineComponent;
-import org.apache.cocoon.sax.component.SaxonTransformer;
-import org.apache.cocoon.sax.component.XMLGenerator;
-import org.apache.cocoon.sax.component.XMLSerializer;
+
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpStatus;
 import org.apache.jena.rdf.model.Model;
