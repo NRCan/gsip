@@ -1,0 +1,212 @@
+@prefix hy: <http://geosciences.ca/def/hydraulic#>.
+@prefix gw: <http://geosciences.ca/def/groundwater#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix ex: <http://gin.gw-info.net/example#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+
+
+<https://geoconnex.ca/id/gwmonitoring/prj_27.36622>
+rdfs:label "Station prj_27.36622"@fr, "Station prj_27.36622"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.36622>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.36622> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53513>
+rdfs:label "Station prj_27.53513"@fr, "Station prj_27.53513"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53513>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53513> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53518>
+rdfs:label "Station prj_27.53518"@fr, "Station prj_27.53518"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53518>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53518> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53510>
+rdfs:label "Station prj_27.53510"@fr, "Station prj_27.53510"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53510>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53510> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53510>
+rdfs:label "Station prj_27.53510"@fr, "Station prj_27.53510"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53510>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53510> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53511>
+rdfs:label "Station prj_27.53511"@fr, "Station prj_27.53511"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53511>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53511> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53511>
+rdfs:label "Station prj_27.53511"@fr, "Station prj_27.53511"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53511>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53511> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53512>
+rdfs:label "Station prj_27.53512"@fr, "Station prj_27.53512"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53512>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53512> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53512>
+rdfs:label "Station prj_27.53512"@fr, "Station prj_27.53512"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53512>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53512> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53514>
+rdfs:label "Station prj_27.53514"@fr, "Station prj_27.53514"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53514>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53514> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53514>
+rdfs:label "Station prj_27.53514"@fr, "Station prj_27.53514"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53514>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53514> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53516>
+rdfs:label "Station prj_27.53516"@fr, "Station prj_27.53516"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53516>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53516> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53516>
+rdfs:label "Station prj_27.53516"@fr, "Station prj_27.53516"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53516>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53516> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53519>
+rdfs:label "Station prj_27.53519"@fr, "Station prj_27.53519"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53519>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53519> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53523>
+rdfs:label "Station prj_27.53523"@fr, "Station prj_27.53523"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53523>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53523> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53524>
+rdfs:label "Station prj_27.53524"@fr, "Station prj_27.53524"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53524>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53524> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53525>
+rdfs:label "Station prj_27.53525"@fr, "Station prj_27.53525"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53525>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53525> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53527>
+rdfs:label "Station prj_27.53527"@fr, "Station prj_27.53527"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53527>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53527> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53528>
+rdfs:label "Station prj_27.53528"@fr, "Station prj_27.53528"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53528>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53528> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53530>
+rdfs:label "Station prj_27.53530"@fr, "Station prj_27.53530"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53530>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53530> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53531>
+rdfs:label "Station prj_27.53531"@fr, "Station prj_27.53531"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53531>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53531> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53532>
+rdfs:label "Station prj_27.53532"@fr, "Station prj_27.53532"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53532>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53532> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53533>
+rdfs:label "Station prj_27.53533"@fr, "Station prj_27.53533"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53533>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53533> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53534>
+rdfs:label "Station prj_27.53534"@fr, "Station prj_27.53534"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53534>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53534> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53535>
+rdfs:label "Station prj_27.53535"@fr, "Station prj_27.53535"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53535>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53535> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53538>
+rdfs:label "Station prj_27.53538"@fr, "Station prj_27.53538"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53538>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53538> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53539>
+rdfs:label "Station prj_27.53539"@fr, "Station prj_27.53539"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53539>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53539> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53540>
+rdfs:label "Station prj_27.53540"@fr, "Station prj_27.53540"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53540>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53540> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53541>
+rdfs:label "Station prj_27.53541"@fr, "Station prj_27.53541"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53541>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53541> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53542>
+rdfs:label "Station prj_27.53542"@fr, "Station prj_27.53542"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53542>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53542> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53544>
+rdfs:label "Station prj_27.53544"@fr, "Station prj_27.53544"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53544>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53544> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53545>
+rdfs:label "Station prj_27.53545"@fr, "Station prj_27.53545"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53545>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53545> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53632>
+rdfs:label "Station prj_27.53632"@fr, "Station prj_27.53632"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53632>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53632> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53526>
+rdfs:label "Station prj_27.53526"@fr, "Station prj_27.53526"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53526>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53526> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53526>
+rdfs:label "Station prj_27.53526"@fr, "Station prj_27.53526"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53526>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53526> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53520>
+rdfs:label "Station prj_27.53520"@fr, "Station prj_27.53520"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53520>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53520> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53520>
+rdfs:label "Station prj_27.53520"@fr, "Station prj_27.53520"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53520>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53520> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53521>
+rdfs:label "Station prj_27.53521"@fr, "Station prj_27.53521"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53521>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53521> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53521>
+rdfs:label "Station prj_27.53521"@fr, "Station prj_27.53521"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53521>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53521> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53522>
+rdfs:label "Station prj_27.53522"@fr, "Station prj_27.53522"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53522>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53522> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53522>
+rdfs:label "Station prj_27.53522"@fr, "Station prj_27.53522"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53522>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53522> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53529>
+rdfs:label "Station prj_27.53529"@fr, "Station prj_27.53529"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53529>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53529> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53529>
+rdfs:label "Station prj_27.53529"@fr, "Station prj_27.53529"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53529>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53529> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53537>
+rdfs:label "Station prj_27.53537"@fr, "Station prj_27.53537"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53537>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53537> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53537>
+rdfs:label "Station prj_27.53537"@fr, "Station prj_27.53537"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53537>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53537> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53543>
+rdfs:label "Station prj_27.53543"@fr, "Station prj_27.53543"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53543>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53543> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53543>
+rdfs:label "Station prj_27.53543"@fr, "Station prj_27.53543"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53543>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53543> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53515>
+rdfs:label "Station prj_27.53515"@fr, "Station prj_27.53515"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53515>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53515> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53515>
+rdfs:label "Station prj_27.53515"@fr, "Station prj_27.53515"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53515>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53515> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53517>
+rdfs:label "Station prj_27.53517"@fr, "Station prj_27.53517"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53517>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53517> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".
+<https://geoconnex.ca/id/gwmonitoring/prj_27.53517>
+rdfs:label "Station prj_27.53517"@fr, "Station prj_27.53517"@en; a <http://geosciences.ca/def/gwml/2.1#GW_MonitoringStation>;
+rdfs:seeAlso <https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53517>.
+<https://geoconnex.ca/data/gwmon/WML2/historical/GIN/prj_27.53517> dct:format "text/html","text/xml","text/plain","application/vnd.geo+json".

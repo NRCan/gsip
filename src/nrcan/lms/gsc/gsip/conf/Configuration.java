@@ -44,8 +44,16 @@ public class Configuration {
 		static Configuration instance = new Configuration();
 	}
 	
+	/**
+	 * get a single instance when the servlet context is known
+	 * 
+	 * @param srv
+	 * @return
+	 */
 	public static Configuration getInstance(ServletContext srv)
 	{
+		//TODO: bad design, the servlet context exists during a request, I should find a way to get
+		// this information without 
 		if (ConfigurationSingleHolder.instance.conf == null)
 			try {
 				ConfigurationSingleHolder.instance.init(srv);

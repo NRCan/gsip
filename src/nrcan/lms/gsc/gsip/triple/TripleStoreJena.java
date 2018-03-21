@@ -1,4 +1,13 @@
 package nrcan.lms.gsc.gsip.triple;
+/**
+ 
+   _    ___ _  _ ___ 
+ | |  / __| \| | _ \
+ | |_| (__| .` |  _/
+ |____\___|_|\_|_|  
+                    
+                    
+ */
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -18,14 +27,14 @@ import org.apache.jena.riot.RDFDataMgr;
 
 
 public class TripleStoreJena {
-	public static final String defaultSparqlEndpoint = "http://s-stf-gin.nrn.nrcan.gc.ca:8085/fuseki/gsip";
+	public static final String defaultSparqlEndpoint = "http://localhost:8080/fuseki/gsip";
 	private String sparqlRepo;
 	public TripleStoreJena(String store)
 	{
 		this.sparqlRepo = store;
 	}
 	
-	
+	// perform a sparql query on a data store
 	public Model getSparqlConstructModel(String sparql)
 	{
 		 Query query = QueryFactory.create(sparql);
@@ -39,6 +48,16 @@ public class TripleStoreJena {
 		 }
 		 return null;
 			 
+	}
+	
+	/**
+	 * Load the content of a folder into a model
+	 * @param folder
+	 * @return
+	 */
+	private RDFConnection getConnectionFromFiles(String folder)
+	{
+		return null;
 	}
 	
 	/**
