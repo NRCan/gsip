@@ -18,6 +18,7 @@ import javax.ws.rs.core.UriInfo;
 import static nrcan.lms.gsc.gsip.Constants.APPLICATION_RDFXML;
 import static nrcan.lms.gsc.gsip.Constants.APPLICATION_TURTLE;
 import static nrcan.lms.gsc.gsip.Constants.TEXT_TURTLE;
+import static nrcan.lms.gsc.gsip.Constants.APP_URI;
 
 
 import java.io.IOException;
@@ -41,6 +42,7 @@ import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateNotFoundException;
 import nrcan.lms.gsc.gsip.conf.Configuration;
+import nrcan.lms.gsc.gsip.model.ModelUtil;
 import nrcan.lms.gsc.gsip.model.ModelWrapper;
 import nrcan.lms.gsc.gsip.template.TemplateManager;
 import nrcan.lms.gsc.gsip.triple.TripleStore;
@@ -197,7 +199,7 @@ public class Information {
 		try{
 			Map<String,Object> p = new HashMap<String,Object>();
 			p.put("host",Configuration.getInstance().getParameter("gsip"));
-			p.put("model", new ModelWrapper(model,resource));
+			p.put("model", new ModelWrapper(getAlternateModel(model),resource));
 			
 			p.put("locale",locale);
 			out = TemplateManager.getInstance().transform(p, htmlTemplate);
@@ -234,8 +236,23 @@ public class Information {
 			post = ")";
 		}
 		StringWriter w = new StringWriter();
+		mdl = getAlternateModel(mdl);
 		mdl.write(w, "JSON-LD");
 		return Response.ok(pre + w.toString() + post).type(MediaType.APPLICATION_JSON_TYPE).build();
+	}
+	
+	private Model getAlternateModel(Model mdl)
+	{
+		Configuration c = Manager.getInstance().getConfiguration();
+		String baseuri = (String) c.getParameter(BASE_URI);
+		String outuri = (String) c.getParameter(APP_URI);
+		// need to convert ?
+		if (!baseuri.equals(outuri))
+			return  ModelUtil.alternateResource(mdl, baseuri, outuri);
+		else
+			return mdl;
+		
+
 	}
 	
 	private Response serializeModel(Model mdl, Lang format, String mimetype)
@@ -245,7 +262,8 @@ public class Information {
 			public void write(OutputStream os) throws IOException
 			{
 			
-				RDFDataMgr.write(os,mdl,format);
+				
+				RDFDataMgr.write(os,getAlternateModel(mdl),format);
 			}
 		};
 		

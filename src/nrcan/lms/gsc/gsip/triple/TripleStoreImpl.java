@@ -2,6 +2,8 @@ package nrcan.lms.gsc.gsip.triple;
 
 import org.apache.jena.rdf.model.Model;
 
+import nrcan.lms.gsc.gsip.model.ModelUtil;
+
 public class TripleStoreImpl implements TripleStore {
 
 	@Override
