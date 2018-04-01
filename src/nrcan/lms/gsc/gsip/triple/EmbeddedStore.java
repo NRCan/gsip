@@ -2,6 +2,7 @@ package nrcan.lms.gsc.gsip.triple;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,7 +79,7 @@ public class EmbeddedStore extends TripleStoreImpl {
 		List<File> all = new ArrayList<File>();
 		if (f.isDirectory())
 		{
-			
+			all.addAll(Arrays.asList(f.listFiles()));
 		}
 		else
 		{
