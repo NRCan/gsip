@@ -120,7 +120,7 @@ public class Information {
 		String sparql = this.constructSparql(idUri);
 		//Logger.getAnonymousLogger().log(Level.INFO,sparql);
 		// server is specified in servlet initialisation
-		String server = context.getInitParameter("server");
+
 		// get model from triple store
 		TripleStore j = Manager.getInstance().getTripleStore();
 		Model storedModel = j.getSparqlConstructModel(sparql);
@@ -283,7 +283,7 @@ public class Information {
 	
 	public  String getIdResource(UriInfo uriInfo)
 	{
-		String host =  (uriInfo.getBaseUri().toString().contains("localhost"))?"http://s-stf-gin.nrn.nrcan.gc.ca:8085/gsip":Configuration.getInstance(context).getParameter(BASE_URI,"http://s-stf-gin.nrn.nrcan.gc.ca:8085/gsip").toString();
+		String host =  Manager.getInstance().getConfiguration().getParameter(BASE_URI,"http://localhost:8080/gsip").toString();
 		// this one is called by /info/, but the real NIR is /id/
 		StringBuilder infoUri = new StringBuilder(host + "/id");
 		boolean first = true;

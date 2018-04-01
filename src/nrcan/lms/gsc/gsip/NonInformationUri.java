@@ -16,6 +16,7 @@ import javax.ws.rs.core.PathSegment;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import static nrcan.lms.gsc.gsip.Constants.BASE_URI;
+import static nrcan.lms.gsc.gsip.Constants.APP_URI;
 
 import nrcan.lms.gsc.gsip.conf.Configuration;
 
@@ -28,9 +29,9 @@ public class NonInformationUri {
 	{
 		URI newLocation = null;
 		// rebuild a /info/ uri 
-		Configuration conf = Configuration.getInstance(ctx);
+		Configuration conf = Manager.getInstance().getConfiguration();
 		
-		StringBuilder infoUri = new StringBuilder(conf.getParameter(BASE_URI) + "/info");
+		StringBuilder infoUri = new StringBuilder(conf.getParameter(APP_URI) + "/info");
 		boolean first = true;
 		for(PathSegment segment: uriInfo.getPathSegments())
 		{

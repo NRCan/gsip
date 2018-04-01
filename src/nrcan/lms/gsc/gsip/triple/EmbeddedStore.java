@@ -30,9 +30,9 @@ public class EmbeddedStore extends TripleStoreImpl {
 	@Override
 	public Model getSparqlConstructModel(String sparql) {
 
-
 			Model m = null;
 			try(RDFConnection conn = RDFConnectionFactory.connect(ds)){
+				
 			m = conn.queryConstruct(sparql);
 			}
 			
@@ -54,10 +54,10 @@ public class EmbeddedStore extends TripleStoreImpl {
 	{
 		// if the file if folder, get all the files in the folder
 		
-		Dataset ds = DatasetFactory.createTxnMem();
+		ds = DatasetFactory.createTxnMem();
 		// add the model
 		Model m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RDFS_INF);
-		ds.setDefaultModel(m);
+
 		for(File f:datasets )
 		{
 			// load the data from the repo
@@ -67,9 +67,11 @@ public class EmbeddedStore extends TripleStoreImpl {
 			}
 			catch(Exception ex)
 			{
-				Logger.getAnonymousLogger().log(Level.WARNING,"Failed to load " + f.getAbsolutePath(), ex);
+				Logger.getAnonymousLogger().log(Level.WARNING," !* Failed to load " + f.getAbsolutePath(), ex);
 			}
 		}
+		
+		ds.setDefaultModel(m);
 
 		
 	}

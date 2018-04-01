@@ -91,7 +91,7 @@ public class Manager {
 	{
 		conf = null;
 		template = null;
-		store.close();
+		if (store != null) store.close();
 		store = null;
 		data = null;
 		
