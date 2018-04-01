@@ -78,7 +78,7 @@ public class Manager {
 			Logger.getAnonymousLogger().log(Level.INFO, "Initialise Data manager");
 			data = DataManager.getInstance(ctx);
 			Logger.getAnonymousLogger().log(Level.INFO, "Initialise TripleStore");
-			store = TripleStoreFactory.createTripleStore();
+			store = TripleStoreFactory.createTripleStore(ctx);
 
 		}
 		else
