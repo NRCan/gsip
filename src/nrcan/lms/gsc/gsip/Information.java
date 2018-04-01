@@ -19,11 +19,10 @@ import static nrcan.lms.gsc.gsip.Constants.APPLICATION_RDFXML;
 import static nrcan.lms.gsc.gsip.Constants.APPLICATION_TURTLE;
 import static nrcan.lms.gsc.gsip.Constants.TEXT_TURTLE;
 
-import java.io.ByteArrayOutputStream;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringWriter;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +43,7 @@ import freemarker.template.TemplateNotFoundException;
 import nrcan.lms.gsc.gsip.conf.Configuration;
 import nrcan.lms.gsc.gsip.model.ModelWrapper;
 import nrcan.lms.gsc.gsip.template.TemplateManager;
+import nrcan.lms.gsc.gsip.triple.TripleStore;
 import nrcan.lms.gsc.gsip.triple.TripleStoreJena;
 import nrcan.lms.gsc.gsip.util.MediaTypeUtil;
 import nrcan.lms.gsc.gsip.util.QuantifiedMedia;
@@ -122,7 +122,7 @@ public class Information {
 		// server is specified in servlet initialisation
 		String server = context.getInitParameter("server");
 		// get model from triple store
-		TripleStoreJena j = new TripleStoreJena(server);
+		TripleStore j = Manager.getInstance().getTripleStore();
 		Model storedModel = j.getSparqlConstructModel(sparql);
 		// this URI might match a pattern in the template manager
 		String matchedTemplate = TemplateManager.getInstance().getMatchingTemplate(idUri,!storedModel.isEmpty());

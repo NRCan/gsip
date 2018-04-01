@@ -52,11 +52,12 @@ public class Configuration {
 	 */
 	public static Configuration getInstance(ServletContext srv)
 	{
+		String confile = srv.getInitParameter("conf");
 		//TODO: bad design, the servlet context exists during a request, I should find a way to get
 		// this information without 
 		if (ConfigurationSingleHolder.instance.conf == null)
 			try {
-				ConfigurationSingleHolder.instance.init(srv);
+				ConfigurationSingleHolder.instance.init(srv,confile);
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
 				Logger.getAnonymousLogger().log(Level.SEVERE,"Failed to load configuration",e);
@@ -88,13 +89,13 @@ public class Configuration {
 			return null; // this will generate a npe
 	}
 	
-	private void init(ServletContext ctx) throws JAXBException
+	private void init(ServletContext ctx,String confile) throws JAXBException
 	{
 		JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
 		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 	    JAXBElement<ConfigurationType> unmarshalledObject = 
 	            (JAXBElement<ConfigurationType>)unmarshaller.unmarshal(
-	                ctx.getResourceAsStream(CONF_FILE));
+	                ctx.getResourceAsStream(confile==null?CONF_FILE:confile));
 	    conf = unmarshalledObject.getValue();
 	    
 	    // load the types

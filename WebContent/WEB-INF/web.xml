@@ -20,9 +20,9 @@
    </listener>
    
    <context-param>
-    <description>Triple Store location</description>
-    <param-name>server</param-name>
-     <param-value>http://10.0.1.10:8080/fuseki/gsip_file</param-value>
+    <description>Configuration file location</description>
+    <param-name>conf</param-name>
+     <param-value>conf/configuration.xml</param-value>
 <!--        <param-value>http://w-stf-a128913.nrn.nrcan.gc.ca:8085/fuseki/gsip_file</param-value> -->
     <!--       <param-value>http://s-stf-gin.nrn.nrcan.gc.ca:8085/fuseki/gsip_file</param-value> -->
 

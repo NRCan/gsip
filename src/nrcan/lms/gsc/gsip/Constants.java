@@ -7,5 +7,6 @@ public final class Constants {
 	public static final String TEXT_HTML = "text/html";
 	public static final String APPLICATION_GEOJSON = "application/vnd.geo+json";
 	public static final String BASE_URI = "baseUri";
+	public static final String TRIPLE_STORE = "triplestore";
 
 }

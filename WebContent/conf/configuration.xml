@@ -16,6 +16,7 @@
 		<p:parameter name="infoTemplate">infohtml.ftl</p:parameter>
 		<p:parameter name="baseUri">https://geoconnex.ca</p:parameter> 
 		<p:parameter name="gsip">https://geoconnex.ca/gsip</p:parameter>
+		<p:parameter name="triplestore">http://localhost:8080/fuseki/gsip_file</p:parameter>
 		<p:parameter name="supportedLanguages">en,fr</p:parameter>
 		<p:parameter name="defaultLanguage">en</p:parameter>
 		

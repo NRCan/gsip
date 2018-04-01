@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryFactory;
-import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdfconnection.RDFConnection;
 import org.apache.jena.rdfconnection.RDFConnectionFactory;
@@ -26,9 +25,10 @@ import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 
 
-public class TripleStoreJena {
+public class TripleStoreJena extends TripleStoreImpl {
 	public static final String defaultSparqlEndpoint = "http://localhost:8080/fuseki/gsip";
 	private String sparqlRepo;
+	
 	public TripleStoreJena(String store)
 	{
 		this.sparqlRepo = store;
@@ -43,41 +43,18 @@ public class TripleStoreJena {
 		        }
 		 catch(Exception ex)
 		 {
-			 Logger.getAnonymousLogger().log(Level.SEVERE, "failed to execute [\n" + sparql + "]\n" ,ex);
+			 Logger.getAnonymousLogger().log(Level.SEVERE, "failed to execute [\n" + sparql + "]\n from " + sparqlRepo ,ex);
 			 
 		 }
 		 return null;
 			 
 	}
 	
-	/**
-	 * Load the content of a folder into a model
-	 * @param folder
-	 * @return
-	 */
-	private RDFConnection getConnectionFromFiles(String folder)
-	{
-		return null;
-	}
 	
-	/**
-	 * Just serialize to a string
-	 * @param mdl
-	 * @param format
-	 * @return
-	 */
-	public static String modelToString(Model mdl, Lang format)
-	{
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		RDFDataMgr.write(baos, mdl, format);
-		try {
-			return new String(baos.toByteArray(),"UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			Logger.getAnonymousLogger().log(Level.SEVERE, "failed to create a String for model in " + format.toString(),e);
-			return null;
-		}
-	}
+	
+	
+	
+	
 	
 	
 	
@@ -95,33 +72,9 @@ public class TripleStoreJena {
 		m.write(System.out,"JSON-LD");
 	}
 	
-	/**
-	 * describe a resource (DESCRIBE)
-	 * @param resource
-	 * @return
-	 */
-	public Model describe(String resource)
-	{
-		return getSparqlConstructModel("DESCRIBE " + formatResource(resource));
-	}
 	
-	public boolean resourceExists(String resource)
-	{
-		Model mdl = describe(resource);
-		return !mdl.isEmpty();
-	}
 	
-	/**
-	 * deal with < and >.  Does not check if inconsistent ie, "<" but no ">", this will generate a SPARQL error anyway
-	 * @param resource
-	 * @return
-	 */
-	public static String formatResource(String resource)
-	{
-		if (resource.startsWith("<") && resource.endsWith(">"))
-			return resource;
-		else return "<" + resource +">";
-	}
+	
 	
 	
 	
