@@ -6,6 +6,8 @@ import static nrcan.lms.gsc.gsip.Constants.TRIPLE_STORE;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.servlet.ServletContext;
+
 /**
  * Create a TripleStore based on configuration.  So far, this only create a link to a remote Fuseki
  * server of create a local server with data provided in a folder
@@ -26,18 +28,31 @@ import java.util.logging.Logger;
  */
 public class TripleStoreFactory {
 
-	public static TripleStore createTripleStore()
+	public static TripleStore createTripleStore(ServletContext context)
 	{
 		// get the configuration, if not configuration available, just use the default value in old version of GSIP (not a very good design, but hey)
-		String tpconf = (String) Manager.getInstance().getConfiguration().getParameter(TRIPLE_STORE, TripleStoreJena.defaultSparqlEndpoint);
+		String tpconf = (String) Manager.getInstance().getConfiguration().getParameter(TRIPLE_STORE, RemoteStore.defaultSparqlEndpoint);
 		if (tpconf != null)
 		{
 			if (tpconf.startsWith("http"))
-				return new TripleStoreJena(tpconf);
+				return new RemoteStore(tpconf);
+			
+			// check if it's a local resource (webapp)
+			if (tpconf.startsWith("webapp:"))
+			{
+				String p = context.getRealPath(tpconf.replaceFirst("webapp:", ""));
+				return new EmbeddedStore(p);
+				
+			}
+			
+			//TODO: improve security / error control
+			// some sort of absolute path
+			return new EmbeddedStore(tpconf);
 		}
 		else
 		{
 			Logger.getAnonymousLogger().log(Level.SEVERE,"No triple store");
+			
 		}
 
 		return null;  // did not go well

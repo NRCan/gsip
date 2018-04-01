@@ -25,11 +25,11 @@ import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 
 
-public class TripleStoreJena extends TripleStoreImpl {
+public class RemoteStore extends TripleStoreImpl {
 	public static final String defaultSparqlEndpoint = "http://localhost:8080/fuseki/gsip";
 	private String sparqlRepo;
 	
-	public TripleStoreJena(String store)
+	public RemoteStore(String store)
 	{
 		this.sparqlRepo = store;
 	}
@@ -65,7 +65,7 @@ public class TripleStoreJena extends TripleStoreImpl {
 		
 		String sparql = "CONSTRUCT {<https://geosciences.ca/id/catchment/c>  ?p ?o. ?o ?p2 ?o2}\r\n" + 
 				"WHERE {<https://geosciences.ca/id/catchment/c>  ?p ?o. OPTIONAL {?o ?p2 ?o2}}";
-		TripleStoreJena tsj = new TripleStoreJena(TripleStoreJena.defaultSparqlEndpoint);
+		RemoteStore tsj = new RemoteStore(RemoteStore.defaultSparqlEndpoint);
 		Model m = tsj.getSparqlConstructModel(sparql);
 		// merge some triples in there
 		m.read(IOUtils.toInputStream("@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>  . <https://geosciences.ca/id/catchment/c> rdfs:label \"Hello\"@en.","UTF-8"),null,"TURTLE");

@@ -47,6 +47,13 @@
     <version>3.6.0</version>
 </dependency>
 
+<!-- <dependency>
+  <groupId>org.apache.jena</groupId>
+  <artifactId>jena-fuseki-embedded</artifactId>
+  <version>3.6.0</version> Set the version
+</dependency> -->
+
+
 <!-- <dependency> -->
 <!--     <groupId>com.github.jsonld-java</groupId> -->
 <!--     <artifactId>jsonld-java</artifactId> -->

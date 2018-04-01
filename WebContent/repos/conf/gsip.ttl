@@ -1,0 +1,48 @@
+@prefix :      <http://base/#> .
+@prefix tdb:   <http://jena.hpl.hp.com/2008/tdb#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ja:    <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fuseki: <http://jena.apache.org/fuseki#> .
+
+# fuseki configuration to have OWL entailment
+# this is the configuration on s-stf-gin (fuseki data folder is on c:\)
+
+:service_tdb_all  a                   fuseki:Service ;
+        rdfs:label                    "TDB gsip" ;
+        fuseki:dataset                :tdb_dataset_readwrite ;
+        fuseki:name                   "gsip_file" ; 
+        fuseki:serviceQuery           "query" , "sparql" ;
+        fuseki:serviceReadGraphStore  "get" ;
+        fuseki:serviceReadWriteGraphStore
+                "data" .
+
+		# above, remove data, update and upload in prod
+:tdb_dataset_readwrite
+        a             ja:RDFDataset;
+		# need to test this
+		#ja:context [ ja:cxtName "tdb:transactionJournalWriteBlockMode" ;
+		#ja:cxtValue "mapped" ] ;
+		#ja:context [ ja:cxtName "arq:spillToDiskThreshold" ; ja:cxtValue 10000 ;
+		rdfs:label "GSIP";
+		ja:defaultGraph       <#model_inf> .
+        #tdb:location  "c:\\fuseki/databases/gsip" .
+ 
+<#model_inf> a ja:InfModel ;
+	#ja:baseModel <#graph> ;
+	 #ja:content [ja:externalContent <file:///c:/fuseki/src/features.ttl>];
+	# ja:content [ja:externalContent <file:///c:/fuseki/src/monitoring.ttl>];
+	 #ja:content [ja:externalContent <file:///c:/fuseki/src/ontology.ttl>];
+	 #ja:content [ja:externalContent <file:///c:/fuseki/src/rel_puits.ttl>];
+	#ja:content [ja:externalContent <file:///c:/fuseki/src/relations.ttl>];
+	# ja:content [ja:externalContent <file:///c:/fuseki/src/well_aq.ttl>];
+	 #ja:content [ja:externalContent <file:///c:/fuseki/src/wells.ttl>];
+     ja:reasoner [
+         ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>
+     ] .
+	 
+#	<#graph> rdf:type tdb:GraphTDB ;
+#  tdb:dataset :tdb_dataset_readwrite .
+	 
+
+ 

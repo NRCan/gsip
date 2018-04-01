@@ -44,7 +44,7 @@ import nrcan.lms.gsc.gsip.conf.Configuration;
 import nrcan.lms.gsc.gsip.model.ModelWrapper;
 import nrcan.lms.gsc.gsip.template.TemplateManager;
 import nrcan.lms.gsc.gsip.triple.TripleStore;
-import nrcan.lms.gsc.gsip.triple.TripleStoreJena;
+import nrcan.lms.gsc.gsip.triple.RemoteStore;
 import nrcan.lms.gsc.gsip.util.MediaTypeUtil;
 import nrcan.lms.gsc.gsip.util.QuantifiedMedia;
 
