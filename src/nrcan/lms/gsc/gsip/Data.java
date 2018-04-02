@@ -295,10 +295,10 @@ public class Data {
 	}
 	private Map<String,String> getParameters(UriInfo u)
 	{
-		
+		//TODO: this does the same thing than Information.getParameters.  Should consolidate
 		Map<String,String> s = new HashMap<String,String>();
 		// load the path parameters
-		s.put("p0", "data");
+		StringBuilder path= new StringBuilder("data");
 		// get Configuration parameters
 		Hashtable<String,Object> conf = Configuration.getInstance().getParameters();
 		for(String k:conf.keySet())
@@ -318,8 +318,10 @@ public class Data {
 			if (!gotData) continue;
 			// we have something here after data
 			s.put("p"+(++c), p.getPath());
+			path.append("/"+p.getPath());
 		}
 		
+		s.put("p0", path.toString()); // p0 = whole path starting from data/
 		// now put other usefull stuff
 		// hmm.. this was probably ignored ?
 		//s.put("baseUri", u.getBaseUri().toString());

@@ -298,13 +298,15 @@ public class Information {
 		mp.put("resource",idUri);
 		// decompose the uriInfo in parts
 		int p=1;
-		mp.put("p0", "id");
+		StringBuilder path = new StringBuilder("id");
 		boolean first = true;
 		for(PathSegment segment: uriInfo.getPathSegments())
 		{
 			if (first) {first = false; continue;}
 			mp.put("p"+(p++), segment.getPath());
+			path.append("/" + segment.getPath());
 		}
+		mp.put("p0", path.toString()); // the whole path , starting from id is in item 0 
 		
 		// get the configuration parameters
 		mp.putAll(Configuration.getInstance().getParameters());

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:data xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 file:///C:/java64_8/gsip/WebContent/schemas/data.xsd">
-	<!--  each elements are parsed into p0 to p{n}.  p0 = "data" -->
+	<!--  each elements are parsed into p1 to p{n}.  p0 = "data/x/y/z.." -->
 	<p:match pattern="gwml/gwml1/gsip/gin/qc\..*">
 		<p:mime-type>text/html</p:mime-type>
 		<!--  can have more -->
