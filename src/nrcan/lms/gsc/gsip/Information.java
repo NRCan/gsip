@@ -200,7 +200,7 @@ public class Information {
 		try{
 			Map<String,Object> p = new HashMap<String,Object>();
 			p.put("host",Configuration.getInstance().getParameter("gsip"));
-			p.put("model", new ModelWrapper(getAlternateModel(model),resource));
+			p.put("model", new ModelWrapper(getAlternateModel(model),getAlternateResource(resource)));
 			p.put("locale",locale);
 			out = TemplateManager.getInstance().transform(p, htmlTemplate);
 		}
@@ -222,7 +222,7 @@ public class Information {
 	
 	/**
 	 * serialize JSON with or wihtout callback
-	 * @param mdl
+	 * @param mdl9
 	 * @param callBack
 	 * @return
 	 */
@@ -266,6 +266,17 @@ public class Information {
 			return mdl;
 		
 
+	}
+	
+	private String getAlternateResource(String rs)
+	{
+		Configuration c = Manager.getInstance().getConfiguration();
+		String baseuri = (String) c.getParameter(BASE_URI);
+		Object outuri = c.getParameter(PROX_DEVURI,null); // can be null
+		if (!baseuri.equals(outuri) && outuri != null)
+			return rs.replaceFirst(baseuri, (String)outuri);
+		else
+			return rs;
 	}
 	
 	private Response serializeModel(Model mdl, Lang format, String mimetype)

@@ -26,6 +26,9 @@ import org.apache.jena.vocabulary.OWL;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
 
+import nrcan.lms.gsc.gsip.Manager;
+import nrcan.lms.gsc.gsip.conf.Configuration;
+
 
 
 /**
@@ -44,6 +47,11 @@ public class ModelWrapper {
 	{
 		this.model = m;
 		this.contextResource = m.getResource(contextResource);
+	}
+	
+	public String getContextResourceUri()
+	{
+		return contextResource.getURI();
 	}
 	
 	// get the prefix for this namespace
@@ -119,7 +127,7 @@ public class ModelWrapper {
 	
 	public List<Resource> getRepresentations()
 	{
-		Logger.getAnonymousLogger().log(Level.INFO, contextResource.getURI());
+		//Logger.getAnonymousLogger().log(Level.INFO, contextResource.getURI());
 		return getRepresentations(this.contextResource.getURI());
 	}
 
@@ -130,20 +138,21 @@ public class ModelWrapper {
 		return getRepresentations(r);
 	}
 	
-	public String getFormatOverride(String r,String mime) 
+	public String getFormatOverride(String r,String mime)
 	{
+		Configuration c = Manager.getInstance().getConfiguration();
 		
-			try {
-				
-			if ("application/vnd.geo+json".equals(mime)) return appendFormat(r,"f","geojson");
-			if ("text/xml".equals(mime)) return appendFormat(r,"f","xml");
-			if ("text/html".equals(mime)) return appendFormat(r,"f","html");
+		
 			
-			
-			} catch (URISyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String format = c.getFormatFromMimeType(mime);
+			if (format != null)
+				try {
+					return appendFormat(r,"f",format);
+				} catch (URISyntaxException e) {
+					Logger.getAnonymousLogger().log(Level.WARNING, "problem with format for mime [" + mime + "] for resource " + r, e);
+					return r;
+				}
+			else
 			return r;
 	}
 	
@@ -167,6 +176,11 @@ public class ModelWrapper {
 		
 	}
 	
+	/**
+	 * return a list of links, group by properties . keys are properties
+	 * @param r
+	 * @return
+	 */
 	public Map<String,List<Link>> getRelevantLinkByProperty(Resource r)
 	{
 		return getRelevantLinkByGroup(r,new Aggregation() {
@@ -174,6 +188,11 @@ public class ModelWrapper {
 			);
 	}
 	
+	/**
+	 * return a list of links, group by resource.  keys are resources
+	 * @param r
+	 * @return
+	 */
 	public Map<String,List<Link>> getRelevantLinkByResource(Resource r)
 	{
 		return getRelevantLinkByGroup(r,new Aggregation() {
@@ -240,9 +259,7 @@ public class ModelWrapper {
 			formats.add(s.getString());
 		}
 		return formats;
-			
-			
-		
+
 	}
 	public String appendFormat(String url,String key,String value) throws URISyntaxException
 	{

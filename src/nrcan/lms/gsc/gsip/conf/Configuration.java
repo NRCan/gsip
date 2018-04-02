@@ -30,6 +30,7 @@ public class Configuration {
 	public static final String DEFAULT_LANGUAGE = "en";
 	public static final String CONF_FILE = "conf/configuration.xml";
 	private Hashtable<String,String> formatToMime = null;
+	private Hashtable<String,String> mimeToFormat = null;
 	private Hashtable<String,String> equivalentMime = null;
 	private Hashtable<String,Object> parameters = null;
 	private ConfigurationType conf = null;
@@ -107,23 +108,38 @@ public class Configuration {
 	    conf = unmarshalledObject.getValue();
 	    
 	    // load the types
+	    // TODO: clean this.. this code is a train wreck.
 	    
 	    this.formatToMime = new Hashtable<String,String>();
 	    this.equivalentMime = new Hashtable<String,String>();
+	    this.mimeToFormat = new Hashtable<String,String>();
 	    for(TypeType tp:conf.types.type)
 	    {
 	    	if (tp.formats != null)
+	    	
 	    		for(String f:tp.formats.split(";"))
 	    		{
 	    			formatToMime.put(f, tp.mimeType);
+	    			if(!mimeToFormat.contains(tp.mimeType))
+	    				mimeToFormat.put(tp.mimeType, f); // just need at least one format
 	    		}
-	    	// check if equivalenet
+	    	// check if equivalent
 	    	if (tp.sameAs !=  null)
 	    	{
 	    		equivalentMime.put(tp.mimeType, tp.sameAs);
 	    	}
 	    }
 	    
+	    // at this point, just need to resolve the equivalents 
+	    for(String mime:equivalentMime.keySet())
+	    {
+	    	// mime A is equivalent to B, B has a format
+	    	String eq = equivalentMime.get(mime);
+	    	// so, if this equivalent mimetype B is already in the mime->format hash, 
+	    	if (mimeToFormat.contains(eq))
+	    		// assign this format for this mime A
+	    		mimeToFormat.put(mime, mimeToFormat.get(eq));
+	    }
 	    // holds configuration parameters
 	    
 	    parameters = new Hashtable<String,Object>(); 
@@ -135,6 +151,16 @@ public class Configuration {
 	    }
 	    
 	   
+	}
+	
+	/**
+	 * find a f= for a given mime type.
+	 * @param mt
+	 * @return
+	 */
+	public String getFormatFromMimeType(String mt)
+	{
+		return mimeToFormat.get(mt);
 	}
 	
 	/**
