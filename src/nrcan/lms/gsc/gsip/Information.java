@@ -242,14 +242,27 @@ public class Information {
 		return Response.ok(pre + w.toString() + post).type(MediaType.APPLICATION_JSON_TYPE).build();
 	}
 	
+	/**
+	 * This is for debugging or running the system on a alternate site.
+	 * It converts the baseURI of resources in 
+	 * into a site specific URI (using configuration variable proxdevuri).
+	 * This help developers and tester running the system outside the official deployment (on a testserver)
+	 * 
+	 * This 
+	 * 
+	 * 
+	 * @param mdl
+	 * @return a new model with all {baseuri}/ turned into {proxdevuri}/.
+	 */
 	private Model getAlternateModel(Model mdl)
 	{
 		Configuration c = Manager.getInstance().getConfiguration();
 		String baseuri = (String) c.getParameter(BASE_URI);
-		String outuri = (String) c.getParameter(PROX_DEVURI);
+		Object outuri = c.getParameter(PROX_DEVURI,null); // can be null
+		
 		// need to convert ?
-		if (!baseuri.equals(outuri))
-			return  ModelUtil.alternateResource(mdl, baseuri, outuri);
+		if (!baseuri.equals(outuri) && outuri != null)
+			return  ModelUtil.alternateResource(mdl, baseuri, (String)outuri);
 		else
 			return mdl;
 		
