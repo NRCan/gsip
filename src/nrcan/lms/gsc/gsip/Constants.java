@@ -9,5 +9,6 @@ public final class Constants {
 	public static final String BASE_URI = "baseUri";
 	public static final String APP_URI = "gsip";
 	public static final String TRIPLE_STORE = "triplestore";
+	public static final String PROX_DEVURI = "proxdevuri";
 
 }

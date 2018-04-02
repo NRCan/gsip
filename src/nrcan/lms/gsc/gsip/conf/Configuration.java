@@ -76,6 +76,14 @@ public class Configuration {
 		Object v = getParameter(param);
 		return v==null?defaultValue:v;
 	}
+	
+	public String getParameterAsString(String param,String defaultString)
+	{
+		Object v = getParameter(param);
+		return v==null?defaultString:(String)v;
+	}
+	
+	
 	/** we assume it has been already configured, because it will be invoked from the app
 	 * 
 	 * @return

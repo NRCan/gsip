@@ -19,6 +19,7 @@ import static nrcan.lms.gsc.gsip.Constants.APPLICATION_RDFXML;
 import static nrcan.lms.gsc.gsip.Constants.APPLICATION_TURTLE;
 import static nrcan.lms.gsc.gsip.Constants.TEXT_TURTLE;
 import static nrcan.lms.gsc.gsip.Constants.APP_URI;
+import static nrcan.lms.gsc.gsip.Constants.PROX_DEVURI;
 
 
 import java.io.IOException;
@@ -245,7 +246,7 @@ public class Information {
 	{
 		Configuration c = Manager.getInstance().getConfiguration();
 		String baseuri = (String) c.getParameter(BASE_URI);
-		String outuri = (String) c.getParameter(APP_URI);
+		String outuri = (String) c.getParameter(PROX_DEVURI);
 		// need to convert ?
 		if (!baseuri.equals(outuri))
 			return  ModelUtil.alternateResource(mdl, baseuri, outuri);
