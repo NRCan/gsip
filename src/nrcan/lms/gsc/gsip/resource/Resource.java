@@ -18,7 +18,9 @@ import java.io.File;
 import java.util.regex.Pattern;
 
 /**
- * simple access point to deliver simple static resouces
+ * simple access point to deliver simple static resouces.
+ * Not mapped as "default" servlet as this is a placeholder for more complex resource service 
+ * TODO: implement alternate model rules for URI in JSON resources.
  * @author eboisver
  *
  */
@@ -35,6 +37,7 @@ public class Resource {
 	public Response getJsonResource(@PathParam("category") String folder,@PathParam("item") String item)
 	{
 		// only accept word
+		// TODO: not sure this is even useful...
 		if (isBad(folder) || isBad(item))
 			return Response.status(HttpStatus.SC_BAD_REQUEST).build();
 		

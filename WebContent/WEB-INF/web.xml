@@ -10,6 +10,10 @@
         </init-param>
     </servlet>
     <servlet-mapping>
+    	<servlet-name>default</servlet-name>
+    	<url-pattern>/app/*</url-pattern>
+	</servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ServletContainer</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>

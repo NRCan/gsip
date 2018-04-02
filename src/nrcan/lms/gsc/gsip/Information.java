@@ -201,7 +201,6 @@ public class Information {
 			Map<String,Object> p = new HashMap<String,Object>();
 			p.put("host",Configuration.getInstance().getParameter("gsip"));
 			p.put("model", new ModelWrapper(getAlternateModel(model),resource));
-			
 			p.put("locale",locale);
 			out = TemplateManager.getInstance().transform(p, htmlTemplate);
 		}

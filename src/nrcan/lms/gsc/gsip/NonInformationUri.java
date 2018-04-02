@@ -15,6 +15,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.PathSegment;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+
+import org.apache.http.client.utils.URIBuilder;
+
 import static nrcan.lms.gsc.gsip.Constants.BASE_URI;
 import static nrcan.lms.gsc.gsip.Constants.APP_URI;
 
@@ -25,10 +28,20 @@ public class NonInformationUri {
 	@Context UriInfo uriInfo;
 	@Context ServletContext ctx;
 	@GET
+	/***
+	 * this essentially redirect to "info" page. It just rewrite the URI by
+	 *  - strip everything in front of /id/ and replace by BASEURI to match catalog.
+	 *     - in productions system, it should actually be the same
+	 *  - replace the /id/ by /info/
+	 *  - transfer the f and callback parameters
+	 * @param format
+	 * @param callback
+	 * @return
+	 */
 	public Response redirectToResource(@QueryParam("f") String format,@QueryParam("callback") String callback)
 	{
 		URI newLocation = null;
-		// rebuild a /info/ uri 
+		// rebuild a /info/ uri from the /id/
 		Configuration conf = Manager.getInstance().getConfiguration();
 		
 		StringBuilder infoUri = new StringBuilder(conf.getParameter(APP_URI) + "/info");
@@ -48,42 +61,30 @@ public class NonInformationUri {
 		
 		//TODO: check if asking non hypermedia format, if so, redirect to this resource if it's the only one available
 	
-		try {
-			String nl = infoUri.toString();
-			StringBuilder sb = new StringBuilder();
-			String f="";
-			
+		
+		// transfer format and callback
+			URIBuilder ub;
+			try {
+				ub = new URIBuilder(infoUri.toString());
 			if (format != null && format.length() > 0 )
 			{
-				sb.append("f=" + format);
+				ub.addParameter("f" , format);
 			}
 			
 			if (callback != null && callback.length() > 0)
 			{
-				if (sb.length() > 0)
-					sb.append("&callback="+callback);
-				else
-					sb.append("callback="+callback);
+				ub.addParameter("callback", callback);
+				
 			}
 			
-			if (sb.length() > 0)
-			{
-				if (nl.endsWith("?") || nl.endsWith("&"))
-					f = sb.toString();
-				else
-					if (nl.contains("?"))
-						f = "&" + sb.toString();
-					else
-						f = "?" + sb.toString();
+			newLocation = ub.build();
+			
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				return Response.status(400).entity("Invalid URI").type(MediaType.TEXT_PLAIN).build();
 			}
 
-				
-
-				newLocation = new URI(nl+f);
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			return Response.status(400).entity("Invalid URI").type(MediaType.TEXT_PLAIN).build();
-		}
+	
 		
 		
 		return Response.seeOther(newLocation).build();
