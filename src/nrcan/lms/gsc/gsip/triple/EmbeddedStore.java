@@ -16,6 +16,8 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdfconnection.RDFConnection;
 import org.apache.jena.rdfconnection.RDFConnectionFactory;
+import org.apache.jena.reasoner.Reasoner;
+import org.apache.jena.reasoner.ReasonerRegistry;
 import org.apache.jena.riot.RDFDataMgr;
 
 public class EmbeddedStore extends TripleStoreImpl {
@@ -32,7 +34,7 @@ public class EmbeddedStore extends TripleStoreImpl {
 
 			Model m = null;
 			try(RDFConnection conn = RDFConnectionFactory.connect(ds)){
-				
+			
 			m = conn.queryConstruct(sparql);
 			}
 			
@@ -57,6 +59,7 @@ public class EmbeddedStore extends TripleStoreImpl {
 		ds = DatasetFactory.createTxnMem();
 		// add the model
 		Model m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RDFS_INF);
+		
 
 		for(File f:datasets )
 		{
@@ -70,8 +73,9 @@ public class EmbeddedStore extends TripleStoreImpl {
 				Logger.getAnonymousLogger().log(Level.WARNING," !* Failed to load " + f.getAbsolutePath(), ex);
 			}
 		}
+		Reasoner owl = ReasonerRegistry.getOWLReasoner();
+		ds.setDefaultModel(ModelFactory.createInfModel(owl, m));
 		
-		ds.setDefaultModel(m);
 
 		
 	}

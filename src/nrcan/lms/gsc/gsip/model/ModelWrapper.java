@@ -341,9 +341,14 @@ public class ModelWrapper {
 		return null;
 	}
 	
-	
+	/** get the list of types 
+	 * 
+	 * @param r
+	 * @return
+	 */
 	public String getTypeLabel(Resource r)
 	{
+		// TODO: create a function that only return leaf types
 		StringBuilder sb = new StringBuilder();
 		StmtIterator i = r.listProperties(RDF.type);
 		while(i.hasNext())
@@ -359,7 +364,7 @@ public class ModelWrapper {
 				nextElement = "ERR";
 			}
 			
-			if (sb.length() > 0) sb.append(">");
+			if (sb.length() > 0) sb.append(",");
 			sb.append(nextElement);
 			
 		}
