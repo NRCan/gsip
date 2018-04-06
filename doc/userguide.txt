@@ -1,0 +1,151 @@
+GSIP Mediator User Guide
+========================
+Eric Boisvert <eric.boisvert2@canada.ca>
+v1.0, April 2018:
+First version
+
+Introduction
+------------
+
+The GSIP mediator service is a simple LOD (Linked Open Data) resolution
+service for persistent identifiers.  Its role it to provide a description of a
+Non-Information URI (URI that represents "things" as an hypermedia document (HTML, RDF/XML, TTL and JSON-LD)
+that links this resource to information resources (actual document) in various
+formats and links to other non-information resources.
+
+GSIP stands for Groundwater Surface water Interoperability Pilot.  (TODO: maybe
+the application should be rename gcloc or something like this). This application implements the Linked Open Data architecture designed for this project.
+
+== LOD Resolution Mechanism
+
+The GSIP LOD architecture recognises three kinds of resources.
+
+* A real world thing, also named "Non-information Resource" because it's not about information, but about something that exists in the real world.
+* Information about this real world thing in the context of GSIP.
+* A representation of this real world thing
+
+For example, a real world catchment is assigned a GSIP URI
+
+https://geoconnex.ca/id/catchment/02OJ*CE
+
+By convention, non-information (things) URI are structured as
+such
+
+`http(s)://{domain}/id/{category}/{item}`
+
+`/id/` is not a requirement of LOD, but it a mandatory for GSIP.  (TODO: make
+design notes and how GSIP can be modified to change those convention).
+
+When a client tries to dereference this URI, it is redirected to an information resource about.  This information resource provided by GSIP has the same structure except the `/id/` is replaced by `/info/`.
+
+`http(s)://{domain}/info/{category}/{item}`
+
+eg: https://geoconnex.ca/info/catchment/02OJ*CE
+
+=== Info page
+
+The info page is a description of the non-information resource.  It provides three categories of information.
+
+* anciliary data about the
+
+
+
+== Configuration file
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<p:configuration xmlns:p="urn:x-gsip:1.0">
+<!-- defines known types and the extensions that are associated -->
+	<p:types>
+		<p:type mime-type="application/vnd.geo+json" formats="geojson"/>
+		<p:type mime-type="text/csv" formats="csv"/>
+		<p:type mime-type="text/xml; subtype=gml/3.2.1" formats="gml"/>
+		<p:type mime-type="text/xml" formats="xml"/>
+		<p:type mime-type="application/rdf+xml" formats="rdf;rdf+xml"/>
+		<p:type mime-type="application/x-turtle" formats="ttl;turtle"/>
+		<p:type mime-type="application/json" formats="json"/>
+		<p:type mime-type="text/turtle" sameAs="application/x-turtle"/>
+		<p:type mime-type="text/plain" formats="txt"/>
+		<p:type mime-type="application/vnd.google-earth.kml+xml" formats="kml"/>
+	</p:types>
+	<p:parameters>
+		<p:parameter name="infoTemplate">infohtml.ftl</p:parameter>
+		<p:parameter name="baseUri">https://geoconnex.ca</p:parameter>
+		<p:parameter name="proxdevuri">http://localhost:8080/gsip</p:parameter>
+		<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter>
+<!-- 		<p:parameter name="triplestore">http://localhost:8080/fuseki/gsip_file</p:parameter> -->
+		<p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
+		<p:parameter name="supportedLanguages">en,fr</p:parameter>
+		<p:parameter name="defaultLanguage">en</p:parameter>
+	</p:parameters>
+</p:configuration>
+----
+
+
+== Dynamic content
+
+Mapping tables
+
+.dynamic/conf.xml
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<p:Templates xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 ../schemas/DynamicTemplates.xsd ">
+  <p:template name="wells" pattern="^https?://.*/id/waterwells/.*$" template="waterwell.ftl" requiresEntry="false"/>
+ <p:template name="watershed" pattern="^https?://.*/id/up_watershed/.*$" template="watershed.ftl" requiresEntry="false"/>
+  <p:template name="watershed" pattern="^https?://.*/id/waterbody/.*$" template="waterbody.ftl" requiresEntry="false"/>
+  <p:template name="catchment" pattern="^https?://.*/id/catchment/.*$" template="catchment.ftl" requiresEntry="false"/>
+  <p:template name="swmonitoringq" pattern="^https?://.*/id/swmonitoring/MDDELCC.*$" template="swmonitoringq.ftl" requiresEntry="false"/>
+  <p:template name="swmonitoringf" pattern="^https?://.*/id/swmonitoring/WSC.*$" template="swmonitoringf.ftl" requiresEntry="false"/>
+  <p:template name="wellcatch" pattern="^https?://.*/id/featureCollection/wellsIn.*$" template="wellcatch.ftl" requiresEntry="false"/>
+  <p:template name="aquifer" pattern="^https?://.*/id/hydrogeounits/.*$" template="aquifer.ftl" requiresEntry="false"/>
+</p:Templates>
+----
+
+
+
+.aquifer.ftl
+----
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/>.
+<${resource}>
+rdfs:seeAlso <${baseUri}/data/aquifer/gwml/gwml/GIN/${p2}>;
+<http://schema.org/name> "${p2}".
+<${baseUri}/data/aquifer/gwml/gwml/GIN/${p2}>
+	dct:format "text/html","application/vnd.geo+json".
+<#if hasStatements == 'false'>
+<${resource}> rdfs:label "${p2}".
+</#if>
+----
+
+The template uses FreeMarker (https://freemarker.apache.org/)
+
+== Data content negotiation
+
+This module manages the access to representations.    Depending of you data sources, you might or might not need to configure this module.  A representation is accessed through a URI and one might choose to point directly to the data source on a remote system.
+However, remote system rarely implement proper content negotiation, and remote system are notoriously heterogenous.  This system, first and foremost, harmonize access to remote service.  It also deals with CORS (Cross Origin Resource Sharing) and HTTPS/HTTP mixed environments.
+
+* provides a "clean" URL path by removing web services parameters, (rephrase)
+* provides a "reverse proxy" to deal with CORS and HTTPS/HTTP mix
+* provides proper content negotiation over multiple formats
+* provides an harmonised GET override
+
+  
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<p:data xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 file:///C:/java64_8/gsip/WebContent/schemas/data.xsd">
+	<!--  each elements are parsed into p1 to p{n}.  p0 = "data/x/y/z.." -->
+	<p:match pattern="aquifer/gwml/gwml/GIN/.*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html">http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit.html?ID=${p5?replace("Richelieu","")}</p:source>
+	</p:match>
+	<p:match pattern="aquifer/gwml/gwml/GIN/.*">
+		<p:mime-type>application/vnd.geo+json</p:mime-type>
+		<p:source>${gsip}/resources/aq/${p5?replace("Richelieu","aq")}</p:source>
+	</p:match>
+</p:data>
+----
