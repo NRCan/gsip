@@ -160,6 +160,7 @@
 	</script>
 </body>
 <script language="" type="application/ld+json">
+${model.encode("JSON-LD")}
 </script>
 </html>
 <html></html>
