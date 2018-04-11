@@ -10,31 +10,45 @@ Introduction
 The GSIP mediator service is a simple LOD (Linked Open Data) resolution
 service for persistent identifiers.  Its role it to provide a description of a
 Non-Information URI (URI that represents "things" as an hypermedia document (HTML, RDF/XML, TTL and JSON-LD)
-that links this resource to information resources (actual document) in various
+linking this resource to information resources (actual document) in various
 formats and links to other non-information resources.
 
 GSIP stands for Groundwater Surface water Interoperability Pilot.  (TODO: maybe
-the application should be rename gcloc or something like this). This application implements the Linked Open Data architecture designed for this project.
+the application should be rename `gclod` or something like this). This application implements the Linked Open Data architecture designed for this project.
 
-== LOD Resolution Mechanism
+== GSIP service
 
-The GSIP LOD architecture recognises three kinds of resources.
+The GSIP LOD architecture recognises three kinds of resources :
 
-* A real world thing, also named "Non-information Resource" because it's not about information, but about something that exists in the real world.
-* Information about this real world thing in the context of GSIP.
-* A representation of this real world thing
+* `Things`, or "real world things", are also named "Non-information Resource" because it's not about information, but about something that exists in the real world.
+* `Information` which is a document describing the real world `thing`.
+* `representation` of this real world thing: a picture, a document, a dataset, etc.
+
+GSIP is a service that provides access to a catalog of `things` and return `information` about them.
+The catalog contains essentially two kind of information:
+
+  * relations between `things` and other `things`
+	* relations between `things` and their `representations`
+
+== URI
+
+All resources (`thing`, `information`, `representation`) are resources identified on the web using a URI (https://en.wikipedia.org/wiki/Uniform_Resource_Identifier[Uniform Resource Identifier]).
+A URI is both an identifier and a location (making them URL : Universal Resource Locator), which can be used to access a representation from the web.
+
+
+By convention, `things` URI are structured as such
+
+`http(s)://{domain}/id/{category}/{item}`
+
+`/id/` is not a requirement to represent `things`, but it a mandatory syntax for GSIP with the current architecture.  the presence of `/id/` tells GSIP that this resources is a `thing``.
+This is a functional decision to efficiently manage request to the GSIP service. See <<Annex A : Change URI pattern>> to modify the default URI patterns.
+
 
 For example, a real world catchment is assigned a GSIP URI
 
 https://geoconnex.ca/id/catchment/02OJ*CE
 
-By convention, non-information (things) URI are structured as
-such
 
-`http(s)://{domain}/id/{category}/{item}`
-
-`/id/` is not a requirement of LOD, but it a mandatory for GSIP.  (TODO: make
-design notes and how GSIP can be modified to change those convention).
 
 When a client tries to dereference this URI, it is redirected to an information resource about.  This information resource provided by GSIP has the same structure except the `/id/` is replaced by `/info/`.
 
@@ -48,6 +62,15 @@ The info page is a description of the non-information resource.  It provides thr
 
 * anciliary data about the
 
+=== data page
+
+== Architecture
+
+GSIP is composed of 3 modules.
+
+* The RDF catalog
+* The dynamic content generator module
+* The data content negotiation module
 
 
 == Configuration file
@@ -131,7 +154,12 @@ However, remote system rarely implement proper content negotiation, and remote s
 * provides proper content negotiation over multiple formats
 * provides an harmonised GET override
 
-  
+=== Harmonized GET override
+
+
+
+=== Configuration
+
 
 [source,xml]
 ----
@@ -149,3 +177,6 @@ However, remote system rarely implement proper content negotiation, and remote s
 	</p:match>
 </p:data>
 ----
+
+
+= Annex A : Change URI pattern
