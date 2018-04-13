@@ -35,6 +35,7 @@ The catalog contains essentially two kind of information:
 All resources (`thing`, `information`, `representation`) are resources identified on the web using a URI (https://en.wikipedia.org/wiki/Uniform_Resource_Identifier[Uniform Resource Identifier]).
 A URI is both an identifier and a location (making them URL : Universal Resource Locator), which can be used to access a representation from the web.
 
+=== Things
 
 By convention, `things` URI are structured as such
 
@@ -43,34 +44,72 @@ By convention, `things` URI are structured as such
 `/id/` is not a requirement to represent `things`, but it a mandatory syntax for GSIP with the current architecture.  the presence of `/id/` tells GSIP that this resources is a `thing``.
 This is a functional decision to efficiently manage request to the GSIP service. See <<Annex A : Change URI pattern>> to modify the default URI patterns.
 
+==== Example
 
-For example, a real world catchment is assigned a GSIP URI
+A real world catchment is assigned a GSIP URI
 
 https://geoconnex.ca/id/catchment/02OJ*CE
 
+This URI represents a `thing`.  It is not a document or a dataset, but the real catchment.  If you use this URI in a browser, you obviously won't download the catchment itself.
+In GSIP infrastructure, you will be redirected using https://en.wikipedia.org/wiki/HTTP_303[HTTP 303] to an `information` document.
 
-
-When a client tries to dereference this URI, it is redirected to an information resource about.  This information resource provided by GSIP has the same structure except the `/id/` is replaced by `/info/`.
+This information resource provided by GSIP has the same URI structure except the `/id/` is replaced by `/info/`.
 
 `http(s)://{domain}/info/{category}/{item}`
 
 eg: https://geoconnex.ca/info/catchment/02OJ*CE
 
+This is something that can actually be downloaded from the web.
+
 === Info page
 
-The info page is a description of the non-information resource.  It provides three categories of information.
+The info page is a description of a `thing`.  It provides two categories of information.
 
-* anciliary data about the
+* relations between `things` and other `things`
+* relations between `things` and their `representations`
 
-=== data page
+
+=== Representations
 
 == Architecture
 
 GSIP is composed of 3 modules.
 
 * The RDF catalog
-* The dynamic content generator module
-* The data content negotiation module
+* The dynamic content generator module (optional)
+* The data content negotiation module (optional)
+
+=== RDF catalog
+
+GSIP keeps information about `things` in a RDF catalog.  The catalog is queried using https://en.wikipedia.org/wiki/SPARQL[SPARQL]
+GSIP can connect to an external (autonomous) catalog, as long as it exposed a SPARQL endpoint, or use an internal catalog.  The internal catalog is loaded in memory, so this option should not be considered for large registries.
+
+This catalog is specified in the configuration file.
+
+[source,xml]
+----
+<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter>
+----
+
+any value starting by http or https is considered as a SPARQL endpoint. Otherwise, GSIP considers that it is a pointer to a folder containing a collection or TTL files constituing the database content, which be loaded when the service is started.
+
+[source,xml]
+----
+<p:parameter name="triplestore">/repos/gsip</p:parameter>
+----
+
+Another option is to use pseudo protocol `webapp:`
+
+[source,xml]
+----
+<p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
+----
+
+`webapp:` is a pseudo protocol tilling GSIP the folder is located in the servlet webapp folder (here `{tomcat application folder}/gsip/webapp/repos/gsip`).
+
+This is useful when the only option to deploy the application and the data is through Tomcat application manager.
+
+
 
 
 == Configuration file
