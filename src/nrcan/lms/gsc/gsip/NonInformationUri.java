@@ -33,7 +33,8 @@ public class NonInformationUri {
 	 *  - strip everything in front of /id/ and replace by BASEURI to match catalog.
 	 *     - in productions system, it should actually be the same
 	 *  - replace the /id/ by /info/
-	 *  - transfer the f and callback parameters
+	 *  - transfer the format(f) and callback parameters
+	 *  TODO: callback is probably not useful anymore since we set CORS to *
 	 * @param format
 	 * @param callback
 	 * @return

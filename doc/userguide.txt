@@ -219,3 +219,14 @@ However, remote system rarely implement proper content negotiation, and remote s
 
 
 = Annex A : Change URI pattern
+
+The service use Jersey to handle endpoint, therefore it's simply a matter of changing `@Path` annotation to change the URI pattern.
+[source,java]
+----
+package nrcan.lms.gsc.gsip;
+// ...
+@Path("/id/{seg:.*}")
+public class NonInformationUri {
+----
+
+If your configure the web server (Apache modrewrite), you also need to change that accordingly
