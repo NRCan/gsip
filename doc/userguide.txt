@@ -111,14 +111,131 @@ GSIP is composed of 3 modules.
 GSIP keeps information about `things` in a RDF catalog.  The catalog is queried using https://en.wikipedia.org/wiki/SPARQL[SPARQL]
 GSIP can connect to an external (autonomous) catalog, as long as it exposed a SPARQL endpoint, or use an internal catalog.  The internal catalog is loaded in memory, so this option should not be considered for large registries.
 
-This catalog is specified in the configuration file.
+==== Data model
+
+A typical entry for a `thing` looks like this (examples are in  https://en.wikipedia.org/wiki/Turtle_(syntax)[RDF/turtle])
+
+First, identification of the `thing` itself.
+
+[source,xml]
+----
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016>
+	a hy:HY_HydrometricFeature;
+	rdfs:label
+		"Station hydrometrique : RICHELIEU (RIVIERE) A LA MARINA DE SAINT-JEAN (02OJ016)"@fr,
+		"Hydrometric station : RICHELIEU (RIVIERE) A LA MARINA DE SAINT-JEAN (02OJ016)"@en.
+
+
+----
+
+Then links to `Representations` are expressed using `rdfs:seeAlso`
+
+[source,xml]
+----
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016>
+	rdfs:seeAlso
+		<https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ016>.
+----
+
+The data resource has optional labels, but must have `dct:format`.
+
+[source,xml]
+----
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ <https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ016>
+ 	rdfs:label
+		"Donn&acute;es en temps re&eacute;l"@fr,
+		"Data in real time"@en;
+	dct:format
+		"text/html",
+		"text/plain".
+----
+
+ And finally `things` can be linked to other things
+
+[source,xml]
+----
+ @prefix hy: <http://geosciences.ca/def/hydraulic#>.
+
+ <https://geoconnex.ca/id/swmonitoring/WSC_02OJ016>
+ 	hy:located-on
+		<https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>;
+ 	hy:inside
+		<https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+----
+
+Any arbitrary property can be used.  But if the RDF catalog can support some level entailment (the internal catalog supports OWL), the properties can be formally defined in the catalog.
+
+[source,xml]
+----
+
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix hy: <http://geosciences.ca/def/hydraulic#>.
+
+
+hy:HY_HydrometricStation rdf:type owl:Class;
+	rdfs:subClassOf hy:HY_HydrometricFeature;
+	rdfs:label "Station hydrometrique"@fr,"Hydrometric Station"@en.
+
+	hy:inside rdf:type owl:ObjectProperty,owl:TransitiveProperty.
+
+	hy:contains rdf:type owl:ObjectProperty,owl:TransitiveProperty;
+	        owl:inverseOf hy:inside.
+
+	hy:located-on rdf:type owl:ObjectProperty.
+----
+
+And a resource can be assigned a type.
+
+[source,xml]
+----
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016> a hy:HY_HydrometricFeature;
+----
+
+This implies that this explicit statement
+
+[source,xml]
+----
+@prefix hy: <http://geosciences.ca/def/hydraulic#>.
+
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016>
+	hy:inside
+		<https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+
+----
+
+implicitly means
+
+[source,xml]
+----
+@prefix hy: <http://geosciences.ca/def/hydraulic#>.
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+	hy:contains
+		<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016>.
+----
+
+
+==== Configuration
+
+GSIP can use an external SPARQL endpoint or has its own internal RDF catalog.
+
+This location of the catalog is specified in the configuration file.
+A value starting by http or https is considered as a SPARQL endpoint. Otherwise, GSIP considers that it is a pointer to a folder containing a collection or TTL (Turtle) files providing the database content, which be loaded when the service is started.
+
 
 [source,xml]
 ----
 <p:parameter name="gsip">http://localhost:8080/gsip</p:parameter>
 ----
 
-any value starting by http or https is considered as a SPARQL endpoint. Otherwise, GSIP considers that it is a pointer to a folder containing a collection or TTL files constituing the database content, which be loaded when the service is started.
 
 [source,xml]
 ----

@@ -30,95 +30,95 @@ rdfs:label "Plan d'eau: Riviere Richelieu"@fr, "Water body: Riviere Richelieu"@e
 <https://geoconnex.ca/id/catchment/02OJ> a hy:HY_Catchment;
 rdfs:label "Bassin versant: Richelieu"@fr,"Watershed: Richelieu"@en.
 
-<https://geoconnex.ca/id/catchment/02OJ*CD>  a hy:HY_Catchment; 
+<https://geoconnex.ca/id/catchment/02OJ*CD>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CD>;
  rdfs:label "Bassin versant: Ruisseau Landry - Riviere Richelieu"@fr,"Watershed: Ruisseau Landry - Riviere Richelieu"@en.
 
-<https://geoconnex.ca/id/catchment/02OJ*CB>  a hy:HY_Catchment; 
+<https://geoconnex.ca/id/catchment/02OJ*CB>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CB>;
  rdfs:label "Bassin versant: Riviere Lacolle"@fr,"Watershed: Riviere Lacolle"@en.
- 
-<https://geoconnex.ca/id/catchment/02OJ*CC>  a hy:HY_Catchment; 
+
+<https://geoconnex.ca/id/catchment/02OJ*CC>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CC>;
  rdfs:label "Bassin versant: Riviere du Sud"@fr,"Watershed: Riviere du Sud"@en.
 
-<https://geoconnex.ca/id/catchment/02OJ*CE>  a hy:HY_Catchment; 
+<https://geoconnex.ca/id/catchment/02OJ*CE>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CE>;
  rdfs:label "Bassin versant: Ruisseau de la Barbotte - Riviere Richelieu"@fr,"Watershed: Ruisseau de la Barbotte - Riviere Richelieu"@en.
- 
-<https://geoconnex.ca/id/catchment/02OJ*BB>  a hy:HY_Catchment; 
+
+<https://geoconnex.ca/id/catchment/02OJ*BB>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_BB>;
  rdfs:label "Bassin versant: Riviere L'Acadie - Cours median"@fr,"Watershed: Riviere L'Acadie - Cours median"@en.
- 
-<https://geoconnex.ca/id/catchment/02OJ*CF>  a hy:HY_Catchment; 
+
+<https://geoconnex.ca/id/catchment/02OJ*CF>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CF>;
  rdfs:label "Bassin versant: Riviere des Iroquois - Riviere Richelieu"@fr,"Watershed: Riviere des Iroquois - Riviere Richelieu"@en.
- 
-<https://geoconnex.ca/id/catchment/02OJ*AA>  a hy:HY_Catchment; 
+
+<https://geoconnex.ca/id/catchment/02OJ*AA>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_AA>;
  rdfs:label "Bassin versant: Ruisseau Saint-Louis"@fr,"Watershed: Ruisseau Saint-Louis"@en.
 
-<https://geoconnex.ca/id/catchment/02OJ*AB>  a hy:HY_Catchment; 
+<https://geoconnex.ca/id/catchment/02OJ*AB>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_AB>;
  rdfs:label "Bassin versant: Riviere des Hurons"@fr,"Watershed: Riviere des Hurons"@en.
 
-<https://geoconnex.ca/id/catchment/02OJ*DA>  a hy:HY_Catchment; 
+<https://geoconnex.ca/id/catchment/02OJ*DA>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DA>;
  rdfs:label "Bassin versant: Ruisseau Bernard Ouest - Riviere Richelieu"@fr,"Watershed: Ruisseau Bernard Ouest - Riviere Richelieu"@en.
- 
-<https://geoconnex.ca/id/catchment/02OJ*DD>  a hy:HY_Catchment; 
+
+<https://geoconnex.ca/id/catchment/02OJ*DD>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DD>;
  rdfs:label "Bassin versant: Riviere Amyot"@fr,"Watershed: Watershed: Riviere Amyot"@en.
- 
-<https://geoconnex.ca/id/catchment/02OJ*DF>  a hy:HY_Catchment; 
+
+<https://geoconnex.ca/id/catchment/02OJ*DF>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DF>;
  rdfs:label "Bassin versant: Ruisseau des Ormes - Riviere Richelieu"@fr,"Watershed: Ruisseau des Ormes - Riviere Richelieu"@en.
- 
-<https://geoconnex.ca/id/catchment/02OJ*DH>  a hy:HY_Catchment; 
+
+<https://geoconnex.ca/id/catchment/02OJ*DH>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DH>;
  rdfs:label "Bassin versant: Riviere Richelieu - Embouchure"@fr,"Watershed: Riviere Richelieu - Embouchure"@en.
- 
-<https://geoconnex.ca/id/catchment/02OJ*BA>  a hy:HY_Catchment; 
+
+<https://geoconnex.ca/id/catchment/02OJ*BA>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_BA>;
  rdfs:label "Riviere L'Acadie - Cours superieur"@fr,"Watershed: Riviere L'Acadie - Cours superieur"@en.
 
-<https://geoconnex.ca/id/catchment/02OJ*BC>  a hy:HY_Catchment; 
+<https://geoconnex.ca/id/catchment/02OJ*BC>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_BC>;
  rdfs:label "Bassin versant: Riviere l'Acadie - Cours inferieur"@fr,"Watershed: Riviere l'Acadie - Cours inferieur"@en.
 
-<https://geoconnex.ca/id/catchment/02OJ*DB>  a hy:HY_Catchment; 
+<https://geoconnex.ca/id/catchment/02OJ*DB>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DB>;
  rdfs:label "Bassin versant: Ruisseau Voghel - Riviere Richelieu"@fr,"Watershed: Ruisseau Voghel - Riviere Richelieu"@en.
 
-<https://geoconnex.ca/id/catchment/02OJ*DG>  a hy:HY_Catchment; 
+<https://geoconnex.ca/id/catchment/02OJ*DG>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DG>;
  rdfs:label "Bassin versant: Ruisseau Laplante"@fr,"Watershed: Ruisseau Laplante"@en.
- 
-<https://geoconnex.ca/id/catchment/02OJ*DE>  a hy:HY_Catchment; 
+
+<https://geoconnex.ca/id/catchment/02OJ*DE>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DE>;
  rdfs:label "Bassin versant: Ruisseau Coderre"@fr,"Watershed: Ruisseau Coderre"@en.
- 
-<https://geoconnex.ca/id/catchment/02OJ*DC>  a hy:HY_Catchment; 
+
+<https://geoconnex.ca/id/catchment/02OJ*DC>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DC>;
  rdfs:label "Ruisseau Beloeil"@fr,"Watershed: Ruisseau Beloeil"@en.
- 
-<https://geoconnex.ca/id/catchment/02OJ*CA>  a hy:HY_Catchment; 
+
+<https://geoconnex.ca/id/catchment/02OJ*CA>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CA>;
  rdfs:label "Bassin versant : Little River - Riviere Richelieu"@fr,"Watershed: Little River - Riviere Richelieu"@en.
- 
 
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030415> a hy:HY_HydrometricFeature; 
+
+<https://geoconnex.ca/id/swmonitoring/MDDELCC_030415> a hy:HY_HydrometricFeature;
 rdfs:label "Station hydrometrique (debit) : Des Hurons (030415)"@fr,"Hydrometric station (flow) : Des Hurons (030415)"@en.
 
 
 <https://geoconnex.ca/id/swmonitoring/MDDELCC_030421> a hy:HY_HydrometricFeature; rdfs:label "Station hydrometrique (debit) :L'Acadie (030421)"@fr, "Hydrometric station (flow) : L'Acadie (030421)"@en.
 
 
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030429> a hy:HY_HydrometricFeature; 
+<https://geoconnex.ca/id/swmonitoring/MDDELCC_030429> a hy:HY_HydrometricFeature;
 rdfs:label "Station hydrometrique (debit) : A l'Ours (030429)"@fr,"Hydrometric station (flow) : A l'Ours (030429)"@en.
 
 
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030430> a hy:HY_HydrometricFeature; 
+<https://geoconnex.ca/id/swmonitoring/MDDELCC_030430> a hy:HY_HydrometricFeature;
 
 rdfs:label "Station hydrometrique (niveau) : Richelieu (030430)"@fr,"Hydrometric station (level) : Richelieu (030430)"@en.
 
@@ -134,18 +134,18 @@ rdfs:label "Station hydrometrique (niveau) : Richelieu (030430)"@fr,"Hydrometric
 <https://geoconnex.ca/id/swmonitoring/WSC_02OJ026> a hy:HY_HydrometricFeature; rdfs:label "Station hydrometrique : L'ACADIE (02OJ026)"@fr,"Hydrometric station : L'ACADIE (02OJ026)"@en.
 
 # only those 2 stations have real-time
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ007> rdfs:seeAlso 
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ007> rdfs:seeAlso
 <https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ007>.
  <https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ007>
-   rdfs:label "Donnees en temps re&eacute;l"@fr,"Data in real time"@en;
+   rdfs:label "Donn&eacute;es en temps re&eacute;l"@fr,"Data in real time"@en;
 	dct:format "text/html","text/plain".
 
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016> rdfs:seeAlso 
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016> rdfs:seeAlso
 <https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ016>.
  <https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ016>
-   rdfs:label "Donnees en temps re&eacute;l"@fr,"Data in real time"@en;
+   rdfs:label "Donn&eacute;es en temps re&eacute;l"@fr,"Data in real time"@en;
 	dct:format "text/html","text/plain".
-	
+
 
 
 
@@ -192,6 +192,3 @@ rdfs:label "Hydrogeologic unit : Appalachian Internal zone"@en, "Unite hydrogeol
 rdfs:label "Systeme aquifere : Richelieu"@fr, "Aquifer system : Richelieu"@en;
 
 gw:gwAquiferSystemPart <https://geoconnex.ca/id/hydrogeounits/Richelieu1>,<https://geoconnex.ca/id/hydrogeounits/Richelieu2>,<https://geoconnex.ca/id/hydrogeounits/Richelieu3>,<https://geoconnex.ca/id/hydrogeounits/Richelieu4>,<https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
-
-
-
