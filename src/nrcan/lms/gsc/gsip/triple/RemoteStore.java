@@ -9,9 +9,8 @@ package nrcan.lms.gsc.gsip.triple;
                     
  */
 
-import java.io.ByteArrayOutputStream;
+
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,6 +25,7 @@ import org.apache.jena.riot.RDFDataMgr;
 
 
 public class RemoteStore extends TripleStoreImpl {
+	// default enpoint
 	public static final String defaultSparqlEndpoint = "http://localhost:8080/fuseki/gsip";
 	private String sparqlRepo;
 	
@@ -50,36 +50,6 @@ public class RemoteStore extends TripleStoreImpl {
 			 
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	public static void main(String[] args) throws IOException
-	
-	{
 		
-		
-		String sparql = "CONSTRUCT {<https://geosciences.ca/id/catchment/c>  ?p ?o. ?o ?p2 ?o2}\r\n" + 
-				"WHERE {<https://geosciences.ca/id/catchment/c>  ?p ?o. OPTIONAL {?o ?p2 ?o2}}";
-		RemoteStore tsj = new RemoteStore(RemoteStore.defaultSparqlEndpoint);
-		Model m = tsj.getSparqlConstructModel(sparql);
-		// merge some triples in there
-		m.read(IOUtils.toInputStream("@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>  . <https://geosciences.ca/id/catchment/c> rdfs:label \"Hello\"@en.","UTF-8"),null,"TURTLE");
-		m.write(System.out,"JSON-LD");
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

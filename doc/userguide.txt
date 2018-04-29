@@ -362,7 +362,9 @@ However, remote system rarely implement proper content negotiation, and remote s
 ----
 
 
-= Annex A : Change URI pattern
+= Annex A : Modify the code
+
+== Change the default URIs
 
 The service use Jersey to handle endpoint, therefore it's simply a matter of changing `@Path` annotation to change the URI pattern.
 [source,java]
@@ -373,4 +375,42 @@ package nrcan.lms.gsc.gsip;
 public class NonInformationUri {
 ----
 
-If your configure the web server (Apache modrewrite), you also need to change that accordingly
+If your configure the web server (Apache modewrite), you also need to change that accordingly
+
+== Change the SPARQL engine
+
+The remote SPARQL enpoint is pretty much a single line of code in `nrcan.lms.gsc.gsip.triple.RemoteStore`
+
+
+
+[source,java]
+----
+// perform a sparql query on a data store
+	public Model getSparqlConstructModel(String sparql)
+	{
+		 Query query = QueryFactory.create(sparql);
+			  try ( RDFConnection conn = RDFConnectionFactory.connect(sparqlRepo) ) {
+		          return  conn.queryConstruct(query);
+		        }
+		 catch(Exception ex)
+		 {
+			 Logger.getAnonymousLogger().log(Level.SEVERE, "failed to execute [\n" + sparql + "]\n from " + sparqlRepo ,ex);
+
+		 }
+		 return null;
+
+	}
+----
+
+To create another RemoteStore, just create your own class extending `TripleStoreImpl` or implementing `TripleStore` interface.  But whatever technology used, the result must be a Jena `Model`, so you might have to load the remote server response into a `Model` manually.
+The procedure is rather trivial see: https://jena.apache.org/documentation/io/rdf-input.html.
+
+The easiest way is
+[source,java]
+----
+String rdfDataString = // some way to get RDF
+Model model = ModelFactory.createDefaultModel();
+model.read(new ByteArrayInputStream(rdfDataString.getBytes()), null);
+----
+
+image::img/triplestore.png[Triple store class model]
