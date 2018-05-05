@@ -84,6 +84,19 @@ public class Configuration {
 		return v==null?defaultString:(String)v;
 	}
 	
+	public boolean getParameterAsBoolean(String param,boolean defaultBoolean)
+	{
+		Object v = getParameter(param);
+		if (v == null)
+			return defaultBoolean;
+		else
+			{
+			String vs = v.toString();
+			return ("t".equalsIgnoreCase(vs) || "true".equalsIgnoreCase(vs) || "1".equals(vs));
+			}
+		
+	}
+	
 	
 	/** we assume it has been already configured, because it will be invoked from the app
 	 * 

@@ -16,6 +16,8 @@
 
 <!--  Persistent URI (those in the catalog or in static resources) which will be used in production  -->
 		<p:parameter name="persistentUri">https://geoconnex.ca</p:parameter>
+<!--  this variable should be true is the persistent URI needs to be converted to base URI (if necessary) -->
+		<p:parameter name="convertToBaseUri">true</p:parameter>
 		
 <!--  depending of the environment this works and how Apache modrewrite is configured  -->
 <!--  

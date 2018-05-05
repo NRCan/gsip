@@ -55,7 +55,7 @@ public class ModelUtil {
 	 * @param outPrefix
 	 * @return
 	 */
-	public static Model alternateResource(Model m, String inPrefix,String outPrefix)
+	public static Model alternateResource(Model m, String outPrefix,String inPrefix)
 	{
 		String syntax = "TURTLE"; 
 		StringWriter out = new StringWriter();

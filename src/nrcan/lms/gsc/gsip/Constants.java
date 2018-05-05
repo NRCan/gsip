@@ -10,5 +10,6 @@ public final class Constants {
 	public static final String APP_URI = "gsip";
 	public static final String TRIPLE_STORE = "triplestore";
 	public static final String PERSISTENT_URI = "persistentUri";
+	public static final String CONVERT_TO_BASEURI = "convertToBaseUri";
 
 }

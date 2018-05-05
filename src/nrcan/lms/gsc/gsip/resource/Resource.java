@@ -10,11 +10,19 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpStatus;
+
+import nrcan.lms.gsc.gsip.Constants;
+import nrcan.lms.gsc.gsip.Manager;
 
 import static nrcan.lms.gsc.gsip.Constants.APPLICATION_GEOJSON;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 /**
@@ -46,12 +54,47 @@ public class Resource {
 		try{
 		if (!resourceExists("/resources/" + folder+"/"+item+".json"))
 			return Response.status(HttpStatus.SC_NOT_FOUND).build();
-		return Response.ok(context.getResourceAsStream("/resources/" + folder+"/"+item+".json")).build();
+		// convert persistentUri to baseURI is required
+		if (needConversion())
+		{
+			return Response.ok(getConvertedResource("/resources/" + folder+"/"+item+".json")).build();
+		}
+		else return Response.ok(context.getResourceAsStream("/resources/" + folder+"/"+item+".json")).build();
 		}
 		catch(Exception ex)
 		{
+			Logger.getAnonymousLogger().log(Level.SEVERE, "Failed to serialise internal resource " + folder+"/"+item+".json" , ex);
 			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
 		}
+	}
+	
+	private boolean needConversion()
+	{
+		boolean doConvert = Manager.getInstance().getConfiguration().getParameterAsBoolean(Constants.CONVERT_TO_BASEURI,true);
+		if (!doConvert) return false; // end of the story
+		// get baseUri and persistent URI and check if they are the same
+		String persistentUri = Manager.getInstance().getConfiguration().getParameterAsString(Constants.PERSISTENT_URI, null);
+		if (persistentUri == null) return false; // end of the story
+		String baseUri = Manager.getInstance().getConfiguration().getParameterAsString(Constants.BASE_URI,context.getContextPath());
+		return (!baseUri.equals(persistentUri));
+	}
+	
+	private String getConvertedResource(String path) throws IOException
+	{
+		
+		String persistentUri = Manager.getInstance().getConfiguration().getParameterAsString(Constants.PERSISTENT_URI, null);
+
+		String baseUri = Manager.getInstance().getConfiguration().getParameterAsString(Constants.BASE_URI,context.getContextPath());
+		if (path.endsWith(".json"))
+		{
+			//TODO: this is a terrible hack
+			persistentUri = persistentUri.replace("/", "\\/");
+			baseUri = baseUri.replace("/", "\\/");
+			
+		}
+		String text = IOUtils.toString(context.getResourceAsStream(path),"UTF-8");
+		return StringUtils.replace(text,persistentUri , baseUri);
+
 	}
 	
 	

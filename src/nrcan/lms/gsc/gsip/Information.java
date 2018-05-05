@@ -142,7 +142,7 @@ public class Information {
 		
 		if (storedModel.isEmpty()) 
 				return Response.status(HttpStatus.SC_NOT_FOUND).entity("resource " + idUri + " not found").build();
-		
+		//TODO: add a validation to check if persitentURI is defined in a prefix (not sure what will happen at this point)
 		// serialize
 		switch(of)
 		{
@@ -200,7 +200,9 @@ public class Information {
 		try{
 			Map<String,Object> p = new HashMap<String,Object>();
 			p.put("host",Configuration.getInstance().getParameter("gsip"));
-			p.put("model", new ModelWrapper(getAlternateModel(model),getAlternateResource(resource)));
+			// note: HTML template always work with persistent model, the conversion is done in the wrapper
+			// TODO: what a mess
+			p.put("model", new ModelWrapper(model,resource));
 			p.put("locale",locale);
 			out = TemplateManager.getInstance().transform(p, htmlTemplate);
 		}
@@ -258,9 +260,9 @@ public class Information {
 		Configuration c = Manager.getInstance().getConfiguration();
 		String baseuri = (String) c.getParameter(BASE_URI);
 		Object outuri = c.getParameter(PERSISTENT_URI,null); // can be null
-		
+		Boolean convert = c.getParameterAsBoolean(Constants.CONVERT_TO_BASEURI, true);
 		// need to convert ?
-		if (!baseuri.equals(outuri) && outuri != null)
+		if (convert && !baseuri.equals(outuri) && outuri != null)
 			return  ModelUtil.alternateResource(mdl, baseuri, (String)outuri);
 		else
 			return mdl;
@@ -352,5 +354,7 @@ public class Information {
 		return tm.transform(p,"describe.ftl" );
 		
 	}
+	
+	
 
 }
