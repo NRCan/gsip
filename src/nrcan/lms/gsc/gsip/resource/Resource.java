@@ -41,7 +41,7 @@ public class Resource {
 		if (isBad(folder) || isBad(item))
 			return Response.status(HttpStatus.SC_BAD_REQUEST).build();
 		
-		// TODO , no secure, will return anything in the resource folder
+		// TODO , not secure, will return anything in the resource folder
 		// just serialize the content of the folder	
 		try{
 		if (!resourceExists("/resources/" + folder+"/"+item+".json"))

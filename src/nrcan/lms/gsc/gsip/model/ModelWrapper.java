@@ -47,6 +47,8 @@ public class ModelWrapper {
 	{
 		this.model = m;
 		this.contextResource = m.getResource(contextResource);
+		Logger.getAnonymousLogger().log(Level.INFO, "Contexte : " + contextResource);
+		model.write(System.out,"TURTLE");
 	}
 	
 	public String getContextResourceUri()

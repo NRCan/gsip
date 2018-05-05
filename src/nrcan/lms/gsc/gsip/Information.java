@@ -19,7 +19,7 @@ import static nrcan.lms.gsc.gsip.Constants.APPLICATION_RDFXML;
 import static nrcan.lms.gsc.gsip.Constants.APPLICATION_TURTLE;
 import static nrcan.lms.gsc.gsip.Constants.TEXT_TURTLE;
 import static nrcan.lms.gsc.gsip.Constants.APP_URI;
-import static nrcan.lms.gsc.gsip.Constants.PROX_DEVURI;
+import static nrcan.lms.gsc.gsip.Constants.PERSISTENT_URI;
 
 
 import java.io.IOException;
@@ -257,7 +257,7 @@ public class Information {
 	{
 		Configuration c = Manager.getInstance().getConfiguration();
 		String baseuri = (String) c.getParameter(BASE_URI);
-		Object outuri = c.getParameter(PROX_DEVURI,null); // can be null
+		Object outuri = c.getParameter(PERSISTENT_URI,null); // can be null
 		
 		// need to convert ?
 		if (!baseuri.equals(outuri) && outuri != null)
@@ -272,7 +272,7 @@ public class Information {
 	{
 		Configuration c = Manager.getInstance().getConfiguration();
 		String baseuri = (String) c.getParameter(BASE_URI);
-		Object outuri = c.getParameter(PROX_DEVURI,null); // can be null
+		Object outuri = c.getParameter(PERSISTENT_URI,null); // can be null
 		if (!baseuri.equals(outuri) && outuri != null)
 			return rs.replaceFirst(baseuri, (String)outuri);
 		else
@@ -299,7 +299,7 @@ public class Information {
 	
 	
 	/**
-	 * create a series of parameterse
+	 * create a series of parameters
 	 * @param i
 	 * @return
 	 */
@@ -327,9 +327,10 @@ public class Information {
 	
 	public  String getIdResource(UriInfo uriInfo)
 	{
-		String host =  Manager.getInstance().getConfiguration().getParameter(BASE_URI,"http://localhost:8080/gsip").toString();
+		// get the /id/ resource and convert to persistant
+		String persistentUri = Manager.getInstance().getConfiguration().getParameterAsString(PERSISTENT_URI, BASE_URI);
 		// this one is called by /info/, but the real NIR is /id/
-		StringBuilder infoUri = new StringBuilder(host + "/id");
+		StringBuilder infoUri = new StringBuilder(persistentUri + "/id");
 		boolean first = true;
 		for(PathSegment segment: uriInfo.getPathSegments())
 		{

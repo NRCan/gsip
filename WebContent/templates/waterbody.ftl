@@ -7,8 +7,6 @@ rdfs:seeAlso <${baseUri}/data/waterbody/CGNDB/CGNDB/CGNDB/${p2}>,<${baseUri}/dat
 	dct:format "application/vnd.google-earth.kml+xml","text/html","application/json".
 <${baseUri}/data/waterbody/CHYF/CHYF/CHYF/${p2}>
 	dct:format "text/html","application/vnd.geo+json".
-<#if hasStatements == 'false'>
-<${resource}> rdfs:label "${p2}".
-</#if>
+
 	
 	
