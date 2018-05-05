@@ -45,16 +45,10 @@ public class ModelWrapper {
 	private Model model;
 	private Resource contextResource;
 	//TODO. I should get the default baseUri from context, not hardcoded
-	private String baseUri =null;
-	private String persistentUri = null;
-	private boolean convertToBase = true; // convert to base when persistent URI is different from baseuri
 	public ModelWrapper(Model m,String contextResource)
 	{
 		this.model = m;
 		this.contextResource = m.getResource(contextResource);
-		baseUri = Manager.getInstance().getConfiguration().getParameterAsString(Constants.BASE_URI,"http://locahost:8080/gsip");
-		persistentUri = Manager.getInstance().getConfiguration().getParameterAsString(Constants.PERSISTENT_URI, null);
-		convertToBase = Manager.getInstance().getConfiguration().getParameterAsBoolean(Constants.CONVERT_TO_BASEURI, true);
 		/**
 		Logger.getAnonymousLogger().log(Level.INFO, "Contexte : " + contextResource);
 		model.write(System.out,"TURTLE");
@@ -63,43 +57,15 @@ public class ModelWrapper {
 	
 	
 	
-	/**
-	 * check if we really need to convert before doing it
-	 * @return
-	 */
-	private boolean doConvertToBase()
-	{
-		
-		return !baseUri.equals(persistentUri) || convertToBase;
-	}
-	
-	/**
-	 * convert a URI to baseUri
-	 * @param pUri
-	 * @param convert override configuration, if false, won't convert
-	 * @return
-	 */
-	private String convertToBase(String pUri,boolean convert)
-	{
-		if (pUri != null && doConvertToBase() && convert)
-		{
-			if (pUri.startsWith(persistentUri))
-				return pUri.replace(persistentUri, baseUri); // assume that the replacement string is only at beginning
-			else
-				return pUri;
-		}
-		else return pUri;
-	}
+
+
 	
 	public String getContextResourceUri()
 	{
-		return convertToBase(contextResource.getURI(),true);
+		return contextResource.getURI();
 	}
 	
-	public String getContextResourceUri(boolean convert)
-	{
-		return convertToBase(contextResource.getURI(),convert);
-	}
+	
 	
 	/**
 	 * if convertion is on, the client has a local URI.  If this local uri is used in the namespace, it should be mapped to persistent

@@ -202,8 +202,10 @@ public class Information {
 			p.put("host",Configuration.getInstance().getParameter("gsip"));
 			// note: HTML template always work with persistent model, the conversion is done in the wrapper
 			// TODO: what a mess
-			p.put("model", new ModelWrapper(model,resource));
+			p.put("model", new ModelWrapper(getAlternateModel(model),getAlternateResource(resource)));
 			p.put("locale",locale);
+			// get all configuration variables
+			p.putAll(Manager.getInstance().getConfiguration().getParameters());
 			out = TemplateManager.getInstance().transform(p, htmlTemplate);
 		}
 		catch(Exception ex)
@@ -276,7 +278,7 @@ public class Information {
 		String baseuri = (String) c.getParameter(BASE_URI);
 		Object outuri = c.getParameter(PERSISTENT_URI,null); // can be null
 		if (!baseuri.equals(outuri) && outuri != null)
-			return rs.replaceFirst(baseuri, (String)outuri);
+			return rs.replace( (String)outuri,baseuri);
 		else
 			return rs;
 	}

@@ -74,7 +74,7 @@ public class ModelUtil {
 
 	}
 	
-	public static String alternateUri(String u,String inPrefix,String outPrefix)
+	public static String alternateUri(String u,String outPrefix,String inPrefix)
 	{
 		if (u.startsWith(inPrefix))
 		{

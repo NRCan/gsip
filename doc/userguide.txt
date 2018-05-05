@@ -432,8 +432,3 @@ Prefix aware format and software ingesting them should be perfectly fine with ei
 
 for this reason, we suggest not using prefix for NIR until best practices are established.
 (TODO: check if best practices exists)
-
-== HTML template
-
-The HTML templating need rework regarding baseUri vs persistentUri.  Right now, the embedded model is persitent.  I need to code a convertion layer on top of the Model or on top of the SPARQL endpoing to convert back and forth.
-Right now, the link to other resources will always point to persistentURI 
