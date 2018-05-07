@@ -291,6 +291,69 @@ This is useful when the only option to deploy the application and the data is th
 
 == Dynamic content
 
+Dynamic content is used to generate extra content for NIR (`things`) resource based on the structure of the URI.  The principal goal is to avoid loading the RDF triple store with triple that can be derived automatically from the structure of the `thing` URI.  For example, from this URI
+
+https://geoconnex.ca/id/waterwells/qc.1981_4671_100
+
+the /data/ URI can be inferred by using the same id (qc.1981_4671_10)
+
+https://geoconnex.ca/data/gwml/gwml1/gsip/gin/qc.1981_4671_10
+
+One option is to load the RDF database with explicit statements
+
+[source,xml]
+----
+<https://geoconnex.ca/id/waterwells/qc.1981_4671_100>
+rdfs:seeAlso <https://geoconnex.ca/data/gwml/gwml1/gsip/gin/qc.1981_4671_100>;
+<https://geoconnex.ca/data/gwml/gwml1/gsip/gin/qc.1981_4671_100>
+   rdfs:label "Puits 1981_4671_100 depuis RIES"@fr,"Well 1981_4671_100 from GIN"@en;
+	dct:format "text/xml","text/html","application/vnd.geo+json".
+----
+
+for each well.  For large database this will quickly add up.
+
+Another option is to provide a template to generate the derivable content.  The following template uses FreeMarker (https://freemarker.apache.org/) to generate extra RDF predicate (in Turtle)
+
+
+.waterwell.ftl
+[source,xml]
+----
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/>.
+<${resource}>
+rdfs:seeAlso <${baseUri}/data/gwml/gwml1/gsip/gin/${p2}>;
+<http://schema.org/name> "${p2}";
+<http://schema.org/image> <http://ngwd-bdnes.cits.nrcan.gc.ca/Reference/uri-cgi/feature/gsc/waterwell/${p2?replace("qc.","ca.qc.gov.wells.")}?format=png>.
+<${baseUri}/data/gwml/gwml1/gsip/gin/${p2}>
+   rdfs:label "Information depuis RIES"@fr,"Information from GIN"@en;
+	dct:format "text/xml","text/html","application/vnd.geo+json".
+<#if hasStatements == 'false'>
+<${resource}> rdfs:label "${p2}".
+</#if>
+----
+
+The template is provided with a series of variables that can be used in the template.  Freemarker identifies substitution variable with `${variable name}`, and executable code between `<#XXX> </#XXX>` brackets.  FreeMarker is a rather complete templating language similar to PHP, ASP or JSP.
+
+=== Variables
+
+.template variables
+[options="header"]
+|========
+| variable | description | example |
+|resource |/id/ resource |  https://geoconnex.ca/id/waterwells/qc.1981_4671_100 |
+|p1 | first element after /id/ | waterwells |
+|p2 | second element after /id/ | qc.1981_4671_10 |
+|p{n} | n element after /id/ | N/A in this case |
+|baseUri* | baseUri as defined in configuration.xml | https://geoconnex.ca |
+|hasStatements** | true is any statement exists in the RDF | 'true' |
+|model| ModelWrapper object that gives you access RDF catalog results | (see Appendix C)|
+|========
+
+(*) all configuration parameters (`p:parameter`) defined in ``conf/configuration.xml` are available.  You can add more if needed, as long as they don't interfere with reserved parameters.
+(**) The template can be used to create RDF on the fly even if there are no entry at all in the catalog.
+
+
+
 Mapping tables
 
 .dynamic/conf.xml
@@ -311,21 +374,7 @@ Mapping tables
 
 
 
-.aquifer.ftl
-----
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix dct: <http://purl.org/dc/terms/>.
-<${resource}>
-rdfs:seeAlso <${baseUri}/data/aquifer/gwml/gwml/GIN/${p2}>;
-<http://schema.org/name> "${p2}".
-<${baseUri}/data/aquifer/gwml/gwml/GIN/${p2}>
-	dct:format "text/html","application/vnd.geo+json".
-<#if hasStatements == 'false'>
-<${resource}> rdfs:label "${p2}".
-</#if>
-----
 
-The template uses FreeMarker (https://freemarker.apache.org/)
 
 == Data content negotiation
 
@@ -342,6 +391,8 @@ However, remote system rarely implement proper content negotiation, and remote s
 
 
 === Configuration
+
+
 
 
 [source,xml]
@@ -432,3 +483,7 @@ Prefix aware format and software ingesting them should be perfectly fine with ei
 
 for this reason, we suggest not using prefix for NIR until best practices are established.
 (TODO: check if best practices exists)
+
+= Annex C : ModelWrapper
+
+ModelWrapper is an object used in some template to provide convenience function to extract information from a RDF model. It is rather minimal but can be extended.

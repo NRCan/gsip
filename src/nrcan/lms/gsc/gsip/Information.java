@@ -134,7 +134,7 @@ public class Information {
 			Map<String,Object> p = getParameters(uriInfo,idUri); // build from already parsed information
 			// add info about emptyness
 			p.put("hasStatements", storedModel.isEmpty()?"false":"true");
-			
+			p.put("model", new ModelWrapper(storedModel,idUri));
 			storedModel.read(TemplateManager.getInstance().getGraph(p, matchedTemplate),null,"TURTLE");
 		}
 		
