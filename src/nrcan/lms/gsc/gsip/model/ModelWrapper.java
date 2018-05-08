@@ -59,6 +59,10 @@ public class ModelWrapper {
 	
 
 
+	/**
+	 * Get the URI of the context resource (the queried resource)
+	 * @return
+	 */
 	
 	public String getContextResourceUri()
 	{
@@ -87,7 +91,8 @@ public class ModelWrapper {
 	
 	
 	/** 
-	 * The a label for the context resource
+	 * The preferred label for the context resource
+	 * will return the first label that matches the language, if none, will return the first that has no language attribute. If not available, will return whatever first label if finds. If none, return the default label
 	 * @param language
 	 * @param defaultLabel
 	 * @return
@@ -97,6 +102,16 @@ public class ModelWrapper {
 		return getPreferredLabel(contextResource,language,defaultLabel);
 	}
 	
+	/**
+	 * Return the preferred label for a specific resource expressed as a String
+	 * will return the first label that matches the language, if none, will return the first that has no language attribute. If not available, will return whatever first label if finds
+     * 
+	 * 
+	 * @param resource
+	 * @param language
+	 * @param defaultLabel
+	 * @return
+	 */
 	public String getPreferredLabel(String resource,String language,String defaultLabel)
 	{
 		Resource res = model.getResource(getFullUri(resource));
@@ -104,7 +119,7 @@ public class ModelWrapper {
 	}
 
 	/**
-	 * Find a label for this language.  If language is null or no label matches this language
+	 * Find a label for this language for this Resource, expressed as a Jena Resource.  If language is null or no label matches this language
 	 * return the first one
 	 * @param r
 	 * @param language
@@ -138,9 +153,14 @@ public class ModelWrapper {
 		
 	}
 	
+	/**
+	 * Get a list of representations (seeAlso resources) for this resource
+	 * @param res
+	 * @return
+	 */
 	private List<Resource> getRepresentations(Resource res)
 	{
-		Logger.getAnonymousLogger().log(Level.INFO,"seeAlso "+ res.getURI());
+		//Logger.getAnonymousLogger().log(Level.INFO,"seeAlso "+ res.getURI());
 		StmtIterator statements = res.listProperties(RDFS.seeAlso);
 		List<Resource> seeAlso = new ArrayList<Resource>();
 		while(statements.hasNext())
@@ -151,12 +171,21 @@ public class ModelWrapper {
 		return seeAlso;
 	}
 	
+	/**
+	 * Get a list of representations (seeAlso resources) for the context resource
+	 * @return
+	 */
 	public List<Resource> getRepresentations()
 	{
 		//Logger.getAnonymousLogger().log(Level.INFO, contextResource.getURI());
 		return getRepresentations(this.contextResource.getURI());
 	}
 
+	/**
+	 * Get a list of representations for a resource, expressed as a string
+	 * @param res
+	 * @return
+	 */
 	public List<Resource> getRepresentations(String res)
 	{
 		if (res == null) return getRepresentations();
@@ -164,12 +193,16 @@ public class ModelWrapper {
 		return getRepresentations(r);
 	}
 	
+	/**
+	 * Get the URI with an extra format override (?f=) parameter.  Will add it to the URL 
+	 * takes care of existing parameters.  Returns self if none is found.
+	 * @param r
+	 * @param mime
+	 * @return
+	 */
 	public String getFormatOverride(String r,String mime)
 	{
-		Configuration c = Manager.getInstance().getConfiguration();
-		
-		
-			
+		Configuration c = Manager.getInstance().getConfiguration();		
 			String format = c.getFormatFromMimeType(mime);
 			if (format != null)
 				try {
@@ -182,6 +215,12 @@ public class ModelWrapper {
 			return r;
 	}
 	
+	/**
+	 * Get all the association grouped according to Aggregation.  This is called by GetRelevantLinkBy* public method.
+	 * @param r
+	 * @param a
+	 * @return
+	 */
 	private Map<String,List<Link>> getRelevantLinkByGroup(Resource r,Aggregation a)
 	{
 		Map<String,List<Link>> out = new Hashtable<String,List<Link>>();
@@ -203,7 +242,7 @@ public class ModelWrapper {
 	}
 	
 	/**
-	 * return a list of links, group by properties . keys are properties
+	 * return a list of links, group by properties . Hash keys are properties, values are resources
 	 * @param r
 	 * @return
 	 */
@@ -215,7 +254,7 @@ public class ModelWrapper {
 	}
 	
 	/**
-	 * return a list of links, group by resource.  keys are resources
+	 * return a list of links, group by resource.  Hash keys are resources, values are properties
 	 * @param r
 	 * @return
 	 */
@@ -227,18 +266,31 @@ public class ModelWrapper {
 
 	}
 	
+	/** 
+	 * Same as getRelevantLinkByResource(Resource r), but for context resource
+	 * @return
+	 */
 	public Map<String,List<Link>> getRelevantLinkByResource()
 	{
 		return getRelevantLinkByResource(this.contextResource);
 	}
 	
+	/**
+	 *  Same as getRelevantLinkByProperty(Resource r), but for context resource
+	 * @return
+	 */
 	public Map<String,List<Link>> getRelevantLinkByProperty()
 	{
 		return getRelevantLinkByProperty(this.contextResource);
 	}
 	
 	
-	
+	/**
+	 * Get a list of relevant links, not grouped, for a Resource.  Used by other GetRelevantLink*
+	 * Get all the links that are not RDFS/RDF/OWL or DCTerms
+	 * @param r
+	 * @return
+	 */
 	public List<Link> getRelevantLinks(Resource r)
 	{
 		List<Link> links = new ArrayList<Link>();
@@ -265,12 +317,16 @@ public class ModelWrapper {
 		return links;
 	}
 	
+	/**
+	 * Get relevant links (See getRelevantLinks(Resource)
+	 * @return
+	 */
 	public List<Link> getRelevantLinks()
 	{
 		return getRelevantLinks(this.contextResource);
 	}
 
-	/** get the supported dct formats
+	/** get the supported dct formats for a /data/ 
 	 * 
 	 * @param r
 	 * @return
@@ -287,12 +343,26 @@ public class ModelWrapper {
 		return formats;
 
 	}
+	
+	/**
+	 * appends the f= parameters to an existing URI
+	 * @param url
+	 * @param key
+	 * @param value
+	 * @return
+	 * @throws URISyntaxException
+	 */
 	public String appendFormat(String url,String key,String value) throws URISyntaxException
 	{
 		URI u = new URIBuilder(url).addParameter(key, value).build();
 		return u.toString();
 	}
 
+	/**
+	 * check if a resource is a prefixed reference (geo:Thing as opposed to <http://geo.com/Thing>)
+	 * @param resource
+	 * @return
+	 */
 	public boolean isPrefixed(String resource)
 	{
 		if (resource.startsWith("<") && resource.endsWith(">")) return false;
@@ -303,10 +373,16 @@ public class ModelWrapper {
 		
 		
 	}
-	// assumes we are passing a prefix:value , if not, just return the value as-is
+	 
+	/**
+	 * convert a prefixed resource to a fully qualified resource
+	 * assumes we are passing a prefix:value , if not, just return the value as-is
+	 * @param prefixedResource
+	 * @return
+	 */
 	public String getFullUri(String prefixedResource)
 	{
-		Logger.getAnonymousLogger().log(Level.INFO, "prefixed:" + prefixedResource);
+	//	Logger.getAnonymousLogger().log(Level.INFO, "prefixed:" + prefixedResource);
 		QName name = QName.valueOf(prefixedResource);
 		//TODO: not sure this always work
 		if (prefixedResource.equals(name.getLocalPart())) 
@@ -322,7 +398,7 @@ public class ModelWrapper {
 	
 	
 	/** return the complete context model in requested encoding
-	 * 
+	 * This is generally used to embed JSON-LD into a HTML document.
 	 * @param format
 	 * @return jena supported 
 	 */
@@ -355,6 +431,11 @@ public class ModelWrapper {
 		return model.getResource(res);
 	}
 	
+	/**
+	 * Get the Jena language from a string representation
+	 * @param s
+	 * @return
+	 */
 	private static Lang getLang(String s)
 	{
 		if ("TTL".equalsIgnoreCase(s)) return Lang.TURTLE;
@@ -367,7 +448,7 @@ public class ModelWrapper {
 		return null;
 	}
 	
-	/** get the list of types 
+	/** get the list of types for a resource (rdf:type)
 	 * 
 	 * @param r
 	 * @return
@@ -401,6 +482,13 @@ public class ModelWrapper {
 		
 	}
 	
+	/**
+	 * convenience function to return the individual name at the end of a URI
+	 * eg: For https//geoconnex.ca/id/aquifers/Richelieu, will return "Richelieu".
+	 * useful whene there are no rdfs:label
+	 * @param url
+	 * @return
+	 */
 	public String getLastPart(String url)
 	{
 		String[] parts = url.split(":|/|#");
