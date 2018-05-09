@@ -1,9 +1,3 @@
-//
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.03.09 à 07:46:45 AM EST 
-//
 
 
 package nrcan.lms.gsc.gsip.data;
@@ -21,7 +15,6 @@ import javax.xml.bind.annotation.XmlValue;
 /**
  * <p>Classe Java pour MatchType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="MatchType">
@@ -100,7 +93,6 @@ public class MatchType {
     }
 
     /**
-     * Obtient la valeur de la propriété source.
      * 
      * @return
      *     possible object is
@@ -112,7 +104,6 @@ public class MatchType {
     }
 
     /**
-     * Définit la valeur de la propriété source.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +115,6 @@ public class MatchType {
     }
 
     /**
-     * Obtient la valeur de la propriété pattern.
      * 
      * @return
      *     possible object is
@@ -136,7 +126,6 @@ public class MatchType {
     }
 
     /**
-     * Définit la valeur de la propriété pattern.
      * 
      * @param value
      *     allowed object is
@@ -151,7 +140,6 @@ public class MatchType {
     /**
      * <p>Classe Java pour anonymous complex type.
      * 
-     * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -174,7 +162,6 @@ public class MatchType {
         protected String value;
 
         /**
-         * Obtient la valeur de la propriété value.
          * 
          * @return
          *     possible object is
@@ -186,7 +173,6 @@ public class MatchType {
         }
 
         /**
-         * Définit la valeur de la propriété value.
          * 
          * @param value
          *     allowed object is
@@ -203,7 +189,6 @@ public class MatchType {
     /**
      * <p>Classe Java pour anonymous complex type.
      * 
-     * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -235,7 +220,6 @@ public class MatchType {
         protected Boolean proxy;
 
         /**
-         * Obtient la valeur de la propriété value.
          * 
          * @return
          *     possible object is
@@ -247,7 +231,6 @@ public class MatchType {
         }
 
         /**
-         * Définit la valeur de la propriété value.
          * 
          * @param value
          *     allowed object is
@@ -259,7 +242,6 @@ public class MatchType {
         }
 
         /**
-         * Obtient la valeur de la propriété useAnonFtp.
          * 
          * @return
          *     possible object is
@@ -275,7 +257,6 @@ public class MatchType {
         }
 
         /**
-         * Définit la valeur de la propriété useAnonFtp.
          * 
          * @param value
          *     allowed object is
@@ -287,7 +268,6 @@ public class MatchType {
         }
 
         /**
-         * Obtient la valeur de la propriété header.
          * 
          * @return
          *     possible object is
@@ -299,7 +279,6 @@ public class MatchType {
         }
 
         /**
-         * Définit la valeur de la propriété header.
          * 
          * @param value
          *     allowed object is
@@ -311,7 +290,6 @@ public class MatchType {
         }
 
         /**
-         * Obtient la valeur de la propriété proxy.
          * 
          * @return
          *     possible object is
@@ -327,7 +305,6 @@ public class MatchType {
         }
 
         /**
-         * Définit la valeur de la propriété proxy.
          * 
          * @param value
          *     allowed object is

@@ -486,4 +486,26 @@ for this reason, we suggest not using prefix for NIR until best practices are es
 
 = Annex C : ModelWrapper
 
-ModelWrapper is an object used in some template to provide convenience function to extract information from a RDF model. It is rather minimal but can be extended.
+ModelWrapper is an object used in some template to provide convenience function to extract information from a RDF model. It is rather minimal but can be extended.  The variable is a instance of ModelWrapper loaded with the current RDF model.  It is invoked using the familiar dot notation:
+
+[source,java]
+----
+model.getPreferredLabel("en");
+----
+
+when inside `<#XX /#XX>` brackets or
+
+[source,xml]
+----
+${model.getPreferredLable("en")}
+----
+
+if invoked directly in the body of the template.
+
+Full list of function is available by looking at `nrcan.lms.gsc.gsip.model.ModelWrapper` source code. All public methods are available.
+
+The ModelWrapper has a context Resource (the resource /id/ resource that was originally invoked), therefore a lot of function are duplicated:
+
+- function accepting Jena Resource parameters
+- function accepting Resource as a String
+- function without Resource parameter, then the context Resource is implied.

@@ -1,9 +1,3 @@
-//
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.03.02 à 09:02:34 AM EST 
-//
 
 
 package nrcan.lms.gsc.gsip.conf;
@@ -17,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>Classe Java pour ConfigurationType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schï¿½ma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="ConfigurationType">
@@ -47,7 +41,6 @@ public class ConfigurationType {
     protected ParametersType parameters;
 
     /**
-     * Obtient la valeur de la propriété types.
      * 
      * @return
      *     possible object is
@@ -59,7 +52,6 @@ public class ConfigurationType {
     }
 
     /**
-     * Définit la valeur de la propriété types.
      * 
      * @param value
      *     allowed object is
@@ -71,7 +63,6 @@ public class ConfigurationType {
     }
 
     /**
-     * Obtient la valeur de la propriété parameters.
      * 
      * @return
      *     possible object is
@@ -83,7 +74,6 @@ public class ConfigurationType {
     }
 
     /**
-     * Définit la valeur de la propriété parameters.
      * 
      * @param value
      *     allowed object is

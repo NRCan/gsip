@@ -1,9 +1,3 @@
-//
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.02.06 à 02:18:21 PM EST 
-//
 
 
 package nrcan.lms.gsc.gsip.template;
@@ -16,8 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Classe Java pour TemplateType complex type.
- * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ *
  * 
  * <pre>
  * &lt;complexType name="TemplateType">
@@ -48,7 +41,6 @@ public class TemplateType {
     protected Boolean requiresEntry;
 
     /**
-     * Obtient la valeur de la propriété pattern.
      * 
      * @return
      *     possible object is
@@ -60,7 +52,6 @@ public class TemplateType {
     }
 
     /**
-     * Définit la valeur de la propriété pattern.
      * 
      * @param value
      *     allowed object is
@@ -72,7 +63,6 @@ public class TemplateType {
     }
 
     /**
-     * Obtient la valeur de la propriété name.
      * 
      * @return
      *     possible object is
@@ -84,7 +74,6 @@ public class TemplateType {
     }
 
     /**
-     * Définit la valeur de la propriété name.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +85,6 @@ public class TemplateType {
     }
 
     /**
-     * Obtient la valeur de la propriété template.
      * 
      * @return
      *     possible object is
@@ -108,7 +96,6 @@ public class TemplateType {
     }
 
     /**
-     * Définit la valeur de la propriété template.
      * 
      * @param value
      *     allowed object is
@@ -120,7 +107,6 @@ public class TemplateType {
     }
 
     /**
-     * Obtient la valeur de la propriété requiresEntry.
      * 
      * @return
      *     possible object is
@@ -136,7 +122,6 @@ public class TemplateType {
     }
 
     /**
-     * Définit la valeur de la propriété requiresEntry.
      * 
      * @param value
      *     allowed object is
