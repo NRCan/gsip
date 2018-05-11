@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:data xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 file:///C:/java64_8/gsip/WebContent/schemas/data.xsd">
+	<!--  each elements are parsed into p1 to p{n}.  p0 = "data/x/y/z.." -->
+	<p:match pattern="swmonitoring/WML2/real_time/MDDELCC/.*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html">https://www.cehq.gouv.qc.ca/suivihydro/graphique.asp?NoStation=${p5?replace("MDDELCC_","")}</p:source>
+	</p:match>
+	<p:match pattern="swmonitoring/WML2/real_time/MDDELCC/.*">
+		<p:mime-type>text/plain</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/plain">https://www.cehq.gouv.qc.ca/suivihydro/fichier_donnees.asp?NoStation=${p5?replace("MDDELCC_","")}</p:source>
+	</p:match>
+	<p:match pattern="swmonitoring/WML2/historical/MDDELCC/.*">
+		<p:mime-type>text/plain</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/plain">https://www.cehq.gouv.qc.ca/depot/historique_donnees/fichier/${p5?replace("MDDELCC_","")}_Q.txt</p:source>
+	</p:match>
+	<!--  CHyF representations -->
+	<p:match pattern="swmonitoring/WML2/historical/MDDELCC/.*">
+		<p:mime-type>application/vnd.geo+json</p:mime-type>
+		<!--  can have more -->
+		<p:source proxy="true" useAnonFtp="true">ftp://ftp.cits.rncan.gc.ca/pub/hydro/GeEau/tests/gsip/prod/${p5?replace("MDDELCC_","")}.json</p:source>
+	</p:match>
+	
+	<!--  federal  -->
+	
+	<p:match pattern="swmonitoring/WML2/historical/WSC/.*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source>https://wateroffice.ec.gc.ca/report/historical_e.html?stn=${p5?replace("WSC_","")}</p:source>
+	</p:match>
+	
+	<p:match pattern="swmonitoring/WML2/historical/WSC/.*">
+		<p:mime-type>application/vnd.geo+json</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:application/vnd.geo+json" proxy="true">ftp://USER:PASSWORD@nais.ec.gc.ca/TimeSeries/${p5?replace("WSC_","")}.json</p:source>
+	</p:match>
+	
+	<p:match pattern="swmonitoring/WML2/real-time/WSC/.*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source>https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=${p5?replace("WSC_","")}</p:source>
+	</p:match>
+	
+	<p:match pattern="swmonitoring/WML2/real-time/WSC/.*">
+		<p:mime-type>text/plain</p:mime-type>
+		<!--  can have more -->
+		<p:source>http://dd.weather.gc.ca/hydrometric/csv/QC/hourly/QC_${p5?replace("WSC_","")}_hourly_hydrometric.csv</p:source>
+	</p:match>
+	 
+
+	
+</p:data>
