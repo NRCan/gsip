@@ -3,7 +3,6 @@
 	<!--  each elements are parsed into p1 to p{n}.  p0 = "data/x/y/z.." -->
 	<p:match pattern="swmonitoring/WML2/real_time/MDDELCC/.*">
 		<p:mime-type>text/html</p:mime-type>
-		<!--  can have more -->
 		<p:source header="Accept:text/html">https://www.cehq.gouv.qc.ca/suivihydro/graphique.asp?NoStation=${p5?replace("MDDELCC_","")}</p:source>
 	</p:match>
 	<p:match pattern="swmonitoring/WML2/real_time/MDDELCC/.*">
@@ -33,7 +32,7 @@
 	
 	<p:match pattern="swmonitoring/WML2/historical/WSC/.*">
 		<p:mime-type>application/vnd.geo+json</p:mime-type>
-		<!--  can have more -->
+		<!--  replace the username and password accordingly, -->
 		<p:source header="Accept:application/vnd.geo+json" proxy="true">ftp://USER:PASSWORD@nais.ec.gc.ca/TimeSeries/${p5?replace("WSC_","")}.json</p:source>
 	</p:match>
 	
