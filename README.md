@@ -9,45 +9,10 @@ Collaboration between [https://www.ec.gc.ca] (Environment and Climate Change Can
 [http://cgq-qgc.ca/en/facilities#LCNP] (Laboratoire de cartographie numérique et de photogrammétrie - CGC-Québec)
 
 
-## GSIP Mediation Layer
+## Focumentation
 
-This application provides description and resolution service for non information URI based on the architecture designed for the GSIP pilot.
+Find documentation in /doc folder
 
-### Description (a.k.a /info/ page)
+## Demo application
 
-Returns an hypermedia describing the resource.  It provides 2 types of informations
-
-   * available representations
-   * other linked resources
-   
-   
-   
-## Resource structure
-
-It's type and labels and other useful attributes
-~~~~
-<https://geoconnex.ca/id/catchment/02OJ*CD>  a hy:HY_Catchment; 
- rdfs:label "Bassin versant: Ruisseau Landry - Riviere Richelieu"@fr,"Watershed: Ruisseau Landry - Riviere Richelieu"@en.
-
-~~~~
-
-
-representations and their formats
-
-
-~~~~
-<https://geoconnex.ca/id/catchment/02OJ*CD> 
-	dfs:seeAlso <https://geoconnex.ca/data/catchment/HYF/WSCSSSDA/NRCAN/02OJ*CD>.
-
-<https://geoconnex.ca/data/catchment/HYF/WSCSSSDA/NRCAN/02OJ*CD>
-	dct:format "text/html","application/vnd.geo+json".
-~~~~
-
-links to other resources
-
-~~~~
-<https://geoconnex.ca/id/catchment/02OJ*CD> hy:drains-into <https://geoconnex.ca/id/catchment/02OJ*CE>.
-<https://geoconnex.ca/id/catchment/02OJ*CD> hy:overlaps <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*CD> hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CD>;
-~~~~
-
+There is an online demo application (somewhat behind the version on GitHub) at https://geoconnex.ca/gsip/app/index.html
