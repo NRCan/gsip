@@ -35,8 +35,10 @@ import java.util.regex.Pattern;
 
 @Path("resources/{category}/{item}")
 public class Resource {
-	public static final Pattern bad = Pattern.compile("\\W|^$");
+	// this is probably overkill since the matching is now done with Jersey, so there are no way (?) to escalate the path (ie ../../)
 	// ticket 3168  use "[_a-zA-Z0-9\\-\\.]+" ?
+	//public static final Pattern bad = Pattern.compile("\\W|^$");
+
 	
 	
 	@Context ServletContext context;
@@ -46,8 +48,8 @@ public class Resource {
 	{
 		// only accept word
 		// TODO: not sure this is even useful...
-		if (isBad(folder) || isBad(item))
-			return Response.status(HttpStatus.SC_BAD_REQUEST).build();
+		//if (isBad(folder) || isBad(item))
+		//	return Response.status(HttpStatus.SC_BAD_REQUEST).build();
 		
 		// TODO , not secure, will return anything in the resource folder
 		// just serialize the content of the folder	
@@ -100,6 +102,7 @@ public class Resource {
 	
 	// check if non word characters
 	// stolen from https://stackoverflow.com/a/4434174/8691687 
+	/**
 	private boolean isBad(String suspect)
 	{
 		if (bad.matcher(suspect).find()) {
@@ -108,6 +111,7 @@ public class Resource {
 			  return false;
 			}
 	}
+	**/
 	
 	// check if a file with this name exists in this path
 	private boolean resourceExists(String path)
