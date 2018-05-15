@@ -4,6 +4,10 @@ Eric Boisvert <eric.boisvert2@canada.ca>
 v1.0, April 2018:
 First version
 
+
+WARNING:  Work in progress, the documentation is far from complete.
+
+
 Introduction
 ------------
 
@@ -78,7 +82,7 @@ In the context of GSIP, a representation equates to an information model.  The s
 In a ideal world, the conversion would be perfect (no information loss), but in reality, not all format have the same expressiveness.  For some format, it's acceptable to assume the same representation if it's a reasonnable subset, or simplification, of the same information model.
 
 For example, a GWML document can be expressed in GML/XML or RDF/TTL without any significant information loss, making them just different format for the same information model.
-A HTML redering if the same GML/XML can choose to represent part of the information model, for example, skipping the explicit unit of measure.  It's still the same information set. No new information is added.  Note that transforming the data into some other data, like calculating an average, is not considering "new information".  It's derived information.
+A HTML rendering if the same GML/XML can choose to represent part of the information model, for example, skipping the explicit unit of measure.  It's still the same information set. No new information is added.  Note that transforming the data into some other data, like calculating an average, is not considering "new information".  It's derived information.
 A last example is a PNG image of a well log, generated from the data contained in the information set.  The process is destructive as there is no direct way to turn the png back into the original information.  But it's still considered the same "representation" for GSIP because it a view of the same information set.
 In a nutshell, all those formats can't be in _contradiction_.
 
@@ -249,14 +253,44 @@ Another option is to use pseudo protocol `webapp:`
 <p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
 ----
 
-`webapp:` is a pseudo protocol tilling GSIP the folder is located in the servlet webapp folder (here `{tomcat application folder}/gsip/webapp/repos/gsip`).
+`webapp:` is a pseudo protocol telling GSIP the folder is located in the servlet webapp folder (here `{tomcat application folder}/gsip/webapp/repos/gsip`).
 
 This is useful when the only option to deploy the application and the data is through Tomcat application manager.
 
+== Folder structure
+
+TODO: allow WebContent to be outside the application
+
+The following folder are created at the root of the application (in addition to standard WEB-INF and META-INF)
+
+* app
+* conf
+* data
+* dynamic
+* repos
+* resources
+* schemas
+* templates
+
+=== app : Application folder
+
+This folder contains the demo application.  The resources (files) are exposed through `${baseUri}/gsip/app`.
+The folder is not required to run the gsip service.
+
+This folder goes through tomcat default servlet (just streams the data).  This is configured in web.xml
+
+[source,xml]
+----
+<servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>/app/*</url-pattern>
+</servlet-mapping>
+----
 
 
+=== conf: Configuration file
 
-== Configuration file
+The configuration file sets values used by GSIP.
 
 [source,xml]
 ----
@@ -287,6 +321,24 @@ This is useful when the only option to deploy the application and the data is th
 	</p:parameters>
 </p:configuration>
 ----
+
+
+It's made of two sections, the first section provides a list of format overrides and their mime-type (see Harmonised GET override).
+
+The second section is a list of configuration keys used be the application.
+
+.template variables
+[options="header"]
+|========
+| Variable name | description |
+| infoTemplate | freemarker template for HTML landing page |
+| baseUri | Base URI the resources in the catalog.  This variable and the following `proxydevuri` and `gsip` has important ramifications on how the service works in different environments. This is discussed further below |
+| proxydevuri | Base URI to substitute the base uri in the catalog. Used to run in dev and staging environments |
+| gsip | Base URI of the gsip application, which may or may not be different from the baseURI of the resources in the catalog |
+| triplestore | location of the RDF catalog (see section on RDF catalog) |
+| supportedLanguages | comma delimited list of supported languages |
+| defaultLanguage | assumed language |
+|========
 
 
 == Dynamic content
