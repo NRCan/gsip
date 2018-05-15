@@ -9,7 +9,7 @@ Collaboration between [https://www.ec.gc.ca] (Environment and Climate Change Can
 [http://cgq-qgc.ca/en/facilities#LCNP] (Laboratoire de cartographie numérique et de photogrammétrie - CGC-Québec)
 
 
-## Focumentation
+## Documentation
 
 Find documentation in /doc folder
 
