@@ -227,6 +227,68 @@ implicitly means
 ----
 
 
+== Interactions
+
+GSIP mediator processes URI based on their pattern. Some URI trigger special behaviors (/id/, /info/ and /data/) which are discussed below.  GSIP also exposes two API URI (/api/ and /resource/) which are not discussed at this point.
+In all cases, the client provides a preferred format for the response (eg. text/html) and GSIP mediator will consider it.
+
+=== /id/...
+
+GSIP will rewrite the URI into a /info/ URI and respond to the client with a HTTP 303 seeAlso to the /info/ URIs
+
+
+[source,bash]
+----
+$ curl -I https://geoconnex.ca/id/catchment/02OJ*CB
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+HTTP/1.1 303
+Date: Wed, 16 May 2018 22:28:55 GMT
+Server: Apache
+Location: https://geoconnex.ca/info/catchment/02OJ*CB
+----
+
+Note the Location: field with the /info/ url.  The client is expected to follow the 303 link and request the same format. Therefore, if the client asks for `https://geoconnex.ca/id/catchment/02OJ*CB` in HTML, it will also ask `https://geoconnex.ca/info/catchment/02OJ*CB` in HTML.
+
+`f` and `callback` query parameters are transfered to the /info/ URL (See format override and callback sections for more info)
+
+=== /info/
+
+When GSIP get an /info/ url, the following steps are executed.
+
+The /info/ is reverted to /id/ URI.  This URI is used to query the RDF catalog.
+
+A SPARQL query is send to the catalog to extract basic information.  The SPARQL is built from a FreeMarker template located in
+
+.template/describe.ftl
+[source,sparql]
+----
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+CONSTRUCT {<${resource}> ?p ?o. ?o rdfs:label ?o2. ?o dct:format ?o3}
+WHERE {<${resource}> ?p ?o. OPTIONAL {?o rdfs:label ?o2}. OPTIONAL {?o dct:format ?o3}. }
+LIMIT 100
+----
+
+`${resource}`` is substituted with the /id/ resource. This query basically extract all properties of the resource of interest and for the properties whose values are also resources, get all their properties.
+In other words, it get a all the nested values two levels down.
+
+(I don't remember why I explicitly constructed  rdfs:label and dct:format instead of grabbing everything)
+
+The template can be changed if needed.
+
+At this point, the mediator checks if dynamic statements can be generated.  It checks if the context resource matches any of the patterns provided in dynamic/conf.xml.  If a pattern matches, it will use the associated template to create new statements from elements of the context resource URI.
+The new statements are added to the model extracted from the RDF catalog (it can be empty) and then serialized according to the format requested by the client.
+
+If the requested format is HTML, and extra template is used to transform the model into a HTML document (a landing page) before serializing the result to the client.
+
+=== /data/
+
+The role of GSIP mediator is to turn a /data/ URL into another URL and redirect the client to the new location (or, in some cases, act as a reverse proxy and stream the file to the client).
+
+The mediator check in the data folder for a pattern that matches the /data/ URL and the format requested (eg, geojson). If a matches exist, it uses the associated FreeMarker template and rewrites a new URL. This new URL is either a) sent back to the client as a HTTP 303 see seeAlso, or the mediator pulls the content from the remote server and streams the file as-is to the client.
+
 ==== Configuration
 
 GSIP can use an external SPARQL endpoint or has its own internal RDF catalog.
@@ -452,7 +514,7 @@ The mapping between the templates and the URI mapping is provides in the conf.xm
  * requiresEntry is a flag telling if a /id/ is needed in the catalog.  If "false", the template will be invoked even if no resource exists in the RDF catalog.
 
  Example:
- 
+
 .dynamic/conf.xml
 [source,xml]
 ----
