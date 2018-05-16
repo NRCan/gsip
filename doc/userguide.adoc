@@ -41,7 +41,7 @@ A URI is both an identifier and a location (making them URL : Universal Resource
 
 === Things
 
-By convention, `things` URI are structured as such
+By GSIP convention, `things` URI are structured as such
 
 `http(s)://{domain}/id/{category}/{item}`
 
@@ -341,7 +341,44 @@ The second section is a list of configuration keys used be the application.
 |========
 
 
-== Dynamic content
+=== data : /data/ content negotiation
+
+This folder contains a series of XML files to manage the access to representations.    Depending of you data sources, you might or might not need this feature.  If a representation can be expressed as a single external resource, this can be encoded directly in the RDF catalog (as a `rdf:seeAlso`) or as dynamic content.
+However, remote system rarely implement proper content negotiation, and remote system are notoriously heterogeneous.  The GSIP mediator can provide a URI for a representation by forcing the client to go through GSIP to get a representation and harmonize access to remote services.  It also deals with CORS (Cross Origin Resource Sharing) and HTTPS/HTTP mixed environments.
+
+==== provides a "clean" URL path by removing web services parameters
+
+For example, it can proxy a complex WFS request
+
+http://service.com/wfs?SERVICE=WFS&REQUEST=GetFeature&STOREDQUERY_ID=urn:ogc:def:query:OGC-WFS::GetFeatureById&ID=52
+
+by
+
+https://geoconnex.ca/data/aquifer/gwml/gwml/GIN/aq.52
+
+==== provides a "reverse proxy" to deal with CORS and HTTPS/HTTP mix
+
+Some external service might not authorise cross origin.  GSIP can be configures to act as a reverse proxy (get the content for you and stream it back to the client).
+
+
+==== provides proper content negotiation over multiple formats
+
+If multiple format are available for the same resourc, but from different sources, or using different API, GSIP can provide all those format under and single /data/ URI and provide content negotiation.
+
+==== provides an harmonised GET override
+
+As a convenience for people using a browser to access format non-HTML format, it is possible to override the content negotiation by providing an explicit request parameter.  Adding a `f=<format>` force GSIP to ignore the Accept HTTP header and provide the requested format.
+Unfortunately, there are no standard list of format name, nor a single parameter name (f=, format=,mime-type=, etc..) .  By forcing client to go through GSIP mediation, it can enforce a uniform override.
+
+The list of overrides is provided in the /conf/configuration.xml file.
+
+
+
+Note there is another strategy commonly used is to use a well known extension (.xml for xml document).  But we felt this was to restrictive.
+
+
+
+===  dynamic : Dynamic content
 
 Dynamic content is used to generate extra content for NIR (`things`) resource based on the structure of the URI.  The principal goal is to avoid loading the RDF triple store with triple that can be derived automatically from the structure of the `thing` URI.  For example, from this URI
 
@@ -404,10 +441,18 @@ The template is provided with a series of variables that can be used in the temp
 (*) all configuration parameters (`p:parameter`) defined in ``conf/configuration.xml` are available.  You can add more if needed, as long as they don't interfere with reserved parameters.
 (**) The template can be used to create RDF on the fly even if there are no entry at all in the catalog.
 
+The mapping between the templates and the URI mapping is provides in the conf.xml file in /dynamic/ folder.
 
 
-Mapping tables
+ `<p:template name="watershed" pattern="^https?://.*/id/up_watershed/.*$" template="watershed.ftl" requiresEntry="false"/>`
 
+ * name is a convenience label
+ * pattern is a regex that matches a Non Information URI (/id/) and matches it to a template located in the template folder.
+ * template is the name of the template in the template folder.
+ * requiresEntry is a flag telling if a /id/ is needed in the catalog.  If "false", the template will be invoked even if no resource exists in the RDF catalog.
+
+ Example:
+ 
 .dynamic/conf.xml
 [source,xml]
 ----
@@ -428,15 +473,7 @@ Mapping tables
 
 
 
-== Data content negotiation
 
-This module manages the access to representations.    Depending of you data sources, you might or might not need to configure this module.  A representation is accessed through a URI and one might choose to point directly to the data source on a remote system.
-However, remote system rarely implement proper content negotiation, and remote system are notoriously heterogenous.  This system, first and foremost, harmonize access to remote service.  It also deals with CORS (Cross Origin Resource Sharing) and HTTPS/HTTP mixed environments.
-
-* provides a "clean" URL path by removing web services parameters, (rephrase)
-* provides a "reverse proxy" to deal with CORS and HTTPS/HTTP mix
-* provides proper content negotiation over multiple formats
-* provides an harmonised GET override
 
 === Harmonized GET override
 
