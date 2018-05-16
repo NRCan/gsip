@@ -8,7 +8,7 @@ Collaboration between [Environment and Climate Change Canada (ECCC)](https://www
 
 [Meteorological Service of Canada](https://www.canada.ca/en/services/environment/weather.html) (part of ECCC)
 
-(Laboratoire de cartographie numérique et de photogrammétrie - CGC-Québec)[http://cgq-qgc.ca/en/facilities#LCNP]
+[Laboratoire de cartographie numérique et de photogrammétrie - CGC-Québec](http://cgq-qgc.ca/en/facilities#LCNP)
 
 ## Documentation
 
