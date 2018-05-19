@@ -37,7 +37,8 @@ public class Manager {
 		static  Manager instance = new Manager();
 	}
 	
-	public static Manager getInstance()
+	// TODO: added synch on the get Instance, but not sure I really need it.
+	public static synchronized Manager getInstance()
 	{
 		return ManagerSingleHolder.instance;
 	}
