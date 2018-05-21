@@ -45,7 +45,7 @@ By GSIP convention, `things` URI are structured as such
 
 `http(s)://{domain}/id/{category}/{item}`
 
-`/id/` is not a requirement to represent `things`, but it a mandatory syntax for GSIP with the current architecture.  the presence of `/id/` tells GSIP that this resources is a `thing``.
+`/id/` is not a requirement to represent `things`, but it a mandatory syntax for GSIP with the current architecture.  The presence of `/id/` tells GSIP that this resources is a `thing`.
 This is a functional decision to efficiently manage request to the GSIP service. See <<Annex A : Change URI pattern>> to modify the default URI patterns.
 
 ==== Example
@@ -57,39 +57,36 @@ https://geoconnex.ca/id/catchment/02OJ*CE
 This URI represents a `thing`.  It is not a document or a dataset, but the real catchment.  If you use this URI in a browser, you obviously won't download the catchment itself.
 In GSIP infrastructure, you will be redirected using https://en.wikipedia.org/wiki/HTTP_303[HTTP 303] to an `information` document.
 
-This information resource provided by GSIP has the same URI structure except the `/id/` is replaced by `/info/`.
+This `information` resource provided by GSIP has the same URI structure except the `/id/` is replaced by `/info/`.
 
 `http(s)://{domain}/info/{category}/{item}`
 
 eg: https://geoconnex.ca/info/catchment/02OJ*CE
 
-This is something that can actually be downloaded from the web.
+This is a document that can be downloaded from the web.
 
-=== Info page
+=== Info resource
 
-The info page is a description of a `thing`.  It provides two categories of information.
+The info resource, or info page if its format is in HTML,  is a description of a `thing`.  It provides two categories of information.
 
-* relations between `things` and other `things`
-* relations between `things` and their `representations`
+* relations between this `thing` and other `things`
+* relations between this `thing` and its `representations`
 
+It also provides other ancillary information, such as labels, mime-types, types, etc, as convenience for users or client applications.  For GSIP, the HTML representation of this information is the Non-Information Resource landing page : what a browser will get it a NIR is dereferenced.
 
 === Representations
 
-Representations are fuzzy concepts.  They are a mixture of "data model" and format.  Many documents on the web can provide information about a real `thing`.  For a catchment, we can find wiki pages, HTML page from a watershed authority, a XML file with relevant data, or a plain text file.
+Representations are fuzzy concepts.  They are a mixture of "data models" and formats.  Many documents on the web can provide information about a real `thing`.  For a catchment, we can find wiki pages, HTML page from a watershed authority, a XML file with relevant data, or a plain text file.
 All those documents are *representations*. Representations are often conflated with the concept of format.
 
-In the context of GSIP, a representation equates to an information model.  The same information model (or data model) can be encoded in multiple formats in such as way that each of the format can be converted into another on within the same representation.
-In a ideal world, the conversion would be perfect (no information loss), but in reality, not all format have the same expressiveness.  For some format, it's acceptable to assume the same representation if it's a reasonnable subset, or simplification, of the same information model.
+In the context of GSIP, a representation equates to an information model.  The same information model (or data model) can be encoded in multiple formats in such as way that each of the formats can be converted into another one within the same representation.
+In a ideal world, the conversion would be perfect (no information loss), but in reality, not all formats have the same expressiveness.  For some formats, it's acceptable to assume the same representation if it's a reasonable subset, or simplification, of the same information model.
 
-For example, a GWML document can be expressed in GML/XML or RDF/TTL without any significant information loss, making them just different format for the same information model.
-A HTML rendering if the same GML/XML can choose to represent part of the information model, for example, skipping the explicit unit of measure.  It's still the same information set. No new information is added.  Note that transforming the data into some other data, like calculating an average, is not considering "new information".  It's derived information.
-A last example is a PNG image of a well log, generated from the data contained in the information set.  The process is destructive as there is no direct way to turn the png back into the original information.  But it's still considered the same "representation" for GSIP because it a view of the same information set.
-In a nutshell, all those formats can't be in _contradiction_.
+For example, a GWML document can be expressed in GML/XML or RDF/TTL without any significant information loss, making them just different format for the same information model.  An HTML rendering of the same GML/XML can choose to represent part of the information model, for example, skipping the explicit unit of measure.  It's still the same information set. No new information is added.  Note that transforming the data into some other data, like calculating an average, is not considering "new information".  It's derived information.  A last example is a PNG image of a well log, generated from the data contained in the information set.  The process is destructive as there is no direct way to turn the png back into the original information.  But it's still considered the same "representation" for GSIP because it a view of the same information set.
 
-On the other hand, the same catchment describes from two different sources will rarely have the same information set.  They can partially overlap.
-A the geometry for a catchment defined from dbpedia will likely be different, properties should be similar, but not identical.  Either not the same precision, or simply because they are defined slightly differently.  They will in most cases be availably in the same formats, but with different information model, or different data content.
+On the other hand, the same catchment description from two different sources will rarely have the same information set.  They can partially overlap. A the geometry for a catchment defined from dbpedia will likely be different, properties should be similar, but not identical:  either not the same precision, or simply because they are defined slightly differently.  They will in most cases be availably in the same formats, but with different information model, or different data content.
 
-A representation will often coincide with a data source (from a single provider) who will tend to derive several formats from the same data.
+A representation will often coincide with a data source (from a single provider) who will tend to derive several formats from the same data. In a nutshell, all those formats are based on the same information.
 
 ==== Example
 
@@ -100,8 +97,6 @@ image::img/rep_02OJ016.png[HTML landing page for a monitoring station]
 The first representation is historical data, available in two formats (HTML and GeoJSON) and the other is daily data, available in HTML and plain text.
 In this particular case, the data comes from the same source (https://wateroffice.ec.gc.ca), but they are not transformations one of the other.
 
-
-
 == Architecture
 
 GSIP is composed of 3 modules.
@@ -110,12 +105,14 @@ GSIP is composed of 3 modules.
 * The dynamic content generator module (optional)
 * The data content negotiation module (optional)
 
+The central goal of the GSIP service is to generate `/info/` resources from a `/id/` resource.  An fully functional system can be created by filling all the required information into the RDF catalog. GSIP provides additional features to a) reduce the size of the RDF database by providing ways to generate properties by deriving from existing content and b) harmonize access to representations (`/data/`).
+
 === RDF catalog
 
 GSIP keeps information about `things` in a RDF catalog.  The catalog is queried using https://en.wikipedia.org/wiki/SPARQL[SPARQL]
-GSIP can connect to an external (autonomous) catalog, as long as it exposed a SPARQL endpoint, or use an internal catalog.  The internal catalog is loaded in memory, so this option should not be considered for large registries.
+GSIP can connect to an external (autonomous) catalog, as long as it exposed a SPARQL endpoint, or use an internal catalog.  The internal catalog is loaded in memory, so this option should restricted to small datasets. (TODO: define what small means)
 
-==== Data model
+==== RDF Data model
 
 A typical entry for a `thing` looks like this (examples are in  https://en.wikipedia.org/wiki/Turtle_(syntax)[RDF/turtle])
 
