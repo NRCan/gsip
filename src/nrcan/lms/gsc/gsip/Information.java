@@ -78,8 +78,8 @@ public class Information {
 		String locale = RequestUtil.getLocale(lang,request.getLocale());
 			
 		/** all media types works pretty much the same way, except 
-		 - HTML that need an extra XSLT
-		 - JSON and JSONLD that needs might need require a call back
+		 - HTML that need an extra template
+		 - JSON and JSONLD that might require a call back
 		 format override (f=) will override the header
 		  */
 		
