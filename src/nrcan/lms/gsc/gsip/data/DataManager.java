@@ -30,7 +30,8 @@ public class DataManager {
 		static DataManager instance = new DataManager();
 	}
 	
-	public static DataManager getInstance(ServletContext ctx)
+	// make sure this is not called simultaneously by two threads
+	public static synchronized DataManager getInstance(ServletContext ctx)
 	{
 		if (DataManagerHolder.instance.matches == null)
 			DataManagerHolder.instance.init(ctx);

@@ -87,7 +87,8 @@ public class TemplateManager {
 		static TemplateManager instance = new TemplateManager();
 	}
 	
-	public static TemplateManager getInstance(ServletContext ctx)
+	// this is synch because you don't want a single thread to start initialisation while it's initializing
+	public static synchronized TemplateManager getInstance(ServletContext ctx)
 	{
 		if (!TemplateSingleHolder.instance.initialised)
 			TemplateSingleHolder.instance.init(ctx);

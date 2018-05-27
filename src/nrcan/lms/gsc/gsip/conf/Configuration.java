@@ -29,6 +29,7 @@ import nrcan.lms.gsc.gsip.conf.ParametersType.Parameter;
 public class Configuration {
 	public static final String DEFAULT_LANGUAGE = "en";
 	public static final String CONF_FILE = "conf/configuration.xml";
+	// Hashtable are threadsafe, so we are technically good accessing 
 	private Hashtable<String,String> formatToMime = null;
 	private Hashtable<String,String> mimeToFormat = null;
 	private Hashtable<String,String> equivalentMime = null;
@@ -47,17 +48,19 @@ public class Configuration {
 	
 	/**
 	 * get a single instance when the servlet context is known
+	 * if synch 
 	 * 
 	 * @param srv
 	 * @return
 	 */
-	public static Configuration getInstance(ServletContext srv)
+	public static synchronized Configuration getInstance(ServletContext srv)
 	{
-		String confile = srv.getInitParameter("conf");
-		//TODO: bad design, the servlet context exists during a request, I should find a way to get
-		// this information without 
+		// synchronised because you don't want this to be call while conf is being intialised
+		//TODO: bad design, the servlet context exists during a request, must make sure it's loaded by Listener first
 		if (ConfigurationSingleHolder.instance.conf == null)
 			try {
+				// if instance.conf is null, this means the configuration is not loaded
+				String confile = srv.getInitParameter("conf");				
 				ConfigurationSingleHolder.instance.init(srv,confile);
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
@@ -70,6 +73,7 @@ public class Configuration {
 	
 	public Object getParameter(String param)
 	{
+		
 		return parameters.get(param);
 	}
 	public Object getParameter(String param,Object defaultValue)
