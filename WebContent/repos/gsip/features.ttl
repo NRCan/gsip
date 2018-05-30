@@ -192,3 +192,9 @@ rdfs:label "Hydrogeologic unit : Appalachian Internal zone"@en, "Unite hydrogeol
 rdfs:label "Systeme aquifere : Richelieu"@fr, "Aquifer system : Richelieu"@en;
 
 gw:gwAquiferSystemPart <https://geoconnex.ca/id/hydrogeounits/Richelieu1>,<https://geoconnex.ca/id/hydrogeounits/Richelieu2>,<https://geoconnex.ca/id/hydrogeounits/Richelieu3>,<https://geoconnex.ca/id/hydrogeounits/Richelieu4>,<https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
+
+<https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>
+rdfs:seeAlso <https://en.wikipedia.org/wiki/Richelieu_River>,<https://fr.wikipedia.org/wiki/Rivi%C3%A8re_Richelieu>.
+<https://fr.wikipedia.org/wiki/Rivi%C3%A8re_Richelieu> rdfs:label "Wikip&eacute;dia"@fr;dct:format "text/html".
+<https://en.wikipedia.org/wiki/Richelieu_River> rdfs:label "Wikipedia"@en;dct:format "text/html".
+

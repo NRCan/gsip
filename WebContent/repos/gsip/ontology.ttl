@@ -60,6 +60,9 @@ gw:inside rdf:type owl:ObjectProperty.
 
 hy:located-on rdf:type owl:ObjectProperty.
 
+hy:location-for rdf:type owl:ObjectProperty;
+  owl:inverseOf hy:located-on.
+
 hy:near rdf:type owl:ObjectProperty ,
 	owl:SymmetricProperty.
 	
