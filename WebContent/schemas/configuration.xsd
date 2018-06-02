@@ -28,7 +28,10 @@
 				<xs:complexType>
 					<xs:simpleContent>
 						<xs:extension base="xs:string">
-							<xs:attribute name="name" type="xs:string"/>
+							<xs:attribute name="name" type="xs:string" />
+							<xs:attribute name="pattern"
+								type="xs:string">
+							</xs:attribute>
 						</xs:extension>
 					</xs:simpleContent>
 				</xs:complexType>
