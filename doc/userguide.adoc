@@ -369,7 +369,11 @@ The configuration file sets values used by GSIP.
 		<p:type mime-type="application/vnd.google-earth.kml+xml" formats="kml"/>
 	</p:types>
 	<p:parameters>
+  <!-- HTML landing page are built using templates,  template can be assigned based on URI pattern.  Default HTML template is the one without pattern attribute -->
+
 		<p:parameter name="infoTemplate">infohtml.ftl</p:parameter>
+    <p:parameter name="infoTemplate" pattern="http.*/geologicUnits/.*">geounits.ftl</p:parameter>
+
 		<p:parameter name="baseUri">https://geoconnex.ca</p:parameter>
 		<p:parameter name="proxdevuri">http://localhost:8080/gsip</p:parameter>
 		<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter>

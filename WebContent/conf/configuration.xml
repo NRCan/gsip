@@ -47,7 +47,9 @@
 			<p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
 
 		<p:parameter name="infoTemplate">infohtml.ftl</p:parameter> <!--  default  -->
-		<p:parameter name="infoTemplate" pattern="/id/geologicUnits/.*">geounit.ftl</p:parameter>
+		<!--  special template for geologic units (pattern starts after /id/) -->
+		<p:parameter name="infoTemplate" pattern="http.*/geologicUnits/.*">geounits.ftl</p:parameter>
+		
 		<p:parameter name="supportedLanguages">en,fr</p:parameter>
 		<p:parameter name="defaultLanguage">en</p:parameter>
 		

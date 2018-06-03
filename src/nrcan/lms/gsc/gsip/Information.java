@@ -194,15 +194,16 @@ public class Information {
 	 */
 	private Response serializeHTML(Model model,String resource,String locale)
 	{
+		ModelWrapper mw = new ModelWrapper(getAlternateModel(model),getAlternateResource(resource));
 		// get the template used to create 
-		String htmlTemplate = (String) Configuration.getInstance().getParameter("infoTemplate");
+		String htmlTemplate = Configuration.getInstance().getHtmlTemplate(mw.getContextResourceUri());
 		String out = null;
 		try{
 			Map<String,Object> p = new HashMap<String,Object>();
 			p.put("host",Configuration.getInstance().getParameter("gsip"));
 			// note: HTML template always work with persistent model, the conversion is done in the wrapper
 			// TODO: what a mess
-			p.put("model", new ModelWrapper(getAlternateModel(model),getAlternateResource(resource)));
+			p.put("model", mw);
 			p.put("locale",locale);
 			// get all configuration variables
 			p.putAll(Manager.getInstance().getConfiguration().getParameters());

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.core.MediaType;
@@ -14,6 +15,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
+import org.apache.catalina.loader.ParallelWebappClassLoader;
 
 import nrcan.lms.gsc.gsip.conf.ParametersType.Parameter;
 
@@ -28,12 +31,16 @@ import nrcan.lms.gsc.gsip.conf.ParametersType.Parameter;
  */
 public class Configuration {
 	public static final String DEFAULT_LANGUAGE = "en";
+	public static final String HTML_TEMPLATE = "infoTemplate";
 	public static final String CONF_FILE = "conf/configuration.xml";
 	// Hashtable are threadsafe, so we are technically good accessing 
 	private Hashtable<String,String> formatToMime = null;
 	private Hashtable<String,String> mimeToFormat = null;
 	private Hashtable<String,String> equivalentMime = null;
 	private Hashtable<String,Object> parameters = null;
+	// list of alternative HTML templates 
+	private Hashtable<String,String> htmlTemplate = null;
+	private String defaultHtmlTemplate = null;
 	private ConfigurationType conf = null;
 	
 	private Configuration()
@@ -130,6 +137,7 @@ public class Configuration {
 	    this.formatToMime = new Hashtable<String,String>();
 	    this.equivalentMime = new Hashtable<String,String>();
 	    this.mimeToFormat = new Hashtable<String,String>();
+	    this.htmlTemplate = new Hashtable<String,String>();
 	    for(TypeType tp:conf.types.type)
 	    {
 	    	if (tp.formats != null)
@@ -164,7 +172,18 @@ public class Configuration {
 	   
 	    for(Parameter p : conf.parameters.parameter)
 	    {
-	    	parameters.put(p.name, p.value);
+	    	if (HTML_TEMPLATE.equals(p.name))
+	    	{
+	    		// this is a HTML templaye
+	    		if (p.pattern != null && p.pattern.length() > 0)
+	    		{
+	    			this.htmlTemplate.put(p.pattern, p.value);
+	    		}
+	    		else
+	    			this.defaultHtmlTemplate = p.value;
+	    	}
+	    	else
+	    		parameters.put(p.name, p.value);
 	    }
 	    
 	   
@@ -214,6 +233,23 @@ public class Configuration {
 		return parameters;
 	}
 
+	// get a HTML template from a URI tail
+	public String getHtmlTemplate(String uriTail)
+	{
+		for(String p:this.htmlTemplate.keySet())
+		{
+			if (Pattern.matches(p, uriTail))
+			return htmlTemplate.get(p);
+		}
+		// fall back to default
+		if (this.defaultHtmlTemplate == null)
+		{
+			Logger.getAnonymousLogger().log(Level.SEVERE, "No default HTML template defined, could not find a template for uriTail");
+			return null;
+		}
+		else
+			return defaultHtmlTemplate;
+	}
 
 	/**
 	 * get the default languages, as defined in the configuration (defaultLanguages)
