@@ -1,0 +1,663 @@
+GSIP Mediator User Guide
+========================
+Eric Boisvert <eric.boisvert2@canada.ca>
+v1.0, April 2018:
+First version
+
+
+WARNING:  Work in progress, the documentation is far from complete.
+
+
+Introduction
+------------
+
+The GSIP mediator service is a simple LOD (Linked Open Data) resolution
+service for persistent identifiers.  Its role it to provide a description of a
+Non-Information URI (URI that represents "things" as an hypermedia document (HTML, RDF/XML, TTL and JSON-LD)
+linking this resource to information resources (actual document) in various
+formats and links to other non-information resources.
+
+GSIP stands for Groundwater Surface water Interoperability Pilot.  (TODO: maybe
+the application should be rename `gclod` or something like this). This application implements the Linked Open Data architecture designed for this project.
+
+== GSIP service
+
+The GSIP LOD architecture recognises three kinds of resources :
+
+* `Things`, or "real world things", are also named "Non-information Resource" because it's not about information, but about something that exists in the real world.
+* `Information` which is a document describing the real world `thing`.
+* `representation` of this real world thing: a picture, a document, a dataset, etc.
+
+GSIP is a service that provides access to a catalog of `things` and return `information` about them.
+The catalog contains essentially two kind of information:
+
+  * relations between `things` and other `things`
+	* relations between `things` and their `representations`
+
+== URI
+
+All resources (`thing`, `information`, `representation`) are resources identified on the web using a URI (https://en.wikipedia.org/wiki/Uniform_Resource_Identifier[Uniform Resource Identifier]).
+A URI is both an identifier and a location (making them URL : Universal Resource Locator), which can be used to access a representation from the web.
+
+=== Things
+
+By GSIP convention, `things` URI are structured as such
+
+`http(s)://{domain}/id/{category}/{item}`
+
+`/id/` is not a requirement to represent `things`, but it a mandatory syntax for GSIP with the current architecture.  The presence of `/id/` tells GSIP that this resources is a `thing`.
+This is a functional decision to efficiently manage request to the GSIP service. See <<Annex A : Change URI pattern>> to modify the default URI patterns.
+
+==== Example
+
+A real world catchment is assigned a GSIP URI
+
+https://geoconnex.ca/id/catchment/02OJ*CE
+
+This URI represents a `thing`.  It is not a document or a dataset, but the real catchment.  If you use this URI in a browser, you obviously won't download the catchment itself.
+In GSIP infrastructure, you will be redirected using https://en.wikipedia.org/wiki/HTTP_303[HTTP 303] to an `information` document.
+
+This `information` resource provided by GSIP has the same URI structure except the `/id/` is replaced by `/info/`.
+
+`http(s)://{domain}/info/{category}/{item}`
+
+eg: https://geoconnex.ca/info/catchment/02OJ*CE
+
+This is a document that can be downloaded from the web.
+
+=== Info resource
+
+The info resource, or info page if its format is in HTML,  is a description of a `thing`.  It provides two categories of information.
+
+* relations between this `thing` and other `things`
+* relations between this `thing` and its `representations`
+
+It also provides other ancillary information, such as labels, mime-types, types, etc, as convenience for users or client applications.  For GSIP, the HTML representation of this information is the Non-Information Resource landing page : what a browser will get it a NIR is dereferenced.
+
+=== Representations
+
+Representations are fuzzy concepts.  They are a mixture of "data models" and formats.  Many documents on the web can provide information about a real `thing`.  For a catchment, we can find wiki pages, HTML page from a watershed authority, a XML file with relevant data, or a plain text file.
+All those documents are *representations*. Representations are often conflated with the concept of format.
+
+In the context of GSIP, a representation equates to an information model.  The same information model (or data model) can be encoded in multiple formats in such as way that each of the formats can be converted into another one within the same representation.
+In a ideal world, the conversion would be perfect (no information loss), but in reality, not all formats have the same expressiveness.  For some formats, it's acceptable to assume the same representation if it's a reasonable subset, or simplification, of the same information model.
+
+For example, a GWML document can be expressed in GML/XML or RDF/TTL without any significant information loss, making them just different format for the same information model.  An HTML rendering of the same GML/XML can choose to represent part of the information model, for example, skipping the explicit unit of measure.  It's still the same information set. No new information is added.  Note that transforming the data into some other data, like calculating an average, is not considering "new information".  It's derived information.  A last example is a PNG image of a well log, generated from the data contained in the information set.  The process is destructive as there is no direct way to turn the png back into the original information.  But it's still considered the same "representation" for GSIP because it a view of the same information set.
+
+On the other hand, the same catchment description from two different sources will rarely have the same information set.  They can partially overlap. A the geometry for a catchment defined from dbpedia will likely be different, properties should be similar, but not identical:  either not the same precision, or simply because they are defined slightly differently.  They will in most cases be availably in the same formats, but with different information model, or different data content.
+
+A representation will often coincide with a data source (from a single provider) who will tend to derive several formats from the same data. In a nutshell, all those formats are based on the same information.
+
+==== Example
+
+Consider https://geoconnex.ca/id/swmonitoring/WSC_02OJ016, a surface water monitoring station. This has two representations
+
+image::img/rep_02OJ016.png[HTML landing page for a monitoring station]
+
+The first representation is historical data, available in two formats (HTML and GeoJSON) and the other is daily data, available in HTML and plain text.
+In this particular case, the data comes from the same source (https://wateroffice.ec.gc.ca), but they are not transformations one of the other.
+
+== Architecture
+
+GSIP is composed of 3 modules.
+
+* The RDF catalog
+* The dynamic content generator module (optional)
+* The data content negotiation module (optional)
+
+The central goal of the GSIP service is to generate `/info/` resources from a `/id/` resource.  An fully functional system can be created by filling all the required information into the RDF catalog. GSIP provides additional features to a) reduce the size of the RDF database by providing ways to generate properties by deriving from existing content and b) harmonize access to representations (`/data/`).
+
+=== RDF catalog
+
+GSIP keeps information about `things` in a RDF catalog.  The catalog is queried using https://en.wikipedia.org/wiki/SPARQL[SPARQL]
+GSIP can connect to an external (autonomous) catalog, as long as it exposed a SPARQL endpoint, or use an internal catalog.  The internal catalog is loaded in memory, so this option should restricted to small datasets. (TODO: define what small means)
+
+==== RDF Data model
+
+A typical entry for a `thing` looks like this (examples are in  https://en.wikipedia.org/wiki/Turtle_(syntax)[RDF/turtle])
+
+First, identification of the `thing` itself.
+
+[source,xml]
+----
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016>
+	a hy:HY_HydrometricFeature;
+	rdfs:label
+		"Station hydrometrique : RICHELIEU (RIVIERE) A LA MARINA DE SAINT-JEAN (02OJ016)"@fr,
+		"Hydrometric station : RICHELIEU (RIVIERE) A LA MARINA DE SAINT-JEAN (02OJ016)"@en.
+
+
+----
+
+Then links to `Representations` are expressed using `rdfs:seeAlso`
+
+[source,xml]
+----
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016>
+	rdfs:seeAlso
+		<https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ016>.
+----
+
+The data resource has optional labels, but must have `dct:format`.
+
+[source,xml]
+----
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ <https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ016>
+ 	rdfs:label
+		"Donn&acute;es en temps re&eacute;l"@fr,
+		"Data in real time"@en;
+	dct:format
+		"text/html",
+		"text/plain".
+----
+
+ And finally `things` can be linked to other things
+
+[source,xml]
+----
+ @prefix hy: <http://geosciences.ca/def/hydraulic#>.
+
+ <https://geoconnex.ca/id/swmonitoring/WSC_02OJ016>
+ 	hy:located-on
+		<https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>;
+ 	hy:inside
+		<https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+----
+
+Any arbitrary property can be used.  But if the RDF catalog can support some level entailment (the internal catalog supports OWL), the properties can be formally defined in the catalog.
+
+[source,xml]
+----
+
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix hy: <http://geosciences.ca/def/hydraulic#>.
+
+
+hy:HY_HydrometricStation rdf:type owl:Class;
+	rdfs:subClassOf hy:HY_HydrometricFeature;
+	rdfs:label "Station hydrometrique"@fr,"Hydrometric Station"@en.
+
+	hy:inside rdf:type owl:ObjectProperty,owl:TransitiveProperty.
+
+	hy:contains rdf:type owl:ObjectProperty,owl:TransitiveProperty;
+	        owl:inverseOf hy:inside.
+
+	hy:located-on rdf:type owl:ObjectProperty.
+----
+
+And a resource can be assigned a type.
+
+[source,xml]
+----
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016> a hy:HY_HydrometricFeature;
+----
+
+This implies that this explicit statement
+
+[source,xml]
+----
+@prefix hy: <http://geosciences.ca/def/hydraulic#>.
+
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016>
+	hy:inside
+		<https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+
+----
+
+implicitly means
+
+[source,xml]
+----
+@prefix hy: <http://geosciences.ca/def/hydraulic#>.
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+	hy:contains
+		<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016>.
+----
+
+
+== Interactions
+
+GSIP mediator processes URI based on their pattern. Some URI trigger special behaviors (/id/, /info/ and /data/) which are discussed below.  GSIP also exposes two API URI (/api/ and /resource/) which are not discussed at this point.
+In all cases, the client provides a preferred format for the response (eg. text/html) and GSIP mediator will consider it.
+
+=== /id/...
+
+GSIP will rewrite the URI into a /info/ URI and respond to the client with a HTTP 303 seeAlso to the /info/ URIs
+
+
+[source,bash]
+----
+$ curl -I https://geoconnex.ca/id/catchment/02OJ*CB
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+HTTP/1.1 303
+Date: Wed, 16 May 2018 22:28:55 GMT
+Server: Apache
+Location: https://geoconnex.ca/info/catchment/02OJ*CB
+----
+
+Note the Location: field with the /info/ url.  The client is expected to follow the 303 link and request the same format. Therefore, if the client asks for `https://geoconnex.ca/id/catchment/02OJ*CB` in HTML, it will also ask `https://geoconnex.ca/info/catchment/02OJ*CB` in HTML.
+
+`f` and `callback` query parameters are transfered to the /info/ URL (See format override and callback sections for more info)
+
+=== /info/
+
+When GSIP get an /info/ url, the following steps are executed.
+
+The /info/ is reverted to /id/ URI.  This URI is used to query the RDF catalog.
+
+A SPARQL query is send to the catalog to extract basic information.  The SPARQL is built from a FreeMarker template located in
+
+.template/describe.ftl
+[source,sparql]
+----
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+CONSTRUCT {<${resource}> ?p ?o. ?o rdfs:label ?o2. ?o dct:format ?o3}
+WHERE {<${resource}> ?p ?o. OPTIONAL {?o rdfs:label ?o2}. OPTIONAL {?o dct:format ?o3}. }
+LIMIT 100
+----
+
+`${resource}`` is substituted with the /id/ resource. This query basically extract all properties of the resource of interest and for the properties whose values are also resources, get all their properties.
+In other words, it get a all the nested values two levels down.
+
+(I don't remember why I explicitly constructed  rdfs:label and dct:format instead of grabbing everything)
+
+The template can be changed if needed.
+
+At this point, the mediator checks if dynamic statements can be generated.  It checks if the context resource matches any of the patterns provided in dynamic/conf.xml.  If a pattern matches, it will use the associated template to create new statements from elements of the context resource URI.
+The new statements are added to the model extracted from the RDF catalog (it can be empty) and then serialized according to the format requested by the client.
+
+If the requested format is HTML, and extra template is used to transform the model into a HTML document (a landing page) before serializing the result to the client.
+
+=== /data/
+
+The role of GSIP mediator is to turn a /data/ URL into another URL and redirect the client to the new location (or, in some cases, act as a reverse proxy and stream the file to the client).
+
+The mediator check in the data folder for a pattern that matches the /data/ URL and the format requested (eg, geojson). If a matches exist, it uses the associated FreeMarker template and rewrites a new URL. This new URL is either a) sent back to the client as a HTTP 303 see seeAlso, or the mediator pulls the content from the remote server and streams the file as-is to the client.
+
+==== Configuration
+
+GSIP can use an external SPARQL endpoint or has its own internal RDF catalog.
+
+This location of the catalog is specified in the configuration file.
+A value starting by http or https is considered as a SPARQL endpoint. Otherwise, GSIP considers that it is a pointer to a folder containing a collection or TTL (Turtle) files providing the database content, which be loaded when the service is started.
+
+
+[source,xml]
+----
+<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter>
+----
+
+
+[source,xml]
+----
+<p:parameter name="triplestore">/repos/gsip</p:parameter>
+----
+
+Another option is to use pseudo protocol `webapp:`
+
+[source,xml]
+----
+<p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
+----
+
+`webapp:` is a pseudo protocol telling GSIP the folder is located in the servlet webapp folder (here `{tomcat application folder}/gsip/webapp/repos/gsip`).
+
+This is useful when the only option to deploy the application and the data is through Tomcat application manager.
+
+== Folder structure
+
+TODO: allow WebContent to be outside the application
+
+The following folder are created at the root of the application (in addition to standard WEB-INF and META-INF)
+
+* app
+* conf
+* data
+* dynamic
+* repos
+* resources
+* schemas
+* templates
+
+=== app : Application folder
+
+This folder contains the demo application.  The resources (files) are exposed through `${baseUri}/gsip/app`.
+The folder is not required to run the gsip service.
+
+This folder goes through tomcat default servlet (just streams the data).  This is configured in web.xml
+
+[source,xml]
+----
+<servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>/app/*</url-pattern>
+</servlet-mapping>
+----
+
+
+=== conf: Configuration file
+
+The configuration file sets values used by GSIP.
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<p:configuration xmlns:p="urn:x-gsip:1.0">
+<!-- defines known types and the extensions that are associated -->
+	<p:types>
+		<p:type mime-type="application/vnd.geo+json" formats="geojson"/>
+		<p:type mime-type="text/csv" formats="csv"/>
+		<p:type mime-type="text/xml; subtype=gml/3.2.1" formats="gml"/>
+		<p:type mime-type="text/xml" formats="xml"/>
+		<p:type mime-type="application/rdf+xml" formats="rdf;rdf+xml"/>
+		<p:type mime-type="application/x-turtle" formats="ttl;turtle"/>
+		<p:type mime-type="application/json" formats="json"/>
+		<p:type mime-type="text/turtle" sameAs="application/x-turtle"/>
+		<p:type mime-type="text/plain" formats="txt"/>
+		<p:type mime-type="application/vnd.google-earth.kml+xml" formats="kml"/>
+	</p:types>
+	<p:parameters>
+  <!-- HTML landing page are built using templates,  template can be assigned based on URI pattern.  Default HTML template is the one without pattern attribute -->
+
+		<p:parameter name="infoTemplate">infohtml.ftl</p:parameter>
+    <p:parameter name="infoTemplate" pattern="http.*/geologicUnits/.*">geounits.ftl</p:parameter>
+
+		<p:parameter name="baseUri">https://geoconnex.ca</p:parameter>
+		<p:parameter name="proxdevuri">http://localhost:8080/gsip</p:parameter>
+		<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter>
+<!-- 		<p:parameter name="triplestore">http://localhost:8080/fuseki/gsip_file</p:parameter> -->
+		<p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
+		<p:parameter name="supportedLanguages">en,fr</p:parameter>
+		<p:parameter name="defaultLanguage">en</p:parameter>
+	</p:parameters>
+</p:configuration>
+----
+
+
+It's made of two sections, the first section provides a list of format overrides and their mime-type (see Harmonised GET override).
+
+The second section is a list of configuration keys used be the application.
+
+.template variables
+[options="header"]
+|========
+| Variable name | description |
+| infoTemplate | freemarker template for HTML landing page |
+| baseUri | Base URI the resources in the catalog.  This variable and the following `proxydevuri` and `gsip` has important ramifications on how the service works in different environments. This is discussed further below |
+| proxydevuri | Base URI to substitute the base uri in the catalog. Used to run in dev and staging environments |
+| gsip | Base URI of the gsip application, which may or may not be different from the baseURI of the resources in the catalog |
+| triplestore | location of the RDF catalog (see section on RDF catalog) |
+| supportedLanguages | comma delimited list of supported languages |
+| defaultLanguage | assumed language |
+|========
+
+
+=== data : /data/ content negotiation
+
+This folder contains a series of XML files to manage the access to representations.    Depending of you data sources, you might or might not need this feature.  If a representation can be expressed as a single external resource, this can be encoded directly in the RDF catalog (as a `rdf:seeAlso`) or as dynamic content.
+However, remote system rarely implement proper content negotiation, and remote system are notoriously heterogeneous.  The GSIP mediator can provide a URI for a representation by forcing the client to go through GSIP to get a representation and harmonize access to remote services.  It also deals with CORS (Cross Origin Resource Sharing) and HTTPS/HTTP mixed environments.
+
+==== provides a "clean" URL path by removing web services parameters
+
+For example, it can proxy a complex WFS request
+
+http://service.com/wfs?SERVICE=WFS&REQUEST=GetFeature&STOREDQUERY_ID=urn:ogc:def:query:OGC-WFS::GetFeatureById&ID=52
+
+by
+
+https://geoconnex.ca/data/aquifer/gwml/gwml/GIN/aq.52
+
+==== provides a "reverse proxy" to deal with CORS and HTTPS/HTTP mix
+
+Some external service might not authorise cross origin.  GSIP can be configures to act as a reverse proxy (get the content for you and stream it back to the client).
+
+
+==== provides proper content negotiation over multiple formats
+
+If multiple format are available for the same resourc, but from different sources, or using different API, GSIP can provide all those format under and single /data/ URI and provide content negotiation.
+
+==== provides an harmonised GET override
+
+As a convenience for people using a browser to access format non-HTML format, it is possible to override the content negotiation by providing an explicit request parameter.  Adding a `f=<format>` force GSIP to ignore the Accept HTTP header and provide the requested format.
+Unfortunately, there are no standard list of format name, nor a single parameter name (f=, format=,mime-type=, etc..) .  By forcing client to go through GSIP mediation, it can enforce a uniform override.
+
+The list of overrides is provided in the /conf/configuration.xml file.
+
+
+
+Note there is another strategy commonly used is to use a well known extension (.xml for xml document).  But we felt this was to restrictive.
+
+
+
+===  dynamic : Dynamic content
+
+Dynamic content is used to generate extra content for NIR (`things`) resource based on the structure of the URI.  The principal goal is to avoid loading the RDF triple store with triple that can be derived automatically from the structure of the `thing` URI.  For example, from this URI
+
+https://geoconnex.ca/id/waterwells/qc.1981_4671_100
+
+the /data/ URI can be inferred by using the same id (qc.1981_4671_10)
+
+https://geoconnex.ca/data/gwml/gwml1/gsip/gin/qc.1981_4671_10
+
+One option is to load the RDF database with explicit statements
+
+[source,xml]
+----
+<https://geoconnex.ca/id/waterwells/qc.1981_4671_100>
+rdfs:seeAlso <https://geoconnex.ca/data/gwml/gwml1/gsip/gin/qc.1981_4671_100>;
+<https://geoconnex.ca/data/gwml/gwml1/gsip/gin/qc.1981_4671_100>
+   rdfs:label "Puits 1981_4671_100 depuis RIES"@fr,"Well 1981_4671_100 from GIN"@en;
+	dct:format "text/xml","text/html","application/vnd.geo+json".
+----
+
+for each well.  For large database this will quickly add up.
+
+Another option is to provide a template to generate the derivable content.  The following template uses FreeMarker (https://freemarker.apache.org/) to generate extra RDF predicate (in Turtle)
+
+
+.waterwell.ftl
+[source,xml]
+----
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/>.
+<${resource}>
+rdfs:seeAlso <${baseUri}/data/gwml/gwml1/gsip/gin/${p2}>;
+<http://schema.org/name> "${p2}";
+<http://schema.org/image> <http://ngwd-bdnes.cits.nrcan.gc.ca/Reference/uri-cgi/feature/gsc/waterwell/${p2?replace("qc.","ca.qc.gov.wells.")}?format=png>.
+<${baseUri}/data/gwml/gwml1/gsip/gin/${p2}>
+   rdfs:label "Information depuis RIES"@fr,"Information from GIN"@en;
+	dct:format "text/xml","text/html","application/vnd.geo+json".
+<#if hasStatements == 'false'>
+<${resource}> rdfs:label "${p2}".
+</#if>
+----
+
+The template is provided with a series of variables that can be used in the template.  Freemarker identifies substitution variable with `${variable name}`, and executable code between `<#XXX> </#XXX>` brackets.  FreeMarker is a rather complete templating language similar to PHP, ASP or JSP.
+
+=== Variables
+
+.template variables
+[options="header"]
+|========
+| variable | description | example |
+|resource |/id/ resource |  https://geoconnex.ca/id/waterwells/qc.1981_4671_100 |
+|p1 | first element after /id/ | waterwells |
+|p2 | second element after /id/ | qc.1981_4671_10 |
+|p{n} | n element after /id/ | N/A in this case |
+|baseUri* | baseUri as defined in configuration.xml | https://geoconnex.ca |
+|hasStatements** | true is any statement exists in the RDF | 'true' |
+|model| ModelWrapper object that gives you access RDF catalog results | (see Appendix C)|
+|========
+
+(*) all configuration parameters (`p:parameter`) defined in ``conf/configuration.xml` are available.  You can add more if needed, as long as they don't interfere with reserved parameters.
+(**) The template can be used to create RDF on the fly even if there are no entry at all in the catalog.
+
+The mapping between the templates and the URI mapping is provides in the conf.xml file in /dynamic/ folder.
+
+
+ `<p:template name="watershed" pattern="^https?://.*/id/up_watershed/.*$" template="watershed.ftl" requiresEntry="false"/>`
+
+ * name is a convenience label
+ * pattern is a regex that matches a Non Information URI (/id/) and matches it to a template located in the template folder.
+ * template is the name of the template in the template folder.
+ * requiresEntry is a flag telling if a /id/ is needed in the catalog.  If "false", the template will be invoked even if no resource exists in the RDF catalog.
+
+ Example:
+
+.dynamic/conf.xml
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<p:Templates xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 ../schemas/DynamicTemplates.xsd ">
+  <p:template name="wells" pattern="^https?://.*/id/waterwells/.*$" template="waterwell.ftl" requiresEntry="false"/>
+ <p:template name="watershed" pattern="^https?://.*/id/up_watershed/.*$" template="watershed.ftl" requiresEntry="false"/>
+  <p:template name="watershed" pattern="^https?://.*/id/waterbody/.*$" template="waterbody.ftl" requiresEntry="false"/>
+  <p:template name="catchment" pattern="^https?://.*/id/catchment/.*$" template="catchment.ftl" requiresEntry="false"/>
+  <p:template name="swmonitoringq" pattern="^https?://.*/id/swmonitoring/MDDELCC.*$" template="swmonitoringq.ftl" requiresEntry="false"/>
+  <p:template name="swmonitoringf" pattern="^https?://.*/id/swmonitoring/WSC.*$" template="swmonitoringf.ftl" requiresEntry="false"/>
+  <p:template name="wellcatch" pattern="^https?://.*/id/featureCollection/wellsIn.*$" template="wellcatch.ftl" requiresEntry="false"/>
+  <p:template name="aquifer" pattern="^https?://.*/id/hydrogeounits/.*$" template="aquifer.ftl" requiresEntry="false"/>
+</p:Templates>
+----
+
+
+
+
+
+
+
+=== Harmonized GET override
+
+
+
+=== Configuration
+
+
+
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<p:data xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 file:///C:/java64_8/gsip/WebContent/schemas/data.xsd">
+	<!--  each elements are parsed into p1 to p{n}.  p0 = "data/x/y/z.." -->
+	<p:match pattern="aquifer/gwml/gwml/GIN/.*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html">http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit.html?ID=${p5?replace("Richelieu","")}</p:source>
+	</p:match>
+	<p:match pattern="aquifer/gwml/gwml/GIN/.*">
+		<p:mime-type>application/vnd.geo+json</p:mime-type>
+		<p:source>${gsip}/resources/aq/${p5?replace("Richelieu","aq")}</p:source>
+	</p:match>
+</p:data>
+----
+
+
+= Annex A : Modify the code
+
+== Change the default URIs
+
+The service use Jersey to handle endpoint, therefore it's simply a matter of changing `@Path` annotation to change the URI pattern.
+[source,java]
+----
+package nrcan.lms.gsc.gsip;
+// ...
+@Path("/id/{seg:.*}")
+public class NonInformationUri {
+----
+
+If your configure the web server (Apache modewrite), you also need to change that accordingly
+
+== Change the SPARQL engine
+
+The remote SPARQL enpoint is pretty much a single line of code in `nrcan.lms.gsc.gsip.triple.RemoteStore`
+
+
+
+[source,java]
+----
+// perform a sparql query on a data store
+	public Model getSparqlConstructModel(String sparql)
+	{
+		 Query query = QueryFactory.create(sparql);
+			  try ( RDFConnection conn = RDFConnectionFactory.connect(sparqlRepo) ) {
+		          return  conn.queryConstruct(query);
+		        }
+		 catch(Exception ex)
+		 {
+			 Logger.getAnonymousLogger().log(Level.SEVERE, "failed to execute [\n" + sparql + "]\n from " + sparqlRepo ,ex);
+
+		 }
+		 return null;
+
+	}
+----
+
+To create another RemoteStore, just create your own class extending `TripleStoreImpl` or implementing `TripleStore` interface.  But whatever technology used, the result must be a Jena `Model`, so you might have to load the remote server response into a `Model` manually.
+The procedure is rather trivial see: https://jena.apache.org/documentation/io/rdf-input.html.
+
+The easiest way is
+[source,java]
+----
+String rdfDataString = // some way to get RDF
+Model model = ModelFactory.createDefaultModel();
+model.read(new ByteArrayInputStream(rdfDataString.getBytes()), null);
+----
+
+image::img/triplestore.png[Triple store class model]
+
+= Annex B : Known issues
+
+== Prefixes defined for persistent URI
+
+Prefixes are often used to make URI more readable by replace to first portion of the uri by a small token.
+
+for example : `rdfs` stands for `http://www.w3.org/2000/01/rdf-schema#` , therefore
+
+`rdfs:label` is equivalent to http://www.w3.org/2000/01/rdf-schema#labels
+
+It is tempting to apply the same logic to NIR URI by using a prefix to return
+
+https://geoconnex.ca/id/aquifers/Richelieu into `aquifers:Richelieu` (assuming `aquifers` is bounded to https://geoconnex.ca/id/aquifers/).
+Prefix aware format and software ingesting them should be perfectly fine with either representations.  But it's not clear what will happen for other formats.  Keep in mind that URI for things can appear anywhere (eg: in a geojson file as a regular string).  Because the string representing the resource is also a URL (a location on the web), prefixed string must be expanded to full URI before being used and it's not garantee web client application (often interacting in JSON) will execute this step.
+
+for this reason, we suggest not using prefix for NIR until best practices are established.
+(TODO: check if best practices exists)
+
+= Annex C : ModelWrapper
+
+ModelWrapper is an object used in some template to provide convenience function to extract information from a RDF model. It is rather minimal but can be extended.  The variable is a instance of ModelWrapper loaded with the current RDF model.  It is invoked using the familiar dot notation:
+
+[source,java]
+----
+model.getPreferredLabel("en");
+----
+
+when inside `<#XX /#XX>` brackets or
+
+[source,xml]
+----
+${model.getPreferredLable("en")}
+----
+
+if invoked directly in the body of the template.
+
+Full list of function is available by looking at `nrcan.lms.gsc.gsip.model.ModelWrapper` source code. All public methods are available.
+
+The ModelWrapper has a context Resource (the resource /id/ resource that was originally invoked), therefore a lot of function are duplicated:
+
+- function accepting Jena Resource parameters
+- function accepting Resource as a String
+- function without Resource parameter, then the context Resource is implied.

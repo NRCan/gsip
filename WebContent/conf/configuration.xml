@@ -12,6 +12,7 @@
 		<p:type mime-type="text/plain" formats="txt"/>
 		<p:type mime-type="application/vnd.google-earth.kml+xml" formats="kml"/>
 	</p:types>
+	
 	<p:parameters>
 
 <!--  Persistent URI (those in the catalog or in static resources) which will be used in production  -->
@@ -45,7 +46,10 @@
 <!-- 		<p:parameter name="triplestore">http://localhost:8080/fuseki/gsip_file</p:parameter> -->
 			<p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
 
-		<p:parameter name="infoTemplate">infohtml.ftl</p:parameter>
+		<p:parameter name="infoTemplate">infohtml.ftl</p:parameter> <!--  default  -->
+		<!--  special template for geologic units (pattern starts after /id/) -->
+		<p:parameter name="infoTemplate" pattern="http.*/geologicUnits/.*">geounits.ftl</p:parameter>
+		
 		<p:parameter name="supportedLanguages">en,fr</p:parameter>
 		<p:parameter name="defaultLanguage">en</p:parameter>
 		
