@@ -132,11 +132,6 @@ rdfs:label "Montreal Formation"@en,"Formation de Montr&eacute"@fr;
 gsmlb:rank rank:formation;
 rdfs:seeAlso <https://weblex.nrcan.gc.ca/html/010000/GSCC00053010067.html>.
 
-<https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658> a gsmlb:GeologicUnit;
-rdfs:label "Neuville Formation"@en,"Formation de Neuville"@fr;
-gsmlb:rank rank:formation;
-rdfs:seeAlso <https://weblex.nrcan.gc.ca/html/010000/GSCC00053010658.html>.
-
 <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010757> a gsmlb:GeologicUnit;
 rdfs:label "Nicolet Formation"@en,"Formation de Nicolet"@fr;
 gsmlb:rank rank:formation;
