@@ -47,7 +47,7 @@
 							<p class="mb-0">
 								<strong>Identifier: </strong>
 								<samp>
-									<a href=${model.getContextResourceUri()}">${model.getContextResourceUri()}</a>
+									<a href="${model.getContextResourceUri()}">${model.getContextResourceUri()}</a>
 								</samp>
 							</p>
 						</div>

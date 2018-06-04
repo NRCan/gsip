@@ -47,7 +47,7 @@
 							<p class="mb-0">
 								<strong>Identifier: </strong>
 								<samp>
-									<a href=${model.getContextResourceUri()}">${model.getContextResourceUri()}</a>
+									<a href="${model.getContextResourceUri()}">${model.getContextResourceUri()}</a>
 								</samp>
 							</p>
 						</div>
@@ -81,7 +81,7 @@
 								<li><samp>
 										<strong>${model.getPreferredLabel(r, "en", "No label")}</strong>
 										<#list model.getFormats(r) as f>
-											<a href="${model.getFormatOverride(r,f)}">${f}</a> 
+											<a href="${model.getFormatOverride(r,f)}">${f!unknown}</a> 
 										</#list>
 									</samp>
 								</li>
@@ -104,9 +104,9 @@
 										<#list grp[p] as link>
 										<a
 											href="${link.getUrl()}"
-											title="${link.getUrl()}">${link.getResLabel()}</a> 
+											title="${link.getUrl()}">${link.getResLabel()}</a>
 										</#list>
-										
+
 										</li>
 									</#list>
 									</ul>
@@ -120,12 +120,12 @@
 										<a
 											href="${l.getUrl()}"
 											title="${l.getUrl()}">${l.getResLabel()}</a> : <strong>${l.getLabel()}</strong>
-										</#list> 
-										
+										</#list>
+
 										</li>
 									</#list>
-									
-										
+
+
 									</ul>
 								</div>
 							</div>
@@ -144,19 +144,19 @@
 	</footer>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
 		crossorigin="anonymous" type="text/javascript">
-		
+
 	</script>
 	<script src="${host}/app/js/poppermin.js"
 		type="text/javascript">
-		
+
 	</script>
 	<script src="${host}/app/js/bootstrapmin.js"
 		type="text/javascript">
-		
+
 	</script>
 	<script src="${host}/app/js/ieworkaround.js"
 		type="text/javascript">
-		
+
 	</script>
 </body>
 <script language="" type="application/ld+json">
