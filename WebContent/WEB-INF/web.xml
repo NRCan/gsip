@@ -2,40 +2,31 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>gsip</display-name>
   <servlet>
-  	<servlet-name>ServletContainer</servlet-name>
-     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-        <init-param>
-            <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>nrcan.lms.gsc.gsip</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-    	<servlet-name>default</servlet-name>
-    	<url-pattern>/app/*</url-pattern>
-	</servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletContainer</servlet-name>
-        <url-pattern>/*</url-pattern>
-    </servlet-mapping>
-     <listener>
-	<listener-class>
+    <servlet-name>ServletContainer</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>nrcan.lms.gsc.gsip</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/app/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletContainer</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>
             nrcan.lms.gsc.gsip.app.Listener
         </listener-class>
-   </listener>
-   
-   <context-param>
+  </listener>
+  <context-param>
     <description>Configuration file location</description>
     <param-name>conf</param-name>
-     <param-value>conf/configuration.xml</param-value>
-<!--        <param-value>http://w-stf-a128913.nrn.nrcan.gc.ca:8085/fuseki/gsip_file</param-value> -->
-    <!--       <param-value>http://s-stf-gin.nrn.nrcan.gc.ca:8085/fuseki/gsip_file</param-value> -->
-
+    <param-value>conf/configuration.xml</param-value>
   </context-param>
-  
-
-  
-
-  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -44,5 +35,4 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
 </web-app>

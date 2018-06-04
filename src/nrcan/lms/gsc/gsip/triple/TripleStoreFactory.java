@@ -40,7 +40,13 @@ public class TripleStoreFactory {
 			// check if it's a local resource (webapp)
 			if (tpconf.startsWith("webapp:"))
 			{
+				
 				String p = context.getRealPath(tpconf.replaceFirst("webapp:", ""));
+				//String p = context.getClass().getResource(tpconf.replaceFirst("webapp:", "")).getPath();
+				if (p == null)
+				{
+					Logger.getAnonymousLogger().log(Level.SEVERE, "could not get real path for " + tpconf.replaceFirst("webapp:", ""));
+				}
 				return new EmbeddedStore(p);
 				
 			}
