@@ -12,3 +12,6 @@ target/*
 */target/*
 /bin/
 /target/
+*.swp
+bfg-1.13.0.jar
+
