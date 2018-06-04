@@ -41,7 +41,7 @@ public class TripleStoreFactory {
 			if (tpconf.startsWith("webapp:"))
 			{
 				
-				String p = context.getRealPath(tpconf.replaceFirst("webapp:", ""));
+				String p = context.getRealPath(tpconf.replaceFirst("webapp:", "/"));
 				//String p = context.getClass().getResource(tpconf.replaceFirst("webapp:", "")).getPath();
 				if (p == null)
 				{
