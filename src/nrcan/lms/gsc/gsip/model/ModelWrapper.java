@@ -248,9 +248,16 @@ public class ModelWrapper {
 	 */
 	public Map<String,List<Link>> getRelevantLinkByProperty(Resource r)
 	{
+		try {
 		return getRelevantLinkByGroup(r,new Aggregation() {
 			public String getKey(Link l) {return l.getLabel();}}
 			);
+		}
+		catch(Exception e)
+		{
+			Logger.getAnonymousLogger().log(Level.SEVERE, "Problem getting relevant links by properties", e);
+			return new Hashtable<String,List<Link>>(); // empty list
+		}
 	}
 	
 	/**
@@ -260,9 +267,16 @@ public class ModelWrapper {
 	 */
 	public Map<String,List<Link>> getRelevantLinkByResource(Resource r)
 	{
+		try {
 		return getRelevantLinkByGroup(r,new Aggregation() {
 			public String getKey(Link l) {return l.getUrl();}}
 			);
+		}
+		catch(Exception e)
+		{
+			Logger.getAnonymousLogger().log(Level.SEVERE, "Problem getting relevant links by resource", e);
+			return new Hashtable<String,List<Link>>(); // empty list
+		}
 
 	}
 	
