@@ -7,7 +7,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <link rel="icon" href="${host}/app/img/favicon.ico" />
-<title>Catchment</title>
+<title>Resource</title>
 <link href="${host}/app/css/bootstrapmin.css" rel="stylesheet" />
 <link href="${host}/app/css/navbartopfixed.css" rel="stylesheet" />
 <style type="text/css">
