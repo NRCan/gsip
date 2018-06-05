@@ -58,7 +58,7 @@
 								alt="View in RFF/XML format"
 								src="${host}/app/img/rdfxmlicon.png"
 								style="max-width: 35px; padding: 10px 5px 0 5px" /></a><a
-								href="${model.getContextResourceUri()}f=json"
+								href="${model.getContextResourceUri()}?f=json"
 								target="_blank"><img class="img-fluid"
 								title="Display page in JSON-LD format"
 								alt="View in JSON-LD format"
