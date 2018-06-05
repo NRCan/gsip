@@ -4,6 +4,7 @@
 @prefix mdl:    <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage#> .
 
 @prefix iso19150-2: <http://def.isotc211.org/iso19150-2/2012/base#> .
+@prefix dct: <http://purl.org/dc/terms/>.
 @prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
@@ -14,50 +15,50 @@
 @prefix rank: <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/>.
 @prefix guhr: <http://resource.geosciml.org/classifier/cgi/geologicunithierarchicrole/>.
 
-<https://geoconnex.ca/id/mapunit/292441/85> rdfs:label "Ola"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/293> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/29> rdfs:label "Ola"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/278> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/315> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/279> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/277> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/283> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/287> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/131> rdfs:label "Obh"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/000000/GSCC00053000990>.
-<https://geoconnex.ca/id/mapunit/292441/146> rdfs:label "Ole"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/011000/GSCC00053011490>,<https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008397>,<https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008833>.
-<https://geoconnex.ca/id/mapunit/292441/141> rdfs:label "Omo"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010067>,<https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658>.
-<https://geoconnex.ca/id/mapunit/292441/213> rdfs:label "Oib"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/006000/GSCC00053006880>.
-<https://geoconnex.ca/id/mapunit/292441/142> rdfs:label "Olv"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008293>.
-<https://geoconnex.ca/id/mapunit/292441/112> rdfs:label "Oth"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/003000/GSCC00053015117>.
-<https://geoconnex.ca/id/mapunit/292441/100> rdfs:label "Obh"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/000000/GSCC00053000990>.
-<https://geoconnex.ca/id/mapunit/292441/272> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/316> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/281> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/161> rdfs:label "Crc"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/285> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/229> rdfs:label "Out"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015716>.
-<https://geoconnex.ca/id/mapunit/292441/157> rdfs:label "Osm"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010067>,<https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658>.
-<https://geoconnex.ca/id/mapunit/292441/271> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/31> rdfs:label "Oha"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/58> rdfs:label "Cca"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/017000/GSCC00053017020>.
-<https://geoconnex.ca/id/mapunit/292441/202> rdfs:label "Crc"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/299> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/286> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/313> rdfs:label "Crc"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/7> rdfs:label "Otv"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658>,<https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015084>,<https://geoconnex.ca/id/geologicUnits/006000/GSCC00053006003>.
-<https://geoconnex.ca/id/mapunit/292441/250> rdfs:label "Ood1"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/135> rdfs:label "Crc"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/282> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/262> rdfs:label "Obe"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/001000/GSCC00053001039>.
-<https://geoconnex.ca/id/mapunit/292441/194> rdfs:label "Opo"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/012000/GSCC00053012027>.
-<https://geoconnex.ca/id/mapunit/292441/294> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/264> rdfs:label "Opo"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/012000/GSCC00053012027>.
-<https://geoconnex.ca/id/mapunit/292441/291> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/292> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/270> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/48> rdfs:label "Osp"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/014000/GSCC00053014607>.
-<https://geoconnex.ca/id/mapunit/292441/284> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/150> rdfs:label "Crc"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/265> rdfs:label "Oni"; a gsmlb:MappedUnit; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010757>.
-<https://geoconnex.ca/id/mapunit/292441/34> rdfs:label "Cmo"; a gsmlb:MappedUnit.
-<https://geoconnex.ca/id/mapunit/292441/295> rdfs:label "Cmo"; a gsmlb:MappedUnit.
+<https://geoconnex.ca/id/mapunit/292441/85> rdfs:label "Ola"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/293> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/29> rdfs:label "Ola"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/278> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/315> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/279> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/277> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/283> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/287> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/131> rdfs:label "Obh"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/000000/GSCC00053000990>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/146> rdfs:label "Ole"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/011000/GSCC00053011490>,<https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008397>,<https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008833>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/141> rdfs:label "Omo"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010067>,<https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/213> rdfs:label "Oib"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/006000/GSCC00053006880>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/142> rdfs:label "Olv"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008293>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/112> rdfs:label "Oth"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/003000/GSCC00053015117>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/100> rdfs:label "Obh"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/000000/GSCC00053000990>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/272> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/316> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/281> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/161> rdfs:label "Crc"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/285> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/229> rdfs:label "Out"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015716>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/157> rdfs:label "Osm"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010067>,<https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658>.
+<https://geoconnex.ca/id/mapunit/292441/271> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/31> rdfs:label "Oha"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/58> rdfs:label "Cca"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/017000/GSCC00053017020>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/202> rdfs:label "Crc"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/299> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/286> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/313> rdfs:label "Crc"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/7> rdfs:label "Otv"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658>,<https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015084>,<https://geoconnex.ca/id/geologicUnits/006000/GSCC00053006003>.
+<https://geoconnex.ca/id/mapunit/292441/250> rdfs:label "Ood1"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/135> rdfs:label "Crc"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/282> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/262> rdfs:label "Obe"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/001000/GSCC00053001039>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/194> rdfs:label "Opo"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/012000/GSCC00053012027>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/294> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/264> rdfs:label "Opo"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/012000/GSCC00053012027>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/291> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/292> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/270> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/48> rdfs:label "Osp"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/014000/GSCC00053014607>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/284> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/150> rdfs:label "Crc"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/265> rdfs:label "Oni"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010757>.
+<https://geoconnex.ca/id/mapunit/292441/34> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
+<https://geoconnex.ca/id/mapunit/292441/295> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.

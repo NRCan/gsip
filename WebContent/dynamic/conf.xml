@@ -8,4 +8,5 @@
   <p:template name="swmonitoringf" pattern="^https?://.*/id/swmonitoring/WSC.*$" template="swmonitoringf.ftl" requiresEntry="false"/>
   <p:template name="wellcatch" pattern="^https?://.*/id/featureCollection/wellsIn.*$" template="wellcatch.ftl" requiresEntry="false"/>
   <p:template name="aquifer" pattern="^https?://.*/id/hydrogeounits/.*$" template="aquifer.ftl" requiresEntry="false"/>
+  <p:template name="dataset" pattern="^https?://.*/id/dataset/gin-.*$" template="gin_dataset.ftl" requiresEntry="false"/>
 </p:Templates>

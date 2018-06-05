@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:data xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 file:///C:/java64_8/gsip/WebContent/schemas/data.xsd">
+	<!--  each elements are parsed into p1 to p{n}.  p0 = "data/x/y/z.." -->
+	<p:match pattern="dataset/gin/gin/GIN/gin-.*">
+		<p:mime-type>text/html</p:mime-type>
+		<!--  can have more -->
+		<p:source header="Accept:text/html">http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.download.html?id=${p5?replace("gin-","")}</p:source>
+	</p:match>
+	<p:match pattern="dataset/gin/gin/GIN/gin-.*">
+		<p:mime-type>application/vnd.geo+json</p:mime-type>
+		<p:source header="text/xml">http://gin.gw-info.net/SpatialConversionEngine/gw_data/get/${p5?replace("gin-","")}?f=GeoJSON</p:source>
+	</p:match>
+	<p:match pattern="dataset/gin/gin/GIN/gin-.*">
+		<p:mime-type>application/vnd.google-earth.kml+xml</p:mime-type>
+		<p:source header="text/xml">http://gin.gw-info.net/SpatialConversionEngine/gw_data/get/${p5?replace("gin-","")}?f=KML</p:source>
+	</p:match>
+	<p:match pattern="dataset/gin/gin/GIN/gin-.*">
+		<p:mime-type>application/x-esri-shape</p:mime-type>
+		<p:source header="text/xml">http://gin.gw-info.net/SpatialConversionEngine/gw_data/get/${p5?replace("gin-","")}?f=ESRI%20Shapefile</p:source>
+	</p:match>
+
+</p:data>
+
