@@ -4,9 +4,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,6 +44,7 @@ import nrcan.lms.gsc.gsip.conf.Configuration;
  */
 
 public class ModelWrapper {
+
 	private Model model;
 	private Resource contextResource;
 	//TODO. I should get the default baseUri from context, not hardcoded
@@ -318,7 +321,7 @@ public class ModelWrapper {
 			if (RDFS.getURI().equals(ns)) continue;
 			if (RDF.getURI().equals(ns)) continue;
 			if (OWL.getURI().equals(ns)) continue;
-			if (DCTerms.getURI().equals(ns)) continue;
+			//if (DCTerms.getURI().equals(ns)) continue;
 			// if we're here, we're good
 			// the object must be a resource
 			if (statement.getObject().isResource())
