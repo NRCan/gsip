@@ -11,6 +11,12 @@
 		<p:type mime-type="text/turtle" sameAs="application/x-turtle"/>
 		<p:type mime-type="text/plain" formats="txt"/>
 		<p:type mime-type="application/vnd.google-earth.kml+xml" formats="kml"/>
+		<p:type mime-type="application/gml+xml" formats="gml"/>
+		<p:type mime-type="application/x-esri-shape" formats="shp"/>
+
+		
+		
+		
 	</p:types>
 	
 	<p:parameters>
