@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:data xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 file:///C:/java64_8/gsip/WebContent/schemas/data.xsd">
+	<!--  each elements are parsed into p1 to p{n}.  p0 = "data/x/y/z.." -->
+	<p:match pattern="weblex/gsc/weblex/.*/.*">
+		<p:mime-type>text/html</p:mime-type>
+		<p:source header="Accept:text/html">https://weblex.nrcan.gc.ca/html/${p4}/${p5}.html</p:source>
+	</p:match>
+	<p:match pattern="weblex/gsc/weblex/.*/.*">
+		<p:mime-type>application/json</p:mime-type>
+		<p:source header="application/json">https://weblex.nrcan.gc.ca/ws/lexrest.svc/lithobyid/${p5}.json</p:source>
+	</p:match>
+	<p:match pattern="weblex/gsc/weblex/.*/.*">
+		<p:mime-type>text/xml</p:mime-type>
+		<p:source header="text/xml">https://weblex.nrcan.gc.ca/ws/lexrest.svc/lithobyid/${p5}.xml</p:source>
+	</p:match>
+
+
+</p:data>
+
