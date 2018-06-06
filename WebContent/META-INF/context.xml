@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true" docBase="webapps/gfm">
+
+     <WatchedResource>/</WatchedResource>
+
+	<!-- Specify a JDBC datasource -->
+	<!-- http://viralpatel.net/blogs/database-connection-pooling-tomcat-eclipse-db/ -->
+	<Resource name="jdbc/gsip" auth="Container"
+		type="javax.sql.DataSource" username="gsip" password="?gsip?"
+		driverClassName="org.postgresql.Driver"
+		url="jdbc:postgresql://localhost/gsip"
+		maxTotal="10" maxIdle="4"
+		removeAbandoned="true"
+        removeAbandonedTimeout="60"
+        abandonWhenPercentageFull="50"
+		closeMethod="close" />
+</Context>
