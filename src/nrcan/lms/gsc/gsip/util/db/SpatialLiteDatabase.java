@@ -20,12 +20,16 @@ import java.util.logging.Logger;
 public class SpatialLiteDatabase extends DatabaseImpl {
 	
 	@Override
-	public void executeRequestQuery(String sql, ResultSetReader r) throws SQLException {
+	public void executeRequestQuery(String sql, ResultSetReader r) {
 		
 		Statement stat = null;
 		ResultSet reader = null;
+		Connection conn = null;
 		try {
-		Connection conn = getConnection(prop,connectionString);
+		conn = getConnection(prop,connectionString);
+		Statement stmt = conn.createStatement();
+		stmt.execute("SELECT load_extension('mod_spatialite')");
+		
 		
 		if (r.start())
 		{
@@ -44,6 +48,17 @@ public class SpatialLiteDatabase extends DatabaseImpl {
 		catch(SQLException e)
 		{
 			Logger.getAnonymousLogger().log(Level.SEVERE, "error in ", e);
+			
+		}
+		finally
+		{
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					Logger.getAnonymousLogger().log(Level.SEVERE, "could not close connection " + connectionString,e);
+				}
 		}
 		
 		
@@ -62,9 +77,11 @@ public class SpatialLiteDatabase extends DatabaseImpl {
 	 * 
 	 * @param connectionString
 	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public SpatialLiteDatabase(String connectionString) throws SQLException
+	public SpatialLiteDatabase(String connectionString) throws SQLException, ClassNotFoundException
 	{
+		Class.forName("org.sqlite.JDBC");
 		prop = new Properties();
         prop.setProperty("enable_shared_cache", "true");
         prop.setProperty("enable_load_extension", "true");

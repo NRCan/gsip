@@ -201,11 +201,13 @@
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/org.xerial/spatialite-jdbc -->
+<!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
 <dependency>
     <groupId>org.xerial</groupId>
-    <artifactId>spatialite-jdbc</artifactId>
-    <version>4.3.0a</version>
+    <artifactId>sqlite-jdbc</artifactId>
+    <version>3.23.1</version>
 </dependency>
+
 
     
     
