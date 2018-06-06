@@ -9,14 +9,6 @@ Collaboration between [Environment and Climate Change Canada (ECCC)](https://www
 [Meteorological Service of Canada](https://www.canada.ca/en/services/environment/weather.html), [Water Survey of Canada](https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey.html) (part of ECCC)
 
 
-## Building notes
-
-sqllite support requires a .jar from https://github.com/benstadin/spatialite4-jdbc/blob/master/release/spatialite-jdbc-4.3.0a.jar
-
-you need to download it and then register it in your local maven repo
-
-```mvn install:install-file -Dfile=spatialite-jdbc-4.3.0a.jar -DgroupId=org.xerial -DartifactId=spatialite-jdbc -Dversion=4.3.0a -Dpackaging=jar -DgeneratePom=true```
-
 ## Documentation
 
 Find documentation in `/doc` folder
