@@ -33,6 +33,7 @@ import java.util.regex.Pattern;
  *
  */
 
+
 @Path("resources/{category}/{item}")
 public class Resource {
 	// this is probably overkill since the matching is now done with Jersey, so there are no way (?) to escalate the path (ie ../../)

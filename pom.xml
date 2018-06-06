@@ -200,6 +200,13 @@
     <version>3.6</version>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.xerial/spatialite-jdbc -->
+<dependency>
+    <groupId>org.xerial</groupId>
+    <artifactId>spatialite-jdbc</artifactId>
+    <version>4.3.0a</version>
+</dependency>
+
     
     
   </dependencies>
