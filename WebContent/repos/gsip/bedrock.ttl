@@ -45,7 +45,7 @@
 <https://geoconnex.ca/id/mapunit/292441/299> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
 <https://geoconnex.ca/id/mapunit/292441/286> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
 <https://geoconnex.ca/id/mapunit/292441/313> rdfs:label "Crc"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
-<https://geoconnex.ca/id/mapunit/292441/7> rdfs:label "Otv"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658>,<https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015084>,<https://geoconnex.ca/id/geologicUnits/006000/GSCC00053006003>.
+<https://geoconnex.ca/id/mapunit/292441/7> rdfs:label "Otv"; a gsmlb:MappedFeature; gsmlb:specification <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658>,<https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015084>,<https://geoconnex.ca/id/geologicUnits/006000/GSCC00053006003>;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
 <https://geoconnex.ca/id/mapunit/292441/250> rdfs:label "Ood1"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
 <https://geoconnex.ca/id/mapunit/292441/135> rdfs:label "Crc"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
 <https://geoconnex.ca/id/mapunit/292441/282> rdfs:label "Cmo"; a gsmlb:MappedFeature;dct:isPartOf <https://geoconnex.ca/id/dataset/gin-13>.
