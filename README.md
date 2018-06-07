@@ -8,6 +8,10 @@ Collaboration between [Environment and Climate Change Canada (ECCC)](https://www
 
 [Meteorological Service of Canada](https://www.canada.ca/en/services/environment/weather.html), [Water Survey of Canada](https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey.html) (part of ECCC)
 
+## Note 
+
+This version (merged from sqllite) now need to configure /META-INF/context.xml to add a database connection.  This is only important if you plan to use the demo dataset that comes with this application.
+In the worst case, some links will 404.. this is how the web works after all.
 
 ## Documentation
 
