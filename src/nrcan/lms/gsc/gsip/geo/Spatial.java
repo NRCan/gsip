@@ -24,9 +24,15 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
+import nrcan.lms.gsc.gsip.Constants;
+import nrcan.lms.gsc.gsip.Manager;
 import nrcan.lms.gsc.gsip.util.db.Binder;
 import nrcan.lms.gsc.gsip.util.db.Database;
 import nrcan.lms.gsc.gsip.util.db.ResultSetReader;
+
+import org.json.simple.JSONObject;
+
+import freemarker.template.utility.StringUtil;
 
 
 //TODO: user a proper geoJSON serialization, I've done manual encoding
@@ -41,7 +47,7 @@ public class Spatial {
 			"    'geometry',   ST_AsGeoJSON(geom)::json,\r\n" + 
 			"    'properties', json_build_object(\r\n" + 
 			"        'id', id,\r\n" + 
-			"        'name', name,\r\n" + 
+			"        'name', unit_code,\r\n" + 
 			"        'uri', uri\r\n" + 
 			"     )\r\n" + 
 			" )\r\n" + 
@@ -52,7 +58,7 @@ public class Spatial {
 			"    'geometry',   ST_AsGeoJSON(geom)::json,\r\n" + 
 			"    'properties', json_build_object(\r\n" + 
 			"        'id', id,\r\n" + 
-			"        'name', name,\r\n" + 
+			"        'name', unit_code,\r\n" + 
 			"        'uri', uri\r\n" + 
 			"     )\r\n" + 
 			" )\r\n" + 
@@ -114,6 +120,10 @@ public class Spatial {
 		}
 		private Writer w;
 		private boolean hasRecord = false;
+		private boolean needReplacePersistantUri = Manager.getInstance().getConfiguration().getNeedReplacePersistant();
+		private String persistentUri = Manager.getInstance().getConfiguration().getParameterAsString(Constants.PERSISTENT_URI, null);
+		private String baseUri = Manager.getInstance().getConfiguration().getParameterAsString(Constants.BASE_URI,context.getContextPath());
+
 		@Override
 		public boolean start() {
 			// TODO Auto-generated method stub
@@ -138,7 +148,14 @@ public class Spatial {
 				
 			}
 			
-			w.write(r.getString(1));
+			String record = r.getString(1);
+			//TODO: issue, postgresql does not replace // with \/\/.. not sure it's necessary actually.
+			if (this.needReplacePersistantUri)
+
+				w.write(StringUtil.replace(record, this.persistentUri, this.baseUri));
+
+			else
+				w.write(record);
 			
 			hasRecord = true;
 			return true;

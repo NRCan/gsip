@@ -18,6 +18,8 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.catalina.loader.ParallelWebappClassLoader;
 
+import nrcan.lms.gsc.gsip.Constants;
+import nrcan.lms.gsc.gsip.Manager;
 import nrcan.lms.gsc.gsip.conf.ParametersType.Parameter;
 
 
@@ -42,6 +44,8 @@ public class Configuration {
 	private Hashtable<String,String> htmlTemplate = null;
 	private String defaultHtmlTemplate = null;
 	private ConfigurationType conf = null;
+	// check if we need to replace persistant URI with a baseURI
+	private boolean needReplacePersistant =false; 
 	
 	private Configuration()
 	{
@@ -186,7 +190,21 @@ public class Configuration {
 	    		parameters.put(p.name, p.value);
 	    }
 	    
+	    // check if we need to change persistant
+		String persistentUri = getParameterAsString(Constants.PERSISTENT_URI, null);
+		// TODO, this does not substitute missing baseURI with the ServletContext URI
+		String baseUri = getParameterAsString(Constants.BASE_URI,null);
+		this.needReplacePersistant = !persistentUri.equals(baseUri);
+		
+		
+
+	    
 	   
+	}
+	
+	public boolean getNeedReplacePersistant()
+	{
+		return this.needReplacePersistant;
 	}
 	
 	/**
