@@ -12,6 +12,9 @@ import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.DatasetFactory;
 import org.apache.jena.query.ReadWrite;
+import org.apache.jena.query.ResultSet;
+import org.apache.jena.query.ResultSetFactory;
+import org.apache.jena.query.ResultSetRewindable;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdfconnection.RDFConnection;
@@ -34,14 +37,33 @@ public class EmbeddedStore extends TripleStoreImpl {
 
 			Model m = null;
 			try(RDFConnection conn = RDFConnectionFactory.connect(ds)){
-			
+	
 			m = conn.queryConstruct(sparql);
+			return m;
+			}
+			catch(Exception ex)
+			{
+				Logger.getAnonymousLogger().log(Level.SEVERE, "Failed to execute [" + sparql + "]");
+				return null;
 			}
 			
-			return m;
+			
 			
 	
 		
+	}
+	
+	public ResultSetRewindable getSparqlSelect(String query)
+	{
+		try(RDFConnection conn = RDFConnectionFactory.connect(ds)){
+		 ResultSet rs = conn.query("SELECT * { ?s ?p ?o }").execSelect() ;
+         return ResultSetFactory.copyResults(rs) ;
+		}
+		catch(Exception ex)
+		{
+			Logger.getAnonymousLogger().log(Level.SEVERE,"Failed to execute SELECT query [" + query + "]",ex);
+			return null;
+		}
 	}
 
 	private Dataset ds;
