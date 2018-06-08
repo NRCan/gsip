@@ -13,6 +13,7 @@ target/*
 /bin/
 /target/
 /WebContent/META-INF/context.xml
+*.bak
 *.swp
 bfg-1.13.0.jar
 

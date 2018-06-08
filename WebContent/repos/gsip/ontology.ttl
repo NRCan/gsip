@@ -56,7 +56,7 @@ hy:inside rdf:type owl:ObjectProperty,owl:TransitiveProperty.
 hy:contains rdf:type owl:ObjectProperty,owl:TransitiveProperty;
         owl:inverseOf hy:inside.
 		
-gw:inside rdf:type owl:ObjectProperty.
+hy:inside rdf:type owl:ObjectProperty.
 
 hy:located-on rdf:type owl:ObjectProperty.
 
