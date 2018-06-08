@@ -44,9 +44,9 @@ public class RemoteStore extends TripleStoreImpl {
 		 catch(Exception ex)
 		 {
 			 Logger.getAnonymousLogger().log(Level.SEVERE, "failed to execute [\n" + sparql + "]\n from " + sparqlRepo ,ex);
-			 
+			 return null;
 		 }
-		 return null;
+		
 			 
 	}
 	

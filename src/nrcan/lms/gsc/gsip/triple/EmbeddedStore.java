@@ -34,11 +34,15 @@ public class EmbeddedStore extends TripleStoreImpl {
 
 			Model m = null;
 			try(RDFConnection conn = RDFConnectionFactory.connect(ds)){
-			
+	
 			m = conn.queryConstruct(sparql);
-			}
-			
 			return m;
+			}
+			catch(Exception ex)
+			{
+				Logger.getAnonymousLogger().log(Level.SEVERE, "Failed to execute [" + sparql + "]");
+				return null;
+			}
 			
 	
 		
