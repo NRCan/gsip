@@ -333,7 +333,7 @@ The following folder are created at the root of the application (in addition to 
 
 === app : Application folder
 
-This folder contains the demo application.  The resources (files) are exposed through `${baseUri}/gsip/app`.
+This folder contains the demo application.  It is not technically part of the system.  It is used to demo or test the service. The resources (files) are exposed through `${baseUri}/gsip/app`.
 The folder is not required to run the gsip service.
 
 This folder goes through tomcat default servlet (just streams the data).  This is configured in web.xml
