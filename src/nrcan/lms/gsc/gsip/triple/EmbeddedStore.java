@@ -46,13 +46,6 @@ public class EmbeddedStore extends TripleStoreImpl {
 				Logger.getAnonymousLogger().log(Level.SEVERE, "Failed to execute [" + sparql + "]");
 				return null;
 			}
-<<<<<<< HEAD
-=======
-			
-			
->>>>>>> 63581263506447b72544ef25e820cfc533104df6
-			
-	
 		
 	}
 	
