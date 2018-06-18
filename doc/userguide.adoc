@@ -6,7 +6,7 @@ First version
 
 
 WARNING:  Work in progress, the documentation is far from complete.
-
+For people attempting to read my code : http://www.edgement.com/wp-content/uploads/2015/05/Reading-other-peoples-code.png
 
 Introduction
 ------------
