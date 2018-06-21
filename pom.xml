@@ -9,8 +9,10 @@
         <version.jersey>2.24</version.jersey>
     </properties>
   <build>
+  <finalName>gsip</finalName>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
+    
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.5.1</version>
@@ -28,6 +30,9 @@
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
+     
+         
+         
     </plugins>
   </build>
   <dependencies>

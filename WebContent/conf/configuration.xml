@@ -32,21 +32,21 @@
 		<p:parameter name="gsip">https://geoconnex.ca/gsip</p:parameter>
 -->
 	
-<!-- 	
+        <p:parameter name="proxdevuri">https://geoconnex.ca</p:parameter> 
+
 		<p:parameter name="baseUri">http://w-stf-a128913.nrn.nrcan.gc.ca</p:parameter> 
  		<p:parameter name="gsip">http://w-stf-a128913.nrn.nrcan.gc.ca/gsip</p:parameter> 
- -->
+
 
 <!-- 	
 		<p:parameter name="baseUri">http://s-stf-gin.nrn.nrcan.gc.ca:8085/gsip</p:parameter>  
 		<p:parameter name="gsip">http://s-stf-gin.nrn.nrcan.gc.ca:8085/gsip</p:parameter> 
 -->
 		
-	
+	<!-- 
 		<p:parameter name="baseUri">http://localhost:8080/gsip</p:parameter> 
-  	    <p:parameter name="proxdevuri">https://geoconnex.ca</p:parameter> 
  		<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter> 
-
+-->
 
 
 <!-- 		<p:parameter name="triplestore">http://localhost:8080/fuseki/gsip_file</p:parameter> -->
