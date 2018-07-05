@@ -18,6 +18,7 @@ import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
@@ -47,6 +48,7 @@ public class ModelWrapper {
 
 	private Model model;
 	private Resource contextResource;
+	public static final String SCHEMAORG = "http://schema.org/";
 	//TODO. I should get the default baseUri from context, not hardcoded
 	public ModelWrapper(Model m,String contextResource)
 	{
@@ -89,7 +91,6 @@ public class ModelWrapper {
 		else
 			return "";
 	}
-	
 	
 	
 	
@@ -446,6 +447,51 @@ public class ModelWrapper {
 	public Resource getResource(String res)
 	{
 		return model.getResource(res);
+	}
+	
+	/**
+	 * get a resource value from a property
+	 * @param context resource to get a resource from 
+	 * @param property
+	 * @return
+	 */
+	public List<Resource> getPropertyResource(String context,String property)
+	{
+		
+		Property p = model.createProperty(property);
+		if (context == null)
+			return getAllResource(this.contextResource.listProperties(p));
+		else
+		{
+		Resource r = getResource(context);
+		if (r == null)
+			return null;
+		else
+			return getAllResource(r.listProperties(p));
+		
+		}
+	}
+	
+	private List<Resource> getAllResource(StmtIterator it)
+	{
+		List<Resource> listResource = new ArrayList<Resource>();
+		while (it.hasNext())
+		{
+			RDFNode n = it.next().getObject();
+			if (n.isResource())
+				listResource.add(n.asResource());
+		}
+		return listResource;
+	}
+	
+	/**
+	 * Get a resource from a property of the context resource
+	 * @param property
+	 * @return
+	 */
+	public List<Resource> getPropertyResource(String property)
+	{
+		return getPropertyResource(null,property);
 	}
 	
 	/**
