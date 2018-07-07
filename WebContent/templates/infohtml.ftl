@@ -74,14 +74,19 @@
 				</blockquote>
 				<div class="container">
 					<div class="row">
+						<#assign image = model.getPropertyResource("http://schema.org/image")>
+						<#if image?has_content>
+						<div class="col-sm-12 col-md-8">
+							<#else>
 						<div class="col-sm-12 col-md-12">
+							</#if>
 							<h3>Representation:</h3>
 							<ul>
 							<#list model.getRepresentations() as r>
 								<li><samp>
 										<strong>${model.getPreferredLabel(r, "en", "No label")}</strong>
 										<#list model.getFormats(r) as f>
-											<a href="${model.getFormatOverride(r,f)}">${f}</a> 
+											<a href="${model.getFormatOverride(r,f)}">${f}</a>
 										</#list>
 									</samp>
 								</li>
@@ -104,9 +109,9 @@
 										<#list grp[p] as link>
 										<a
 											href="${link.getUrl()}"
-											title="${link.getUrl()}">${link.getResLabel()}</a> 
+											title="${link.getUrl()}">${link.getResLabel()}</a>
 										</#list>
-										
+
 										</li>
 									</#list>
 									</ul>
@@ -120,16 +125,23 @@
 										<a
 											href="${l.getUrl()}"
 											title="${l.getUrl()}">${l.getResLabel()}</a> : <strong>${l.getLabel()}</strong>
-										</#list> 
-										
+										</#list>
+
 										</li>
 									</#list>
-									
-										
+
+
 									</ul>
 								</div>
 							</div>
 						</div>
+						<#if image?has_content>
+						<div class="col-sm-12 col-md-4">
+							<a href="${image[0]}" target="_blank">
+								<img src="${image[0]}" class="img-thumbnail img-fluid"/>
+							</a>
+					</div>
+					</#if>
 					</div>
 				</div>
 			</div>
@@ -144,19 +156,19 @@
 	</footer>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
 		crossorigin="anonymous" type="text/javascript">
-		
+
 	</script>
 	<script src="${host}/app/js/poppermin.js"
 		type="text/javascript">
-		
+
 	</script>
 	<script src="${host}/app/js/bootstrapmin.js"
 		type="text/javascript">
-		
+
 	</script>
 	<script src="${host}/app/js/ieworkaround.js"
 		type="text/javascript">
-		
+
 	</script>
 </body>
 <script language="" type="application/ld+json">
