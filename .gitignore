@@ -15,5 +15,6 @@ target/*
 /WebContent/META-INF/context.xml
 *.bak
 *.swp
+dploy/
 bfg-1.13.0.jar
 

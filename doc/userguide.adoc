@@ -6,7 +6,7 @@ First version
 
 
 WARNING:  Work in progress, the documentation is far from complete.
-
+For people attempting to read my code : http://www.edgement.com/wp-content/uploads/2015/05/Reading-other-peoples-code.png
 
 Introduction
 ------------
@@ -661,3 +661,17 @@ The ModelWrapper has a context Resource (the resource /id/ resource that was ori
 - function accepting Jena Resource parameters
 - function accepting Resource as a String
 - function without Resource parameter, then the context Resource is implied.
+
+= Annex D : Troubleshooting
+
+== Tomcat unable to start within xx seconds
+
+When launched within Eclipse, tomcat might not be able to start within the time allocated.
+eg:
+
+[source,text]
+----
+Server Tomcat v8.5 Server at localhost was unable to start within 45 seconds. If the server requires more time, try increasing the timeout in the server editor.
+----
+
+When gsip is using an internal RDF catalog (repo), it takes some times to load the content and compute inferrences.  You might need to boost the timeout values (in eclise in the "Servers" window, right-click and choose "Open") and look for the Timeouts tab.  The "Start" value is usually set to 45s.  Boost to 200 or more)

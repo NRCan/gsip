@@ -27,9 +27,11 @@
 		<p:parameter name="convertToBaseUri">true</p:parameter>
 		
 <!--  depending of the environment this works and how Apache modrewrite is configured  -->
-<!--  
+
 		<p:parameter name="baseUri">https://geoconnex.ca</p:parameter> 	
+<!--	
 		<p:parameter name="gsip">https://geoconnex.ca/gsip</p:parameter>
+		<p:parameter name="proxdevuri">https://geoconnex.ca</p:parameter> 
 -->
 	
 <!-- 	
@@ -42,10 +44,11 @@
 		<p:parameter name="gsip">http://s-stf-gin.nrn.nrcan.gc.ca:8085/gsip</p:parameter> 
 -->
 		
-	
+
 		<p:parameter name="baseUri">http://localhost:8080/gsip</p:parameter> 
-  	    <p:parameter name="proxdevuri">https://geoconnex.ca</p:parameter> 
+
  		<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter> 
+
 
 
 
