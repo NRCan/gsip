@@ -4,13 +4,13 @@
 	<p:match pattern="gwmon/WML2/historical/GIN/.*">
 		<p:mime-type>text/plain</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/html">http://gin.gw-info.net/service/gin/highcharts/data/en/0db46343-1c4f-aefc-1227-a6a90d49d53c/${p5}.zip?datasource=</p:source>
+		<p:source>http://gin.gw-info.net/service/gin/highcharts/data/en/0db46343-1c4f-aefc-1227-a6a90d49d53c/${p5}.zip?datasource=</p:source>
 	</p:match>
 	
 	<p:match pattern="gwmon/WML2/historical/GIN/.*">
 		<p:mime-type>text/xml</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/xml">http://gin.gw-info.net/GinService/sos/gw?REQUEST=GetFeatureOfInterest&amp;VERSION=2.0.0&amp;SERVICE=SOS&amp;featureOfInterest=${p5}</p:source>
+		<p:source>http://gin.gw-info.net/GinService/sos/gw?REQUEST=GetFeatureOfInterest&amp;VERSION=2.0.0&amp;SERVICE=SOS&amp;featureOfInterest=${p5}</p:source>
 	</p:match>
 	
 	
@@ -23,7 +23,7 @@
 		<p:match pattern="gwmon/WML2/historical/GIN/.*">
 		<p:mime-type>text/html</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/xml">http://gin.gw-info.net/service/gin/sos2/timeseries/natres?ID=${p5}</p:source>
+		<p:source>http://gin.gw-info.net/service/gin/sos2/timeseries/natres?ID=${p5}</p:source>
 	</p:match>
 	
 </p:data>

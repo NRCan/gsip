@@ -4,35 +4,35 @@
 	<p:match pattern="waterbody/CGNDB/CGNDB/CGNDB/.*">
 		<p:mime-type>text/html</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/html">http://www4.rncan.gc.ca/search-place-names/unique?id=${p5}</p:source>
+		<p:source>http://www4.rncan.gc.ca/search-place-names/unique?id=${p5}</p:source>
 	</p:match>
 	<p:match pattern="waterbody/CGNDB/CGNDB/CGNDB/.*">
 		<p:mime-type>application/json</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/html" proxy="true">http://geogratis.gc.ca/services/geoname/en/features/${p5}.json</p:source>
+		<p:source proxy="true">http://geogratis.gc.ca/services/geoname/en/features/${p5}.json</p:source>
 	</p:match>
 	<p:match pattern="waterbody/CGNDB/CGNDB/CGNDB/.*">
 		<p:mime-type>application/vnd.google-earth.kml+xml</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:application/vnd.google-earth.kml+xml" proxy="true">http://geogratis.gc.ca/services/geoname/en/features/${p5}.kml</p:source>
+		<p:source proxy="true">http://geogratis.gc.ca/services/geoname/en/features/${p5}.kml</p:source>
 	</p:match>
 	
 	<!--  CHyF representations -->
 	<p:match pattern="waterbody/CHYF/CHYF/CHYF/.*">
 		<p:mime-type>text/html</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/html">http://chyf.ca/chyf/eflowpath/filter.html?property=nameID&amp;predicate=equals&amp;value=${p5}</p:source>
+		<p:source>http://chyf.ca/chyf/eflowpath/filter.html?property=nameID&amp;predicate=equals&amp;value=${p5}</p:source>
 	</p:match>
 	<p:match pattern="waterbody/CHYF/CHYF/CHYF/.*">
 		<p:mime-type>application/vnd.geo+json</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/html" proxy="true">http://chyf.ca/chyf/eflowpath/filter.json?property=nameID&amp;predicate=equals&amp;value=${p5}</p:source>
+		<p:source proxy="true">http://chyf.ca/chyf/eflowpath/filter.json?property=nameID&amp;predicate=equals&amp;value=${p5}</p:source>
 	</p:match>
 	<!--  by position  -->
 	<p:match pattern="waterbody/CHYF/POS/CHYF/.*">
 		<p:mime-type>text/html</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/html">http://chyf.ca/chyf/ecatchment/upstreamOf.html?point=${p5}</p:source>
+		<p:source>http://chyf.ca/chyf/ecatchment/upstreamOf.html?point=${p5}</p:source>
 	</p:match>
      <p:match pattern="waterbody/CHYF/POS/CHYF/.*">
 		<p:mime-type>application/vnd.geo+json</p:mime-type>
