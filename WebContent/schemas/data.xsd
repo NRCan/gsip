@@ -20,7 +20,7 @@
 					<xs:simpleContent>
 						<xs:extension base="xs:string">
 							<xs:attribute name="useAnonFtp" type="xs:boolean" default="false"/>
-							<xs:attribute name="header" type="xs:string"/>
+							<xs:attribute name="alt-media-type" type="xs:string"/>
 							<xs:attribute name="proxy" type="xs:boolean" default="false"/>
 						</xs:extension>
 					</xs:simpleContent>
