@@ -4,11 +4,11 @@
 	<p:match pattern="catchment/HYF/WSCSSSDA/NRCAN/.*">
 		<p:mime-type>text/html</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/html" proxy="true" useAnonFtp="true">ftp://ftp.cits.rncan.gc.ca/pub/hydro/GeEau/tests/gsip/prod/${p5?replace("*","_")}.html</p:source>
+		<p:source proxy="true" useAnonFtp="true">ftp://ftp.cits.rncan.gc.ca/pub/hydro/GeEau/tests/gsip/prod/${p5?replace("*","_")}.html</p:source>
 	</p:match>
 	<p:match pattern="catchment/HYF/WSCSSSDA/NRCAN/.*">
 		<p:mime-type>application/vnd.geo+json</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/html" proxy="true" useAnonFtp="true">ftp://ftp.cits.rncan.gc.ca/pub/hydro/GeEau/tests/gsip/prod/${p5?replace("*","_")}.json</p:source>
+		<p:source proxy="true" useAnonFtp="true">ftp://ftp.cits.rncan.gc.ca/pub/hydro/GeEau/tests/gsip/prod/${p5?replace("*","_")}.json</p:source>
 	</p:match>
 </p:data>

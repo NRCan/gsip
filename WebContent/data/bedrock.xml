@@ -4,19 +4,19 @@
 	<p:match pattern="dataset/gin/gin/GIN/gin-.*">
 		<p:mime-type>text/html</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/html">http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.download.html?id=${p5?replace("gin-","")}</p:source>
+		<p:source alt-media-type="text/html">http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.download.html?id=${p5?replace("gin-","")}</p:source>
 	</p:match>
 	<p:match pattern="dataset/gin/gin/GIN/gin-.*">
 		<p:mime-type>application/vnd.geo+json</p:mime-type>
-		<p:source header="text/xml">http://gin.gw-info.net/SpatialConversionEngine/gw_data/get/${p5?replace("gin-","")}?f=GeoJSON</p:source>
+		<p:source>http://gin.gw-info.net/SpatialConversionEngine/gw_data/get/${p5?replace("gin-","")}?f=GeoJSON</p:source>
 	</p:match>
 	<p:match pattern="dataset/gin/gin/GIN/gin-.*">
 		<p:mime-type>application/vnd.google-earth.kml+xml</p:mime-type>
-		<p:source header="text/xml">http://gin.gw-info.net/SpatialConversionEngine/gw_data/get/${p5?replace("gin-","")}?f=KML</p:source>
+		<p:source>http://gin.gw-info.net/SpatialConversionEngine/gw_data/get/${p5?replace("gin-","")}?f=KML</p:source>
 	</p:match>
 	<p:match pattern="dataset/gin/gin/GIN/gin-.*">
 		<p:mime-type>application/x-esri-shape</p:mime-type>
-		<p:source header="text/xml">http://gin.gw-info.net/SpatialConversionEngine/gw_data/get/${p5?replace("gin-","")}?f=ESRI%20Shapefile</p:source>
+		<p:source>http://gin.gw-info.net/SpatialConversionEngine/gw_data/get/${p5?replace("gin-","")}?f=ESRI%20Shapefile</p:source>
 	</p:match>
 
 </p:data>
