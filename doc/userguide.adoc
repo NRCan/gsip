@@ -555,7 +555,7 @@ The mapping between the templates and the URI mapping is provides in the conf.xm
 	<p:match pattern="aquifer/gwml/gwml/GIN/.*">
 		<p:mime-type>text/html</p:mime-type>
 		<!--  can have more -->
-		<p:source header="Accept:text/html">http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit.html?ID=${p5?replace("Richelieu","")}</p:source>
+		<p:source alt-media-type="Accept:text/html">http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit.html?ID=${p5?replace("Richelieu","")}</p:source>
 	</p:match>
 	<p:match pattern="aquifer/gwml/gwml/GIN/.*">
 		<p:mime-type>application/vnd.geo+json</p:mime-type>
