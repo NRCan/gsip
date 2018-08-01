@@ -121,8 +121,12 @@ public class Data {
 		// did not find a proper new location for this path and format, so 404
 		if (newUrl == null)
 			return Response.noContent().build();
-		// we have a 
+		// we have a new URL
+		
+
 		try {
+			// force a new mediatype if header is set
+			MediaType h = (newUrl.header != null && newUrl.header.trim().length()>0)?MediaType.valueOf(newUrl.header):newUrl.m;
 			if (newUrl.isProxy)
 			{
 				URL url = new URL(newUrl.newUrl);
@@ -132,7 +136,7 @@ public class Data {
 				else
 					out = getSringFromUrl(url);
 				if (out != null)
-					return Response.ok().entity(out).type(newUrl.m).build();
+					return Response.ok().entity(out).type(h).build();
 				else
 					return Response.serverError().entity("Failed to test proxied resource").build();
 			}
@@ -141,7 +145,7 @@ public class Data {
 				// check if we shall use ftp
 				
 				URI u = new URI(newUrl.newUrl);
-				return Response.seeOther(u).type(newUrl.m).build();
+				return Response.seeOther(u).type(h).build();
 			}
 			
 		} catch (URISyntaxException | IOException e) {
@@ -272,7 +276,7 @@ public class Data {
 		if (m != null)
 		{
 			String u = TemplateManager.getInstance().applyTemplate(m.getSource().getValue(),parameters);
-			NewUrl url = new NewUrl(u,m.getSource().isProxy(),mimetype,m.getSource().isUseAnonFtp());
+			NewUrl url = new NewUrl(u,m.getSource().isProxy(),mimetype,m.getSource().isUseAnonFtp(),m.getSource().getAltMediaType());
 			return url;
 		}
 		else
@@ -285,14 +289,17 @@ public class Data {
 		boolean isProxy = false;
 		MediaType m;
 		boolean useAnonFtp = false;
-		public NewUrl(String u,boolean proxy,MediaType m,boolean useAnonFtp)
+		String header;
+		public NewUrl(String u,boolean proxy,MediaType m,boolean useAnonFtp,String header)
 		{
 			newUrl = u;
 			isProxy = proxy;
 			this.m = m;
 			this.useAnonFtp = useAnonFtp;
+			this.header = header;
 		}
 	}
+	
 	private Map<String,String> getParameters(UriInfo u)
 	{
 		//TODO: this does the same thing than Information.getParameters.  Should consolidate
