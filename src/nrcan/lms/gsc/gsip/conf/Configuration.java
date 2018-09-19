@@ -4,22 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-
 import javax.servlet.ServletContext;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-
-import org.apache.catalina.loader.ParallelWebappClassLoader;
-
 import nrcan.lms.gsc.gsip.Constants;
-import nrcan.lms.gsc.gsip.Manager;
 import nrcan.lms.gsc.gsip.conf.ParametersType.Parameter;
 
 
