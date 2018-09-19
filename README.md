@@ -8,7 +8,7 @@ Collaboration between [Environment and Climate Change Canada (ECCC)](https://www
 
 [Meteorological Service of Canada](https://www.canada.ca/en/services/environment/weather.html), [Water Survey of Canada](https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey.html) (part of ECCC)
 
-## Note 
+## Note
 
 This version (merged from sqllite) now need to configure /META-INF/context.xml to add a database connection.  This is only important if you plan to use the demo dataset that comes with this application.
 In the worst case, some links will 404.. this is how the web works after all.
@@ -16,6 +16,15 @@ In the worst case, some links will 404.. this is how the web works after all.
 ## Documentation
 
 Find documentation in `/doc` folder
+
+## Deployment
+
+You can create a .war by running maven from the root of the project (where the .pom is)
+
+`mvn package war:war`
+
+You might want to edit the context file in /META-INF/context.xml to set database location first (or edit the file after it is deployed in Tomcat and restart the application)
+
 
 ## Demo application
 
