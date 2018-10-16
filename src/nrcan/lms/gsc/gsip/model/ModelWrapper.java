@@ -527,6 +527,7 @@ public class ModelWrapper {
 			Statement s = i.next();
 			try {
 			Resource typeResource = s.getResource();
+			if (typeResource.isAnon()) continue;
 			nextElement = this.getPreferredLabel(typeResource, "en", getLastPart(typeResource.getURI()));
 			}
 			catch(Exception ex)

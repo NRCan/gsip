@@ -14,6 +14,8 @@
 
 # Ontology used in GSIP
 
+
+
 hy:HY_Catchment rdf:type owl:Class;
 	rdfs:label "Catchment"@en,"Bassin de drainage"@fr.
 

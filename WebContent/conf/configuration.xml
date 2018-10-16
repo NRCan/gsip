@@ -45,9 +45,10 @@
 -->
 		
 
-		<p:parameter name="baseUri">http://localhost:8080/gsip</p:parameter> 
+		
 
- 		<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter> 
+ 		<p:parameter name="baseUri">http://localhost:8080/gsip</p:parameter>  
+		<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter> 
 
 
 

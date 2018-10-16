@@ -1,12 +1,20 @@
 package nrcan.lms.gsc.gsip.triple;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.jena.dboe.jenax.Txn;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.query.Dataset;
@@ -18,6 +26,7 @@ import org.apache.jena.rdfconnection.RDFConnection;
 import org.apache.jena.rdfconnection.RDFConnectionFactory;
 import org.apache.jena.reasoner.Reasoner;
 import org.apache.jena.reasoner.ReasonerRegistry;
+import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 
 public class EmbeddedStore extends TripleStoreImpl {
@@ -69,19 +78,72 @@ public class EmbeddedStore extends TripleStoreImpl {
 		{
 			// load the data from the repo
 			try {
-			RDFDataMgr.read(m, f.getAbsolutePath());
-			Logger.getAnonymousLogger().log(Level.INFO, " # loaded " + f.getAbsolutePath());
+			// file must be ttl or rdf
+			String name = f.getName();
+			String ext = name.substring(name.lastIndexOf("."));
+			if (".RDF".equalsIgnoreCase(ext) || ".TTL".equalsIgnoreCase(ext))
+			{
+				RDFDataMgr.read(m, f.getAbsolutePath());
+				Logger.getAnonymousLogger().log(Level.INFO, " # loaded " + f.getAbsolutePath());
+			}
+			else
+			{
+				// is this an import file ?
+				if (".IMP".equalsIgnoreCase(ext))
+				{
+					List<String> impList = readTextFile(f);
+					for(String line:impList)
+					{
+						if (line == null || line.trim().length() == 0 || line.startsWith("#"))
+							continue;
+						try
+						{
+							String ont = IOUtils.toString(new URI(line).toURL(),"UTF-8");
+							//System.out.print(ont);
+							RDFDataMgr.read(m,IOUtils.toInputStream(ont,"UTF-8"),Lang.TTL);
+							Logger.getAnonymousLogger().log(Level.INFO, "Loaded " + line + " from imp file");
+							
+						}
+						catch(Exception ex)
+						{
+							Logger.getAnonymousLogger().log(Level.SEVERE, "Failed to read from " + line,ex);
+						}
+					}
+				}
+				else
+				{
+					Logger.getAnonymousLogger().log(Level.WARNING,f.getName() + " ignored");
+				}
+				
+			}
+			
+			
 			}
 			catch(Exception ex)
 			{
 				Logger.getAnonymousLogger().log(Level.WARNING," !* Failed to load " + f.getAbsolutePath(), ex);
 			}
 		}
+		
+		Logger.getAnonymousLogger().log(Level.INFO, "Repo loaded - creating reasoner");
 		Reasoner owl = ReasonerRegistry.getOWLReasoner();
+	
 		ds.setDefaultModel(ModelFactory.createInfModel(owl, m));
 		
 
 		
+	}
+	
+	/**
+	 * read a file into a list of strings
+	 * @param f
+	 * @return
+	 * @throws IOException 
+	 * @throws FileNotFoundException
+	 */
+	private List<String> readTextFile(File f) throws IOException 
+	{
+		return FileUtils.readLines(f,Charset.forName("UTF-8"));
 	}
 	
 	private List<File> getAllFiles(File f)

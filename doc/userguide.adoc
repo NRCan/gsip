@@ -374,9 +374,10 @@ The configuration file sets values used by GSIP.
 		<p:parameter name="infoTemplate">infohtml.ftl</p:parameter>
     <p:parameter name="infoTemplate" pattern="http.*/geologicUnits/.*">geounits.ftl</p:parameter>
 
-		<p:parameter name="baseUri">https://geoconnex.ca</p:parameter>
-		<p:parameter name="proxdevuri">http://localhost:8080/gsip</p:parameter>
+		<p:parameter name="persistentUri">https://geoconnex.ca</p:parameter>
+		<p:parameter name="baseUri">http://localhost:8080/gsip</p:parameter>
 		<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter>
+
 <!-- 		<p:parameter name="triplestore">http://localhost:8080/fuseki/gsip_file</p:parameter> -->
 		<p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
 		<p:parameter name="supportedLanguages">en,fr</p:parameter>
@@ -395,13 +396,34 @@ The second section is a list of configuration keys used be the application.
 |========
 | Variable name | description |
 | infoTemplate | freemarker template for HTML landing page |
-| baseUri | Base URI the resources in the catalog.  This variable and the following `proxydevuri` and `gsip` has important ramifications on how the service works in different environments. This is discussed further below |
-| proxydevuri | Base URI to substitute the base uri in the catalog. Used to run in dev and staging environments |
+| baseUri | Base URI in the current environment.  This base URI will be replace by persistentUri before it gets used in a query in the catalog |
+| persistentUri | baseURI of the persistent URI in the catalog |
 | gsip | Base URI of the gsip application, which may or may not be different from the baseURI of the resources in the catalog |
 | triplestore | location of the RDF catalog (see section on RDF catalog) |
 | supportedLanguages | comma delimited list of supported languages |
 | defaultLanguage | assumed language |
 |========
+
+Because the application works on the concept of resolving URI to representation, it means that /id/ URI are unique identifier AND location.  This can be a problem when the GSIP runs on a different location than the persistent URI.  Any resolution will immediately go to the persistent location instead of the location where GSIP is running.  This is obviously a problem when one tries to run GSIP in a developpement or a staging environment. It means that one needs to maintain different copies of the RDF catalog.
+
+The confiuration allows instead of convert back and forth between the URI where GSIP is running and the persistent URI (the one that would normally be used in production).  The mediator will substitute baseUri to persistentUri before querying the database and substitute it back in the response.
+
+For example, in a typical dev environment running on localhost, we can access this (persistent) URI
+
+https://geoconnex.ca/id/catchment/02OJ*CB>
+
+locally by replacing persistentUri value in configuration (https://geoconnex.ca) with baseUri (http://localhost:8080/gsip)
+
+http://localhost.ca/id/catchment/02OJ*CB
+
+this will go to the local GSIP application, which in turn will convert it back to query the RDF catalog (because the catalog always store persistent URI).
+
+GSIP then converts the result back to baseUri, so when those URI are used in HTML or any other format, the client application (ie, HTML page for example) provides a link that goes back to the local instance of GSIP.
+
+Moving the application from dev to staging to prod is just a matter of configuring the base URI properly.
+
+Obsviously, this won't work if the RDF catalog  is used separatly.  This is really only a way to debug and test GSIP, not a permanent solution to deal with not so persistent URI.
+
 
 
 === data : /data/ content negotiation
@@ -530,6 +552,24 @@ The mapping between the templates and the URI mapping is provides in the conf.xm
   <p:template name="wellcatch" pattern="^https?://.*/id/featureCollection/wellsIn.*$" template="wellcatch.ftl" requiresEntry="false"/>
   <p:template name="aquifer" pattern="^https?://.*/id/hydrogeounits/.*$" template="aquifer.ftl" requiresEntry="false"/>
 </p:Templates>
+----
+
+
+=== repositories (repos)
+
+The repositories can contain two kind of files.
+
+   * A series of RDF files making the content of the RDF catalog.  Those files can be wither ttl or rdf files (files must have .rdf or .ttl extension)
+   * import files, to fetch external content (must be ttl for now).  Import file can contain 0..* URLs pointing to ttl files on the web. Import files must have the extension `.imp`
+
+The import file (.imp) is a simple text file with one URL per line.  Lines beginning with # are considered as comments
+
+.repos/gsip/ext.imp
+[source,text]
+----
+# hy features
+https://raw.githubusercontent.com/opengeospatial/NamingAuthority/master/definitions/appschema/hyf.ttl
+
 ----
 
 
