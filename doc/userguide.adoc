@@ -555,6 +555,24 @@ The mapping between the templates and the URI mapping is provides in the conf.xm
 ----
 
 
+=== repositories (repos)
+
+The repositories can contain two kind of files.
+
+   * A series of RDF files making the content of the RDF catalog.  Those files can be wither ttl or rdf files (files must have .rdf or .ttl extension)
+   * import files, to fetch external content (must be ttl for now).  Import file can contain 0..* URLs pointing to ttl files on the web. Import files must have the extension `.imp`
+
+The import file (.imp) is a simple text file with one URL per line.  Lines beginning with # are considered as comments
+
+.repos/gsip/ext.imp
+[source,text]
+----
+# hy features
+https://raw.githubusercontent.com/opengeospatial/NamingAuthority/master/definitions/appschema/hyf.ttl
+
+----
+
+
 
 
 
