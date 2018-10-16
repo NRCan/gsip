@@ -99,7 +99,7 @@ public class EmbeddedStore extends TripleStoreImpl {
 						try
 						{
 							String ont = IOUtils.toString(new URI(line).toURL(),"UTF-8");
-							System.out.print(ont);
+							//System.out.print(ont);
 							RDFDataMgr.read(m,IOUtils.toInputStream(ont,"UTF-8"),Lang.TTL);
 							Logger.getAnonymousLogger().log(Level.INFO, "Loaded " + line + " from imp file");
 							
