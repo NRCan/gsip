@@ -80,6 +80,7 @@ public class Manager {
 			data = DataManager.getInstance(ctx);
 			Logger.getAnonymousLogger().log(Level.INFO, "Initialise TripleStore");
 			store = TripleStoreFactory.createTripleStore(ctx);
+			Logger.getAnonymousLogger().log(Level.INFO, "Init done --");
 
 		}
 		else
