@@ -1,0 +1,280 @@
+# HY_Feature simple OWL encoding from OGC 14-111r6
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix hy:  <http://opengis.net/def/hy_feature#>.
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+
+hy:HY_HydroFeatureName a owl:Class;
+	rdfs:label "Hydrofeature name"@en,"Nom de l'entité hydro"@fr.
+	
+hy:HydroFeature a owl:Class;
+	rdfs:label "Hydro feature"@en,"Entité hydro"@fr.
+
+	
+hy:name a owl:ObjectProperty;
+	rdfs:domain hy:HY_Feature;
+	rdfs:range hy:HY_HydroFeatureName.
+	
+hy:HY_CatchmentRealization a owl:Class;
+	rdfs:label "Catchment realization"@en,"Matérialisation du bassin versant"@fr.
+	
+hy:HY_Catchment a owl:Class;
+	rdfs:label "Catchment"@en,"Bassin Versant"@fr.
+	
+hy:catchmentRealization a owl:ObjectProperty;
+	rdfs:domain hy:HY_Catchment;
+	rdfs:range hy:HY_CatchmentRealization;
+	owl:inverseOf hy:realizedCatchment.
+hy:realizedCatchment a owl:ObjectProperty.
+
+hy:HY_InteriorCatchment a owl:Class;
+	rdfs:subClassOf  hy:HY_Catchment ;
+	rdfs:label "Interior catchment","Bassin versant intérieur"@fr.
+
+hy:HY_DendriticCatchment a owl:Class;
+	rdfs:subClassOf  hy:HY_Catchment ;
+	rdfs:label "Dendritic catchment","Bassin versant dendritique"@fr.	
+	
+	
+hy:HY_HydroNexus a owl:Class;
+	rdfs:label "Hydro nexus","Nexus hydro"@fr.
+
+hy:outflow a owl:ObjectProperty;
+	rdfs:domain hy:HY_Catchment;
+	rdfs:range hy:HY_HydroNexus;
+	owl:inverseOf hy:contributingCatchment.
+hy:contributingCatchment owl:inverseOf hy:outflow.
+
+hy:inflow a owl:ObjectProperty;
+	rdfs:domain hy:HY_Catchment;
+	rdfs:range hy:HY_HydroNexus;
+	owl:inverseOf hy:receivingCatchment.
+hy:receivingCatchment owl:inverseOf hy:inflow.
+
+hy:HY_CatchmentAggregate a owl:Class;
+	rdfs:subClassOf  hy:HY_Catchment ;
+	rdfs:label "Catchment aggregate"@en,"Aggrégation de bassin versants"@fr.
+	
+hy:endorheicDrainage a owl:ObjectProperty;
+	rdfs:domain hy:HY_CatchmentAggregate;
+	rdfs:range hy:HY_InteriorCatchment;
+	owl:inverseOf hy:envelopingCatchment.
+hy:envelopingCatchment owl:inverseOf hy:endorheicDrainage.
+
+hy:exorheicDrainage a owl:ObjectProperty;
+	rdfs:domain hy:HY_CatchmentAggregate;
+	rdfs:range hy:HY_DendriticCatchment;
+	owl:inverseOf hy:encompassingCatchment.
+hy:encompassingCatchment owl:inverseOf hy:exorheicDrainage.
+
+hy:containingCatchment a owl:ObjectProperty,owl:TransitiveProperty;
+	rdfs:domain hy:HY_Catchment;
+	rdfs:range hy:HY_Catchment;
+	owl:inverseOf hy:containedCatchment.
+hy:containedCatchment a owl:ObjectProperty.
+
+hy:conjointedCatchment a owl:ObjectProperty;
+	rdfs:domain hy:HY_Catchment;
+	rdfs:range hy:HY_Catchment.
+	
+hy:upperCatchment a owl:ObjectProperty,owl:TransitiveProperty;
+	rdfs:domain hy:HY_Catchment;
+	rdfs:range hy:HY_Catchment;
+	owl:inverseOf hy:lowerCatchment.
+hy:lowerCatchment a owl:ObjectProperty.
+
+hy:HY_HydroLocation a owl:Class;
+	rdfs:label "Hydro location"@en,"Localisation hydro"@fr.
+	
+hy:nexusRealization a owl:ObjectProperty;
+	rdfs:domain hy:HY_HydroNexus;
+	rdfs:range hy:HY_HydroLocation;
+	owl:inverseOf hy:realizedNexus.
+hy:realizedNexus a owl:ObjectProperty.
+
+hy:HY_CartographicRealization a owl:Class;
+		rdfs:subClassOf  hy:HY_CatchmentRealization ;
+		rdfs:label "Cartographic Realization"@en,"Matérialisation cartographique"@fr.
+
+hy:HY_CatchmentDivide a owl:Class;
+		rdfs:subClassOf  hy:HY_CatchmentRealization ;
+		rdfs:label "Catchment divide"@en,"Ligne de partage de bassins versants"@fr.
+
+hy:HY_FlowPath a owl:Class;
+		rdfs:subClassOf  hy:HY_CatchmentRealization ;
+		rdfs:label "Flow path"@en,"Ligne d'écoulement"@fr.	
+		
+hy:HY_CatchmentArea a owl:Class;
+		rdfs:subClassOf  hy:HY_CatchmentRealization ;
+		rdfs:label "Catchment area"@en,"Aire de bassin versant"@fr.	
+		
+hy:HY_HydroNetwork a owl:Class;
+	rdfs:label "Hydro network"@en,"Réseau hydro"@fr.	
+		
+hy:catchmentDivide a owl:ObjectProperty;
+	rdfs:domain hy:HydroNetwork;
+	rdfs:range hy:HY_CatchmentDivide.
+	
+hy:flowpath a owl:ObjectProperty;
+	rdfs:domain hy:HydroNetwork;
+	rdfs:range hy:HY_Flowpath.
+
+hy:catchmentArea a owl:ObjectProperty;
+	rdfs:domain hy:HydroNetwork;
+	rdfs:range hy:CatchmentArea.
+	
+hy:HY_IndirectPosition a owl:Class;
+			rdfs:label "Indirect position"@en,"Position indirecte"@fr.	
+		
+hy:referencedPosition a owl:ObjectProperty;
+	rdfs:domain hy:HY_HydroLocation;
+	rdfs:range hy:HY_IndirectLocation;
+	owl:inverseOf hy:referenceLocation.
+hy:referenceLocation a owl:ObjectProperty.
+
+hy:locatedReferent a owl:ObjectProperty;
+	rdfs:domain hy:HY_IndirectLocation;
+	rdfs:range hy:HY_HydroLocation.
+	
+hy:linearElement a owl:ObjectProperty;
+	rdfs:domain hy:HY_IndirectLocation;
+	rdfs:range hy:HY_FlowPath.
+	
+hy:HY_ChannelNetwork a owl:Class;
+		rdfs:subClassOf  hy:HY_HydroNetwork ;
+		rdfs:label "Channel network"@en,"Réseau de chenaux"@fr.
+		
+hy:HY_Depression a owl:Class;
+		rdfs:subClassOf  hy:HY_HydroFeature ;
+		rdfs:label "Depression"@en,"Dépression"@fr.	
+		
+hy:HY_Channel a owl:Class;
+	rdfs:label "Channel"@en,"Chenal"@fr.
+	
+hy:surfaceChannel a owl:ObjectProperty;
+	rdfs:domain hy:HY_ChannelNetwork;
+	rdfs:range hy:HY_Channel;
+	owl:inverseOf hy:channelNetwork.
+hy:channelNetwork a owl:ObjectProperty.
+
+hy:surfaceDepression a owl:ObjectProperty;
+	rdfs:domain hy:HY_ChannelNetwork;
+	rdfs:range hy:HY_Depression;
+	owl:inverseOf hy:surfaceNetwork.
+hy:surfaceNetwork a owl:ObjectProperty.
+
+hy:HY_CrossSection a owl:Class;
+		rdfs:label "Cross section"@en,"Coupe"@fr.
+
+hy:HY_LongitudinalSection a owl:Class;
+		rdfs:label "Longitudinal section"@en,"Section longitudinale"@fr.
+
+hy:HY_WaterBody a owl:Class;
+	rdfs:subClassOf  hy:HY_HydroFeature ;
+		rdfs:label "water body"@en,"Corps aquatique"@fr.
+		
+hy:HY_WaterBodyStratum a owl:Class;
+		rdfs:label "Water body stratum"@en,"Strate de corps aquatique"@fr.
+		
+hy:bedProfileTransversal a owl:ObjectProperty;
+	rdfs:domain hy:HY_Channel;
+	rdfs:range hy:HY_CrossSection.
+	
+hy:bedProfileLongitudinal a owl:ObjectProperty;
+	rdfs:domain hy:HY_Channel;
+	rdfs:range hy:HY_LongitudinalSection.
+	
+hy:stream a owl:ObjectProperty;
+	rdfs:domain hy:HY_Channel;
+	rdfs:range hy:HY_WaterBody;
+	owl:inverseOf hy:watercourse.
+hy:watercourse a owl:ObjectProperty.	
+
+hy:stadingWater a owl:ObjectProperty;
+	rdfs:domain hy:HY_Depression;
+	rdfs:range hy:HY_WaterBody;
+	owl:inverseOf hy:waterpool.
+hy:waterpool a owl:ObjectProperty.	
+
+hy:confinedWaterBody a owl:ObjectProperty;
+	rdfs:domain hy:HY_Depression;
+	rdfs:range hy:HY_WaterBodyStratum.
+
+hy:crossSectionPoint a owl:ObjectProperty;
+	rdfs:domain hy:CrossSection;
+	rdfs:range hy:HY_HydroLocation.
+	
+hy:longitudinalSectionPoint a owl:ObjectProperty;
+	rdfs:domain hy:HY_LongitudinalSection;
+	rdfs:range hy:HY_HydroLocation.
+	
+hy:fixedLandmark a owl:ObjectProperty;
+	rdfs:domain hy:WaterBody;
+	rdfs:range hy:HY_HydroLocation.
+	
+hy:benchmark a owl:ObjectProperty;
+	rdfs:domain hy:HY_WaterBodyStratum;
+	rdfs:range hy:HY_HydroLocation.
+	
+hy:HY_HydrographicNetwork a owl:Class;
+	rdfs:subClassOf  hy:HY_HydroNetwork ;
+		rdfs:label "Hydrographic network"@en,"Réseau hydrographique"@fr.
+
+hy:hydrographicNetwork a owl:ObjectProperty;
+	rdfs:domain hy:HY_WaterBody;
+	rdfs:range hy:HY_HydrographicNetwork;
+	owl:inverseOf hy:networkWaterBody.
+hy:networkWaterBody a owl:ObjectProperty.	
+
+hy:downstreamWaterBody a owl:ObjectProperty;
+	rdfs:domain hy:HY_WaterBody;
+	rdfs:range hy:HY_WaterBody;
+	owl:inverseOf hy:upstreamWaterBody.
+hy:upstreamWaterBody a owl:ObjectProperty.
+
+hy:streamCrossSection a owl:ObjectProperty;
+	rdfs:domain hy:HY_WaterBody;
+	rdfs:range hy:HY_CrossSection.
+	
+hy:streamLongitudinalSection a owl:ObjectProperty;
+	rdfs:domain hy:HY_WaterBody;
+	rdfs:range hy:HY_LongitudinalSection.
+	
+hy:stratum a owl:ObjectProperty;
+	rdfs:domain hy:HY_WaterBody;
+	rdfs:range hy:HY_WaterBodyStratum.
+	
+hy:HY_Reservoir a owl:Class;
+		rdfs:label "Reservoir"@en,"Réservoir"@fr.	
+
+hy:storedWaterBody a owl:ObjectProperty;
+	rdfs:domain hy:HY_Reservoir;
+	rdfs:range hy:HY_WaterBody;
+	owl:inverseOf hy:storage.
+hy:storage a owl:ObjectProperty.
+
+hy:reservoirZone a owl:ObjectProperty;
+	rdfs:domain hy:HY_Reservoir;
+	rdfs:range hy:HY_WaterBodyStratum.
+	
+hy:HY_HydrometricNetwork a owl:Class;
+	rdfs:subClassOf  hy:HY_HydroNetwork ;
+	rdfs:label "Hydrometric network"@en,"Réseau hydrométrique"@fr.	
+	
+hy:HY_HydrometricFeature a owl:Class;
+	rdfs:subClassOf  hy:HY_HydroFeature ;
+	rdfs:label "Hydrometric feature"@en,"Entité hydrométrique"@fr.	
+	
+hy:hydrometricNetwork a owl:ObjectProperty;
+	rdfs:domain hy:HY_HydrometricFeature;
+	rdfs:range hy:HY_HydrometricNetwork;
+	owl:inverseOf hy:networkStation.
+hy:networkStation a owl:ObjectProperty.
+
+hy:positionOnRiver a owl:ObjectProperty;
+	rdfs:domain hy:HY_HydrometricFeature;
+	rdfs:range hy:HY_HydroLocation.
+	

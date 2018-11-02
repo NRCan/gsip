@@ -1,4 +1,4 @@
-@prefix hy: <http://geosciences.ca/def/hydraulic#>.
+
 @prefix gw: <http://geosciences.ca/def/groundwater#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
