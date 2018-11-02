@@ -1,5 +1,6 @@
 @prefix hy:  <http://opengis.net/def/hy_feature#>.
 @prefix gsip:   <http://gsip.geoconnex.ca#> .
+@prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
 <https://geoconnex.ca/id/catchment/02OJ*CD> hy:receivingCatchement <https://geoconnex.ca/id/catchment/02OJ*CE>.
 <https://geoconnex.ca/id/catchment/02OJ*CB> hy:receivingCatchment <https://geoconnex.ca/id/catchment/02OJ*CD>.
 <https://geoconnex.ca/id/catchment/02OJ*CC> hy:receivingCatchment <https://geoconnex.ca/id/catchment/02OJ*CD>.

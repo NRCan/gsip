@@ -7,9 +7,9 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix gsip:   <http://gsip.geoconnex.ca#> .
 
-gsip:close-to a owl:ObjectProperty,owl:SymmetricProperty;
-gsip:near a owl:ObjectProperty,owl:SymmetricProperty;
-gsip:sameAs a owl:ObjectProperty,owl:SymmetricProperty;
+gsip:close-to a owl:ObjectProperty,owl:SymmetricProperty.
+gsip:near a owl:ObjectProperty,owl:SymmetricProperty.
+gsip:sameAs a owl:ObjectProperty,owl:SymmetricProperty.
 
 gsip:downstreamOf rdf:type owl:ObjectProperty,owl:TransitiveProperty;
 	owl:inverseOf gsip:upstreamOf.
