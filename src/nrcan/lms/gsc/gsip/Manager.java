@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 
 import javax.servlet.ServletContext;
 
+import org.apache.jena.rdf.model.Model;
+
 import nrcan.lms.gsc.gsip.conf.Configuration;
 import nrcan.lms.gsc.gsip.data.DataManager;
 import nrcan.lms.gsc.gsip.template.TemplateManager;

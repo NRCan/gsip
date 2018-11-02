@@ -19,13 +19,15 @@ public class TripleStoreImpl implements TripleStore {
 	 */
 	public Model describe(String resource)
 	{
-		return getSparqlConstructModel("DESCRIBE " + ModelUtil.formatResource(resource));
+		return null;
 	}
 	
 	public boolean resourceExists(String resource)
 	{
 		Model mdl = describe(resource);
-		return !mdl.isEmpty();
+		if (mdl != null)
+			return !mdl.isEmpty();
+		else return false;
 	}
 
 	@Override

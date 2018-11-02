@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.dboe.jenax.Txn;
+import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.DatasetFactory;
@@ -32,10 +33,35 @@ import org.apache.jena.riot.RDFDataMgr;
 public class EmbeddedStore extends TripleStoreImpl {
 
 	@Override
+	public Model describe(String resource) {
+		Model m = null;
+		try(RDFConnection conn = RDFConnectionFactory.connect(ds)){
+
+		m = conn.queryDescribe("DESCRIBE " + resource);
+		return m;
+		}
+		catch(Exception ex)
+		{
+			Logger.getAnonymousLogger().log(Level.SEVERE, "Failed to execute Describe [" + resource + "]");
+			return null;
+		}
+	}
+
+
+
+	@Override
 	public void close() {
 		// TODO Auto-generated method stub
 		super.close();
 		ds.close();
+	}
+
+	
+
+	@Override
+	public boolean resourceExists(String resource) {
+		// TODO Auto-generated method stub
+		return super.resourceExists(resource);
 	}
 
 	@Override
@@ -71,8 +97,8 @@ public class EmbeddedStore extends TripleStoreImpl {
 		
 		ds = DatasetFactory.createTxnMem();
 		// add the model
-		Model m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RDFS_INF);
-		
+		//Model m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RDFS_INF);
+		OntModel m = ModelFactory.createOntologyModel(); 
 
 		for(File f:datasets )
 		{
@@ -83,7 +109,8 @@ public class EmbeddedStore extends TripleStoreImpl {
 			String ext = name.substring(name.lastIndexOf("."));
 			if (".RDF".equalsIgnoreCase(ext) || ".TTL".equalsIgnoreCase(ext))
 			{
-				RDFDataMgr.read(m, f.getAbsolutePath());
+				//RDFDataMgr.read(m, f.getAbsolutePath());
+				m.read(f.getAbsolutePath());
 				Logger.getAnonymousLogger().log(Level.INFO, " # loaded " + f.getAbsolutePath());
 			}
 			else
@@ -127,8 +154,10 @@ public class EmbeddedStore extends TripleStoreImpl {
 		
 		Logger.getAnonymousLogger().log(Level.INFO, "Repo loaded - creating reasoner");
 		Reasoner owl = ReasonerRegistry.getOWLReasoner();
-	
+		
+		
 		ds.setDefaultModel(ModelFactory.createInfModel(owl, m));
+		
 		
 
 		
