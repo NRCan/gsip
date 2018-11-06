@@ -193,7 +193,7 @@ hy:stream a owl:ObjectProperty;
 	owl:inverseOf hy:watercourse.
 hy:watercourse a owl:ObjectProperty.	
 
-hy:stadingWater a owl:ObjectProperty;
+hy:standingWater a owl:ObjectProperty;
 	rdfs:domain hy:HY_Depression;
 	rdfs:range hy:HY_WaterBody;
 	owl:inverseOf hy:waterpool.
@@ -278,3 +278,48 @@ hy:positionOnRiver a owl:ObjectProperty;
 	rdfs:domain hy:HY_HydrometricFeature;
 	rdfs:range hy:HY_HydroLocation.
 	
+hy:HY_River a owl:Class;
+		rdfs:subClassOf  hy:HY_WaterBody;
+		rdfs:label "River"@en,"Riviere"@fr.	
+		
+hy:HY_Lake a owl:Class;
+		rdfs:subClassOf  hy:HY_WaterBody;
+		rdfs:label "Lake"@en,"Lac"@fr.	
+		
+hy:HY_Estuary a owl:Class;
+		rdfs:subClassOf  hy:HY_WaterBody;
+		rdfs:label "Estuary"@en,"Estuaire"@fr.	
+
+hy:HY_Lagoon a owl:Class;
+		rdfs:subClassOf  hy:HY_WaterBody;
+		rdfs:label "Lagoon"@en,"Lagon"@fr.	
+		
+hy:HY_Impoundment a owl:Class;
+		rdfs:subClassOf  hy:HY_WaterBody;
+		rdfs:label "Impoundment"@en,"Bassin de retention"@fr.
+		
+hy:HY_Canal a owl:Class;
+		rdfs:subClassOf  hy:HY_WaterBody;
+		rdfs:label "Canal"@en,"Canal"@fr.
+		
+hy:HY_Water_LiquidPhase a owl:Class;
+		rdfs:subClassOf  hy:HY_WaterBodyStratum;
+		rdfs:label "Water liquid phase"@en,"Eau phase liquide"@fr.	
+		
+hy:HY_Water_SolidPhase a owl:Class;
+		rdfs:subClassOf  hy:HY_WaterBodyStratum;
+		rdfs:label "Water solid phase"@en,"Eau phase solide"@fr.	
+			
+hy:snowmelt a owl:ObjectProperty;
+	rdfs:domain hy:HY_Water_SolidPhase;
+	rdfs:range hy:HY_Water_LiquidPhase.
+	
+hy:accumulatingWaterBody a owl:ObjectProperty;
+	rdfs:domain hy:HY_Water_LiquidPhase;
+	rdfs:range hy:HY_WaterBodyStratum.
+				
+hy:stream a owl:ObjectProperty;
+	rdfs:domain hy:HY_Channel;
+	rdfs:range hy:HY_WaterBody;
+	owl:inverseOf hy:watercourse.
+hy:watercourse a owl:ObjectProperty.
