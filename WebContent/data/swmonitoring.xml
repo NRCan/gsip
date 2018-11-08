@@ -53,13 +53,13 @@
 	 <p:match pattern="swmonitoring/WFS3/.*/WSC/.*">
 		<p:mime-type>text/html</p:mime-type>
 		<!--  can have more -->
-		<p:source>http://geo.weather.gc.ca/geomet-beta/features/collections/${p3}/items?STATION_NUMBER=${p5?replace("WSC_","")}&amp;f=html</p:source>
+		<p:source>http://geo.weather.gc.ca/geomet/features/collections/${p3}/items?STATION_NUMBER=${p5?replace("WSC_","")}&amp;f=html</p:source>
 	</p:match>
 
 	 <p:match pattern="swmonitoring/WFS3/.*/WSC/.*">
 		<p:mime-type>application/vnd.geo+json</p:mime-type>
 		<!--  can have more -->
-		<p:source>http://geo.weather.gc.ca/geomet-beta/features/collections/${p3}/items?STATION_NUMBER=${p5?replace("WSC_","")}&amp;f=json</p:source>
+		<p:source>http://geo.weather.gc.ca/geomet/features/collections/${p3}/items?STATION_NUMBER=${p5?replace("WSC_","")}&amp;f=json</p:source>
 	</p:match>
 	
 
