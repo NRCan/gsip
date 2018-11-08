@@ -154,7 +154,7 @@ public class EmbeddedStore extends TripleStoreImpl {
 		long t = System.currentTimeMillis();
 		Logger.getAnonymousLogger().log(Level.INFO, m.size() + " statements loaded");
 		Logger.getAnonymousLogger().log(Level.INFO, "Repo loaded - creating reasoner");
-		Reasoner owl = ReasonerRegistry.getOWLReasoner();
+		Reasoner owl = ReasonerRegistry.getOWLMicroReasoner();
 
 		ds.setDefaultModel(ModelFactory.createInfModel(owl, m));
 		Logger.getAnonymousLogger().log(Level.INFO, m.size() + " statements :" + (System.currentTimeMillis() - t) / 1000 + " s");
