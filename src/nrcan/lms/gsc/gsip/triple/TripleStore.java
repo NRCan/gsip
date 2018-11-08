@@ -1,7 +1,7 @@
 package nrcan.lms.gsc.gsip.triple;
 
 import org.apache.jena.rdf.model.Model;
-import org.apache.jena.riot.Lang;
+
 
 public interface TripleStore {
 	
