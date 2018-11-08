@@ -151,14 +151,14 @@ public class EmbeddedStore extends TripleStoreImpl {
 				Logger.getAnonymousLogger().log(Level.WARNING," !* Failed to load " + f.getAbsolutePath(), ex);
 			}
 		}
-		
+		long t = System.currentTimeMillis();
+		Logger.getAnonymousLogger().log(Level.INFO, m.size() + " statements loaded");
 		Logger.getAnonymousLogger().log(Level.INFO, "Repo loaded - creating reasoner");
 		Reasoner owl = ReasonerRegistry.getOWLReasoner();
-		
-		
+
 		ds.setDefaultModel(ModelFactory.createInfModel(owl, m));
-		
-		
+		Logger.getAnonymousLogger().log(Level.INFO, m.size() + " statements :" + (System.currentTimeMillis() - t) / 1000 + " s");
+
 
 		
 	}
