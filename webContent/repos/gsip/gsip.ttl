@@ -1,0 +1,19 @@
+# temporary ontology for GSIP demonstration
+# GSIP specific properties
+
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix gsip:   <http://gsip.geoconnex.ca#> .
+@prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
+
+gsip:close-to a owl:ObjectProperty,owl:SymmetricProperty.
+gsip:near a owl:ObjectProperty,owl:SymmetricProperty.
+gsip:sameAs a owl:ObjectProperty,owl:SymmetricProperty.
+
+gsip:downstreamOf rdf:type owl:ObjectProperty,owl:TransitiveProperty;
+	owl:inverseOf gsip:upstreamOf.
+gsip:upstreamOf rdf:type owl:ObjectProperty,owl:TransitiveProperty.
+
+gsp:sfIntersects a owl:SymmetricProperty.
