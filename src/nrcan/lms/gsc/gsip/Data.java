@@ -131,8 +131,8 @@ public class Data {
 			{
 				URL url = new URL(newUrl.newUrl);
 				String out = null;
-				if (newUrl.useAnonFtp)
-					out = getStringFromFtp(url);
+				if ("ftp".equalsIgnoreCase(url.getProtocol()))
+					out = getStringFromFtp(url,newUrl.useAnonFtp);
 				else
 					out = getSringFromUrl(url);
 				if (out != null)
@@ -175,6 +175,7 @@ public class Data {
             //uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0a2) Gecko/20110613 Firefox/6.0a2");
             uc.connect();
             inputStream = uc.getInputStream();
+            uc.setConnectTimeout(1000*30);
             output = IOUtils.toString(inputStream,"UTF-8");
         } catch (IOException e) {
 
@@ -188,12 +189,19 @@ public class Data {
         
     }
 	
-	private static String getStringFromFtp(URL urlTemp) throws SocketException, IOException
+	private static String getStringFromFtp(URL urlTemp,boolean isAnon) throws SocketException, IOException
 	{
+		
 		String server = urlTemp.getHost();
         int port = 21;
+        String userInfo = urlTemp.getUserInfo();
         String user = "anonymous";
         String pass = "";
+        if (!isAnon && userInfo != null && userInfo.contains(":"))
+        {
+        	pass = userInfo.split(":")[1];
+            user = userInfo.split(":")[0];
+        }
         String output = null;
 
         FTPClient ftpClient = new FTPClient();
