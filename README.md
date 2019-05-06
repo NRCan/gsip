@@ -15,7 +15,7 @@ In the worst case, some links will 404.. this is how the web works after all.
 
 ## Documentation
 
-Find documentation in `/doc` folder
+Find documentation in `/docs` folder
 
 ## Deployment
 
