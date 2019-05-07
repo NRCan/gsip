@@ -19,6 +19,8 @@ Find documentation in `/docs` folder
 
 [Architecture](docs/architecture.adoc)
 
+[User Guide](docs/userguide.adoc)
+
 ## Deployment
 
 You can create a .war by running maven from the root of the project (where the .pom is)
