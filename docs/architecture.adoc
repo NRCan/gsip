@@ -297,3 +297,7 @@ API:: https://wateroffice.ec.gc.ca/report/historical_e.html?stn=02OJ024
 https://wateroffice.ec.gc.ca/report/real-time_e.html?stn=02OJ024 
 http://geomet.ec.gc.ca?request=getfeature…realtime…  xml json
 http://geomet.ec.gc.ca?request=getfeature…historical...
+
+== Links
+
+link:userguide{outfilesuffix}[User Guide]
