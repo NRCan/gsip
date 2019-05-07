@@ -17,6 +17,8 @@ In the worst case, some links will 404.. this is how the web works after all.
 
 Find documentation in `/docs` folder
 
+[Architecture](docs/architecture.adoc)
+
 ## Deployment
 
 You can create a .war by running maven from the root of the project (where the .pom is)
