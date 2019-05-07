@@ -1,0 +1,1 @@
+link:architecture.adoc[Architecture]
