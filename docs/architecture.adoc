@@ -2,6 +2,7 @@
 :sectnums:
 :toc:
 :toclevels: 3
+ifdef::env-github[:outfilesuffix: .adoc]
 
 :toc!:
 
