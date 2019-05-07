@@ -1,3 +1,0 @@
-link:architecture.adoc[Architecture]
-
-link:userguide.adoc[User Guide]
