@@ -1,6 +1,9 @@
 = GSIP Architecture
-
+:sectnums:
 :toc:
+:toclevels: 3
+
+:toc!:
 
 == Introduction
 
