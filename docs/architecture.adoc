@@ -10,39 +10,6 @@
 
 The Groundwater Surface-Water Initial LOD Pilot  (GSIP) will develop and prototype a Linked Open Data architecture for groundwater and surface water features that will work in Canada and be compatible with similar initiatives across the border in the US. GSIP will be designed with flexibility in mind such that different kinds of links can be used. Links semantic (how resources are linked together) are to be structured as per ELFIE, but alternatives might be used if the ELFIE link specification is not available in time. The architecture will be a prototype, intended to get Canada to the same level as the US. The follow-up joint work in the EHEE project may require adaptation to the GSIP architecture to meet EHEE’s broader objectives. GSIP will make use of the same study area as EHEE (Champlain-Richelieu watershed), for convenience only.
 
-== Glossary
-
-Content Negotiation::
-
-Web Resource:: Any resource that is accessible on the World Wide Web.
-
-URI:: Uniform Resource Identifier
-
-URL:: Uniform Resource Locator
-
-HTTP:: Hyper Text Transfer Protocol
-
-HTTP Header:: Additional metadata and parameters that are sent as part of an HTTP  request/response. These metadata and parameters are used by HTTP clients and servers to specify preferences and output.
-
-HTTP Verb:: Protocol methods that operate on web resources. These include GET, POST, PUT, DELETE, and OPTIONS.
-
-Ontology:: A formal definition of concepts and thier relations for a specific domain.
-
-Persistent URI:: A URI that is reasonably guaranteed to be remain available during a long period of time.  There is an expectation that a thing on the web (a resource) will keep the same URI in such a way that changes in organisation, infrastructure and governance won’t affect this URI.
-
-RDF:: Resource Description Framework
-
-LOD: Linked Open Data
-
-OGC: Open Geospatial Consortium
-
-GSIP:: Groundwater Surface-Water Initial LOD Pilot (Canada)
-
-EHEE:: EleHydro Exchange Experiment (Canada-US)
-
-ELFIE:: Environmental Linked Features Interoperability Experiment (OGC - International)
-
-
 == Architecture Overview
 
 The GSIP architecture offers a connected view of water related features (lakes, watershed, aquifers, monitoring stations, etc.) by modelling them as web features. Each features of interest is given a unique and persistent URI.  This URI is an identifier that is independent of possible representations.  This URI is named “non-information” URI because it represents the real world object, or an abstraction of a real world. When this URI is used on the web, a user can’t expect to retrieve the real thing, but will get a representation (an information) about the real world object, eg, a wikipedia page about Richelieu River, as opposed to the Richelieu River itself. Those two concepts are important to distinguish as it allows us to say something about the river (the real thing which has its own URI) and not about a document describing the river.  For instance, there is a difference between the Richelieu River is 124 km long and the Richelieu River wikipedia page about the same river is in french.  This distinction becomes important when we consider that a single real world feature will like have a large number of representations in different formats, languages, media types and versions.
@@ -68,16 +35,16 @@ Note that classical content negotiation mechanism can redirect to multiple repre
 There are different types of resources.  Although not a functional requirement, resources URIs should follow a pattern based on their type.
 
 . Non-information resource (thing)
-.. /id/ = identifies a real world thing (e.g. an aquifer, watershed, stream segment, etc.)
+.. `/id/` identifies a real world thing (e.g. an aquifer, watershed, stream segment, etc.)
 
 . Information resource (representation)
-.. /info/ = identifies the representation that reports multiple representations and possibly other metadata about a thing
+.. `/info/` identifies the representation that reports multiple representations and possibly other metadata about a thing
 
-.. /data/ = identifies a specific representation of a feature (an instance of a type)
+.. `/data/` identifies a specific representation of a feature (an instance of a type)
 
 This pattern help users and developers to infer the kind of resources they are dealing with, but also helps control the creation of new URI - and potentially avoid duplication of URI. This leads to a general url pattern:
 
- http(s)://subdomain.domain.name/{root}/{resource-type}/{theme}/{structure}/{semantics}/{source}/unique-id
+`http(s)://subdomain.domain.name/{root}/{resource-type}/{theme}/{structure}/{semantics}/{source}/unique-id`
 
 General URL pattern as a tree:
 
@@ -99,19 +66,19 @@ Data
 ----
 
 
-NOTE: The inclusion of {theme} is debatable, it’s just an ad-hoc classification of the thing for info purposes e.g. “aquifer”.
+NOTE: The inclusion of `{theme}` is debatable, it’s just an ad-hoc classification of the thing for info purposes e.g. “aquifer”.
 
-An alternative could replace /{structure}/{semantics}/{source}/ with /{profile}/, e.g.:
+An alternative could replace `/{structure}/{semantics}/{source}/` with `/{profile}/`, e.g.:
 
- http(s)://subdomain.domain.name/{resource type}/{theme}/{profile}/unique-id
+`http(s)://subdomain.domain.name/{resource type}/{theme}/{profile}/unique-id`
 
-For /id/ and /info/: because there are NOT multiple structures, semantics, or sources for these  types, use:
+For `/id/` and `/info/`: because there are NOT multiple structures, semantics, or sources for these  types, use:
 
- http://subdomain.domain.name/{resource type}/{theme}/unique-id
+`http(s)://subdomain.domain.name/{resource type}/{theme}/unique-id`
 
 *Example*
 
-Paste this url into your browser. It represents a neutral id for an aquifer (notice “/id/” in the url):
+Paste this url into your browser. It represents a neutral id for an aquifer (notice `/id/` in the url):
 
 
 http://gin.gw-info.net/gsip/id/aquifers/Richelieu
@@ -139,18 +106,18 @@ NOTE: An alternative is to bundle each distinct combination of these dimensions 
 
 *Example*
 
-Paste this url into your browser. It represents a neutral id for an aquifer (notice “/id/” in the url):
+Paste this url into your browser. It represents a neutral id for an aquifer (notice `/id/` in the url):
 
 http://gin.gw-info.net/gsip/id/aquifers/Richelieu
 
-The browser returns a list of possible representations for a specific format (notice “/info/” in the url for the list):
+The browser returns a list of possible representations for a specific format (notice `/info/` in the url for the list):
 
 http://gin.gw-info.net/gsip/info/aquifers/Richelieu
 
 Things in the list are there for demo purposes: they not really different reps of the same thing, but related things
 The variation dimensions (structure, semantics, source) and theme are also properties of each representation.
 
-Click on a representation. Notice “/data/” in the url for each representation, and that each representation has a distinct url with a common pattern (to be explained in the architecture doc):
+Click on a representation. Notice `/data/` in the url for each representation, and that each representation has a distinct url with a common pattern (to be explained in the architecture doc):
 
 http://gin.gw-info.net/gsip/data/aquifers/gwml2/gsip/gin/Richelieu/1
 
@@ -180,7 +147,7 @@ The Link Repository is a central database containing (i) links between features,
 
 image::link-repository.png[Link repository diagram]
 
-The Linked Data Broker (LDB) queries the Link Repository on every request so that link relations can be injected into the response. For example, a hydraulicallyConnected association could be injected in the response for hydro feature metadata indicating that the feature is connected to another feature (e.g. waterbody, aquifer, etc.). Third party clients can query the repository using SPARQL.
+The Linked Data Broker (LDB) queries the Link Repository on every request so that link relations can be injected into the response. For example, a `hydraulicallyConnected` association could be injected in the response for hydro feature metadata indicating that the feature is connected to another feature (e.g. waterbody, aquifer, etc.). Third party clients can query the repository using SPARQL.
 
 Web Services
  (e.g. OGC) that return features in designated formats (tbd).
@@ -296,6 +263,39 @@ https://wateroffice.ec.gc.ca/report/real-time_e.html?stn=02OJ024
 http://geomet.ec.gc.ca?request=getfeature…realtime…  xml json
 http://geomet.ec.gc.ca?request=getfeature…historical...
 
-== Links
+== Appendix A - Links
 
-link:userguide{outfilesuffix}[User Guide]
+link:userguide{outfilesuffix}[GSIP Mediator User Guide]
+
+== Appendix B - Glossary
+
+Content Negotiation:: An HTTP client can "negotiate" for a representation (e.g. HTML, PDF, XML) of a web resource with and HTTP server. The server can return the representation requested or one of its own choosing, if the requested representation is not available. Clients send the preference in the HTTP header. 
+
+Web Resource:: Any resource that is accessible on the World Wide Web.
+
+URI:: Uniform Resource Identifier
+
+URL:: Uniform Resource Locator
+
+HTTP:: Hyper Text Transfer Protocol
+
+HTTP Header:: Additional metadata and parameters that are sent as part of an HTTP  request/response. These metadata and parameters are used by HTTP clients and servers to specify preferences and output.
+
+HTTP Verb:: Protocol methods that operate on web resources. These include GET, POST, PUT, DELETE, and OPTIONS.
+
+Ontology:: A formal definition of concepts and thier relations for a specific domain.
+
+Persistent URI:: A URI that is reasonably guaranteed to be remain available during a long period of time.  There is an expectation that a thing on the web (a resource) will keep the same URI in such a way that changes in organisation, infrastructure and governance won’t affect this URI.
+
+RDF:: Resource Description Framework
+
+LOD: Linked Open Data
+
+OGC: Open Geospatial Consortium
+
+GSIP:: Groundwater Surface-Water Initial LOD Pilot (Canada)
+
+EHEE:: EleHydro Exchange Experiment (Canada-US)
+
+ELFIE:: Environmental Linked Features Interoperability Experiment (OGC - International)
+
