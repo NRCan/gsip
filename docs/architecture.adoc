@@ -2,6 +2,7 @@
 :sectnums:
 :toc:
 :toclevels: 3
+:imagesdir: img
 
 :toc!:
 
@@ -165,19 +166,19 @@ Note: the Champlain url does not resolve (it’s a dummy for this demo)
 
 GSIP’s Linked Open Data architecture is comprised of three main components: 1) linked data broker; 2) linked data store; and 3) web services and document resources.
 
-image::img/architecture-tiers.png[Link data broker diagram]
+image::architecture-tiers.png[Link data broker diagram]
 
 === Linked Data Broker (LDB)
 
 The LDB responds to requests for hydro features and returns documents (e.g. concept definitions, metadata) or feature representations (e.g. geometry, portrayals). When receiving a request for a document, the LDB queries the Linked Data Store for linkages which are included in the response. For example a request for hydro feature metadata may include links to other related features and/or feature collections. The LDB also includes in its response, links (i.e. rel="alternate") to alternate representations of the response subject (e.g. RDF, XML, HTML, etc.). The content (i.e. media-type) of the response is negotiated by the client. The following diagram depicts a typical interaction between the LDB and a client application that is requesting information resource that describes an Aquifer. Note that the client is requesting that the response be returned in HTML.
 
-image::img/link-broker.png[Link data broker diagram]
+image::link-broker.png[Link data broker diagram]
 
 === Link Repository
 
 The Link Repository is a central database containing (i) links between features, (ii) ontologies/schemas for feature types and relations, (iii) vocabulary, and (iv) where required a catalog of features.
 
-image::img/link-repository.png[Link repository diagram]
+image::link-repository.png[Link repository diagram]
 
 The Linked Data Broker (LDB) queries the Link Repository on every request so that link relations can be injected into the response. For example, a hydraulicallyConnected association could be injected in the response for hydro feature metadata indicating that the feature is connected to another feature (e.g. waterbody, aquifer, etc.). Third party clients can query the repository using SPARQL.
 
@@ -223,15 +224,16 @@ https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = application/p
 https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = image/png 
 Will redirect to image location directly because it’s not an hypermedia and the format is not ambiguous.
 
-Caveat
 
-If a resource has a single representation, but this representation is an hypermedia, it can never be resolved directly and will always return a info document.
+NOTE: If a resource has a single representation, but this representation is an hypermedia, it can never be resolved directly and will always return a info document.
 
 The exact sequence has a few more steps and is described in details in figure 2 
 
-image::img/sequence.png[Resolution mechanism sequence diagram]
+image::sequence.png[Resolution mechanism sequence diagram, caption="Figure 2: foo"]
 
 Figure 2: Resolution mechanism sequence diagram
+
+=== Interaction Sequence
 
 . A client dereferences a /id/ URI.  Its Accept header is set to text/html (HTML page).
 . The LDB looks into the Linked Data Store [BE1] to find a /info/ resource.  It is expected that there shall be only one /info/ in this data store
@@ -248,13 +250,9 @@ Figure 2: Resolution mechanism sequence diagram
 . Client is redirected to a WFS query (the client is not aware it’s a WFS, it’s just like any URI + parameters). 
 . Client get a XML representation
 
+=== Examples
 
-
-
-
-
-
-==== Groundwater Example 1 (Richelieu Aquifer)
+==== Groundwater (Richelieu Aquifer)
 
 ID:: https://groundwater.geoconnex.ca/id/aquifer/Richelieu
 INFO:: https://groundwater.geoconnex.ca/info/aquifer/Richelieu
@@ -262,14 +260,14 @@ DATA:: https://groundwater.geoconnex.ca/data/aquifer/GWML2/GWML2/GIN/Richelieu
 https://groundwater.geoconnex.ca/data/aquifer/GWML2/GWML2/GIN/1.0/Richelieu
 API:: https://gw-info.net/....
 
-==== Groundwater Example 1 (GW Monitoring Site)
+==== Groundwater (GW Monitoring Site)
 
 ID:: https://groundwater.geoconnex.ca/id/gwmonitoring/prj.24.5
 INFO:: https://groundwater.geoconnex.ca/info/gwmonitoring/prj.24.5
 DATA:: https://groundwater.geoconnex.ca/data/gwmonitoring/GWML2/GWML2/GIN/prj.24.5
 API:: https://gw-info.net/…
 
-==== Hydrography Example (RichelieuRiver)
+==== Hydrography (RichelieuRiver)
 ID:: https://hydrography.geoconnex.ca/id/river/RichelieuRiver
 INFO:: https://hydrography.geoconnex.ca/info/river/RichelieuRiver
 DATA:: https://hydrography.geoconnex.ca/data/river/CHY_F/CHY_F/NHN/RichelieuRiver
@@ -285,7 +283,7 @@ https://en.wikipedia.org/wiki/Richelieu_River
 
 API:: http://geobase.ca/wfs?REQUEST=GetFeature&VERSION=2.0.0&SERVICE=WFS&STOREDQUERY_ID=urn:ogc:def:query:OGC-WFS::GetFeatureById&ID=123456 
 
-==== Hydrometric Example (02OJ024)
+==== Hydrometric (02OJ024)
 
 ID:: https://hydrometric.geoconnex.ca/id/swmonitoring/WSC_02OJ024
 INFO:: https://hydrometric.geoconnex.ca/info/swmonitoring/WSC_02OJ024
