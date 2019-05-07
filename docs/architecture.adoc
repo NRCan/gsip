@@ -12,7 +12,7 @@ The Groundwater Surface-Water Initial LOD Pilot  (GSIP) will develop and prototy
 
 == Glossary
 
-Content Negotiation:: 
+Content Negotiation::
 
 Web Resource:: Any resource that is accessible on the World Wide Web.
 
@@ -30,7 +30,7 @@ Ontology:: A formal definition of concepts and thier relations for a specific do
 
 Persistent URI:: A URI that is reasonably guaranteed to be remain available during a long period of time.  There is an expectation that a thing on the web (a resource) will keep the same URI in such a way that changes in organisation, infrastructure and governance won’t affect this URI.
 
-RDF:: Resource Description Framework 
+RDF:: Resource Description Framework
 
 LOD: Linked Open Data
 
@@ -47,11 +47,11 @@ ELFIE:: Environmental Linked Features Interoperability Experiment (OGC - Interna
 
 The GSIP architecture offers a connected view of water related features (lakes, watershed, aquifers, monitoring stations, etc.) by modelling them as web features. Each features of interest is given a unique and persistent URI.  This URI is an identifier that is independent of possible representations.  This URI is named “non-information” URI because it represents the real world object, or an abstraction of a real world. When this URI is used on the web, a user can’t expect to retrieve the real thing, but will get a representation (an information) about the real world object, eg, a wikipedia page about Richelieu River, as opposed to the Richelieu River itself. Those two concepts are important to distinguish as it allows us to say something about the river (the real thing which has its own URI) and not about a document describing the river.  For instance, there is a difference between the Richelieu River is 124 km long and the Richelieu River wikipedia page about the same river is in french.  This distinction becomes important when we consider that a single real world feature will like have a large number of representations in different formats, languages, media types and versions.
 
-The GSIP architecture makes a clear distinction between real worlds features and their representations. GSIP keeps a databases of real world thing and 
+The GSIP architecture makes a clear distinction between real worlds features and their representations. GSIP keeps a databases of real world thing and
 How real world things are related to other real world things (how a monitoring station is related to a river)
 How real world things are related to their representations.
 
-Representations and formats are not the same things. A given representation, which is closer to the concept of a “information model” can be encoded using several “formats”. For example, a monitoring station in OGC WaterML 2 (an information model) can be encoded in XML, Turtle or JSON.  In the literature, the linkage between a non-information URI and a representation often conflates representation and format.   One mechanism to extract a representation from the web is called Content-Negotiation.  Content negotiation attempts to match a list of expected formats provided by the client with a list of available resources on the server.  HTTP protocol uses such mechanism to requesting a resource from a server.  
+Representations and formats are not the same things. A given representation, which is closer to the concept of a “information model” can be encoded using several “formats”. For example, a monitoring station in OGC WaterML 2 (an information model) can be encoded in XML, Turtle or JSON.  In the literature, the linkage between a non-information URI and a representation often conflates representation and format.   One mechanism to extract a representation from the web is called Content-Negotiation.  Content negotiation attempts to match a list of expected formats provided by the client with a list of available resources on the server.  HTTP protocol uses such mechanism to requesting a resource from a server.
 
 Because content negotiation is mostly about formats, it can’t handle multiple representations in the same format.
 
@@ -106,7 +106,7 @@ An alternative could replace /{structure}/{semantics}/{source}/ with /{profile}/
  http(s)://subdomain.domain.name/{resource type}/{theme}/{profile}/unique-id
 
 For /id/ and /info/: because there are NOT multiple structures, semantics, or sources for these  types, use:
-	
+
  http://subdomain.domain.name/{resource type}/{theme}/unique-id
 
 *Example*
@@ -133,7 +133,7 @@ NOTE: The boundary between structure and semantics can appear to blur, because d
 
 NOTE: For simplicity, variation in symbolic organization is considered a structural difference; e.g. the same map symbolized using different color schemes, or the same html document using different fonts. Variation in css is therefore a structural difference here.
 
-NOTE: Source is needed to distinguish copies: i.e. different providers can provide a representation that is the same in all other dimensions, i.e. a duplicate. 
+NOTE: Source is needed to distinguish copies: i.e. different providers can provide a representation that is the same in all other dimensions, i.e. a duplicate.
 
 NOTE: An alternative is to bundle each distinct combination of these dimensions into a unique “profile” name, and then attach the dimensions as properties in the metadata of the representation.
 
@@ -145,18 +145,18 @@ http://gin.gw-info.net/gsip/id/aquifers/Richelieu
 
 The browser returns a list of possible representations for a specific format (notice “/info/” in the url for the list):
 
-http://gin.gw-info.net/gsip/info/aquifers/Richelieu 
+http://gin.gw-info.net/gsip/info/aquifers/Richelieu
 
 Things in the list are there for demo purposes: they not really different reps of the same thing, but related things
 The variation dimensions (structure, semantics, source) and theme are also properties of each representation.
 
 Click on a representation. Notice “/data/” in the url for each representation, and that each representation has a distinct url with a common pattern (to be explained in the architecture doc):
 
-http://gin.gw-info.net/gsip/data/aquifers/gwml2/gsip/gin/Richelieu/1 
+http://gin.gw-info.net/gsip/data/aquifers/gwml2/gsip/gin/Richelieu/1
 
 You will be redirected to that particular representation at its local url (which could be a call to a specific API)
 
-http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit.html?id=1 
+http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit.html?id=1
 
 Notice the link at the bottom (Associations section)
 
@@ -193,8 +193,8 @@ User asks (by dereferencing a non-information URI) information about the resourc
 If
 The requested format is a supported hypermedia (HTML, RDF+XML, RDF/TTL or JSON-LD)
 OR  another format is requested and GSIP has multiple representations
-THEN GSIP returns a info hypermedia document (default is HTML) providing relevant representations and links to other non-information resource. 
-At this point, the client can choose to follow  
+THEN GSIP returns a info hypermedia document (default is HTML) providing relevant representations and links to other non-information resource.
+At this point, the client can choose to follow
 Further content negotiation might happen to narrow a format
 If user follow another non-information resource
 Go back to first step for a different resource
@@ -205,7 +205,7 @@ GSIP redirects directly to a representation of the resource
 
 https://geosciences.ca/id/wells/SomeCity/abc-1 is a non-information URI bounded to a single PDF representation located at http://www.SomeCity.ca/groundwater/abc-1.pdf and is not related to any other resources or representation.
 
-https://geosciences.ca/id/wells/SomeCity/abc-1 request with format = text/html 
+https://geosciences.ca/id/wells/SomeCity/abc-1 request with format = text/html
 will return an info resource in HTML (because an supported hypermedia was requested).
 https://geosciences.ca/id/wells/SomeCity/abc-1 request with format = application/pdf
 Will redirect to the PDF located at http://www.SomeCity.ca/groundwater/abc-1.pdf because this format has been request explicitly
@@ -217,17 +217,17 @@ Will return a 404 (not found)
 
 https://geosciences.ca/id/wells/gin/ww-ab-01  is a non-information URI bounded to several pdf representations, several HTML representation and a single png representation
 
-https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = application/rdf+xml  
+https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = application/rdf+xml
 will redirect to a info document in rdf, because it is a supported hypermedia
-https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = application/pdf 
+https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = application/pdf
  Will redirect to a info document in HTML because there are multiple representations in pdf (ambiguous) and the default hypermedia is HTML
-https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = image/png 
+https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = image/png
 Will redirect to image location directly because it’s not an hypermedia and the format is not ambiguous.
 
 
 NOTE: If a resource has a single representation, but this representation is an hypermedia, it can never be resolved directly and will always return a info document.
 
-The exact sequence has a few more steps and is described in details in figure 2 
+The exact sequence has a few more steps and is described in details in figure 2
 
 image::sequence.png[Resolution mechanism sequence diagram, caption="Figure 2: foo"]
 
@@ -247,7 +247,7 @@ Figure 2: Resolution mechanism sequence diagram
 . LDB creates a hypermedia according to client preferences (content negotiation). In this case, it will create an HTML file.  Note there are no 303 for this architecture (but there might be one in other architecture)
 . At this point, the client will choose what to do next.  A human user can click on a link, or a agent can parse the hypermedia and dereference a resource is has been programme to extract (eg, a GIS plugin that is looking for a Aquifer representation is can parse and plot on a map). In our example, the client dereferences a resource found in the hypermedia but asks for xml.
 . The other representation might not be provided at the same location (by the same LDB), it could be an external PID (managed by USGS for example).  In this case, 303 and content negotiation could happen at the same time.  This is what this example does.
-. Client is redirected to a WFS query (the client is not aware it’s a WFS, it’s just like any URI + parameters). 
+. Client is redirected to a WFS query (the client is not aware it’s a WFS, it’s just like any URI + parameters).
 . Client get a XML representation
 
 === Examples
@@ -277,11 +277,11 @@ http://www.geonames.org/maps/google_46.048_-73.12.html
 
 http://dbpedia.org/resource/Richelieu_River
 
-https://fr.wikipedia.org/wiki/Rivi%C3%A8re_Richelieu	
+https://fr.wikipedia.org/wiki/Rivi%C3%A8re_Richelieu
 
 https://en.wikipedia.org/wiki/Richelieu_River
 
-API:: http://geobase.ca/wfs?REQUEST=GetFeature&VERSION=2.0.0&SERVICE=WFS&STOREDQUERY_ID=urn:ogc:def:query:OGC-WFS::GetFeatureById&ID=123456 
+API:: http://geobase.ca/wfs?REQUEST=GetFeature&VERSION=2.0.0&SERVICE=WFS&STOREDQUERY_ID=urn:ogc:def:query:OGC-WFS::GetFeatureById&ID=123456
 
 ==== Hydrometric (02OJ024)
 
@@ -290,8 +290,12 @@ INFO:: https://hydrometric.geoconnex.ca/info/swmonitoring/WSC_02OJ024
 DATA:: https://hydrometric.geoconnex.ca/data/swmonitoring/WML2/Real_time/WSC/WSC_02OJ024
 https://hydrometric.geoconnex.ca/data/swmonitoring/WML2/Historical/WSC/WSC_02OJ024
 https://hydrometric.geoconnex.ca/data/swmonitoring/QMEP/QMEP/QMEP/30415
-	
-API:: https://wateroffice.ec.gc.ca/report/historical_e.html?stn=02OJ024 
-https://wateroffice.ec.gc.ca/report/real-time_e.html?stn=02OJ024 
+
+API:: https://wateroffice.ec.gc.ca/report/historical_e.html?stn=02OJ024
+https://wateroffice.ec.gc.ca/report/real-time_e.html?stn=02OJ024
 http://geomet.ec.gc.ca?request=getfeature…realtime…  xml json
 http://geomet.ec.gc.ca?request=getfeature…historical...
+
+== Links
+
+link:userguide{outfilesuffix}[User Guide]
