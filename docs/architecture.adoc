@@ -183,6 +183,7 @@ The following image depicts the URI resolution for a GSIP resource (i.e, Richeli
 .URI resolution
 image::uri-resolution.png[URI resolution,750]
 
+
 The final response is hypermedia: information for the requested resource (i.e., Richelieu aquifer) providing links to other representations of the resource (e.g. data) as well as associated resources.
 
 .Info resource
