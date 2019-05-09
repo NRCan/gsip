@@ -4,6 +4,13 @@
 :toclevels: 3
 :imagesdir: img
 :icons: font
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
 
 :toc!:
 
@@ -23,8 +30,8 @@ Representations and formats are not the same things. A given representation, whi
 
 Since content negotiation is mostly about formats, it can’t handle multiple representations in the same format. For this reason, GSIP adds a third type of resource called "info" resource. An info resource is a hypermedia document (a document that provides links to other resources) containing information of interest for GSIP use cases:
 
-* Information about the resource itself (e.g.: its type)
-* How this non-information resources links to other non-information resource (e.g.: this river linked to the monitoring station)
+* Information about the resource itself (e.g. its type)
+* How this non-information resources links to other non-information resource (e.g. this river linked to the monitoring station)
 * How this non-information resource linked to its representations, handling the fact that several presentation of the same format are possible (a monitoring station web page from provincial source and the same monitoring station describes on a federal system).
 
 NOTE: Classical content negotiation mechanism can redirect to multiple representations (of the same format) for a requested format, but it is limited to a series of URI that the user must select to proceed further. This is essentially what the "info" document does, with a far clearer semantic.
@@ -67,7 +74,7 @@ Data
 
 NOTE: The inclusion of `{theme}` is debatable, it’s just an ad-hoc classification of the thing for info purposes e.g. “aquifer”.
 
-An alternative could replace `/{structure}/{semantics}/{source}/` with `/{profile}/`, e.g.:
+An alternative could replace `/{structure}/{semantics}/{source}/` with `/{profile}/`, 
 
 `http(s)://subdomain.domain.name/{resource type}/{theme}/{profile}/unique-id`
 
@@ -87,13 +94,13 @@ http://gin.gw-info.net/gsip/id/aquifers/Richelieu
 
 === Elements of a URL
 
-Syntax:: Format and language of the rep (e.g. xml and en; captured by current content neg)
+Syntax:: Format and language of the representation (e.g. xml and en; captured by current content negotiation)
 
 Structure:: Different organization of same content (e.g. gwml2 or gwml1 aquifer; different css for same html content)
 
 Semantics:: Different content (e.g. subset of gwml2; aquifer in gwml2 vs HYF-alpha)
 
-Source:: Originator (different providers can provide same rep)
+Source:: Originator (different providers can provide same representation)
 
 NOTE: The boundary between structure and semantics can appear to blur, because different contents (semantics) imply different schemas, but different schemas do not necessarily imply different contents (semantics). E.g. assume gwml1 and gwml2 contents for aquifer are the same, but organized differently such as some properties are classes vs roles (not true in reality).
 
@@ -105,18 +112,20 @@ TIP: An alternative is to bundle each distinct combination of these dimensions i
 
 *Example*
 
-Paste this url into your browser. It represents a neutral id for an aquifer (notice `/id/` in the url):
+Paste this url into your browser. It represents a neutral id for an aquifer (notice `/id/` in the URL):
 
 http://gin.gw-info.net/gsip/id/aquifers/Richelieu
 
-The browser returns a list of possible representations for a specific format (notice `/info/` in the url for the list):
+The browser returns a landing page with a list of possible representations for a specific format (notice `/info/` in the URL):
 
 http://gin.gw-info.net/gsip/info/aquifers/Richelieu
 
-Things in the list are there for demo purposes: they not really different reps of the same thing, but related things
-The variation dimensions (structure, semantics, source) and theme are also properties of each representation.
+.Landing page
+image::richelieu-aquifer-landing-page.png[Resource landing page]
 
-Click on a representation. Notice `/data/` in the url for each representation, and that each representation has a distinct url with a common pattern (to be explained in the architecture doc):
+NOTE: Things in the list are there for demo purposes, they not alternate representations of the same thing (e.g. Richelieu aquifer), but related things.
+
+Click on a representation. Notice `/data/` in the URL for each representation, and that each representation has a distinct url with a common pattern (to be explained in the architecture doc):
 
 http://gin.gw-info.net/gsip/data/aquifers/gwml2/gsip/gin/Richelieu/1
 
@@ -124,7 +133,7 @@ You will be redirected to that particular representation at its local url (which
 
 http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit.html?id=1
 
-Notice the link at the bottom (Associations section)
+Notice the link at the bottom (Associations section) to associated resources (i.e. Champlain watershed).
 
 IMPORTANT: the Champlain URL does not resolve (it’s a dummy for this demo)
 
@@ -148,6 +157,7 @@ The Link Link Data Store is a central database containing (i) links between feat
 
 .Link Data Store
 image::link-repository.png[Link data store diagram]
+
 
 The Linked Data Broker (LDB) queries the Link Data Store on every request so that link relations can be injected into the response. For example, a `hydraulicallyConnected` association could be injected in the response for hydro feature metadata indicating that the feature is connected to another feature (e.g. waterbody, aquifer, etc.). Third party clients can query the repository using SPARQL.
 
@@ -174,6 +184,9 @@ Go back to first step for a different resource
 
 Else::
 GSIP redirects directly to a representation of the resource
+
+.URI Resolution
+image::uri-resolution.png[URI resolution,750]
 
 *Example 1*
 
