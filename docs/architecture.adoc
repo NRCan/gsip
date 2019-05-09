@@ -120,8 +120,6 @@ The browser returns a landing page with a list of possible representations for a
 
 http://gin.gw-info.net/gsip/info/aquifers/Richelieu
 
-.Landing page
-image::richelieu-aquifer-landing-page.png[Resource landing page]
 
 NOTE: Things in the list are there for demo purposes, they not alternate representations of the same thing (e.g. Richelieu aquifer), but related things.
 
@@ -167,26 +165,29 @@ The Linked Data Broker (LDB) queries the Link Data Store on every request so tha
 
 == URI Resolution
 
-The interaction with GSIP is as follow
+The primary way in which a client or agent interacts with GSIP is via URI's. Specfically, a client or agent will dereference a URI to gain access to a resource in one or more representations. These interactions rely on the the fundamental principles of the world wide web and associated technologies including hypermedia and the HTTP protocol.
 
-User asks (by dereferencing a non-information URI) information about the resource in a specific format
+There are two important concepts that underpin a GSIP interaction:
 
-If::
-The requested format is a supported hypermedia (HTML, RDF+XML, RDF/TTL or JSON-LD)
+"Non-information" URI:: A URI that identifies a real-world entity such as an aquifer or well. This URI doesn't actually resolve to a web resource - rather GSIP redirects clients via HTTP 303 Redirect to an "Info" resource (see below)
+"Info" resource:: A dynamically generated web resource that describes the target resource and its relations
 
-OR:: another format is requested and GSIP has multiple representations
+A typical interaction with GSIP can be described as a series of client server interactions:
 
-THEN:: GSIP returns a info hypermedia document (default is HTML) providing relevant representations and links to other non-information resource.
-At this point, the client can choose to follow
-Further content negotiation might happen to narrow a format
-If user follow another non-information resource
-Go back to first step for a different resource
+. Client asks (by dereferencing a non-information URI) for information about a resource in a specific format (e.g. HTML, RDF+XML, RDF/TTL or JSON-LD). The preferred format is passed in the HTTP Accept-Header.
+. The server returns an "info" resource in the requested format, or one of its choosing if the format specified in the Accept-Header is not supported.
+. Client consumes response and processes it accordingly (e.g. presents hypermedia to user), possibly making additional requests to the originating server or other servers.
 
-Else::
-GSIP redirects directly to a representation of the resource
+The following image depicts the URI resolution for a GSIP resource (i.e, Richelieu aquifer) accessed by a web browser. Note the 303 redirect to a representation of the dereferenced identifier for a non-information resource.
 
-.URI Resolution
+.URI resolution
 image::uri-resolution.png[URI resolution,750]
+
+The final response is hypermedia: information for the requested resource (i.e., Richelieu aquifer) providing links to other representations of the resource (e.g. data) as well as associated resources.
+
+.Info resource
+image::richelieu-aquifer-landing-page.png[URI resolution,750]
+
 
 *Example 1*
 
