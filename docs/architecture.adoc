@@ -156,7 +156,6 @@ The Link Link Data Store is a central database containing (i) links between feat
 .Link Data Store
 image::link-repository.png[Link data store diagram]
 
-
 The Linked Data Broker (LDB) queries the Link Data Store on every request so that link relations can be injected into the response. For example, a `hydraulicallyConnected` association could be injected in the response for hydro feature metadata indicating that the feature is connected to another feature (e.g. waterbody, aquifer, etc.). Third party clients can query the repository using SPARQL.
 
 === Web Resources
