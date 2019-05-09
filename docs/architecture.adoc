@@ -140,7 +140,7 @@ IMPORTANT: the Champlain URL does not resolve (it’s a dummy for this demo)
 GSIP’s Linked Open Data architecture is comprised of three main components: 1) linked data broker; 2) linked data store; and 3) web resources.
 
 .Architecture Tiers
-image::architecture-tiers.png[Link data broker diagram] +
+image::architecture-tiers.png[Link data broker diagram]
 
 === Linked Data Broker (LDB)
 
@@ -154,7 +154,7 @@ image::link-broker.png[Link data broker diagram]
 The Link Link Data Store is a central database containing (i) links between features, (ii) ontologies/schemas for feature types and relations, (iii) vocabulary, and (iv) where required a catalog of features.
 
 .Link Data Store
-image::link-repository.png[Link data store diagram] +
+image::link-repository.png[Link data store diagram]
 
 
 The Linked Data Broker (LDB) queries the Link Data Store on every request so that link relations can be injected into the response. For example, a `hydraulicallyConnected` association could be injected in the response for hydro feature metadata indicating that the feature is connected to another feature (e.g. waterbody, aquifer, etc.). Third party clients can query the repository using SPARQL.
@@ -181,12 +181,12 @@ A typical interaction with GSIP can be described as a series of client server in
 The following image depicts the URI resolution for a GSIP resource (i.e, Richelieu aquifer) accessed by a web browser. Note the 303 redirect to a representation of the dereferenced identifier for a non-information resource.
 
 .URI resolution
-image::uri-resolution.png[URI resolution,750] +
+image::uri-resolution.png[URI resolution,750]
 
 The final response is hypermedia: information for the requested resource (i.e., Richelieu aquifer) providing links to other representations of the resource (e.g. data) as well as associated resources.
 
 .Info resource
-image::richelieu-aquifer-landing-page.png[URI resolution,750] +
+image::richelieu-aquifer-landing-page.png[URI resolution,750]
 
 *Example 1*
 
@@ -217,7 +217,7 @@ The exact sequence has a few more steps and is described in details in the next 
 === Interaction Sequence
 
 .Resolution mechanism sequence diagram
-image::sequence.png[Resolution mechanism sequence diagram] +
+image::sequence.png[Resolution mechanism sequence diagram]
 
 . A client dereferences a `/id/` URI.  Its Accept header is set to text/html (HTML page).
 . The LDB looks into the Linked Data Store [BE1] to find a `/info/` resource.  It is expected that there shall be only one `/info/` in this data store
