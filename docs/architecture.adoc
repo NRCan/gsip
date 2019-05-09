@@ -3,6 +3,7 @@
 :toc:
 :toclevels: 3
 :imagesdir: img
+:icons: font
 
 :toc!:
 
@@ -20,19 +21,17 @@ How real world things are related to their representations.
 
 Representations and formats are not the same things. A given representation, which is closer to the concept of a “information model” can be encoded using several “formats”. For example, a monitoring station in OGC WaterML 2 (an information model) can be encoded in XML, Turtle or JSON.  In the literature, the linkage between a non-information URI and a representation often conflates representation and format.   One mechanism to extract a representation from the web is called Content-Negotiation.  Content negotiation attempts to match a list of expected formats provided by the client with a list of available resources on the server.  HTTP protocol uses such mechanism to requesting a resource from a server.
 
-Because content negotiation is mostly about formats, it can’t handle multiple representations in the same format.
+Since content negotiation is mostly about formats, it can’t handle multiple representations in the same format. For this reason, GSIP adds a third type of resource called "info" resource. An info resource is a hypermedia document (a document that provides links to other resources) containing information of interest for GSIP use cases:
 
-For this reason, GSIP adds a third type of resource called “info” resource.  An info resources is an hypermedia (a document that provides links to other resources) containing information of interest for GSIP use cases.
+* Information about the resource itself (e.g.: its type)
+* How this non-information resources links to other non-information resource (e.g.: this river linked to the monitoring station)
+* How this non-information resource linked to its representations, handling the fact that several presentation of the same format are possible (a monitoring station web page from provincial source and the same monitoring station describes on a federal system).
 
-Information about the resource itself (eg: its type)
-How this non-information resources links to other non-information resource (this river linked to the monitoring station)
-How this non-information resource linked to its representations, handling the fact that several presentation of the same format are possible (a monitoring station web page from provincial source and the same monitoring station describes on a federal system).
+NOTE: Classical content negotiation mechanism can redirect to multiple representations (of the same format) for a requested format, but it is limited to a series of URI that the user must select to proceed further. This is essentially what the "info" document does, with a far clearer semantic.
 
-Note that classical content negotiation mechanism can redirect to multiple representations (of the same format) for a requested format, but it is limited to a series of URI that the user must select to proceed further. This is essentially what info document does, with far clearer semantic.
+== Resource Types
 
-=== Types
-
-There are different types of resources.  Although not a functional requirement, resources URIs should follow a pattern based on their type.
+There are different types of resources managed and accessed by GSIP. Although not a functional requirement, resources URIs should follow a pattern based on their type.
 
 . Non-information resource (thing)
 .. `/id/` identifies a real world thing (e.g. an aquifer, watershed, stream segment, etc.)
@@ -84,17 +83,17 @@ Paste this url into your browser. It represents a neutral id for an aquifer (not
 http://gin.gw-info.net/gsip/id/aquifers/Richelieu
 
 
-=== URL Structure
+== URL Structure
 
-==== Elements of a URL
+=== Elements of a URL
 
-*Syntax:* format and language of the rep (e.g. xml and en; captured by current content neg)
+Syntax:: Format and language of the rep (e.g. xml and en; captured by current content neg)
 
-*Structure:* different organization of same content (e.g. gwml2 or gwml1 aquifer; different css for same html content)
+Structure:: Different organization of same content (e.g. gwml2 or gwml1 aquifer; different css for same html content)
 
-*Semantics:* different content (e.g. subset of gwml2; aquifer in gwml2 vs HYF-alpha)
+Semantics:: Different content (e.g. subset of gwml2; aquifer in gwml2 vs HYF-alpha)
 
-*Source:* originator (different providers can provide same rep)
+Source:: Originator (different providers can provide same rep)
 
 NOTE: The boundary between structure and semantics can appear to blur, because different contents (semantics) imply different schemas, but different schemas do not necessarily imply different contents (semantics). E.g. assume gwml1 and gwml2 contents for aquifer are the same, but organized differently such as some properties are classes vs roles (not true in reality).
 
@@ -102,7 +101,7 @@ NOTE: For simplicity, variation in symbolic organization is considered a structu
 
 NOTE: Source is needed to distinguish copies: i.e. different providers can provide a representation that is the same in all other dimensions, i.e. a duplicate.
 
-NOTE: An alternative is to bundle each distinct combination of these dimensions into a unique “profile” name, and then attach the dimensions as properties in the metadata of the representation.
+TIP: An alternative is to bundle each distinct combination of these dimensions into a unique “profile” name, and then attach the dimensions as properties in the metadata of the representation.
 
 *Example*
 
@@ -127,45 +126,53 @@ http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit
 
 Notice the link at the bottom (Associations section)
 
-Note: the Champlain url does not resolve (it’s a dummy for this demo)
+IMPORTANT: the Champlain URL does not resolve (it’s a dummy for this demo)
 
 == Components
 
-GSIP’s Linked Open Data architecture is comprised of three main components: 1) linked data broker; 2) linked data store; and 3) web services and document resources.
+GSIP’s Linked Open Data architecture is comprised of three main components: 1) linked data broker; 2) linked data store; and 3) web resources.
 
+.Architecture Tiers
 image::architecture-tiers.png[Link data broker diagram]
 
 === Linked Data Broker (LDB)
 
 The LDB responds to requests for hydro features and returns documents (e.g. concept definitions, metadata) or feature representations (e.g. geometry, portrayals). When receiving a request for a document, the LDB queries the Linked Data Store for linkages which are included in the response. For example a request for hydro feature metadata may include links to other related features and/or feature collections. The LDB also includes in its response, links (i.e. rel="alternate") to alternate representations of the response subject (e.g. RDF, XML, HTML, etc.). The content (i.e. media-type) of the response is negotiated by the client. The following diagram depicts a typical interaction between the LDB and a client application that is requesting information resource that describes an Aquifer. Note that the client is requesting that the response be returned in HTML.
 
+.Linked Data Broker
 image::link-broker.png[Link data broker diagram]
 
-=== Link Repository
+=== Link Data Store
 
-The Link Repository is a central database containing (i) links between features, (ii) ontologies/schemas for feature types and relations, (iii) vocabulary, and (iv) where required a catalog of features.
+The Link Link Data Store is a central database containing (i) links between features, (ii) ontologies/schemas for feature types and relations, (iii) vocabulary, and (iv) where required a catalog of features.
 
-image::link-repository.png[Link repository diagram]
+.Link Data Store
+image::link-repository.png[Link data store diagram]
 
-The Linked Data Broker (LDB) queries the Link Repository on every request so that link relations can be injected into the response. For example, a `hydraulicallyConnected` association could be injected in the response for hydro feature metadata indicating that the feature is connected to another feature (e.g. waterbody, aquifer, etc.). Third party clients can query the repository using SPARQL.
+The Linked Data Broker (LDB) queries the Link Data Store on every request so that link relations can be injected into the response. For example, a `hydraulicallyConnected` association could be injected in the response for hydro feature metadata indicating that the feature is connected to another feature (e.g. waterbody, aquifer, etc.). Third party clients can query the repository using SPARQL.
 
-Web Services
- (e.g. OGC) that return features in designated formats (tbd).
+=== Web Resources
+ 
+(e.g. OGC) that return features in negotiated formats (tbd).
 
-GSIP Non-Information URI resolution mechanism
+== URI Resolution
 
 The interaction with GSIP is as follow
 
 User asks (by dereferencing a non-information URI) information about the resource in a specific format
-If
+
+If::
 The requested format is a supported hypermedia (HTML, RDF+XML, RDF/TTL or JSON-LD)
-OR  another format is requested and GSIP has multiple representations
-THEN GSIP returns a info hypermedia document (default is HTML) providing relevant representations and links to other non-information resource.
+
+OR:: another format is requested and GSIP has multiple representations
+
+THEN:: GSIP returns a info hypermedia document (default is HTML) providing relevant representations and links to other non-information resource.
 At this point, the client can choose to follow
 Further content negotiation might happen to narrow a format
 If user follow another non-information resource
 Go back to first step for a different resource
-Else
+
+Else::
 GSIP redirects directly to a representation of the resource
 
 *Example 1*
@@ -179,7 +186,6 @@ Will redirect to the PDF located at http://www.SomeCity.ca/groundwater/abc-1.pdf
 https://geosciences.ca/id/wells/SomeCity/abc-1 request with format = image/png
 Will return a 404 (not found)
 
-
 *Example 2*
 
 https://geosciences.ca/id/wells/gin/ww-ab-01  is a non-information URI bounded to several pdf representations, several HTML representation and a single png representation
@@ -191,26 +197,25 @@ https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = application/p
 https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = image/png
 Will redirect to image location directly because it’s not an hypermedia and the format is not ambiguous.
 
-
 NOTE: If a resource has a single representation, but this representation is an hypermedia, it can never be resolved directly and will always return a info document.
 
-The exact sequence has a few more steps and is described in details in figure 2
-
-image::sequence.png[Resolution mechanism sequence diagram, caption="Figure 2: foo"]
-
-Figure 2: Resolution mechanism sequence diagram
+The exact sequence has a few more steps and is described in details in the next section.
 
 === Interaction Sequence
 
-. A client dereferences a /id/ URI.  Its Accept header is set to text/html (HTML page).
-. The LDB looks into the Linked Data Store [BE1] to find a /info/ resource.  It is expected that there shall be only one /info/ in this data store
+.Resolution mechanism sequence diagram
+image::sequence.png[Resolution mechanism sequence diagram]
+
+
+. A client dereferences a `/id/` URI.  Its Accept header is set to text/html (HTML page).
+. The LDB looks into the Linked Data Store [BE1] to find a `/info/` resource.  It is expected that there shall be only one `/info/` in this data store
 . Three possible scenarios
-.. The resource is not found in the catalog.  The LDB returns a HTTP 404 (not found)
-.. The resources format the client is requesting is not an hypermedia AND unambiguous (only one representation fits the requested format)  then the client is 303 to that representation
+.. The resource is not found in the catalog. The LDB returns a HTTP 404 (not found)
+.. The resources format the client is requesting is not an hypermedia AND unambiguous (only one representation fits the requested format) then the client is 303 to that representation
 .. All other cases go to step 4
 . The LDB tells the client to 303 to this resource. (no content negotiation at this point)
-. The client dereferences the /info/. Browser will do this automatically with the same http header (so, still text/html).  In our architecture, it goes back to the LDB
-. This time, the LDB queries the Linked Data Store to get all relevant information about this /info/.  This include multiple representation (from various sources), links to other resources and convenience data (literal values for labels, formats names, etc..)
+. The client dereferences the `/info/`. Browser will do this automatically with the same http header (so, still text/html).  In our architecture, it goes back to the LDB
+. This time, the LDB queries the Linked Data Store to get all relevant information about this `/info/`.  This include multiple representation (from various sources), links to other resources and convenience data (literal values for labels, formats names, etc..)
 . LDB creates a hypermedia according to client preferences (content negotiation). In this case, it will create an HTML file.  Note there are no 303 for this architecture (but there might be one in other architecture)
 . At this point, the client will choose what to do next.  A human user can click on a link, or a agent can parse the hypermedia and dereference a resource is has been programme to extract (eg, a GIS plugin that is looking for a Aquifer representation is can parse and plot on a map). In our example, the client dereferences a resource found in the hypermedia but asks for xml.
 . The other representation might not be provided at the same location (by the same LDB), it could be an external PID (managed by USGS for example).  In this case, 303 and content negotiation could happen at the same time.  This is what this example does.
@@ -225,28 +230,26 @@ ID:: https://groundwater.geoconnex.ca/id/aquifer/Richelieu
 INFO:: https://groundwater.geoconnex.ca/info/aquifer/Richelieu
 DATA:: https://groundwater.geoconnex.ca/data/aquifer/GWML2/GWML2/GIN/Richelieu
 https://groundwater.geoconnex.ca/data/aquifer/GWML2/GWML2/GIN/1.0/Richelieu
-API:: https://gw-info.net/....
+API:: https://gw-info.net/...
 
 ==== Groundwater (GW Monitoring Site)
 
 ID:: https://groundwater.geoconnex.ca/id/gwmonitoring/prj.24.5
 INFO:: https://groundwater.geoconnex.ca/info/gwmonitoring/prj.24.5
 DATA:: https://groundwater.geoconnex.ca/data/gwmonitoring/GWML2/GWML2/GIN/prj.24.5
-API:: https://gw-info.net/…
+API:: https://gw-info.net/...
 
 ==== Hydrography (RichelieuRiver)
 ID:: https://hydrography.geoconnex.ca/id/river/RichelieuRiver
 INFO:: https://hydrography.geoconnex.ca/info/river/RichelieuRiver
-DATA:: https://hydrography.geoconnex.ca/data/river/CHY_F/CHY_F/NHN/RichelieuRiver
-NOTE: this standard URL is provided for readability, hides possible api complexity, and provides a unique identifier that just an api call won’t be
+DATA::
 
-http://www.geonames.org/maps/google_46.048_-73.12.html
-
-http://dbpedia.org/resource/Richelieu_River
-
-https://fr.wikipedia.org/wiki/Rivi%C3%A8re_Richelieu
-
+https://hydrography.geoconnex.ca/data/river/CHY_F/CHY_F/NHN/RichelieuRiver +
+http://www.geonames.org/maps/google_46.048_-73.12.html +
+http://dbpedia.org/resource/Richelieu_River +
+https://fr.wikipedia.org/wiki/Rivi%C3%A8re_Richelieu +
 https://en.wikipedia.org/wiki/Richelieu_River
+
 
 API:: http://geobase.ca/wfs?REQUEST=GetFeature&VERSION=2.0.0&SERVICE=WFS&STOREDQUERY_ID=urn:ogc:def:query:OGC-WFS::GetFeatureById&ID=123456
 
