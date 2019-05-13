@@ -77,6 +77,18 @@ Identifies a specific representation of a feature (an instance of a type).
 
 `http(s)://subdomain.domain.name/{root}/data/{theme}/{structure}/{semantics}/{source}/unique-id`
 
+Dimensions::
+
+- *Structure* - different organization of same content (e.g. gwml2 or gwml1 aquifer; different css for same html content)
+- *Semantics* - different content (e.g. subset of gwml2; aquifer in gwml2 vs HYF-alpha)
+- *Source* - originator (different providers can provide same representation)
+
+NOTE: The boundary between structure and semantics can appear to blur, because different contents (semantics) imply different schemas, but different schemas do not necessarily imply different contents (semantics). E.g. assume gwml1 and gwml2 contents for aquifer are the same, but organized differently such as some properties are classes vs roles (not true in reality).
+
+NOTE: For simplicity, variation in symbolic organization is considered a structural difference; e.g. the same map symbolized using different color schemes, or the same HTML document using different fonts. Variation in CSS is therefore a structural difference here.
+
+NOTE: Source is needed to distinguish copies: i.e. different providers can provide a representation that is the same in all other dimensions, i.e. a duplicate.
+
 // This pattern help users and developers to infer the kind of resources they are dealing with, but also helps control the creation of new URI - and potentially avoid duplication of URI. This leads to a general url pattern:
 
 // `http(s)://subdomain.domain.name/{root}/{resource-type}/{theme}/{structure}/{semantics}/{source}/unique-id`
@@ -100,7 +112,7 @@ Identifies a specific representation of a feature (an instance of a type).
 //                 |-- unique name or id (local)
 // ----
 
-An alternative could replace `/{structure}/{semantics}/{source}/` with `/{profile}/`:
+An alternative is to bundle each distinct combination of these dimensions into a unique “profile” name, and then attach the dimensions as properties in the metadata of the representation.
 
 `http(s)://subdomain.domain.name/{resource type}/{theme}/{profile}/unique-id`
 
@@ -116,50 +128,50 @@ An alternative could replace `/{structure}/{semantics}/{source}/` with `/{profil
 // http://gin.gw-info.net/gsip/id/aquifers/Richelieu
 
 
-== URL Structure
+// == URL Structure
 
-=== Elements of a URL
+// === Elements of a URL
 
-Syntax:: Format and language of the representation (e.g. xml and en; captured by current content negotiation)
+// Syntax:: Format and language of the representation (e.g. xml and en; captured by current content negotiation)
 
-Structure:: Different organization of same content (e.g. gwml2 or gwml1 aquifer; different css for same html content)
+// Structure:: Different organization of same content (e.g. gwml2 or gwml1 aquifer; different css for same html content)
 
-Semantics:: Different content (e.g. subset of gwml2; aquifer in gwml2 vs HYF-alpha)
+// Semantics:: Different content (e.g. subset of gwml2; aquifer in gwml2 vs HYF-alpha)
 
-Source:: Originator (different providers can provide same representation)
+// Source:: Originator (different providers can provide same representation)
 
-NOTE: The boundary between structure and semantics can appear to blur, because different contents (semantics) imply different schemas, but different schemas do not necessarily imply different contents (semantics). E.g. assume gwml1 and gwml2 contents for aquifer are the same, but organized differently such as some properties are classes vs roles (not true in reality).
+// NOTE: The boundary between structure and semantics can appear to blur, because different contents (semantics) imply different schemas, but different schemas do not necessarily imply different contents (semantics). E.g. assume gwml1 and gwml2 contents for aquifer are the same, but organized differently such as some properties are classes vs roles (not true in reality).
 
-NOTE: For simplicity, variation in symbolic organization is considered a structural difference; e.g. the same map symbolized using different color schemes, or the same html document using different fonts. Variation in css is therefore a structural difference here.
+// NOTE: For simplicity, variation in symbolic organization is considered a structural difference; e.g. the same map symbolized using different color schemes, or the same html document using different fonts. Variation in css is therefore a structural difference here.
 
-NOTE: Source is needed to distinguish copies: i.e. different providers can provide a representation that is the same in all other dimensions, i.e. a duplicate.
+// NOTE: Source is needed to distinguish copies: i.e. different providers can provide a representation that is the same in all other dimensions, i.e. a duplicate.
 
-TIP: An alternative is to bundle each distinct combination of these dimensions into a unique “profile” name, and then attach the dimensions as properties in the metadata of the representation.
+// TIP: An alternative is to bundle each distinct combination of these dimensions into a unique “profile” name, and then attach the dimensions as properties in the metadata of the representation.
 
-*Example*
+// *Example*
 
-Paste this url into your browser. It represents a neutral id for an aquifer (notice `/id/` in the URL):
+// Paste this url into your browser. It represents a neutral id for an aquifer (notice `/id/` in the URL):
 
-http://gin.gw-info.net/gsip/id/aquifers/Richelieu
+// http://gin.gw-info.net/gsip/id/aquifers/Richelieu
 
-The browser returns a landing page with a list of possible representations for a specific format (notice `/info/` in the URL):
+// The browser returns a landing page with a list of possible representations for a specific format (notice `/info/` in the URL):
 
-http://gin.gw-info.net/gsip/info/aquifers/Richelieu
+// http://gin.gw-info.net/gsip/info/aquifers/Richelieu
 
 
-NOTE: Things in the list are there for demo purposes, they not alternate representations of the same thing (e.g. Richelieu aquifer), but related things.
+// NOTE: Things in the list are there for demo purposes, they not alternate representations of the same thing (e.g. Richelieu aquifer), but related things.
 
-Click on a representation. Notice `/data/` in the URL for each representation, and that each representation has a distinct url with a common pattern (to be explained in the architecture doc):
+// Click on a representation. Notice `/data/` in the URL for each representation, and that each representation has a distinct url with a common pattern (to be explained in the architecture doc):
 
-http://gin.gw-info.net/gsip/data/aquifers/gwml2/gsip/gin/Richelieu/1
+// http://gin.gw-info.net/gsip/data/aquifers/gwml2/gsip/gin/Richelieu/1
 
-You will be redirected to that particular representation at its local url (which could be a call to a specific API)
+// You will be redirected to that particular representation at its local url (which could be a call to a specific API)
 
-http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit.html?id=1
+// http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit.html?id=1
 
-Notice the link at the bottom (Associations section) to associated resources (i.e. Champlain watershed).
+// Notice the link at the bottom (Associations section) to associated resources (i.e. Champlain watershed).
 
-IMPORTANT: the Champlain URL does not resolve (it’s a dummy for this demo)
+// IMPORTANT: the Champlain URL does not resolve (it’s a dummy for this demo)
 
 == Components
 
