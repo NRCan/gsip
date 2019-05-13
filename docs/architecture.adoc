@@ -22,72 +22,98 @@ The Groundwater Surface-Water Initial LOD Pilot  (GSIP) will develop and prototy
 
 The GSIP architecture offers a connected view of water related features (lakes, watershed, aquifers, monitoring stations, etc.) by modelling them as web features. Each features of interest is given a unique and persistent URI.  This URI is an identifier that is independent of possible representations.  This URI is named “non-information” URI because it represents the real world object, or an abstraction of a real world. When this URI is used on the web, a user can’t expect to retrieve the real thing, but will get a representation (an information) about the real world object, eg, a wikipedia page about Richelieu River, as opposed to the Richelieu River itself. Those two concepts are important to distinguish as it allows us to say something about the river (the real thing which has its own URI) and not about a document describing the river.  For instance, there is a difference between the Richelieu River is 124 km long and the Richelieu River wikipedia page about the same river is in french.  This distinction becomes important when we consider that a single real world feature will like have a large number of representations in different formats, languages, media types and versions.
 
-The GSIP architecture makes a clear distinction between real worlds features and their representations. GSIP keeps a databases of real world thing and
-How real world things are related to other real world things (how a monitoring station is related to a river)
-How real world things are related to their representations.
+The GSIP architecture makes a clear distinction between real worlds features and their representations. GSIP keeps a databases of real world thing and:
+
+- How real world things are related to other real world things (how a monitoring station is related to a river)
+- How real world things are related to their representations.
 
 Representations and formats are not the same things. A given representation, which is closer to the concept of a “information model” can be encoded using several “formats”. For example, a monitoring station in OGC WaterML 2 (an information model) can be encoded in XML, Turtle or JSON.  In the literature, the linkage between a non-information URI and a representation often conflates representation and format.   One mechanism to extract a representation from the web is called Content-Negotiation.  Content negotiation attempts to match a list of expected formats provided by the client with a list of available resources on the server.  HTTP protocol uses such mechanism to requesting a resource from a server.
 
-Since content negotiation is mostly about formats, it can’t handle multiple representations in the same format. For this reason, GSIP adds a third type of resource called "info" resource. An info resource is a hypermedia document (a document that provides links to other resources) containing information of interest for GSIP use cases:
+Since content negotiation is mostly about formats, it can’t handle multiple representations in the same format. For this reason, GSIP adds a third type of resource called "info" resource. An info resource is a hypermedia document (a document that provides links to other resources) containing information of interest for GSIP use cases.
 
-* Information about the resource itself (e.g. its type)
-* How this non-information resources links to other non-information resource (e.g. this river linked to the monitoring station)
-* How this non-information resource linked to its representations, handling the fact that several presentation of the same format are possible (a monitoring station web page from provincial source and the same monitoring station describes on a federal system).
+//* Information about the resource itself (e.g. its type)
+//* How this non-information resources links to other non-information resource (e.g. this river linked to the monitoring station)
+//* How this non-information resource linked to its representations, handling the fact that several presentation of the same format are possible (a monitoring station web page from provincial source and the same monitoring station describes on a federal system).
 
 NOTE: Classical content negotiation mechanism can redirect to multiple representations (of the same format) for a requested format, but it is limited to a series of URI that the user must select to proceed further. This is essentially what the "info" document does, with a far clearer semantic.
 
 == Resource Types
 
-There are different types of resources managed and accessed by GSIP. Although not a functional requirement, resources URIs should follow a pattern based on their type.
+There are different types of resources managed and accessed by GSIP. Although not a functional requirement, resource URIs should follow a pattern based on their type.
 
-. Non-information resource (thing)
-.. `/id/` identifies a real world thing (e.g. an aquifer, watershed, stream segment, etc.)
+These patterns help users and developers infer the kind of resources they are dealing with, but also helps control the creation of new URIs - and potentially avoid duplication.
 
-. Information resource (representation)
-.. `/info/` identifies the representation that reports multiple representations and possibly other metadata about a thing
+NOTE: The inclusion of `{theme}` in the following patterns is debatable, it’s just an ad-hoc classification of the thing for info purposes e.g. “aquifer”.
 
-.. `/data/` identifies a specific representation of a feature (an instance of a type)
+=== Non-information resource (thing)
 
-This pattern help users and developers to infer the kind of resources they are dealing with, but also helps control the creation of new URI - and potentially avoid duplication of URI. This leads to a general url pattern:
+Identifies a real world thing (e.g. an aquifer, watershed, stream segment, etc.).
 
-`http(s)://subdomain.domain.name/{root}/{resource-type}/{theme}/{structure}/{semantics}/{source}/unique-id`
-
-General URL pattern as a tree:
-
-----
-Id
-|-- theme
-    |-- unique name or id (local)
-
-Info
-|-- theme
-    |-- unique name or id (local)
-
-Data
-|-- structure (e.g. representations with different style sheets)
-    |-- semantics (e.g. representations with different projections)
-        |-- source
-            |-- version
-                |-- unique name or id (local)
-----
-
-
-NOTE: The inclusion of `{theme}` is debatable, it’s just an ad-hoc classification of the thing for info purposes e.g. “aquifer”.
-
-An alternative could replace `/{structure}/{semantics}/{source}/` with `/{profile}/`, 
-
-`http(s)://subdomain.domain.name/{resource type}/{theme}/{profile}/unique-id`
-
-For `/id/` and `/info/`: because there are NOT multiple structures, semantics, or sources for these  types, use:
-
-`http(s)://subdomain.domain.name/{resource type}/{theme}/unique-id`
+`http(s)://subdomain.domain.name/id/{theme}/unique-id`
 
 *Example*
 
-Paste this url into your browser. It represents a neutral id for an aquifer (notice `/id/` in the url):
-
+The following references an aquifer (notice `/id/` in the url):
 
 http://gin.gw-info.net/gsip/id/aquifers/Richelieu
+
+=== Information resource (representation)
+
+==== Info
+
+Identifies the representation that reports multiple representations and possibly other metadata about a thing.
+
+`http(s)://subdomain.domain.name/info/{theme}/unique-id`
+
+*Example*
+
+The following references an info resource for an aquifer (notice `/info/` in the url):
+
+http://gin.gw-info.net/gsip/info/aquifers/Richelieu
+
+==== Data
+
+Identifies a specific representation of a feature (an instance of a type).
+
+`http(s)://subdomain.domain.name/{root}/data/{theme}/{structure}/{semantics}/{source}/unique-id`
+
+// This pattern help users and developers to infer the kind of resources they are dealing with, but also helps control the creation of new URI - and potentially avoid duplication of URI. This leads to a general url pattern:
+
+// `http(s)://subdomain.domain.name/{root}/{resource-type}/{theme}/{structure}/{semantics}/{source}/unique-id`
+
+// General URL pattern as a tree:
+
+// ----
+// Id
+// |-- theme
+//     |-- unique name or id (local)
+
+// Info
+// |-- theme
+//     |-- unique name or id (local)
+
+// Data
+// |-- structure (e.g. representations with different style sheets)
+//     |-- semantics (e.g. representations with different projections)
+//         |-- source
+//             |-- version
+//                 |-- unique name or id (local)
+// ----
+
+An alternative could replace `/{structure}/{semantics}/{source}/` with `/{profile}/`:
+
+`http(s)://subdomain.domain.name/{resource type}/{theme}/{profile}/unique-id`
+
+// For `/id/` and `/info/`: because there are NOT multiple structures, semantics, or sources for these  types, use:
+
+// `http(s)://subdomain.domain.name/{resource type}/{theme}/unique-id`
+
+// *Example*
+
+// Paste this url into your browser. It represents a neutral id for an aquifer (notice `/id/` in the url):
+
+
+// http://gin.gw-info.net/gsip/id/aquifers/Richelieu
 
 
 == URL Structure
@@ -288,11 +314,13 @@ link:userguide{outfilesuffix}[GSIP Mediator User Guide]
 
 Content Negotiation:: An HTTP client can "negotiate" for a representation (e.g. HTML, PDF, XML) of a web resource with and HTTP server. The server can return the representation requested or one of its own choosing, if the requested representation is not available. Clients send the preference in the HTTP header. 
 
-Web Resource:: Any resource that is accessible on the World Wide Web.
+Data Resource:: An information resource providing a representation of a non-information resource.
 
-URI:: Uniform Resource Identifier
+EHEE:: EleHydro Exchange Experiment (Canada-US)
 
-URL:: Uniform Resource Locator
+ELFIE:: Environmental Linked Features Interoperability Experiment (OGC - International)
+
+GSIP:: Groundwater Surface-Water Initial LOD Pilot (Canada)
 
 HTTP:: Hyper Text Transfer Protocol
 
@@ -300,19 +328,30 @@ HTTP Header:: Additional metadata and parameters that are sent as part of an HTT
 
 HTTP Verb:: Protocol methods that operate on web resources. These include GET, POST, PUT, DELETE, and OPTIONS.
 
+HyperText Transfer Protocol Uniform Resource Identifier (HTTP URI):: An identifier with the potential to be used with the HTTP protocol to dereference (look up) the identified resource.
+
+HyperText Transfer Protocol Uniform Resource Locator (HTTP URL):: A type of URI that can be used to locate an information resource.
+
+Information Resource:: A digital resource that can be sent as a message over the internet using a protocol such as HTTP. Located using a Uniform Resource Locator (URL).
+
+Information Index Resource:: An information resource that provides an index of annotated (metadata) links to information and non-information resources that describe or are related to the non-information resource of interest.
+
+LOD:: Linked Open Data
+
+Non-Information Resource:: A real-world or conceptual object of interest that is identified by a Uniform Resource Identifier bound to the HTTP protocol (HTTP URI).
+
+OGC:: Open Geospatial Consortium
+
 Ontology:: A formal definition of concepts and thier relations for a specific domain.
 
 Persistent URI:: A URI that is reasonably guaranteed to be remain available during a long period of time.  There is an expectation that a thing on the web (a resource) will keep the same URI in such a way that changes in organisation, infrastructure and governance won’t affect this URI.
 
 RDF:: Resource Description Framework
 
-LOD: Linked Open Data
+Registry:: Per ISO 19135, Geographic information, Procedures for item registration: An information system that manages a set of files containing identifiers assigned to items with descriptions of the associated items.
 
-OGC: Open Geospatial Consortium
+Resource:: an item of interest in the distributed network of environmental data.
 
-GSIP:: Groundwater Surface-Water Initial LOD Pilot (Canada)
+Resource Model:: A taxonomy and functional description of the system of non-information, index and data resources.
 
-EHEE:: EleHydro Exchange Experiment (Canada-US)
-
-ELFIE:: Environmental Linked Features Interoperability Experiment (OGC - International)
-
+Web Resource:: Any resource that is accessible on the World Wide Web.
