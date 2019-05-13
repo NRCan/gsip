@@ -77,7 +77,7 @@ Identifies a specific representation of a feature (an instance of a type).
 
 `http(s)://subdomain.domain.name/{root}/data/{theme}/{structure}/{semantics}/{source}/unique-id`
 
-Dimensions::
+*Dimensions*
 
 - *Structure* - different organization of same content (e.g. gwml2 or gwml1 aquifer; different css for same html content)
 - *Semantics* - different content (e.g. subset of gwml2; aquifer in gwml2 vs HYF-alpha)
@@ -88,6 +88,12 @@ NOTE: The boundary between structure and semantics can appear to blur, because d
 NOTE: For simplicity, variation in symbolic organization is considered a structural difference; e.g. the same map symbolized using different color schemes, or the same HTML document using different fonts. Variation in CSS is therefore a structural difference here.
 
 NOTE: Source is needed to distinguish copies: i.e. different providers can provide a representation that is the same in all other dimensions, i.e. a duplicate.
+
+*Example*
+
+The following references a data resource for an aquifer (notice `/data/` in the url):
+
+http://gin.gw-info.net/gsip/data/aquifers/gwml2/gsip/gin/Richelieu/1
 
 // This pattern help users and developers to infer the kind of resources they are dealing with, but also helps control the creation of new URI - and potentially avoid duplication of URI. This leads to a general url pattern:
 
