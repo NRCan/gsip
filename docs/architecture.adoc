@@ -182,34 +182,35 @@ An alternative is to bundle each distinct combination of these dimensions into a
 == Components
 
 GSIP’s Linked Open Data architecture is comprised of three main components: 1) linked data broker; 2) linked data store; and 3) web resources.
-====
+
 .Architecture Tiers
 image::architecture-tiers.png[Link data broker diagram]
-====
+
+.Application collaboration
+image::application-collaboration.png[Application colloaboration diagram]
 
 === Linked Data Broker (LDB)
 
-The LDB responds to requests for hydro features and returns documents (e.g. concept definitions, metadata) or feature representations (e.g. geometry, portrayals). When receiving a request for a document, the LDB queries the Linked Data Store for linkages which are included in the response. For example a request for hydro feature metadata may include links to other related features and/or feature collections. The LDB also includes in its response, links (i.e. rel="alternate") to alternate representations of the response subject (e.g. RDF, XML, HTML, etc.). The content (i.e. media-type) of the response is negotiated by the client. The following diagram depicts a typical interaction between the LDB and a client application that is requesting information resource that describes an Aquifer. Note that the client is requesting that the response be returned in HTML.
+The LDB responds to requests for hydro features and returns documents (e.g. concept definitions, metadata) or feature representations (e.g. geometry, portrayals). When receiving a request for a document, the LDB queries the Linked Data Store for linkages which are included in the response. For example a request for hydro feature metadata may include links to other related features and/or feature collections. The LDB also includes in its response, links (i.e. rel="alternate") to alternate representations of the response subject (e.g. RDF, XML, HTML, etc.). The content (i.e. media-type) of the response is negotiated by the client.
 
-====
 .Linked Data Broker
-image::link-broker.png[Link data broker diagram]
-====
+image::ldb-behaviour.png[Link data broker diagram]
 
 === Link Data Store
 
-The Link Link Data Store is a central database containing (i) links between features, (ii) ontologies/schemas for feature types and relations, (iii) vocabulary, and (iv) where required a catalog of features.
+The Link Data Store is a central database containing (i) links between features, (ii) ontologies/schemas for feature types and relations, (iii) vocabulary, and (iv) where required, a catalog of features.
 
-====
 .Link Data Store
-image::link-repository.png[Link data store diagram]
-====
+image::lds-behaviour.png[Link data store diagram]
 
 The Linked Data Broker (LDB) queries the Link Data Store on every request so that link relations can be injected into the response. For example, a `hydraulicallyConnected` association could be injected in the response for hydro feature metadata indicating that the feature is connected to another feature (e.g. waterbody, aquifer, etc.). Third party clients can query the repository using SPARQL.
 
 === Web Resources
  
-(e.g. OGC) that return features in negotiated formats (tbd).
+GSIP will serve multiple resource types according to the negotiated format (e.g. HTML, GML, etc.).
+
+.Web Resources
+image::web-resource.png[Web resources diagram]
 
 == URI Resolution
 
@@ -231,17 +232,13 @@ A typical interaction with GSIP can be described as a series of client server re
 
 The following image depicts the URI resolution for a GSIP resource (i.e, Richelieu aquifer) accessed by a web browser. Note the 303 redirect to a representation of the dereferenced identifier for a non-information resource.
 
-====
 .URI resolution
 image::uri-resolution.png[URI resolution,750]
-====
 
 The final response is hypermedia: information for the requested resource (i.e., Richelieu aquifer) providing links to other representations of the resource (e.g. data) as well as associated resources.
 
-====
 .Info resource
 image::richelieu-aquifer-landing-page.png[URI resolution,750]
-====
 
 // *Example 1*
 
