@@ -183,9 +183,6 @@ An alternative is to bundle each distinct combination of these dimensions into a
 
 GSIP’s Linked Open Data architecture is comprised of three main components: 1) linked data broker; 2) linked data store; and 3) web resources.
 
-.Architecture Tiers
-image::architecture-tiers.png[Link data broker diagram]
-
 .Application collaboration
 image::application-collaboration.png[Application colloaboration diagram]
 
@@ -202,6 +199,8 @@ The Link Data Store is a central database containing (i) links between features,
 
 .Link Data Store
 image::lds-behaviour.png[Link data store diagram]
+
+{empty} +
 
 The Linked Data Broker (LDB) queries the Link Data Store on every request so that link relations can be injected into the response. For example, a `hydraulicallyConnected` association could be injected in the response for hydro feature metadata indicating that the feature is connected to another feature (e.g. waterbody, aquifer, etc.). Third party clients can query the repository using SPARQL.
 
@@ -261,6 +260,8 @@ image::richelieu-aquifer-landing-page.png[URI resolution,750]
 //  Will redirect to a info document in HTML because there are multiple representations in pdf (ambiguous) and the default hypermedia is HTML
 // https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = image/png
 // Will redirect to image location directly because it’s not an hypermedia and the format is not ambiguous.
+
+{empty} +
 
 IMPORTANT: If a resource has a single representation, and this representation is hypermedia, it can never be resolved directly and will always return an `\info\` document.
 

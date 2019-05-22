@@ -10,7 +10,7 @@
     <element xsi:type="archimate:ApplicationEvent" name="Request Web Resource" id="35123d87-7134-449e-be54-022d308064de"/>
     <element xsi:type="archimate:ApplicationInteraction" name="Generate Resource" id="0c8ddc9a-5b6b-46d1-b526-320d1fce6245"/>
     <element xsi:type="archimate:ApplicationService" name="Get Resource" id="6e49ffb2-dbed-4aa1-8a6a-f7e0bbde3dba"/>
-    <element xsi:type="archimate:ApplicationFunction" name="Get Linkages" id="087ccbfa-c273-453e-bb18-512f3366fb4d"/>
+    <element xsi:type="archimate:ApplicationFunction" name="Get Related Resources" id="087ccbfa-c273-453e-bb18-512f3366fb4d"/>
     <element xsi:type="archimate:ApplicationComponent" name="Linked Data Store" id="64f5bf8f-b2c2-48b2-8e6e-0c5ed8c00178"/>
     <element xsi:type="archimate:ApplicationComponent" name="Linked Data Broker" id="e0e88c22-8864-4caa-88dd-faa727056258"/>
   </folder>
