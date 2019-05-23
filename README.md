@@ -15,7 +15,11 @@ In the worst case, some links will 404.. this is how the web works after all.
 
 ## Documentation
 
-Find documentation in `/doc` folder
+Find documentation in `/docs` folder
+
+[Architecture](docs/architecture.adoc)
+
+[User Guide](docs/userguide.adoc)
 
 ## Deployment
 
@@ -25,6 +29,11 @@ You can create a .war by running maven from the root of the project (where the .
 
 You might want to edit the context file in /META-INF/context.xml to set database location first (or edit the file after it is deployed in Tomcat and restart the application)
 
+### Docker
+
+You can also deploy using the included Docker container
+
+`docker-compose up --build`
 
 ## Demo application
 

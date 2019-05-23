@@ -1,0 +1,384 @@
+= GSIP Architecture
+:sectnums:
+:toc:
+:toclevels: 3
+:imagesdir: img
+:icons: font
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+:toc!:
+
+== Introduction
+
+The Groundwater Surface-Water Initial LOD Pilot  (GSIP) will develop and prototype a Linked Open Data architecture for groundwater and surface water features that will work in Canada and be compatible with similar initiatives across the border in the US. GSIP will be designed with flexibility in mind such that different kinds of links can be used. Links semantic (how resources are linked together) are to be structured as per ELFIE, but alternatives might be used if the ELFIE link specification is not available in time. The architecture will be a prototype, intended to get Canada to the same level as the US. The follow-up joint work in the EHEE project may require adaptation to the GSIP architecture to meet EHEE’s broader objectives. GSIP will make use of the same study area as EHEE (Champlain-Richelieu watershed), for convenience only.
+
+== Architecture Overview
+
+The GSIP architecture offers a connected view of water related features (lakes, watershed, aquifers, monitoring stations, etc.) by modelling them as web features. Each features of interest is given a unique and persistent URI.  This URI is an identifier that is independent of possible representations.  This URI is named “non-information” URI because it represents the real world object, or an abstraction of a real world. When this URI is used on the web, a user can’t expect to retrieve the real thing, but will get a representation (an information) about the real world object, eg, a wikipedia page about Richelieu River, as opposed to the Richelieu River itself. Those two concepts are important to distinguish as it allows us to say something about the river (the real thing which has its own URI) and not about a document describing the river.  For instance, there is a difference between the Richelieu River is 124 km long and the Richelieu River wikipedia page about the same river is in french.  This distinction becomes important when we consider that a single real world feature will like have a large number of representations in different formats, languages, media types and versions.
+
+The GSIP architecture makes a clear distinction between real worlds features and their representations. GSIP keeps a databases of real world thing and:
+
+- How real world things are related to other real world things (how a monitoring station is related to a river)
+- How real world things are related to their representations.
+
+Representations and formats are not the same things. A given representation, which is closer to the concept of a “information model” can be encoded using several “formats”. For example, a monitoring station in OGC WaterML 2 (an information model) can be encoded in XML, Turtle or JSON.  In the literature, the linkage between a non-information URI and a representation often conflates representation and format.   One mechanism to extract a representation from the web is called Content-Negotiation.  Content negotiation attempts to match a list of expected formats provided by the client with a list of available resources on the server.  HTTP protocol uses such mechanism to requesting a resource from a server.
+
+Since content negotiation is mostly about formats, it can’t handle multiple representations in the same format. For this reason, GSIP adds a third type of resource called "info" resource. An info resource is a hypermedia document (a document that provides links to other resources) containing information of interest for GSIP use cases.
+
+//* Information about the resource itself (e.g. its type)
+//* How this non-information resources links to other non-information resource (e.g. this river linked to the monitoring station)
+//* How this non-information resource linked to its representations, handling the fact that several presentation of the same format are possible (a monitoring station web page from provincial source and the same monitoring station describes on a federal system).
+
+NOTE: Classical content negotiation mechanism can redirect to multiple representations (of the same format) for a requested format, but it is limited to a series of URI that the user must select to proceed further. This is essentially what the "info" document does, with a far clearer semantic.
+
+== Resource Types
+
+There are different types of resources managed and accessed by GSIP. Although not a functional requirement, resource URIs should follow a pattern based on their type.
+
+These patterns help users and developers infer the kind of resources they are dealing with, but also helps control the creation of new URIs - and potentially avoid duplication.
+
+NOTE: The inclusion of `{theme}` in the following patterns is debatable, it’s just an ad-hoc classification of the thing for info purposes e.g. “aquifer”.
+
+=== Non-information resource (thing)
+
+Identifies a real world thing (e.g. an aquifer, watershed, stream segment, etc.).
+
+`http(s)://subdomain.domain.name/*id*/{theme}/unique-id`
+
+===== Example
+
+The following references an aquifer (notice `/id/` in the url):
+
+http://gin.gw-info.net/gsip/id/aquifers/Richelieu
+
+=== Information resource (representation)
+
+==== Info
+
+Identifies the representation that reports multiple representations and possibly other metadata about a thing.
+
+`http(s)://subdomain.domain.name/*info*/{theme}/unique-id`
+
+===== Example
+
+The following references an info resource for an aquifer (notice `/info/` in the url):
+
+http://gin.gw-info.net/gsip/info/aquifers/Richelieu
+
+==== Data
+
+Identifies a specific representation of a feature (an instance of a type).
+
+`http(s)://subdomain.domain.name/{root}/*data*/{theme}/{structure}/{semantics}/{source}/unique-id`
+
+===== Dimensions
+
+- *Structure* - different organization of same content (e.g. gwml2 or gwml1 aquifer; different css for same html content)
+- *Semantics* - different content (e.g. subset of gwml2; aquifer in gwml2 vs HYF-alpha)
+- *Source* - originator (different providers can provide same representation)
+
+NOTE: The boundary between structure and semantics can appear to blur, because different contents (semantics) imply different schemas, but different schemas do not necessarily imply different contents (semantics). E.g. assume gwml1 and gwml2 contents for aquifer are the same, but organized differently such as some properties are classes vs roles (not true in reality).
+
+NOTE: For simplicity, variation in symbolic organization is considered a structural difference; e.g. the same map symbolized using different color schemes, or the same HTML document using different fonts. Variation in CSS is therefore a structural difference here.
+
+NOTE: Source is needed to distinguish copies: i.e. different providers can provide a representation that is the same in all other dimensions, i.e. a duplicate.
+
+===== Example
+
+The following references a data resource for an aquifer (notice `/data/` in the url):
+
+http://gin.gw-info.net/gsip/data/aquifers/gwml2/gsip/gin/Richelieu/1
+
+// This pattern help users and developers to infer the kind of resources they are dealing with, but also helps control the creation of new URI - and potentially avoid duplication of URI. This leads to a general url pattern:
+
+// `http(s)://subdomain.domain.name/{root}/{resource-type}/{theme}/{structure}/{semantics}/{source}/unique-id`
+
+// General URL pattern as a tree:
+
+// ----
+// Id
+// |-- theme
+//     |-- unique name or id (local)
+
+// Info
+// |-- theme
+//     |-- unique name or id (local)
+
+// Data
+// |-- structure (e.g. representations with different style sheets)
+//     |-- semantics (e.g. representations with different projections)
+//         |-- source
+//             |-- version
+//                 |-- unique name or id (local)
+// ----
+
+An alternative is to bundle each distinct combination of these dimensions into a unique “profile” name, and then attach the dimensions as properties in the metadata of the representation.
+
+`http(s)://subdomain.domain.name/{resource type}/{theme}/{profile}/unique-id`
+
+// For `/id/` and `/info/`: because there are NOT multiple structures, semantics, or sources for these  types, use:
+
+// `http(s)://subdomain.domain.name/{resource type}/{theme}/unique-id`
+
+// *Example*
+
+// Paste this url into your browser. It represents a neutral id for an aquifer (notice `/id/` in the url):
+
+
+// http://gin.gw-info.net/gsip/id/aquifers/Richelieu
+
+
+// == URL Structure
+
+// === Elements of a URL
+
+// Syntax:: Format and language of the representation (e.g. xml and en; captured by current content negotiation)
+
+// Structure:: Different organization of same content (e.g. gwml2 or gwml1 aquifer; different css for same html content)
+
+// Semantics:: Different content (e.g. subset of gwml2; aquifer in gwml2 vs HYF-alpha)
+
+// Source:: Originator (different providers can provide same representation)
+
+// NOTE: The boundary between structure and semantics can appear to blur, because different contents (semantics) imply different schemas, but different schemas do not necessarily imply different contents (semantics). E.g. assume gwml1 and gwml2 contents for aquifer are the same, but organized differently such as some properties are classes vs roles (not true in reality).
+
+// NOTE: For simplicity, variation in symbolic organization is considered a structural difference; e.g. the same map symbolized using different color schemes, or the same html document using different fonts. Variation in css is therefore a structural difference here.
+
+// NOTE: Source is needed to distinguish copies: i.e. different providers can provide a representation that is the same in all other dimensions, i.e. a duplicate.
+
+// TIP: An alternative is to bundle each distinct combination of these dimensions into a unique “profile” name, and then attach the dimensions as properties in the metadata of the representation.
+
+// *Example*
+
+// Paste this url into your browser. It represents a neutral id for an aquifer (notice `/id/` in the URL):
+
+// http://gin.gw-info.net/gsip/id/aquifers/Richelieu
+
+// The browser returns a landing page with a list of possible representations for a specific format (notice `/info/` in the URL):
+
+// http://gin.gw-info.net/gsip/info/aquifers/Richelieu
+
+
+// NOTE: Things in the list are there for demo purposes, they not alternate representations of the same thing (e.g. Richelieu aquifer), but related things.
+
+// Click on a representation. Notice `/data/` in the URL for each representation, and that each representation has a distinct url with a common pattern (to be explained in the architecture doc):
+
+// http://gin.gw-info.net/gsip/data/aquifers/gwml2/gsip/gin/Richelieu/1
+
+// You will be redirected to that particular representation at its local url (which could be a call to a specific API)
+
+// http://gin.gw-info.net/service/api_ngwds:gin2/en/data/standard.hydrogeologicunit.html?id=1
+
+// Notice the link at the bottom (Associations section) to associated resources (i.e. Champlain watershed).
+
+// IMPORTANT: the Champlain URL does not resolve (it’s a dummy for this demo)
+
+== Components
+
+GSIP’s Linked Open Data architecture is comprised of three main components: 1) linked data broker; 2) linked data store; and 3) web resources.
+
+.Application collaboration
+image::application-collaboration.png[Application colloaboration diagram]
+
+=== Linked Data Broker (LDB)
+
+The LDB responds to requests for hydro features and returns documents (e.g. concept definitions, metadata) or feature representations (e.g. geometry, portrayals). When receiving a request for a document, the LDB queries the Linked Data Store for linkages which are included in the response. For example a request for hydro feature metadata may include links to other related features and/or feature collections. The LDB also includes in its response, links (i.e. rel="alternate") to alternate representations of the response subject (e.g. RDF, XML, HTML, etc.). The content (i.e. media-type) of the response is negotiated by the client.
+
+.Linked Data Broker
+image::ldb-behaviour.png[Link data broker diagram]
+
+=== Link Data Store
+
+The Link Data Store is a central database containing (i) links between features, (ii) ontologies/schemas for feature types and relations, (iii) vocabulary, and (iv) where required, a catalog of features.
+
+.Link Data Store
+image::lds-behaviour.png[Link data store diagram]
+
+{empty} +
+
+The Linked Data Broker (LDB) queries the Link Data Store on every request so that link relations can be injected into the response. For example, a `hydraulicallyConnected` association could be injected in the response for hydro feature metadata indicating that the feature is connected to another feature (e.g. waterbody, aquifer, etc.). Third party clients can query the repository using SPARQL.
+
+=== Web Resources
+ 
+GSIP will serve multiple resource types according to the negotiated format (e.g. HTML, GML, etc.).
+
+.Web Resources
+image::web-resource.png[Web resources diagram]
+
+== URI Resolution
+
+The primary way in which a client or agent interacts with GSIP is via URI's. Specfically, a client or agent will dereference a URI to gain access to a resource in one or more representations. These interactions rely on the the fundamental principles of the world wide web and associated technologies including hypermedia and the HTTP protocol.
+
+There are two important concepts that underpin a GSIP interaction:
+
+"Non-information" URI:: A URI that identifies a real-world entity such as an aquifer or well. This URI doesn't actually resolve to a web resource - rather GSIP redirects clients via HTTP 303 Redirect to an "Info" resource (see below)
+
+"Info" resource:: A dynamically generated web resource that describes the target resource and its relations
+
+=== Interaction Model
+
+A typical interaction with GSIP can be described as a series of client server request and response sequences:
+
+. Client asks (by dereferencing a non-information URI) for information about a resource in a specific format (e.g. HTML, RDF+XML, RDF/TTL or JSON-LD). The preferred format is passed in the HTTP Accept-Header.
+. The server returns an "info" resource in the requested format, or one of its choosing if the format specified in the Accept-Header is not supported.
+. Client consumes response and processes it accordingly (e.g. presents hypermedia to user), possibly making additional requests to the originating server or other servers.
+
+The following image depicts the URI resolution for a GSIP resource (i.e, Richelieu aquifer) accessed by a web browser. Note the 303 redirect to a representation of the dereferenced identifier for a non-information resource.
+
+.URI resolution
+image::uri-resolution.png[URI resolution,750]
+
+The final response is hypermedia: information for the requested resource (i.e., Richelieu aquifer) providing links to other representations of the resource (e.g. data) as well as associated resources.
+
+.Info resource
+image::richelieu-aquifer-landing-page.png[URI resolution,750]
+
+// *Example 1*
+
+// https://geosciences.ca/id/wells/SomeCity/abc-1 is a non-information URI bounded to a single PDF representation located at http://www.SomeCity.ca/groundwater/abc-1.pdf and is not related to any other resources or representation.
+
+// https://geosciences.ca/id/wells/SomeCity/abc-1 request with format = text/html
+// will return an info resource in HTML (because an supported hypermedia was requested).
+// https://geosciences.ca/id/wells/SomeCity/abc-1 request with format = application/pdf
+// Will redirect to the PDF located at http://www.SomeCity.ca/groundwater/abc-1.pdf because this format has been request explicitly
+// https://geosciences.ca/id/wells/SomeCity/abc-1 request with format = image/png
+// Will return a 404 (not found)
+
+// *Example 2*
+
+// https://geosciences.ca/id/wells/gin/ww-ab-01  is a non-information URI bounded to several pdf representations, several HTML representation and a single png representation
+
+// https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = application/rdf+xml
+// will redirect to a info document in rdf, because it is a supported hypermedia
+// https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = application/pdf
+//  Will redirect to a info document in HTML because there are multiple representations in pdf (ambiguous) and the default hypermedia is HTML
+// https://geosciences.ca/id/wells/gin/ww-ab-01 request with format = image/png
+// Will redirect to image location directly because it’s not an hypermedia and the format is not ambiguous.
+
+{empty} +
+
+IMPORTANT: If a resource has a single representation, and this representation is hypermedia, it can never be resolved directly and will always return an `\info\` document.
+
+The exact sequence has a few more steps and is described in details in the next section.
+
+=== Interaction Sequence
+
+====
+.Resolution mechanism sequence diagram
+image::sequence.png[Resolution mechanism sequence diagram,750]
+====
+
+. A client dereferences a `/id/` URI.  Its Accept header is set to text/html (HTML page).
+. The LDB looks into the Linked Data Store [BE1] to find a `/info/` resource.  It is expected that there shall be only one `/info/` in this data store
+. Three possible scenarios
+.. The resource is not found in the catalog. The LDB returns a HTTP 404 (not found)
+.. The resources format the client is requesting is not an hypermedia AND unambiguous (only one representation fits the requested format) then the client is 303 to that representation
+.. All other cases go to step 4
+. The LDB tells the client to 303 to this resource. (no content negotiation at this point)
+. The client dereferences the `/info/`. Browser will do this automatically with the same http header (so, still text/html).  In our architecture, it goes back to the LDB
+. This time, the LDB queries the Linked Data Store to get all relevant information about this `/info/`.  This include multiple representation (from various sources), links to other resources and convenience data (literal values for labels, formats names, etc..)
+. LDB creates a hypermedia according to client preferences (content negotiation). In this case, it will create an HTML file.  Note there are no 303 for this architecture (but there might be one in other architecture)
+. At this point, the client will choose what to do next.  A human user can click on a link, or a agent can parse the hypermedia and dereference a resource. In our example, the client dereferences a resource found in the hypermedia but asks for XML.
+. The other representation might not be provided at the same location (by the same LDB), it could be an external PID (managed by USGS for example).  In this case, 303 and content negotiation could happen at the same time.  This is what this example does.
+. Client is redirected to a WFS query (the client is not aware it’s a WFS, it’s just like any URI + parameters)
+. Client receives an XML representation
+
+=== Examples
+
+==== Groundwater (Richelieu Aquifer)
+
+ID:: https://groundwater.geoconnex.ca/id/aquifer/Richelieu
+INFO:: https://groundwater.geoconnex.ca/info/aquifer/Richelieu
+DATA:: https://groundwater.geoconnex.ca/data/aquifer/GWML2/GWML2/GIN/Richelieu
+https://groundwater.geoconnex.ca/data/aquifer/GWML2/GWML2/GIN/1.0/Richelieu
+API:: https://gw-info.net/...
+
+==== Groundwater (GW Monitoring Site)
+
+ID:: https://groundwater.geoconnex.ca/id/gwmonitoring/prj.24.5
+INFO:: https://groundwater.geoconnex.ca/info/gwmonitoring/prj.24.5
+DATA:: https://groundwater.geoconnex.ca/data/gwmonitoring/GWML2/GWML2/GIN/prj.24.5
+API:: https://gw-info.net/...
+
+==== Hydrography (RichelieuRiver)
+ID:: https://hydrography.geoconnex.ca/id/river/RichelieuRiver
+INFO:: https://hydrography.geoconnex.ca/info/river/RichelieuRiver
+DATA::
+
+https://hydrography.geoconnex.ca/data/river/CHY_F/CHY_F/NHN/RichelieuRiver +
+http://www.geonames.org/maps/google_46.048_-73.12.html +
+http://dbpedia.org/resource/Richelieu_River +
+https://fr.wikipedia.org/wiki/Rivi%C3%A8re_Richelieu +
+https://en.wikipedia.org/wiki/Richelieu_River
+
+
+API:: http://geobase.ca/wfs?REQUEST=GetFeature&VERSION=2.0.0&SERVICE=WFS&STOREDQUERY_ID=urn:ogc:def:query:OGC-WFS::GetFeatureById&ID=123456
+
+==== Hydrometric (02OJ024)
+
+ID:: https://hydrometric.geoconnex.ca/id/swmonitoring/WSC_02OJ024
+INFO:: https://hydrometric.geoconnex.ca/info/swmonitoring/WSC_02OJ024
+DATA:: https://hydrometric.geoconnex.ca/data/swmonitoring/WML2/Real_time/WSC/WSC_02OJ024
+https://hydrometric.geoconnex.ca/data/swmonitoring/WML2/Historical/WSC/WSC_02OJ024
+https://hydrometric.geoconnex.ca/data/swmonitoring/QMEP/QMEP/QMEP/30415
+
+API:: https://wateroffice.ec.gc.ca/report/historical_e.html?stn=02OJ024
+https://wateroffice.ec.gc.ca/report/real-time_e.html?stn=02OJ024
+http://geomet.ec.gc.ca?request=getfeature…realtime…  xml json
+http://geomet.ec.gc.ca?request=getfeature…historical...
+
+== Appendix A - Links
+
+link:userguide{outfilesuffix}[GSIP Mediator User Guide]
+
+== Appendix B - Glossary
+
+Content Negotiation:: An HTTP client can "negotiate" for a representation (e.g. HTML, PDF, XML) of a web resource with and HTTP server. The server can return the representation requested or one of its own choosing, if the requested representation is not available. Clients send the preference in the HTTP header. 
+
+Data Resource:: An information resource providing a representation of a non-information resource.
+
+EHEE:: EleHydro Exchange Experiment (Canada-US)
+
+ELFIE:: Environmental Linked Features Interoperability Experiment (OGC - International)
+
+GSIP:: Groundwater Surface-Water Initial LOD Pilot (Canada)
+
+HTTP:: Hyper Text Transfer Protocol
+
+HTTP Header:: Additional metadata and parameters that are sent as part of an HTTP  request/response. These metadata and parameters are used by HTTP clients and servers to specify preferences and output.
+
+HTTP Verb:: Protocol methods that operate on web resources. These include GET, POST, PUT, DELETE, and OPTIONS.
+
+HyperText Transfer Protocol Uniform Resource Identifier (HTTP URI):: An identifier with the potential to be used with the HTTP protocol to dereference (look up) the identified resource.
+
+HyperText Transfer Protocol Uniform Resource Locator (HTTP URL):: A type of URI that can be used to locate an information resource.
+
+Information Resource:: A digital resource that can be sent as a message over the internet using a protocol such as HTTP. Located using a Uniform Resource Locator (URL).
+
+Information Index Resource:: An information resource that provides an index of annotated (metadata) links to information and non-information resources that describe or are related to the non-information resource of interest.
+
+LOD:: Linked Open Data
+
+Non-Information Resource:: A real-world or conceptual object of interest that is identified by a Uniform Resource Identifier bound to the HTTP protocol (HTTP URI).
+
+OGC:: Open Geospatial Consortium
+
+Ontology:: A formal definition of concepts and thier relations for a specific domain.
+
+Persistent URI:: A URI that is reasonably guaranteed to be remain available during a long period of time.  There is an expectation that a thing on the web (a resource) will keep the same URI in such a way that changes in organisation, infrastructure and governance won’t affect this URI.
+
+RDF:: Resource Description Framework
+
+Registry:: Per ISO 19135, Geographic information, Procedures for item registration: An information system that manages a set of files containing identifiers assigned to items with descriptions of the associated items.
+
+Resource:: an item of interest in the distributed network of environmental data.
+
+Resource Model:: A taxonomy and functional description of the system of non-information, index and data resources.
+
+Web Resource:: Any resource that is accessible on the World Wide Web.
