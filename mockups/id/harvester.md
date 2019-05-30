@@ -1,9 +1,14 @@
-# Harvester Landing Page
+<h1>Harvester Landing Page</h1>
 
-#### Type: Thing, Resource
+<h4>Type: Thing, Resource</h4>
 
-#### Indentifier:
+<h4> Indentifier: <a href="https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester.md">https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester</a></h4>
 
-## Representations
+<h2>Representations</h2>
 
-## Relations
+Canada USA:
+Canada Mexico:
+
+<h2>Relations</h2>
+
+
