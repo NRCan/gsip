@@ -19,12 +19,8 @@
 
 Canada Mexico: <a href="https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-can-mex.md">https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-can-mex</a>
 
-USA Mexico: <a href="ttps://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-usa-mex.md">https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-usa-mex</a>
+USA LOD Node: <a href="https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node">https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node</a>
 
 <h2>Relations</h2>
 
-<j.1:HY_DendriticCatchment rdf:about="https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081604">
-
-has link to lower catchment:
-
-<j.1:lowerCatchment rdf:resource="https://geoconnex.ca/id/catchment/02OJ*CA"/>
+https://Geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node  RelatedTo https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node
