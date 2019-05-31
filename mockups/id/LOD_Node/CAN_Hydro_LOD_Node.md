@@ -1,4 +1,4 @@
-<h1>Harvester Landing Page</h1>
+<h1>CAN_Hydro_LOD_Node</h1>
 <div>
   <a href="https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-can-usa?f=rdf" target="_blank">
     <img class="img-fluid" title="Display page in RDF/XML format" alt="View in RFF/XML format" src="https://cida-test.er.usgs.gov/chyld-pilot/app/img/rdfxmlicon.png" style="max-width: 35px; padding: 10px 5px 0 5px">
@@ -11,9 +11,9 @@
   </a>
 </div>
 
-<h4>Type: Thing, Resource</h4>
+<h4>Type: LOD_Node</h4>
 
-<h4> Indentifier: <a href="https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-can-usa.md">https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-can-usa</a></h4>
+<h4> Indentifier: <a href="https://Geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node">https://Geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node</a></h4>
 
 <h2>Representations</h2>
 
