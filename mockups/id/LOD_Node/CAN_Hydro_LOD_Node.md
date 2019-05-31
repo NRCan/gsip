@@ -17,7 +17,9 @@
 
 <h2>Representations</h2>
 
-USA LOD Node: <a href="https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node">https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node</a>
+<a href="https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node">https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node</a>
+
+<!--USA LOD Node: <a href="https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node">https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node</a>-->
 
 <h2>Relations</h2>
 
