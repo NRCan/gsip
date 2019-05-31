@@ -23,4 +23,8 @@ USA Mexico: <a href="ttps://github.com/jvanulde/GSIP-1/blob/master/mockups/id/ha
 
 <h2>Relations</h2>
 
-https://cida-test.er.usgs.gov/chyld-pilot/info/hu/041504081604
+<j.1:HY_DendriticCatchment rdf:about="https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081604">
+
+has link to lower catchment:
+
+<j.1:lowerCatchment rdf:resource="https://geoconnex.ca/id/catchment/02OJ*CA"/>
