@@ -6,9 +6,9 @@
 
 <h2>Representations</h2>
 
-Canada Mexico: <a href="#">https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-can-mex</a>
+Canada Mexico: <a href="https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-can-mex.md">https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-can-mex</a>
 
-USA Mexico: <a href="#">https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-usa-mex</a>
+USA Mexico: <a href="ttps://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-usa-mex.md">https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-usa-mex</a>
 
 <h2>Relations</h2>
 
