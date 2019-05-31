@@ -17,8 +17,6 @@
 
 <h2>Representations</h2>
 
-Canada Mexico: <a href="https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-can-mex.md">https://github.com/jvanulde/GSIP-1/blob/master/mockups/id/harvester-can-mex</a>
-
 USA LOD Node: <a href="https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node">https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node</a>
 
 <h2>Relations</h2>
