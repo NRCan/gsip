@@ -20,7 +20,7 @@
 
 * <strong>GeoJSON:</strong> <a href="https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Nodef=geojson">https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node</a>
 * <strong>HTML:</strong> <a href="https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=html">https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node</a>
-* <strong>GML:</strong> <a href="https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=gml">https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?</a> 
+* <strong>GML:</strong> <a href="https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=gml">https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node</a> 
 
 <!--USA LOD Node: <a href="https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node">https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node</a>-->
 
