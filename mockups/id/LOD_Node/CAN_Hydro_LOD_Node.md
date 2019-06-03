@@ -26,4 +26,4 @@
 
 <h2>Relations</h2>
 
-https://Geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node  RelatedTo https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node
+https://Geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node  RelatedTo https://cida-test.er.usgs.gov/id/LOD_Node/US_Hydro_LOD_Node
