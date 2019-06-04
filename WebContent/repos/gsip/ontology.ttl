@@ -55,6 +55,14 @@ hy:drains rdf:type owl:ObjectProperty.
 
 hy:inside rdf:type owl:ObjectProperty,owl:TransitiveProperty.
 	
+<<<<<<< Updated upstream
+=======
+hy:lowerCatchment rdf:type owl:ObjectProperty;
+  owl:inverseOf hy:upperCatchment.
+
+hy:upperCatchment rdf:type owl:ObjectProperty.
+
+>>>>>>> Stashed changes
 hy:contains rdf:type owl:ObjectProperty,owl:TransitiveProperty;
         owl:inverseOf hy:inside.
 		
