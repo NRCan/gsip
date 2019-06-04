@@ -13,7 +13,6 @@
 		<p:type mime-type="application/vnd.google-earth.kml+xml" formats="kml"/>
 		<p:type mime-type="application/gml+xml" formats="gml"/>
 		<p:type mime-type="application/x-esri-shape" formats="shp"/>
-		<p:type mime-type="application/ld+json" formats="jsonld"/>
 
 		
 		
