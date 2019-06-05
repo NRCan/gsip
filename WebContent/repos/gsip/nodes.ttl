@@ -3,8 +3,8 @@
 
 <https://geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node> <http://purl.org/dc/terms/isReferencedBy> <https://cida-test.er.usgs.gov/id/LOD_Node/US_Hydro_LOD_Node>.
 
-<https://geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node> rdfs:label "Hydrography harvest node - Canada"@en, "Noeud de moissonage hydrographique - Canada"@fr.
-<https://cida-test.er.usgs.gov/id/LOD_Node/US_Hydro_LOD_Node> rdfs:label "Hydrography harvest node - United States of America"@en, "Noeud de moissonage hydrographique - Etats-Unis d'Amerique"@fr.
+<https://geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node> rdfs:label "Hydrography Linked Data Node - Canada"@en, "Noeud de donnees liees - Canada"@fr.
+<https://cida-test.er.usgs.gov/id/LOD_Node/US_Hydro_LOD_Node> rdfs:label "Hydrography Linked Data Node - United States of America"@en, "Noeud de donnees liees - Etats-Unis d'Amerique"@fr.
 
 <https://geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node> rdfs:seeAlso <https://geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node>.
 
