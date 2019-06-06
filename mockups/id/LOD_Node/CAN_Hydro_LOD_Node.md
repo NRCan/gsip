@@ -18,7 +18,7 @@
 
 <h2>Representations</h2>
 
-* [__JSON-LD__: https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node](https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=json)
+* [__JSON-LD__: https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node](https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=jsonld)
 * [__RDF__: https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node](https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=rdf)
 * [__Turtle__: https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node](https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=ttl) 
 
