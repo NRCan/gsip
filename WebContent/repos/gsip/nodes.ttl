@@ -1,7 +1,7 @@
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/>.
 
-<https://geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node> <http://purl.org/dc/terms/isReferencedBy> <https://cida-test.er.usgs.gov/id/LOD_Node/US_Hydro_LOD_Node>.
+<https://geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node> <https://geoconnex.ca/id/connectedTo> <https://cida-test.er.usgs.gov/id/LOD_Node/US_Hydro_LOD_Node>.
 
 <https://geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node> rdfs:label "Hydrography Linked Data Node - Canada"@en, "Noeud de donnees liees - Canada"@fr.
 <https://cida-test.er.usgs.gov/id/LOD_Node/US_Hydro_LOD_Node> rdfs:label "Hydrography Linked Data Node - United States of America"@en, "Noeud de donnees liees - Etats-Unis d'Amerique"@fr.
@@ -9,4 +9,4 @@
 <https://geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node> rdfs:seeAlso <https://geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node>.
 
 <https://geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node> dct:format "application/rdf+xml","application/x-turtle","application/ld+json";
-rdfs:label "Links"@fr,"Liens"@en.
+rdfs:label "Noeuds de connexion"@fr,"Connection Nodes"@en.
