@@ -400,7 +400,7 @@ var mapViewer = (function(){
 		  //console.log(features);
 		  
 		  if (features.length > 6){
-			info.push( 'Found ' + features.length + ' wells. <br/> Zoom in to query')
+			info.push( 'Found ' + features.length + ' features. <br/> Zoom in to query')
 		  }else{
 			for (var i = 0, ii = features.length; i < ii; ++i) {
 				//info.push(' <a title="Get Resource" target="_blank" href="http://s-stf-ngwd.nrn.nrcan.gc.ca:8085/cocoon/devHeryk/lod/uri?uri=' + features[i].get('uri') + '">' + features[i].get('name') +'</a> ' + '<a href="" class="uriSelected" featureuri="' + features[i].get('uri') + '"><img src="img/linkedData.png" title="Linked data" alt="Linked data" width="15px"/></a>');

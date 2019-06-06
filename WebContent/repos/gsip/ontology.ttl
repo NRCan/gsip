@@ -48,6 +48,7 @@ hy:HY_Waterbody rdf:type owl:Class;
 
 # properties
 	
+# use owl:equivalentProperty for compatibility with HY_Features?
 hy:drains-into rdf:type owl:ObjectProperty;
 	owl:inverseOf hy:drains.
 	
@@ -55,17 +56,20 @@ hy:drains rdf:type owl:ObjectProperty.
 
 hy:inside rdf:type owl:ObjectProperty,owl:TransitiveProperty.
 	
-
 hy:lowerCatchment rdf:type owl:ObjectProperty;
   owl:inverseOf hy:upperCatchment.
 
 hy:upperCatchment rdf:type owl:ObjectProperty.
 
-
 hy:contains rdf:type owl:ObjectProperty,owl:TransitiveProperty;
         owl:inverseOf hy:inside.
 		
 hy:inside rdf:type owl:ObjectProperty.
+
+hy:containingCatchment rdf:type owl:ObjectProperty,owl:TransitiveProperty.
+
+hy:containedcatchment rdf:type owl:ObjectProperty,owl:TransitiveProperty;
+	owl:inverseOf hy:containingCatchment.
 
 hy:located-on rdf:type owl:ObjectProperty.
 
@@ -94,6 +98,10 @@ hy:overlaps rdf:type owl:ObjectProperty ,
 hy:downstreamOf rdf:type owl:ObjectPropert,owl:TransitiveProperty;
 	owl:inverseOf hy:upstreamOf.
 hy:upstreamOf rdf:type owl:ObjectProperty,owl:TransitiveProperty.
+
+hy:upstreamWaterbody rdf:type owl:ObjectProperty,owl:TransitiveProperty;
+	owl:inverseOf hy:downstreamWaterbody.
+hy:downstreamWaterbody rdf:type owl:ObjectProperty,owl:TransitiveProperty.
 
 gw:gwAquiferSystemPart rdf:type owl:ObjectPropert,owl:TransitiveProperty;
 	owl:inverseOf gw:gwAquiferSystem.
