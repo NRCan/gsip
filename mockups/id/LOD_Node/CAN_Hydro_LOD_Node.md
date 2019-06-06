@@ -18,9 +18,9 @@
 
 <h2>Representations</h2>
 
-* <strong>JSON-LD:</strong> <a href="https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=json">https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node</a>
-* <strong>RDF:</strong> <a href="https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=rdf">https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node</a>
-* <strong>TTL:</strong> <a href="https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=ttl">https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node</a> 
+* [__JSON-LD__: https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node](https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=json)
+* [__RDF__: https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node](https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=rdf)
+* [__Turtle__: https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node](https://Geoconnex.ca/data/LOD_Node/CAN_Hydro_LOD_Node?f=ttl) 
 
 <!--USA LOD Node: <a href="https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node">https://Geoconnex.ca/id/LOD_Node/US_Hydro_LOD_Node</a>-->
 
