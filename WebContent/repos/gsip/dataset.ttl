@@ -7,6 +7,7 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix dct: <http://purl.org/dc/terms/>.
+@prefix schema: <http://schema.org/>.
 
 <https://geoconnex.ca/id/metadata/b99aa12b-e974-90ce-7452-53c146be5624> a dcat:CatalogRecord;
 dct:title "Richelieu-Yamaska Region Bedrock Geology"@en,"G&acute;ologie du socle rocheux de la r&eacute;gion de Richelieu-Yamaska"@fr;
@@ -15,7 +16,7 @@ dct:description """Le jeu de donn&eacute;es pr&eacute;sente la g&eacute;ologie s
 dct:modified "2013-06-01"^^xsd:date;
 rdfs:label "Richelieu-Yamaska Region Bedrock Geology"@en,"G&acute;ologie du socle rocheux de la r&eacute;gion de Richelieu-Yamaska"@fr;
 foaf:primaryTopic <https://geoconnex.ca/id/dataset/gin-13>;
-rdfs:seeAlso <http://gin.gw-info.net/service/api_ngwds:gin2/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624.html>,<http://gin.gw-info.net/service/ngwds/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624>.
+schema:subjectOf <http://gin.gw-info.net/service/api_ngwds:gin2/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624.html>,<http://gin.gw-info.net/service/ngwds/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624>.
 
 <http://gin.gw-info.net/service/api_ngwds:gin2/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624.html>
 rdfs:label "Harmonised North American Profile (HTML)"@en,"Profile harmonis&eacute; Nord-am&eacute;ricain (HTML)"@fr;

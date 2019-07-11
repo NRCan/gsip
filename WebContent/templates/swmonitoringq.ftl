@@ -1,7 +1,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/>.
+@prefix schema: <http://schema.org/>.
 <${resource}> 
-rdfs:seeAlso <${baseUri}/data/swmonitoring/WML2/real_time/MDDELCC/${p2}>,
+schema:subjectOf <${baseUri}/data/swmonitoring/WML2/real_time/MDDELCC/${p2}>,
 <${baseUri}/data/swmonitoring/WML2/historical/MDDELCC/${p2}>;
 <http://schema.org/name> "${p2}".
  <${baseUri}/data/swmonitoring/WML2/real_time/MDDELCC/${p2}>

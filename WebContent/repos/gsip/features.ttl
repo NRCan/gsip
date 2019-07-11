@@ -14,6 +14,7 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix ex: <http://gin.gw-info.net/example#>.
 @prefix gw: <http://geosciences.ca/def/groundwater#>.
+@prefix schema: <http://schema.org/>.
 
 <https://geoconnex.ca/id/waterbody/9483b203be4111d892e2080020a0f4c9> a hy:HY_WaterBody;
 rdfs:label "Plan d'eau: Ruisseau a l'Ours"@fr, "Water body: Ruisseau a l'Ours"@en.
@@ -134,13 +135,13 @@ rdfs:label "Station hydrometrique (niveau) : Richelieu (030430)"@fr,"Hydrometric
 <https://geoconnex.ca/id/swmonitoring/WSC_02OJ026> a hy:HY_HydrometricFeature; rdfs:label "Station hydrometrique : L'ACADIE (02OJ026)"@fr,"Hydrometric station : L'ACADIE (02OJ026)"@en.
 
 # only those 2 stations have real-time
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ007> rdfs:seeAlso
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ007> schema:subjectOf
 <https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ007>.
  <https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ007>
    rdfs:label "Donn&eacute;es en temps re&eacute;l"@fr,"Data in real time"@en;
 	dct:format "text/html","text/plain".
 
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016> rdfs:seeAlso
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016> schema:subjectOf
 <https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ016>.
  <https://geoconnex.ca/data/swmonitoring/WML2/real-time/WSC/WSC_02OJ016>
    rdfs:label "Donn&eacute;es en temps re&eacute;l"@fr,"Data in real time"@en;
@@ -194,7 +195,7 @@ rdfs:label "Systeme aquifere : Richelieu"@fr, "Aquifer system : Richelieu"@en;
 gw:gwAquiferSystemPart <https://geoconnex.ca/id/hydrogeounits/Richelieu1>,<https://geoconnex.ca/id/hydrogeounits/Richelieu2>,<https://geoconnex.ca/id/hydrogeounits/Richelieu3>,<https://geoconnex.ca/id/hydrogeounits/Richelieu4>,<https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
 
 <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>
-rdfs:seeAlso <https://en.wikipedia.org/wiki/Richelieu_River>,<https://fr.wikipedia.org/wiki/Rivi%C3%A8re_Richelieu>.
+schema:subjectOf <https://en.wikipedia.org/wiki/Richelieu_River>,<https://fr.wikipedia.org/wiki/Rivi%C3%A8re_Richelieu>.
 <https://fr.wikipedia.org/wiki/Rivi%C3%A8re_Richelieu> rdfs:label "Wikip&eacute;dia"@fr;dct:format "text/html".
 <https://en.wikipedia.org/wiki/Richelieu_River> rdfs:label "Wikipedia"@en;dct:format "text/html".
 

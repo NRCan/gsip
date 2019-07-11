@@ -33,6 +33,7 @@ import org.apache.jena.vocabulary.RDFS;
 import nrcan.lms.gsc.gsip.Constants;
 import nrcan.lms.gsc.gsip.Manager;
 import nrcan.lms.gsc.gsip.conf.Configuration;
+import nrcan.lms.gsc.gsip.vocabulary.SCHEMA;
 
 
 
@@ -164,19 +165,19 @@ public class ModelWrapper {
 	 */
 	private List<Resource> getRepresentations(Resource res)
 	{
-		//Logger.getAnonymousLogger().log(Level.INFO,"seeAlso "+ res.getURI());
-		StmtIterator statements = res.listProperties(RDFS.seeAlso);
-		List<Resource> seeAlso = new ArrayList<Resource>();
+		//Logger.getAnonymousLogger().log(Level.INFO,"subjectOf "+ res.getURI());
+		StmtIterator statements = res.listProperties(SCHEMA.subjectOf);
+		List<Resource> subjectOf = new ArrayList<Resource>();
 		while(statements.hasNext())
 		{
 			Statement s = statements.next();
-			seeAlso.add(s.getResource());
+			subjectOf.add(s.getResource());
 		}
-		return seeAlso;
+		return subjectOf;
 	}
 	
 	/**
-	 * Get a list of representations (seeAlso resources) for the context resource
+	 * Get a list of representations (subjectOf resources) for the context resource
 	 * @return
 	 */
 	public List<Resource> getRepresentations()

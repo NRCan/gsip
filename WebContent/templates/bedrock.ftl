@@ -1,7 +1,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/>.
+@prefix schema: <http://schema.org/>.
 <${resource}> 
-rdfs:seeAlso <${gsip}/geo/remote/gsip/rich_bedrock/${p3}>;
+schema:subjectOf <${gsip}/geo/remote/gsip/rich_bedrock/${p3}>;
 <http://schema.org/name> "${p2}".
 <${gsip}/geo/remote/gsip/rich_bedrock/${p3}>
 	dct:format "application/vnd.geo+json".

@@ -1,7 +1,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/>.
+@prefix schema: <http://schema.org/>.
 <${resource}> 
-rdfs:seeAlso <${baseUri}/data/gwml/gwml1/gsip/gin/${p2}>;
+schema:subjectOf <${baseUri}/data/gwml/gwml1/gsip/gin/${p2}>;
 <http://schema.org/name> "${p2}";
 <http://schema.org/image> <http://ngwd-bdnes.cits.nrcan.gc.ca/Reference/uri-cgi/feature/gsc/waterwell/${p2?replace("qc.","ca.qc.gov.wells.")}?format=png>.
 <${baseUri}/data/gwml/gwml1/gsip/gin/${p2}>

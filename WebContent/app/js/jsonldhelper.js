@@ -2,10 +2,11 @@ var JSONLDHELPER = (function(){
 	
 	//INTERNAL CONSTANTS
 	//const SEEALSO = "http://www.w3.org/2000/01/rdf-schema#seeAlso";
+	//const SUBJECTOF = "http://schema.org/subjectOf"
 	//const LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
 	//const FORMAT = "http://purl.org/dc/terms/format";
 	//TODO: use a JSON-LD library to do proper mapping between property URIs and local names.  
-	const SEEALSO = "seeAlso";
+	const SUBJECTOF = "subjectOf";
 	const LABEL = "label";
 	const FORMAT = "format";
 	const SAMEAS = "sameAs";
@@ -55,21 +56,21 @@ var JSONLDHELPER = (function(){
 	// o is the resource, collection is the list of available resources
 	// returns an array of resources
 	{
-		var seeAlso = castArray(o[SEEALSO]);
+		var subjectOf = castArray(o[SUBJECTOF]);
 		// find all the see also
-		var seeAlsoResource = [];
-		// seeAlso is not always an array
+		var subjectOfResource = [];
+		// subjectOf is not always an array
 		
-		seeAlso.forEach(
+		subjectOf.forEach(
 			function(x)
 			{ 
-			// when there is a proper context, the seeAlso is just a literal value (the id)
+			// when there is a proper context, the subjectOf is just a literal value (the id)
 			//var id = x["@id"];
 			if (collection[x] !== undefined) 
-				seeAlsoResource.push(collection[x]);
+				subjectOfResource.push(collection[x]);
 			}
 		);
-		return seeAlsoResource;
+		return subjectOfResource;
 	};
 	
 	// goddam javascript, sometimes string are string, but sometimes they are objects.
@@ -114,7 +115,7 @@ var JSONLDHELPER = (function(){
 			if (o.hasOwnProperty(property)) {
 			if (LABEL == property) continue;
 			if ("@type" == property) continue;
-			if (SEEALSO == property) continue;
+			if (SUBJECTOF == property) continue;
 			if ("@id" == property) continue;
 			if (SAMEAS == property) continue;
 			if (IMAGE == property) continue;
