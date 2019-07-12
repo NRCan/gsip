@@ -89,11 +89,11 @@ public class Information {
 		if (format != null && format.trim().length() > 0)
 		{
 			// TODO: use the Configuration instead
-			if ("rdf".equalsIgnoreCase(format)) of = InfoOutputFormat.ioRDFXML;
-			if ("ttl".equalsIgnoreCase(format)) of = InfoOutputFormat.ioTURTLE;
-			if ("xml".equalsIgnoreCase(format)) of = InfoOutputFormat.ioXML;
-			if ("html".equalsIgnoreCase(format) || "htm".equalsIgnoreCase(format)) of = InfoOutputFormat.ioHTML;
-			if ("json".equalsIgnoreCase(format) || "jsonld".equalsIgnoreCase(format))  of = InfoOutputFormat.ioJSONLD;
+			if ("rdf".equalsIgnoreCase(format) || "application/rdf+xml".equalsIgnoreCase(format)) of = InfoOutputFormat.ioRDFXML;
+			if ("ttl".equalsIgnoreCase(format) || "text/turtle".equalsIgnoreCase(format)) of = InfoOutputFormat.ioTURTLE;
+			if ("xml".equalsIgnoreCase(format) || "text/xml".equalsIgnoreCase(format)) of = InfoOutputFormat.ioXML;
+			if ("html".equalsIgnoreCase(format) || "htm".equalsIgnoreCase(format) || "text/html".equalsIgnoreCase(format)) of = InfoOutputFormat.ioHTML;
+			if ("json".equalsIgnoreCase(format) || "jsonld".equalsIgnoreCase(format) || "application/ld+json".equalsIgnoreCase(format))  of = InfoOutputFormat.ioJSONLD;
 			// otherwise, file not found
 			if (of == InfoOutputFormat.ioUnknown)
 				return Response.status(HttpStatus.SC_UNSUPPORTED_MEDIA_TYPE).entity(format +" extension is not supported : use html/ttl/rdf/xml/json").build();

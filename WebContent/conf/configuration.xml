@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:configuration xmlns:p="urn:x-gsip:1.0">
 	<p:types>
-		<p:type mime-type="application/vnd.geo+json" formats="geojson"/>
-		<p:type mime-type="text/csv" formats="csv"/>
-		<p:type mime-type="text/xml; subtype=gml/3.2.1" formats="gml"/>
-		<p:type mime-type="text/xml" formats="xml"/>
-		<p:type mime-type="application/rdf+xml" formats="rdf;rdf+xml"/>
-		<p:type mime-type="application/x-turtle" formats="ttl;turtle"/>
-		<p:type mime-type="application/json" formats="json"/>
+		<p:type mime-type="application/vnd.geo+json" formats="geojson;application/vnd.geo+json"/>
+		<p:type mime-type="text/csv" formats="csv;text/csv"/>
+		<p:type mime-type="text/xml" formats="xml;text/xml"/>
+		<p:type mime-type="application/rdf+xml" formats="rdf;rdf+xml;application/rdf+xml"/>
+		<p:type mime-type="application/x-turtle" formats="ttl;turtle;application/x-turtle;text/turtle"/>
+		<p:type mime-type="application/json" formats="json;application/json"/>
 		<p:type mime-type="text/turtle" sameAs="application/x-turtle"/>
-		<p:type mime-type="text/plain" formats="txt"/>
-		<p:type mime-type="application/vnd.google-earth.kml+xml" formats="kml"/>
-		<p:type mime-type="application/gml+xml" formats="gml"/>
-		<p:type mime-type="application/x-esri-shape" formats="shp"/>
-		<p:type mime-type="application/ld+json" formats="jsonld"/>
-
-		
-		
-		
-	</p:types>
+		<p:type mime-type="text/plain" formats="txt;text/plain"/>
+		<p:type mime-type="application/vnd.google-earth.kml+xml" formats="kml;application/vnd.google-earth.kml+xml"/>
+		<p:type mime-type="application/gml+xml" formats="gml;application/gml+xml"/>
+		<p:type mime-type="application/x-esri-shape" formats="shp;application/x-esri-shape"/>
+		<p:type mime-type="application/ld+json" formats="jsonld;application/ld+json"/>
+</p:types>
 	
 	<p:parameters>
 
