@@ -26,6 +26,9 @@
 	padding: 10px 10px 10px 10px;
 }
 </style>
+<script language="" type="application/ld+json">
+${model.encode("JSON-LD")}
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -171,8 +174,6 @@
 
 	</script>
 </body>
-<script language="" type="application/ld+json">
-${model.encode("JSON-LD")}
-</script>
+
 </html>
 <html></html>
