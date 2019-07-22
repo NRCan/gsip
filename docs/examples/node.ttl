@@ -1,0 +1,19 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix schema: <http://schema.org/> .
+
+<https://geoconnex.ca/info/CAN_LOD_Node>
+  rdfs:type void:Dataset ;
+  schema:subjectOf <https://geoconnex.ca/data/CAN_LOD_Node_feature_links>, <https://geoconnex.ca/data/CAN_LOD_NodeCatalog>, <https://geoconnex.ca/data/CAN_LOD_Node_datanode_links> .
+
+<https://geoconnex.ca/data/CAN_LOD_Node_feature_links>
+  rdfs:type void:LinkSet ;
+  void:target <https://geoconnex.ca/info/CAN_LOD_Node>, <https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node> .
+
+<https://geoconnex.ca/data/CAN_LOD_NodeCatalog>
+  rdfs:type void:dataset ;
+  void:property <https://geoconnex.ca/id/properties/inNodeCatalog> .
+
+<https://geoconnex.ca/data/CAN_LOD_Node_datanode_links>
+  rdfs:type void:dataset ;
+  void:property <https://geoconnex.ca/id/properties/connectedTo> .
