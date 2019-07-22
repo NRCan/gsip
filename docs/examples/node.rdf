@@ -8,6 +8,10 @@
         <rdfs:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
             
             <schema:subjectOf>
+                <!--
+                    Representation of the data node: the cross-node relations
+                    Contains triples like: CAN_Watershed downstream-of US_Watershed
+                -->
                 <rdf:Description rdf:about="https://geoconnex.ca/data/CAN_LOD_Node_feature_links">
                     <rdfs:type rdf:resource="http://rdfs.org/ns/void#LinkSet"/>
                     <void:target rdf:resource="https://geoconnex.ca/info/CAN_LOD_Node"/>
@@ -16,6 +20,10 @@
             </schema:subjectOf>
             
             <schema:subjectOf>
+                <!--
+                    Representation of the data node: catalog of features i.e. /id/s 
+                    Contains triples like: : CAN_Watershed  gsip:inNodeCatalog /id/CAN_LOD_Node
+                -->
                 <rdf:Description rdf:about="https://geoconnex.ca/data/CAN_LOD_NodeCatalog">
                     <rdfs:type rdf:resource="http://rdfs.org/ns/void#dataset"/>
                     <void:property rdf:resource="https://geoconnex.ca/id/properties/inNodeCatalog"/>
@@ -23,6 +31,10 @@
             </schema:subjectOf>
             
             <schema:subjectOf>
+                <!--
+                    Representation containing links between data nodes 
+                    Only contains triples like: /id/CAN_LOD_Node connectedTo /id/US_LOD_Node
+                -->
                 <rdf:Description rdf:about="https://geoconnex.ca/data/CAN_LOD_Node_datanode_links">
                     <rdfs:type rdf:resource="http://rdfs.org/ns/void#dataset"/>
                     <void:property rdf:resource="https://geoconnex.ca/id/properties/connectedTo"/>
