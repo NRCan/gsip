@@ -1,4 +1,8 @@
 {   
+    "@context": [
+        "https://opengeospatial.github.io/SELFIE/contexts/elf-index.jsonld",
+        "https://opengeospatial.github.io/SELFIE/contexts/elf-data.jsonld"
+    ],
     "@id": "https://geoconnex.ca/info/CAN_LOD_Node",
     "@type": "http://rdfs.org/ns/void#Dataset",
     "name": "Canada GSIP Node",
