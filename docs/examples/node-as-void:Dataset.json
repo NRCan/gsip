@@ -1,0 +1,50 @@
+{   
+    "@context": [
+    	"http://schema.org",
+    	"https://github.com/jvanulde/SELFIE/blob/master/docs/contexts/void-context.jsonld"
+    ],
+    "@id": "https://geoconnex.ca/info/CAN_LOD_Node",
+    "@type": ["Dataset", "void:Dataset"],
+    "name": "Canada GSIP Node",
+    "description": "Canadian Linked Open Data (LOD) node. Contains links to other LOD nodes.",
+    "void:subset": [
+          {
+              "@id": "https://geoconnex.ca/data/CAN_LOD_NodeCatalog",
+              "@type": ["Dataset", "void:Dataset"],
+              "name": "Catalog of features",
+              "description": "Representation of the data node: catalog of features i.e. /id/. Contains triples like: CAN_Watershed  gsip:inNodeCatalog /id/CAN_LOD_Node",
+              "distribution": {
+              	"contentUrl": "https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf",
+                "encodingFormat": "text/xml"
+              }
+          },
+          {
+              "@id": "https://geoconnex.ca/data/CAN_LOD_Node_datanode_links",
+              "@type": ["Dataset", "void:Dataset"],
+              "name": "Node connections",
+              "description": "Representation containing links between data nodes. Only contains triples like: /id/CAN_LOD_Node connectedTo /id/US_LOD_Node",
+              "distribution": {
+              	"contentUrl": "https://geoconnex.ca/id/properties/connectedTo.rdf",
+                "encodingFormat": "text/xml"
+              }
+          },
+          {
+              "@id": "https://geoconnex.ca/data/CAN_LOD_Node_feature_links",
+              "@type": ["Dataset", "void:LinkSet"],
+              "name": "Related features in connected nodes",
+              "description": "Representation of the data node: the cross-node relations. Contains triples like: CAN_Watershed downstream-of US_Watershed",
+              "subjectTarget": {
+                "@type": "void:subjectTarget",
+                "@value": "https://geoconnex.ca/info/CAN_LOD_Node"
+              },
+              "objectTarget": {
+                "@type": "void:objectTarget",
+                "@value": "https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node"
+              },
+              "linkPredicate": {
+                "@type": "void:linkPredicate",
+                "@value": "https://geoconnex.ca/id/properties/connectedTo"
+              }
+          }
+      ]
+  }
