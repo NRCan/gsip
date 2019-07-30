@@ -42,7 +42,7 @@
                 <dct:description xml:lang="en">Representation containing links between data nodes. Only contains triples like: /id/CAN_LOD_Node connectedTo /id/US_LOD_Node</dct:description>
                 <void:target rdf:resource="https://geoconnex.ca/info/CAN_LOD_Node"/>
                 <void:target rdf:resource="https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node"/>
-                <void:linkPredicate rdf:resource="https://geoconnex.ca/properties/id/connectedTo"/>
+                <void:property rdf:resource="https://geoconnex.ca/properties/id/connectedTo"/>
             </rdf:Description>
         </void:subset>
         
