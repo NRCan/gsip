@@ -14,7 +14,7 @@
         
         <void:subset>
             <rdf:Description rdf:about="https://geoconnex.ca/data/CAN_LOD_Node_feature_links">
-                <rdfs:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
+                <rdfs:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
                 <rdfs:type rdf:resource="http://schema.org/Dataset"/>
                 <dct:title xml:lang="en">Related features in connected nodes</dct:title>
                 <dct:description xml:lang="en">Representation of the data node: the cross-node relations. Contains triples like: CAN_Watershed downstream-of US_Watershed</dct:description>
