@@ -40,8 +40,8 @@
                 <rdfs:type rdf:resource="http://schema.org/Dataset"/>
                 <dct:title xml:lang="en">Connected nodes</dct:title>
                 <dct:description xml:lang="en">Representation containing links between data nodes. Only contains triples like: /id/CAN_LOD_Node connectedTo /id/US_LOD_Node</dct:description>
-                <void:subjectTarget rdf:resource="https://geoconnex.ca/info/CAN_LOD_Node"/>
-                <void:objectTarget rdf:resource="https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node"/>
+                <void:target rdf:resource="https://geoconnex.ca/info/CAN_LOD_Node"/>
+                <void:target rdf:resource="https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node"/>
                 <void:linkPredicate rdf:resource="https://geoconnex.ca/properties/id/connectedTo"/>
             </rdf:Description>
         </void:subset>
