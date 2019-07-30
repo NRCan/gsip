@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:ns0="https://www.opengis.net/def/hy_features/ontology/hyf/">
+
+  <rdf:Description rdf:about="https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081604">
+    <ns0:lowerCatchment rdf:resource="https://geoconnex.ca/id/catchment/02OJ*CA"/>
+  </rdf:Description>
+
+</rdf:RDF>
