@@ -1,53 +1,33 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:void="http://rdfs.org/ns/void#"
-    xmlns:schema="http://schema.org/"
-    xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:foaf="http://xmlns.com/foaf/0.1/">
-    
-    <rdf:Description rdf:about="https://geoconnex.ca/info/CAN_LOD_Node">
-        <rdfs:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
-        <rdfs:type rdf:resource="http://schema.org/Dataset"/>
-        <dct:title xml:lang="en">Canadian Linked Open Data (LOD) node</dct:title>
-        <dct:description xml:lang="en">Representation of the data node</dct:description>
-        <schema:isPartOf rdf:resource="https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node"/>
-        
-        <void:subset>
-            <rdf:Description rdf:about="https://geoconnex.ca/data/CAN_LOD_Node_feature_links">
-                <rdfs:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
-                <rdfs:type rdf:resource="http://schema.org/Dataset"/>
-                <dct:title xml:lang="en">Related features in connected nodes</dct:title>
-                <dct:description xml:lang="en">Representation of the data node: the cross-node relations. Contains triples like: CAN_Watershed downstream-of US_Watershed</dct:description>
-                <void:dataDump rdf:resource="https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf"/>
-                <schema:distribution rdf:resource="https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf"/>
-            </rdf:Description>
-        </void:subset>
-        
-        <void:subset>
-            <rdf:Description rdf:about="https://geoconnex.ca/data/CAN_LOD_NodeCatalog">
-                <rdfs:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
-                <rdfs:type rdf:resource="http://schema.org/Dataset"/>
-                <dct:title xml:lang="en">Catalog of features</dct:title>
-                <dct:description xml:lang="en">Representation of the data node: catalog of features i.e. /id/s. Contains triples like: CAN_Watershed gsip:inNodeCatalog /id/CAN_LOD_Node</dct:description>
-                <void:dataDump rdf:resource="https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf"/>
-                <schema:distribution rdf:resource="https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf"/> 
-            </rdf:Description>
-        </void:subset>
-        
-        <void:subset>
-            <rdf:Description rdf:about="https://geoconnex.ca/data/CAN_LOD_Node_datanode_links">
-                <rdfs:type rdf:resource="http://rdfs.org/ns/void#LinkSet"/>
-                <rdfs:type rdf:resource="http://schema.org/Dataset"/>
-                <dct:title xml:lang="en">Connected nodes</dct:title>
-                <dct:description xml:lang="en">Representation containing links between data nodes. Only contains triples like: /id/CAN_LOD_Node connectedTo /id/US_LOD_Node</dct:description>
-                <void:subjectTarget rdf:resource="https://geoconnex.ca/info/CAN_LOD_Node"/>
-                <void:objectTarget rdf:resource="https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node"/>
-                <void:linkPredicate rdf:resource="https://geoconnex.ca/properties/id/connectedTo"/>
-                <schema:hasPart rdf:resource="https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node"/>
-            </rdf:Description>
-        </void:subset>
-        
-    </rdf:Description>
-    
-</rdf:RDF>
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix schema: <http://schema.org/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+
+<https://geoconnex.ca/info/CAN_LOD_Node>
+  rdfs:type void:Dataset, schema:Dataset ;
+  dc:title "Canadian Linked Open Data (LOD) node"@en ;
+  dc:description "Representation of the data node"@en ;
+  void:subset <https://geoconnex.ca/data/CAN_LOD_Node_feature_links>, <https://geoconnex.ca/data/CAN_LOD_NodeCatalog>, <https://geoconnex.ca/data/CAN_LOD_Node_datanode_links> .
+
+<https://geoconnex.ca/data/CAN_LOD_Node_feature_links>
+  rdfs:type void:Dataset, schema:Dataset ;
+  dc:title "Related features in connected nodes"@en ;
+  dc:description "Representation of the data node: the cross-node relations. Contains triples like: CAN_Watershed downstream-of US_Watershed"@en ;
+  void:dataDump <https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf> ;
+  schema:distribution <https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf> .
+
+<https://geoconnex.ca/data/CAN_LOD_NodeCatalog>
+  rdfs:type void:Dataset, schema:Dataset ;
+  dc:title "Catalog of features"@en ;
+  dc:description "Representation of the data node: catalog of features i.e. /id/s. Contains triples like: CAN_Watershed gsip:inNodeCatalog /id/CAN_LOD_Node"@en ;
+  void:dataDump <https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf> ;
+  schema:distribution <https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf> .
+
+<https://geoconnex.ca/data/CAN_LOD_Node_datanode_links>
+  rdfs:type void:LinkSet, schema:Dataset ;
+  dc:title "Connected nodes"@en ;
+  dc:description "Representation containing links between data nodes. Only contains triples like: /id/CAN_LOD_Node connectedTo /id/US_LOD_Node"@en ;
+  void:subjectTarget <https://geoconnex.ca/info/CAN_LOD_Node> ;
+  void:objectTarget <https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node> ;
+  void:linkPredicate <https://geoconnex.ca/properties/id/connectedTo> .
+
