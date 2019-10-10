@@ -17,122 +17,159 @@
 @prefix schema: <http://schema.org/>.
 
 <https://geoconnex.ca/id/waterbody/9483b203be4111d892e2080020a0f4c9> a hy:HY_WaterBody;
-rdfs:label "Plan d'eau: Ruisseau a l'Ours"@fr, "Water body: Ruisseau a l'Ours"@en.
+rdfs:label "Plan d'eau: Ruisseau a l'Ours"@fr, "Water body: Ruisseau a l'Ours"@en;
+ schema:name "Water body: Ruisseau a l'Ours".
 
 <https://geoconnex.ca/id/waterbody/1e041853be2d11d892e2080020a0f4c9> a hy:HY_WaterBody;
-rdfs:label  "Plan d'eau: Riviere L'Acadie"@fr, "Water body: Riviere L'Acadie"@en.
+rdfs:label  "Plan d'eau: Riviere L'Acadie"@fr, "Water body: Riviere L'Acadie"@en;
+ schema:name "Water body: Riviere L'Acadie".
 
 <https://geoconnex.ca/id/waterbody/3effba23be2a11d892e2080020a0f4c9> a hy:HY_WaterBody;
-rdfs:label  "Plan d'eau: Riviere des Hurons"@fr, "Water body: Riviere des Hurons"@en.
+rdfs:label  "Plan d'eau: Riviere des Hurons"@fr, "Water body: Riviere des Hurons"@en;
+ schema:name "Water body: Riviere des Hurons".
 
 <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9> a hy:HY_WaterBody;
-rdfs:label "Plan d'eau: Riviere Richelieu"@fr, "Water body: Riviere Richelieu"@en.
+rdfs:label "Plan d'eau: Riviere Richelieu"@fr, "Water body: Riviere Richelieu"@en;
+ schema:name "Water body: Riviere Richelieu".
 
 <https://geoconnex.ca/id/catchment/02OJ> a hy:HY_Catchment;
-rdfs:label "Bassin versant: Richelieu"@fr,"Watershed: Richelieu"@en.
+rdfs:label "Bassin versant: Richelieu"@fr,"Watershed: Richelieu"@en;
+ schema:name "Watershed : Richelieu".
 
 <https://geoconnex.ca/id/catchment/02OJ*CD>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CD>;
- rdfs:label "Bassin versant: Ruisseau Landry - Riviere Richelieu"@fr,"Watershed: Ruisseau Landry - Riviere Richelieu"@en.
+ rdfs:label "Bassin versant: Ruisseau Landry - Riviere Richelieu"@fr,"Watershed: Ruisseau Landry - Riviere Richelieu"@en;
+ schema:name "Watershed :  Ruisseau Landry - Riviere Richelieu".
 
 <https://geoconnex.ca/id/catchment/02OJ*CB>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CB>;
- rdfs:label "Bassin versant: Riviere Lacolle"@fr,"Watershed: Riviere Lacolle"@en.
+ rdfs:label "Bassin versant: Riviere Lacolle"@fr,"Watershed: Riviere Lacolle"@en;
+ schema:name "Watershed : Riviere Lacolle".
 
 <https://geoconnex.ca/id/catchment/02OJ*CC>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CC>;
- rdfs:label "Bassin versant: Riviere du Sud"@fr,"Watershed: Riviere du Sud"@en.
+ rdfs:label "Bassin versant: Riviere du Sud"@fr,"Watershed: Riviere du Sud"@en;
+ schema:name "Watershed : Riviere du Sud".
 
 <https://geoconnex.ca/id/catchment/02OJ*CE>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CE>;
- rdfs:label "Bassin versant: Ruisseau de la Barbotte - Riviere Richelieu"@fr,"Watershed: Ruisseau de la Barbotte - Riviere Richelieu"@en.
+ rdfs:label "Bassin versant: Ruisseau de la Barbotte - Riviere Richelieu"@fr,"Watershed: Ruisseau de la Barbotte - Riviere Richelieu"@en;
+ schema:name "Watershed : Ruisseau de la Barbotte - Riviere Richelieu".
 
 <https://geoconnex.ca/id/catchment/02OJ*BB>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_BB>;
- rdfs:label "Bassin versant: Riviere L'Acadie - Cours median"@fr,"Watershed: Riviere L'Acadie - Cours median"@en.
+ rdfs:label "Bassin versant: Riviere L'Acadie - Cours median"@fr,"Watershed: Riviere L'Acadie - Cours median"@en;
+ schema:name "Watershed : Riviere L'Acadie - Cours median".
 
 <https://geoconnex.ca/id/catchment/02OJ*CF>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CF>;
- rdfs:label "Bassin versant: Riviere des Iroquois - Riviere Richelieu"@fr,"Watershed: Riviere des Iroquois - Riviere Richelieu"@en.
+ rdfs:label "Bassin versant : Riviere des Iroquois - Riviere Richelieu"@fr,"Watershed: Riviere des Iroquois - Riviere Richelieu"@en;
+ schema:name "Watershed : Riviere des Iroquois - Riviere Richelieu".
 
 <https://geoconnex.ca/id/catchment/02OJ*AA>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_AA>;
- rdfs:label "Bassin versant: Ruisseau Saint-Louis"@fr,"Watershed: Ruisseau Saint-Louis"@en.
+ rdfs:label "Bassin versant : Ruisseau Saint-Louis"@fr,"Watershed: Ruisseau Saint-Louis"@en;
+ schema:name "Watershed : Ruisseau Saint-Louis".
 
 <https://geoconnex.ca/id/catchment/02OJ*AB>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_AB>;
- rdfs:label "Bassin versant: Riviere des Hurons"@fr,"Watershed: Riviere des Hurons"@en.
+ rdfs:label "Bassin versant : Riviere des Hurons"@fr,"Watershed: Riviere des Hurons"@en;
+ schema:name "Watershed : Riviere des Hurons".
 
 <https://geoconnex.ca/id/catchment/02OJ*DA>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DA>;
- rdfs:label "Bassin versant: Ruisseau Bernard Ouest - Riviere Richelieu"@fr,"Watershed: Ruisseau Bernard Ouest - Riviere Richelieu"@en.
+ rdfs:label "Bassin versant: Ruisseau Bernard Ouest - Riviere Richelieu"@fr,"Watershed: Ruisseau Bernard Ouest - Riviere Richelieu"@en;
+ schema:name "Watershed : Ruisseau Bernard Ouest - Riviere Richelieu".
 
 <https://geoconnex.ca/id/catchment/02OJ*DD>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DD>;
- rdfs:label "Bassin versant: Riviere Amyot"@fr,"Watershed: Watershed: Riviere Amyot"@en.
+ rdfs:label "Bassin versant: Riviere Amyot"@fr,"Watershed: Watershed: Riviere Amyot"@en;
+ schema:name "Watershed : Riviere Amyot".
 
 <https://geoconnex.ca/id/catchment/02OJ*DF>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DF>;
- rdfs:label "Bassin versant: Ruisseau des Ormes - Riviere Richelieu"@fr,"Watershed: Ruisseau des Ormes - Riviere Richelieu"@en.
+ rdfs:label "Bassin versant: Ruisseau des Ormes - Riviere Richelieu"@fr,"Watershed: Ruisseau des Ormes - Riviere Richelieu"@en;
+ schema:name "Watershed : Ruisseau des Ormes - Riviere Richelieu".
 
 <https://geoconnex.ca/id/catchment/02OJ*DH>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DH>;
- rdfs:label "Bassin versant: Riviere Richelieu - Embouchure"@fr,"Watershed: Riviere Richelieu - Embouchure"@en.
+ rdfs:label "Bassin versant: Riviere Richelieu - Embouchure"@fr,"Watershed: Riviere Richelieu - Embouchure"@en;
+ schema:name "Watershed : Riviere Richelieu - Embouchure".
 
 <https://geoconnex.ca/id/catchment/02OJ*BA>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_BA>;
- rdfs:label "Riviere L'Acadie - Cours superieur"@fr,"Watershed: Riviere L'Acadie - Cours superieur"@en.
+ rdfs:label "Bassin versant : Riviere L'Acadie - Cours superieur"@fr,"Watershed: Riviere L'Acadie - Cours superieur"@en;
+ schema:name "Watershed : Riviere L'Acadie - Cours superieur".
 
 <https://geoconnex.ca/id/catchment/02OJ*BC>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_BC>;
- rdfs:label "Bassin versant: Riviere l'Acadie - Cours inferieur"@fr,"Watershed: Riviere l'Acadie - Cours inferieur"@en.
+ rdfs:label "Bassin versant: Riviere l'Acadie - Cours inferieur"@fr,"Watershed: Riviere l'Acadie - Cours inferieur"@en;
+ schema:name "Watershed : Riviere l'Acadie - Cours inferieur".
 
 <https://geoconnex.ca/id/catchment/02OJ*DB>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DB>;
- rdfs:label "Bassin versant: Ruisseau Voghel - Riviere Richelieu"@fr,"Watershed: Ruisseau Voghel - Riviere Richelieu"@en.
+ rdfs:label "Bassin versant: Ruisseau Voghel - Riviere Richelieu"@fr,"Watershed: Ruisseau Voghel - Riviere Richelieu"@en;
+ schema:name "Watershed : Ruisseau Voghel - Riviere Richelieu".
 
 <https://geoconnex.ca/id/catchment/02OJ*DG>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DG>;
- rdfs:label "Bassin versant: Ruisseau Laplante"@fr,"Watershed: Ruisseau Laplante"@en.
+ rdfs:label "Bassin versant: Ruisseau Laplante"@fr,"Watershed: Ruisseau Laplante"@en;
+ schema:name "Watershed : Ruisseau Laplante".
 
 <https://geoconnex.ca/id/catchment/02OJ*DE>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DE>;
- rdfs:label "Bassin versant: Ruisseau Coderre"@fr,"Watershed: Ruisseau Coderre"@en.
+ rdfs:label "Bassin versant: Ruisseau Coderre"@fr,"Watershed: Ruisseau Coderre"@en;
+ schema:name "Watershed : Ruisseau Coderre".
 
 <https://geoconnex.ca/id/catchment/02OJ*DC>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_DC>;
- rdfs:label "Ruisseau Beloeil"@fr,"Watershed: Ruisseau Beloeil"@en.
+ rdfs:label "Bassin versant : Ruisseau Beloeil"@fr,"Watershed: Ruisseau Beloeil"@en;
+ schema:name "Watershed : Beloeil".
 
 <https://geoconnex.ca/id/catchment/02OJ*CA>  a hy:HY_Catchment;
 hy:contains <https://geoconnex.ca/id/featureCollection/wellsIn02OJ_CA>;
- rdfs:label "Bassin versant : Little River - Riviere Richelieu"@fr,"Watershed: Little River - Riviere Richelieu"@en.
+ rdfs:label "Bassin versant : Little River - Riviere Richelieu"@fr,"Watershed: Little River - Riviere Richelieu"@en;
+ schema:name "Watershed : Little River - Riviere Richelieu".
 
 
 <https://geoconnex.ca/id/swmonitoring/MDDELCC_030415> a hy:HY_HydrometricFeature;
-rdfs:label "Station hydrometrique (debit) : Des Hurons (030415)"@fr,"Hydrometric station (flow) : Des Hurons (030415)"@en.
+rdfs:label "Station hydrometrique (debit) : Des Hurons (030415)"@fr,"Hydrometric station (flow) : Des Hurons (030415)"@en;
+schema:name "Hydrometric station (flow) : Des Hurons (030415)".
 
 
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030421> a hy:HY_HydrometricFeature; rdfs:label "Station hydrometrique (debit) :L'Acadie (030421)"@fr, "Hydrometric station (flow) : L'Acadie (030421)"@en.
+<https://geoconnex.ca/id/swmonitoring/MDDELCC_030421> a hy:HY_HydrometricFeature; 
+rdfs:label "Station hydrometrique (debit) :L'Acadie (030421)"@fr, "Hydrometric station (flow) : L'Acadie (030421)"@en;
+schema:name "Hydrometric station (flow) :L'Acadie (030421)".
 
 
 <https://geoconnex.ca/id/swmonitoring/MDDELCC_030429> a hy:HY_HydrometricFeature;
-rdfs:label "Station hydrometrique (debit) : A l'Ours (030429)"@fr,"Hydrometric station (flow) : A l'Ours (030429)"@en.
+rdfs:label "Station hydrometrique (debit) : A l'Ours (030429)"@fr,"Hydrometric station (flow) : A l'Ours (030429)"@en;
+schema:name "Hydrometric station (flow) : A l'Ours (030429)".
 
 
 <https://geoconnex.ca/id/swmonitoring/MDDELCC_030430> a hy:HY_HydrometricFeature;
 
-rdfs:label "Station hydrometrique (niveau) : Richelieu (030430)"@fr,"Hydrometric station (level) : Richelieu (030430)"@en.
+rdfs:label "Station hydrometrique (niveau) : Richelieu (030430)"@fr,"Hydrometric station (level) : Richelieu (030430)"@en;
+schema:name "Hydrometric station (level): Richelieu (030430)".
 
 
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ007> a hy:HY_HydrometricFeature; rdfs:label "Station hydrometrique : RICHELIEU (RIVIERE) AUX RAPIDES FRYERS (02OJ007)"@fr,"Hydrometric station : RICHELIEU (RIVIERE) AUX RAPIDES FRYERS (02OJ007)"@en.
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ007> a hy:HY_HydrometricFeature; 
+rdfs:label "Station hydrometrique : RICHELIEU (RIVIERE) AUX RAPIDES FRYERS (02OJ007)"@fr,"Hydrometric station : RICHELIEU (RIVIERE) AUX RAPIDES FRYERS (02OJ007)"@en;
+schema:name "Hydrometric station : RICHELIEU (RIVIERE) AUX RAPIDES FRYERS (02OJ007)".
 
 
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016> a hy:HY_HydrometricFeature; rdfs:label "Station hydrometrique : RICHELIEU (RIVIERE) A LA MARINA DE SAINT-JEAN (02OJ016)"@fr,"Hydrometric station : RICHELIEU (RIVIERE) A LA MARINA DE SAINT-JEAN (02OJ016)"@en.
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016> a hy:HY_HydrometricFeature; 
+rdfs:label "Station hydrometrique : RICHELIEU (RIVIERE) A LA MARINA DE SAINT-JEAN (02OJ016)"@fr,"Hydrometric station : RICHELIEU (RIVIERE) A LA MARINA DE SAINT-JEAN (02OJ016)"@en;
+schema:name "Hydrometric station : RICHELIEU (RIVIERE) A LA MARINA DE SAINT-JEAN (02OJ016)".
 
 
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ024> a hy:HY_HydrometricFeature; rdfs:label "Station hydrometrique : HURONS (02OJ024)"@fr,"Hydrometric station : HURONS (02OJ024)"@en.
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ024> a hy:HY_HydrometricFeature; 
+rdfs:label "Station hydrometrique : HURONS (02OJ024)"@fr,"Hydrometric station : HURONS (02OJ024)"@en;
+schema:name "Hydrometric station : HURONS (02OJ024)".
 
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ026> a hy:HY_HydrometricFeature; rdfs:label "Station hydrometrique : L'ACADIE (02OJ026)"@fr,"Hydrometric station : L'ACADIE (02OJ026)"@en.
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ026> a hy:HY_HydrometricFeature; 
+rdfs:label "Station hydrometrique : L'ACADIE (02OJ026)"@fr,"Hydrometric station : L'ACADIE (02OJ026)"@en;
+schema:name "Hydrometric station : L'ACADIE (02OJ026)".
 
 # only those 2 stations have real-time
 <https://geoconnex.ca/id/swmonitoring/WSC_02OJ007> schema:subjectOf
@@ -175,22 +212,50 @@ rdfs:label "Station hydrometrique (niveau) : Richelieu (030430)"@fr,"Hydrometric
 # Hydrogeounits
 
 <https://geoconnex.ca/id/hydrogeounits/Richelieu1> a gw:GW_HydrogeoUnit;
-rdfs:label "Hydrogeologic unit : Southern St Lawrence Platform"@en, "Unite hydrogeologique : Plate-forme du St-Laurent sud"@fr.
+rdfs:label "Hydrogeologic unit : Southern St Lawrence Platform"@en, "Unite hydrogeologique : Plate-forme du St-Laurent sud"@fr;
+schema:name "Hydrogeologic unit : Southern St Lawrence Platform";
+schema:description """
+In the context of the southern area of the St. Lawrence Platform of (south Lowlands), the clay unit is generally not continuous or thick. The bedrock is rather covered by a till unit of at least 10 m thick which may allow significant bedrock aquifer recharge rates. This limited sedimentary cover suggests that there would be links between the bedrock aquifer and streams, particularly along some sections of the Richelieu River, which constitute discharge areas. The flow is oriented east-west, from the recharge areas to Richelieu River or others discharge areas. The surficial permeable sediments with significant thickness have small spatial extension, thus that the aquifer potential is mainly based on fractured bedrock aquifer. In the unit, there is a significant use of groundwater as water supply. The predominant semi-confined conditions involve a moderate vulnerability of the bedrock aquifer. Groundwater exceeds frequently some aesthetic criteria as Fe, Mn, S, Na, and F in the central area of the hydrogeological unit.
+""";
+schema:image "http://gin.gw-info.net/service/ngwds//en/wms/ngwd-wms/inset?REQUEST=GetMap&SERVICE=WMS&VERSION=1.1.1&LAYERS=area&STYLES=&FORMAT=image/png&BGCOLOR=0xFFFFFF&TRANSPARENT=TRUE&SRS=EPSG:4326&BBOX=-73.6883387829505,44.9741147159004,-72.8050177950318,45.6366054568393&WIDTH=400&HEIGHT=300&TABLE=gw_data.hydrogeological_units&FIELD=id&ID=1".
+
 
 <https://geoconnex.ca/id/hydrogeounits/Richelieu2> a gw:GW_HydrogeoUnit;
-rdfs:label "Hydrogeologic unit : Northern St Lawrence Platform"@en, "Unite hydrogeologique : Plate-forme du St-Laurent nord"@fr.
+rdfs:label "Hydrogeologic unit : Northern St Lawrence Platform"@en, "Unite hydrogeologique : Plate-forme du St-Laurent nord"@fr;
+schema:name "Hydrogeologic unit : Northern St Lawrence Platform";
+schema:description """
+The context of the northern part of the platform of St. Lawrence (North Lowlands) is characterized by low relief and especially by relatively thick clayey sediments (> 20 m). These conditions imply a minimum recharge of the regional bedrock aquifer and a very low groundwater flow. This situation implies the presence of brackish water in the North Lowlands bedrock aquifer is due to partial leaching Champlain Sea water. This brackish water is not potable, resulting in a low aquifer potential for the bedrock, explaining the minimal use of groundwater and the use of surface water for water supply. The portion of the Yamaska between Montérégiennes and the St. Lawrence River is an important discharge. Other low diffuse dicharges are found where the clay is thinner, especially in rivers. The clay unit protects the bedrock aquifer, reducing the risk of contamination from the surface. Surficial sediment deposits such as sands overlying clay and the undifferentiated sediments in underlying clay form superficial granular aquifers.
+""";
+schema:image "http://gin.gw-info.net/service/ngwds//en/wms/ngwd-wms/inset?REQUEST=GetMap&SERVICE=WMS&VERSION=1.1.1&LAYERS=area&STYLES=&FORMAT=image/png&BGCOLOR=0xFFFFFF&TRANSPARENT=TRUE&SRS=EPSG:4326&BBOX=-73.5986876377091,45.3337367828915,-72.5095434474234,46.1505949256057&WIDTH=400&HEIGHT=300&TABLE=gw_data.hydrogeological_units&FIELD=id&ID=2".
 
 <https://geoconnex.ca/id/hydrogeounits/Richelieu3> a gw:GW_HydrogeoUnit;
-rdfs:label "Hydrogeologic unit : Appalachian External zone"@en, "Unite hydrogeologique : Zone externe des Appalaches"@fr.
+rdfs:label "Hydrogeologic unit : Appalachian External zone"@en, "Unite hydrogeologique : Zone externe des Appalaches"@fr;
+schema:name "Hydrogeologic unit : Appalachian External zone";
+schema:description """
+The Appalachian external unit is part of the external Humber zone, including mainly slate, shale, sandstone, and limestone. Those rock formations are covered with a thin till unit followed by thin discontinuous sandy-gravelly coastal sediments. The latter forms potential granular aquifers in the valley. A clay cover 5-10 m thick is found in the valleys. In this context, there is a thin till unit on the topographic highs that allows higher recharge. This unit isn't only a regional recharge area. The southern part of the unit, valleys and the front of the Appalachian to the limit of the Platform of St. Lawrence designate discharge areas. Groundwater flows from topographic highs and other recharge areas to the west front of the unit and into the Noire River valley. The bedrock aquifer has low to moderate permeability, but it is exploited everywhere while the aquifer potential of the surficial deposits is only found in some parts of the valleys. There is a significant use of groundwater in this context. The aquifer has a moderate vulnerability to surface contamination. Water is good, but often exceeds aesthetic standards for Fe, Mn and S.
+""";
+schema:image "http://gin.gw-info.net/service/ngwds//en/wms/ngwd-wms/inset?REQUEST=GetMap&SERVICE=WMS&VERSION=1.1.1&LAYERS=area&STYLES=&FORMAT=image/png&BGCOLOR=0xFFFFFF&TRANSPARENT=TRUE&SRS=EPSG:4326&BBOX=-73.3657957298783,44.9695294754976,-72.0491532440985,45.9570113398324&WIDTH=400&HEIGHT=300&TABLE=gw_data.hydrogeological_units&FIELD=id&ID=3".
+
 
 <https://geoconnex.ca/id/hydrogeounits/Richelieu5> a gw:GW_HydrogeoUnit;
-rdfs:label "Hydrogeologic unit : Monteregian intrusions"@en, "Unite hydrogeologique : Intrusions Monteregiennes"@fr.
+rdfs:label "Hydrogeologic unit : Monteregian intrusions"@en, "Unite hydrogeologique : Intrusions Monteregiennes"@fr;
+schema:name "Hydrogeologic unit : Monteregian intrusions";
+schema:description """
+The hydrogeological unit of Monteregian intrusions overlap St. Lawrence Platform and Appalachian formation in a roughly east-west axis. These intrusions are mainly associated with Mont Saint-Bruno, Saint-Hilaire, Rougemont, Yamaska, Saint-Grégoire, Shefford and Brome. Those hills are composed of intrusive igneous rocks; the most common are gabbros and syenites. This hydrogeological unit designates a regional recharge area of the bedrock aquifer. The unit has two types of aquifers presenting aquifer potential: bedrock aquifer and the surficial deposits on the southern part of the Monteregian hills where the coarse permeable sediments accumulations are significant. Bedrock and granular aquifers are relatively vulnerable to surface contaminations. Groundwater flows radially from the top of the hills. In terms of water quality, this unit is characterized by a distinct type of water, reflecting both local recharge and supply of advanced water. However, there are significant drinkable criteria exceeding for fluorine (F) and barium (Ba) in the groundwater of the bedrock aquifer.
+""";
+schema:image "http://gin.gw-info.net/service/ngwds//en/wms/ngwd-wms/inset?REQUEST=GetMap&SERVICE=WMS&VERSION=1.1.1&LAYERS=area&STYLES=&FORMAT=image/png&BGCOLOR=0xFFFFFF&TRANSPARENT=TRUE&SRS=EPSG:4326&BBOX=-73.3885747084599,45.1204099338932,-72.5268975189717,45.7666678260093&WIDTH=400&HEIGHT=300&TABLE=gw_data.hydrogeological_units&FIELD=id&ID=5".
 
 <https://geoconnex.ca/id/hydrogeounits/Richelieu4> a gw:GW_HydrogeoUnit;
-rdfs:label "Hydrogeologic unit : Appalachian Internal zone"@en, "Unite hydrogeologique : Zone interne des Appalaches"@fr.
+rdfs:label "Hydrogeologic unit : Appalachian Internal zone"@en, "Unite hydrogeologique : Zone interne des Appalaches"@fr;
+schema:name "Hydrogeologic unit : Appalachian Internal zone";
+schema:description """
+The hydrogeological unit of Applachian Internal zone includes internal Humber and Dunnage zones. The rocks are metasedimentary and metavolcanic allochthonous highly deformed and slightly metamorphosed. They are mainly composed of shale, phyllite, slate, quartzite and some mafic intrusive and ophiolite complexes. The bedrock outcrops or is covered by a thin and discontinuous till on topographic highs. The main valleys have a glaciolacustrine silty clay cover with the possibility of glaciofluvial sediments underlying or outcropping. In this unit, there is a considerable recharge area on the topographic highs due to the thin till unit. Discharge areas are located in the valleys. The bedrock aquifer and the surficial deposits in the valley have an aquifer potential. The bedrock aquifer has a moderate vulnerability on the topographic highs and a moderate to low vulnerability in the valleys. This unit has the best water quality of the Monteregie East. This sector hasn't been invaded by the Champlain Sea, thus there isn't saline water. In some sectors, groundwater exceeds aesthetic standards for Fe, S and Mn. The central sector of the unit also exceeds the drinkable water standard of U. In the sectors with considerable municipalities, groundwater is used locally.
+""";
+schema:image "http://gin.gw-info.net/service/ngwds//en/wms/ngwd-wms/inset?REQUEST=GetMap&SERVICE=WMS&VERSION=1.1.1&LAYERS=area&STYLES=&FORMAT=image/png&BGCOLOR=0xFFFFFF&TRANSPARENT=TRUE&SRS=EPSG:4326&BBOX=-73.0027158253816,44.9753153202183,-72.1167089460643,45.6398204797062&WIDTH=400&HEIGHT=300&TABLE=gw_data.hydrogeological_units&FIELD=id&ID=4".
 
 <https://geoconnex.ca/id/aquiferSystems/Richelieu> a gw:GW_AquiferSystem;
 rdfs:label "Systeme aquifere : Richelieu"@fr, "Aquifer system : Richelieu"@en;
+schema:name "Aquifer system : Richelieu";
 
 gw:gwAquiferSystemPart <https://geoconnex.ca/id/hydrogeounits/Richelieu1>,<https://geoconnex.ca/id/hydrogeounits/Richelieu2>,<https://geoconnex.ca/id/hydrogeounits/Richelieu3>,<https://geoconnex.ca/id/hydrogeounits/Richelieu4>,<https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
 

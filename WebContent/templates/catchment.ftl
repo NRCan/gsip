@@ -5,6 +5,8 @@
 schema:subjectOf <${baseUri}/data/catchment/HYF/WSCSSSDA/NRCAN/${p2}>;
 <http://schema.org/name> "${p2}".
 <${baseUri}/data/catchment/HYF/WSCSSSDA/NRCAN/${p2}>
+   dct:conformsTo <https://www.opengis.net/def/gwml2> ;
+   schema:provider <https://opengeospatial.github.io/SELFIE/> ;
 	dct:format "text/html","application/vnd.geo+json".
 <#if hasStatements == 'false'>
 <${resource}> rdfs:label "${p2}".

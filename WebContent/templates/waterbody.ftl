@@ -6,7 +6,8 @@ schema:subjectOf <${baseUri}/data/waterbody/CGNDB/CGNDB/CGNDB/${p2}>,<${baseUri}
 <http://schema.org/name> "${p2}".
 <${baseUri}/data/waterbody/CGNDB/CGNDB/CGNDB/${p2}>
 	dct:format "application/vnd.google-earth.kml+xml","text/html","application/json";
-	rdfs:label "Geogratis"@en,"Geogratis"@fr.
+	rdfs:label "Geogratis"@en,"Geogratis"@fr;
+	schema:provider <https://opengeospatial.github.io/SELFIE/> .
 <${baseUri}/data/waterbody/CHYF/CHYF/CHYF/${p2}>
 	dct:format "text/html","application/vnd.geo+json";
 	rdfs:label "CHyF"@en,"CHyF"@fr.
