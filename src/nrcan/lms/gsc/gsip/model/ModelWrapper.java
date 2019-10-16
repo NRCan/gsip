@@ -25,6 +25,7 @@ import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.sparql.function.library.leviathan.radiansToDegrees;
+import org.apache.jena.vocabulary.DC;
 import org.apache.jena.vocabulary.DCTerms;
 import org.apache.jena.vocabulary.OWL;
 import org.apache.jena.vocabulary.RDF;
@@ -133,7 +134,15 @@ public class ModelWrapper {
 	 */
 	private String getPreferredLabel(Resource res,String language,String defaultLabel)
 	{
-		
+		if (true)
+		{
+			System.out.println("Resource " + res.toString());
+			System.out.println(res.isResource()?"Resource":"non Resource");
+			// try for label
+			Statement l = res.getProperty(RDFS.label, language);
+			if (l != null)
+				System.out.println("LABEL:" + l.toString());
+		}
 		StmtIterator s = res.listProperties(RDFS.label);
 		String atLeastThisOne = null;
 		while(s.hasNext())
@@ -159,8 +168,8 @@ public class ModelWrapper {
 	}
 	
 	/**
-	 * Get a list of representations (seeAlso resources) for this resource
-	 * @param res
+	 * Get a list of representations (subjectOf resources) for this resource
+	 * @param res data resource, can be a blank node
 	 * @return
 	 */
 	private List<Resource> getRepresentations(Resource res)
@@ -175,6 +184,29 @@ public class ModelWrapper {
 		}
 		return subjectOf;
 	}
+	
+	public List<Resource> getProviders(Resource res)
+	{
+		StmtIterator statements = res.listProperties(SCHEMA.provider);
+		List<Resource> subjectOf = new ArrayList<Resource>();
+		while(statements.hasNext())
+		{
+			Statement s = statements.next();
+			subjectOf.add(s.getResource());
+		}
+		return subjectOf;
+	}
+	
+	public String getProvider(Resource res)
+	{
+		Resource p = res.getPropertyResourceValue(SCHEMA.provider);
+		if (p != null)
+			return p.toString();
+		else
+			return "N/A";
+	}
+	
+	
 	
 	/**
 	 * Get a list of representations (subjectOf resources) for the context resource
@@ -323,6 +355,7 @@ public class ModelWrapper {
 			if (RDFS.getURI().equals(ns)) continue;
 			if (RDF.getURI().equals(ns)) continue;
 			if (OWL.getURI().equals(ns)) continue;
+			if (SCHEMA.getURI().equals(ns)) continue;
 			//if (DCTerms.getURI().equals(ns)) continue;
 			// if we're here, we're good
 			// the object must be a resource
@@ -556,6 +589,7 @@ public class ModelWrapper {
 	 */
 	public String getLastPart(String url)
 	{
+		if (url == null) return "";
 		String[] parts = url.split(":|/|#");
 		return parts[parts.length-1];
 	}
@@ -568,6 +602,63 @@ public class ModelWrapper {
 	public String getTypeLabel()
 	{
 		return getTypeLabel(this.contextResource);
+	}
+	
+	/**
+	 * Get the URLs for the remove resource (we assume this is a data node)
+	 * @param res. data resource. can be a blank node
+	 * @param useResourceUri.  if url is missing and the resource is not a blank node, use the resource URL
+	 * @return
+	 */
+	public List<Link> getUrls(Resource res,boolean useResourceUri)
+	{
+		List<Link> urls = new ArrayList<Link>();
+		Resource pUrl = res.getPropertyResourceValue(SCHEMA.url);
+		
+		// if the url list is empty and we are allowed to use the resource uri, do so
+		if (pUrl==null)
+		{
+			if (useResourceUri && res.isURIResource())
+			{
+			// loop in all the mime types 
+			for(String f:getFormats(res))
+				{
+				Link l = new Link(f,getFormatOverride(res.getURI(),f),"");
+				l.setMimeType(f);
+				urls.add(l);
+				}
+			}
+		}
+			else
+			{
+				// we expect a literal
+				String url = pUrl.toString();
+				// if there is only 1 format, 
+				List<String> formats = getFormats(res);
+				if (formats.size() < 2)
+				{
+					Link l = new Link(formats.size() == 0?"":formats.get(0),url,"");
+					l.setMimeType(formats.size() == 0?"":formats.get(0));
+					
+				}
+				else
+				for(String f:getFormats(res))
+				{
+					Link l = new Link(f,getFormatOverride(url,f),"");
+					l.setMimeType(f);
+					urls.add(l);
+				}
+			}
+		return urls;
+	}
+	
+	public String getConformsTo(Resource res)
+	{
+		Resource c = res.getPropertyResourceValue(DCTerms.conformsTo);
+		if (c != null)
+			return c.toString();
+		else
+			return "N/A";
 	}
 
 }

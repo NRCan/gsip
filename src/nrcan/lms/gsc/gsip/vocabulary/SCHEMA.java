@@ -16,11 +16,20 @@ public class SCHEMA {
  
  public static final Property subjectOf = Init.subjectOf();
  public static final Property about = Init.about();
+ public static final Property provider = Init.provider();
+ public static final Property url = Init.url();
+
  
  public static class Init {
      
-     public static Property subjectOf()        { return property( "subjectOf"); }
-     public static Property about()         { return property( "about"); }
+     public static Property subjectOf()        	{ return property( "subjectOf"); }
+     public static Property about()         	{ return property( "about"); }
+     public static Property provider()			{ return property("provider");}
+     public static Property url() 				{ return property("url");}
+
+     
  }
+
+ public static String getURI() {return uri;}
 
 }

@@ -9,7 +9,9 @@ dcat:distribution :${p2}-shp,:${p2}-kml,:${p2}-geojson;
 <http://schema.org/name> "${p2}".
 <${baseUri}/data/dataset/gin/gin/GIN/${p2}>
 	dct:format "text/html","application/vnd.geo+json","application/vnd.google-earth.kml+xml","application/x-esri-shape";
-	rdfs:label "jeux de donn&eacute;es"@fr,"Dataset"@en.
+	rdfs:label "jeux de donn&eacute;es"@fr,"Dataset"@en;
+	dct:conformsTo <https://www.opengis.net/def/gwml2> ;
+	schema:provider <http://gin.gw-info.net>.
 <#if hasStatements == 'false'>
 <${resource}> rdfs:label "${p2}".
 </#if>

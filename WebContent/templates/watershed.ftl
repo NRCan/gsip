@@ -21,11 +21,8 @@ schema:subjectOf
 <${baseUri}/data/waterbody/CHYF/POS/CHYF/${p2}>
 rdfs:label  "CHyF upstream watershed representation upstream of ${p2}"@en,
 					"Representation de CHyF en amont en amont de ${p2}"@fr;
-		a dcat:Dataset;
-		ex:theme <${baseUri}/def/themes/Watershed>;
-		ex:structure <https://www.w3.org/GeoJSON/>;
-		ex:semantic <http://gin.gw-info.net/CHyF/def/semantic/CHyF>;
-		ex:source <http://chyf.ca>;
+    	dct:conformsTo <https://www.opengis.net/def/hyf> ;
+    	schema:provider <https://chyf.ca/>;
 		dct:format "application/vnd.geo+json","text/html";
 		dct:language "en","fr".
 

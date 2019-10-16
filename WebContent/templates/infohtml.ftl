@@ -58,7 +58,7 @@ ${model.encode("JSON-LD")}
 							<a href="${model.getContextResourceUri()}?f=rdf"
 								target="_blank"><img class="img-fluid"
 								title="Display page in RDF/XML format"
-								alt="View in RFF/XML format"
+								alt="View in RDF/XML format"
 								src="${host}/app/img/rdfxmlicon.png"
 								style="max-width: 35px; padding: 10px 5px 0 5px" /></a><a
 								href="${model.getContextResourceUri()}?f=json"
@@ -84,17 +84,25 @@ ${model.encode("JSON-LD")}
 						<div class="col-sm-12 col-md-12">
 							</#if>
 							<h3>Representation:</h3>
-							<ul>
+							
 							<#list model.getRepresentations() as r>
-								<li><samp>
-										<strong>${model.getPreferredLabel(r, "en", "No label")}</strong>
-										<#list model.getFormats(r) as f>
-											<a href="${model.getFormatOverride(r,f)}">${f}</a>
-										</#list>
-									</samp>
-								</li>
+								<div class="representation">
+								<table>
+								<tr><th colspan="2"><strong>${model.getPreferredLabel(r, "en", "No label")}</strong></th></tr>
+								<tr><td><b>Conforms to : </b> ${model.getConformsTo(r)}</td><td><b>   Provider : </b> ${model.getProvider(r)}</td></tr>
+								<#assign links = []>
+								<#list model.getUrls(r,true) as url>
+								<#assign link><a href="${url.getUrl()}">${url.getLabel()}</a></#assign>
+								<#assign links = links + [link]>
+								</#list>
+								<tr><td colspan=2>
+								${links?join(", ")}
+								</td></tr>
+								
+								
 							</#list>
-							</ul>
+							</table>
+							</div>
 							<h3>Related Features:</h3>
 							<ul class="nav nav-tabs" role="tablist">
 								<li class="nav-item"><a class="nav-link active"
@@ -111,8 +119,8 @@ ${model.encode("JSON-LD")}
 										<li><strong>${p}:</strong>
 										<#list grp[p] as link>
 										<a
-											href="${link.getUrl()}"
-											title="${link.getUrl()}">${link.getResLabel()}</a>
+											href="${link.getUrl()!'none'}"
+											title="${link.getUrl()!'none'}">${link.getResLabel()}</a>
 										</#list>
 
 										</li>

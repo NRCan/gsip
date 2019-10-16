@@ -44,14 +44,47 @@
 <dependency>
     <groupId>org.apache.jena</groupId>
     <artifactId>apache-jena-libs</artifactId>
-    <version>3.6.0</version>
+    <version>3.13.1</version>
     <type>pom</type>
 </dependency>
 <dependency>
     <groupId>org.apache.jena</groupId>
     <artifactId>jena-core</artifactId>
-    <version>3.6.0</version>
+    <version>3.13.1</version>
 </dependency>
+
+<!-- https://mvnrepository.com/artifact/org.apache.jena/jena-arq -->
+<dependency>
+    <groupId>org.apache.jena</groupId>
+    <artifactId>jena-arq</artifactId>
+    <version>3.13.1</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.apache.jena/jena-rdfconnection -->
+<dependency>
+    <groupId>org.apache.jena</groupId>
+    <artifactId>jena-rdfconnection</artifactId>
+    <version>3.13.1</version>
+</dependency>
+
+<dependency>
+	<groupId>org.apache.jena</groupId>
+	<artifactId>jena-base</artifactId>
+	<version>3.13.1</version>
+</dependency>
+<!-- Thanks for using https://jar-download.com -->
+
+<!-- https://mvnrepository.com/artifact/org.apache.jena/jena-iri -->
+<dependency>
+    <groupId>org.apache.jena</groupId>
+    <artifactId>jena-iri</artifactId>
+    <version>3.13.1</version>
+</dependency>
+
+
+
+
+
 
 <dependency>
     <groupId>javax.servlet</groupId>

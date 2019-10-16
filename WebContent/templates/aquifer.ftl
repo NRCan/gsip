@@ -10,7 +10,7 @@ schema:subjectOf <${baseUri}/data/aquifer/gwml/gwml/GIN/${p2}>;
 <${baseUri}/data/aquifer/gwml/gwml/GIN/${p2}>
 	dct:format "text/html","application/vnd.geo+json";
 	dct:conformsTo <http://www.opengis.net/def/gwml2>;
-	schema:provider <https://opengeospatial.github.io/SELFIE/> .
+	schema:provider <http://gin.gw-info.net> .
 <#if hasStatements == 'false'>
 <${resource}> rdfs:label "${p2}".
 </#if>

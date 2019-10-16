@@ -5,7 +5,7 @@
 schema:subjectOf [
 	schema:url "${gsip}/geo/remote/gsip/rich_bedrock/${p3}";
 	dct:format "application/vnd.geo+json";
-    schema:provider <https://opengeospatial.github.io/SELFIE/>.
+    schema:provider <http://gin.gw-info.net>.
 ].
 
 <#if hasStatements == 'false'>

@@ -7,9 +7,12 @@ schema:subjectOf <${baseUri}/data/waterbody/CGNDB/CGNDB/CGNDB/${p2}>,<${baseUri}
 <${baseUri}/data/waterbody/CGNDB/CGNDB/CGNDB/${p2}>
 	dct:format "application/vnd.google-earth.kml+xml","text/html","application/json";
 	rdfs:label "Geogratis"@en,"Geogratis"@fr;
-	schema:provider <https://opengeospatial.github.io/SELFIE/> .
+	dct:conformsTo <https://www.opengis.net/def/hyf> ;
+   schema:provider <http://gin.gw-info.net> .
 <${baseUri}/data/waterbody/CHYF/CHYF/CHYF/${p2}>
 	dct:format "text/html","application/vnd.geo+json";
+    dct:conformsTo <https://www.opengis.net/def/hyf> ;
+    schema:provider <https://chyf.ca/>;
 	rdfs:label "CHyF"@en,"CHyF"@fr.
 <#if hasStatements == 'false'>
 <${resource}> rdfs:label "${p2}".

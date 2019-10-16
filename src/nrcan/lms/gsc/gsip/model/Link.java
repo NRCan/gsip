@@ -4,6 +4,7 @@ public class Link {
 	private String label;
 	private String url;
 	private String resLabel;
+	private String mimetype;
 	public String getLabel()
 	{
 		return label;
@@ -23,6 +24,16 @@ public class Link {
 		this.label = label;
 		this.url = url;
 		this.resLabel = resLabel;
+	}
+	
+	public void setMimeType(String mt)
+	{
+		this.mimetype = mt;
+	}
+	
+	public String getMimeType()
+	{
+		return mimetype;
 	}
 
 }

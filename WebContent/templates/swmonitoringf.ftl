@@ -12,22 +12,34 @@ schema:subjectOf <${baseUri}/data/swmonitoring/WML2/historical/WSC/${p2}>,<${bas
 a hy:HY_HydrometricStation.
 <${baseUri}/data/swmonitoring/WML2/historical/WSC/${p2}>
    rdfs:label "Donnees historiques"@fr,"Historical data"@en;
+   dct:conformsTo <https://www.opengis.net/def/gwml2> ;
+   schema:provider <http://gin.gw-info.net>;
 	dct:format "application/vnd.geo+json","text/html".
 <${baseUri}/data/swmonitoring/WFS3/hydrometric-stations/WSC/${p2}>
    rdfs:label "Information sur la station"@fr,"Information about the station"@en;
+   dct:conformsTo <https://www.opengis.net/def/gwml2> ;
+   schema:provider <http://gin.gw-info.net>;
 	dct:format "application/vnd.geo+json","text/html".
 	
 <${baseUri}/data/swmonitoring/WFS3/hydrometric-annual-peaks/WSC/${p2}>
    rdfs:label "Pointes annuelles"@fr,"Annual peaks"@en;
+   dct:conformsTo <https://www.opengis.net/def/gwml2> ;
+   schema:provider <http://gin.gw-info.net>;
 	dct:format "application/vnd.geo+json","text/html".
 <${baseUri}/data/swmonitoring/WFS3/hydrometric-annual-statistics/WSC/${p2}>
    rdfs:label "Statistiques annuelles"@fr,"Annual statistics"@en;
+   dct:conformsTo <https://www.opengis.net/def/gwml2> ;
+   schema:provider <http://gin.gw-info.net>;
 	dct:format "application/vnd.geo+json","text/html".
 <${baseUri}/data/swmonitoring/WFS3/hydrometric-monthly-mean/WSC/${p2}>
    rdfs:label "Moyennes mensuelles"@fr,"Monthly means"@en;
+   dct:conformsTo <https://www.opengis.net/def/gwml2> ;
+   schema:provider <http://gin.gw-info.net>;
 	dct:format "application/vnd.geo+json","text/html".
 <${baseUri}/data/swmonitoring/WFS3/hydrometric-daily-mean/WSC/${p2}>
    rdfs:label "Moyennes quotidiennes"@fr,"Daily means"@en;
+   dct:conformsTo <https://www.opengis.net/def/gwml2> ;
+   schema:provider <http://gin.gw-info.net>;
 	dct:format "application/vnd.geo+json","text/html".
 
 <#if hasStatements == 'false'>
