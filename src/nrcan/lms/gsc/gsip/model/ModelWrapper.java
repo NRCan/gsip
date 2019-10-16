@@ -134,15 +134,7 @@ public class ModelWrapper {
 	 */
 	private String getPreferredLabel(Resource res,String language,String defaultLabel)
 	{
-		if (true)
-		{
-			System.out.println("Resource " + res.toString());
-			System.out.println(res.isResource()?"Resource":"non Resource");
-			// try for label
-			Statement l = res.getProperty(RDFS.label, language);
-			if (l != null)
-				System.out.println("LABEL:" + l.toString());
-		}
+		
 		StmtIterator s = res.listProperties(RDFS.label);
 		String atLeastThisOne = null;
 		while(s.hasNext())
