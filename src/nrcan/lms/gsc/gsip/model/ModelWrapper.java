@@ -646,6 +646,7 @@ public class ModelWrapper {
 				{
 					Link l = new Link(formats.size() == 0?"":formats.get(0),url,"");
 					l.setMimeType(formats.size() == 0?"":formats.get(0));
+					urls.add(l);
 					
 				}
 				else
