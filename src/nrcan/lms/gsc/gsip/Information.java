@@ -49,6 +49,7 @@ import nrcan.lms.gsc.gsip.template.TemplateManager;
 import nrcan.lms.gsc.gsip.triple.TripleStore;
 import nrcan.lms.gsc.gsip.triple.RemoteStore;
 import nrcan.lms.gsc.gsip.util.MediaTypeUtil;
+import nrcan.lms.gsc.gsip.util.MediaTypeUtil.InfoOutputFormat;
 import nrcan.lms.gsc.gsip.util.QuantifiedMedia;
 
 import static nrcan.lms.gsc.gsip.Constants.BASE_URI;
@@ -64,7 +65,7 @@ import static nrcan.lms.gsc.gsip.Constants.BASE_URI;
 public class Information {
 	
 	
-	public enum InfoOutputFormat {ioHTML,ioRDFXML,ioTURTLE,ioJSONLD,ioXML,ioUnknown}
+	
 	@Context UriInfo uriInfo;
 	@Context ServletContext context;
 	@Context HttpHeaders headers;
@@ -83,34 +84,15 @@ public class Information {
 		 format override (f=) will override the header
 		  */
 		
-		InfoOutputFormat of = InfoOutputFormat.ioUnknown; // default
-		// check if we have an override
-		// TODO:  put this in a util class
-		if (format != null && format.trim().length() > 0)
-		{
-			// TODO: use the Configuration instead
-			if ("rdf".equalsIgnoreCase(format) || "application/rdf+xml".equalsIgnoreCase(format)) of = InfoOutputFormat.ioRDFXML;
-			if ("ttl".equalsIgnoreCase(format) || "text/turtle".equalsIgnoreCase(format)) of = InfoOutputFormat.ioTURTLE;
-			if ("xml".equalsIgnoreCase(format) || "text/xml".equalsIgnoreCase(format)) of = InfoOutputFormat.ioXML;
-			if ("html".equalsIgnoreCase(format) || "htm".equalsIgnoreCase(format) || "text/html".equalsIgnoreCase(format)) of = InfoOutputFormat.ioHTML;
-			if ("json".equalsIgnoreCase(format) || "jsonld".equalsIgnoreCase(format) || "application/ld+json".equalsIgnoreCase(format))  of = InfoOutputFormat.ioJSONLD;
-			// otherwise, file not found
-			if (of == InfoOutputFormat.ioUnknown)
-				return Response.status(HttpStatus.SC_UNSUPPORTED_MEDIA_TYPE).entity(format +" extension is not supported : use html/ttl/rdf/xml/json").build();
-
-			
-		}
-		else
-		{
-			// figure it out from media type
-			of = InfoOutputFormat.ioHTML; // default (unlike unknown extension, we have a default)
-			if (accepted != null)
-				of = getPreferedMedia(accepted);			
-			
-			
-			
-		}
+		InfoOutputFormat of = MediaTypeUtil.getOutputFormat(format, accepted);
 		
+		if (of == InfoOutputFormat.ioUnknown)
+		{
+			String message = format!=null?format +" extension is not supported : use html/ttl/rdf/xml/json":"No acceptable format found";
+			return Response.status(HttpStatus.SC_UNSUPPORTED_MEDIA_TYPE).entity(message).build();
+		}
+
+
 		// at this point, we have a ioType or it 404'ed
 		
 		// we need to fetch back the original uri, wich is just the current URL, but replacing the /info/ by /id/
@@ -148,7 +130,7 @@ public class Information {
 		{
 			case ioTURTLE : return serializeModel(storedModel,Lang.TURTLE,TEXT_TURTLE);
 			case ioRDFXML : return serializeModel(storedModel,Lang.RDFXML,APPLICATION_RDFXML);
-			case ioJSONLD : return serializeJSONLD(storedModel,callback);
+			case ioJSONLD : return ModelUtil.serializeJSONLD(storedModel,callback);
 			case ioXML : return serializeModel(storedModel,Lang.RDFXML,MediaType.TEXT_XML);
 			default : return serializeHTML(storedModel,idUri,locale);
 		}
@@ -167,25 +149,7 @@ public class Information {
 		return null;
 	}
 	
-	private InfoOutputFormat getPreferedMedia(String accepts)
-	{
 	
-		List<QuantifiedMedia> m = MediaTypeUtil.getMediaTypesOrdered(accepts);
-		for(QuantifiedMedia qt:m)
-		{
-		
-
-		
-		if (qt.mt.isCompatible(MediaType.APPLICATION_JSON_TYPE)) return InfoOutputFormat.ioJSONLD;
-		if (TEXT_TURTLE.equals(qt.mt.toString()) || APPLICATION_TURTLE.equals(qt.mt.toString())) return InfoOutputFormat.ioTURTLE;
-		if (APPLICATION_RDFXML.equals(qt.mt.toString())) return InfoOutputFormat.ioRDFXML;
-		if (qt.mt.isCompatible(MediaType.TEXT_HTML_TYPE)) return InfoOutputFormat.ioHTML;
-		if (qt.mt.isCompatible(MediaType.TEXT_XML_TYPE)) return InfoOutputFormat.ioRDFXML;
-		}
-		// nothing matched
-		return InfoOutputFormat.ioHTML;
-
-	}
 	
 	/**
 	 * serialize in HTML using FreeMarker
@@ -194,7 +158,7 @@ public class Information {
 	 */
 	private Response serializeHTML(Model model,String resource,String locale)
 	{
-		ModelWrapper mw = new ModelWrapper(getAlternateModel(model),getAlternateResource(resource));
+		ModelWrapper mw = new ModelWrapper(ModelUtil.getAlternateModel(model),ModelUtil.getAlternateResource(resource));
 		// get the template used to create 
 		String htmlTemplate = Configuration.getInstance().getHtmlTemplate(mw.getContextResourceUri());
 		String out = null;
@@ -225,64 +189,11 @@ public class Information {
 
 	}
 	
-	/**
-	 * serialize JSON with or wihtout callback
-	 * @param mdl9
-	 * @param callBack
-	 * @return
-	 */
-	private Response serializeJSONLD(Model mdl,String callBack)
-	{
-		String pre = "";
-		String post = "";
-		if (callBack != null && callBack.trim().length() > 0)
-		{
-			pre = callBack.trim() + "(";
-			post = ")";
-		}
-		StringWriter w = new StringWriter();
-		mdl = getAlternateModel(mdl);
-		mdl.write(w, "JSON-LD");
-		return Response.ok(pre + w.toString() + post).type(MediaType.APPLICATION_JSON_TYPE).build();
-	}
 	
-	/**
-	 * This is for debugging or running the system on a alternate site.
-	 * It converts the baseURI of resources in 
-	 * into a site specific URI (using configuration variable proxdevuri).
-	 * This help developers and tester running the system outside the official deployment (on a testserver)
-	 * 
-	 * This 
-	 * 
-	 * 
-	 * @param mdl
-	 * @return a new model with all {baseuri}/ turned into {proxdevuri}/.
-	 */
-	private Model getAlternateModel(Model mdl)
-	{
-		Configuration c = Manager.getInstance().getConfiguration();
-		String baseuri = (String) c.getParameter(BASE_URI);
-		Object outuri = c.getParameter(PERSISTENT_URI,null); // can be null
-		Boolean convert = c.getParameterAsBoolean(Constants.CONVERT_TO_BASEURI, true);
-		// need to convert ?
-		if (convert && !baseuri.equals(outuri) && outuri != null)
-			return  ModelUtil.alternateResource(mdl, baseuri, (String)outuri);
-		else
-			return mdl;
-		
+	
+	
+	
 
-	}
-	
-	private String getAlternateResource(String rs)
-	{
-		Configuration c = Manager.getInstance().getConfiguration();
-		String baseuri = (String) c.getParameter(BASE_URI);
-		Object outuri = c.getParameter(PERSISTENT_URI,null); // can be null
-		if (!baseuri.equals(outuri) && outuri != null)
-			return rs.replace( (String)outuri,baseuri);
-		else
-			return rs;
-	}
 	
 	private Response serializeModel(Model mdl, Lang format, String mimetype)
 	{
@@ -292,7 +203,7 @@ public class Information {
 			{
 			
 				
-				RDFDataMgr.write(os,getAlternateModel(mdl),format);
+				RDFDataMgr.write(os,ModelUtil.getAlternateModel(mdl),format);
 			}
 		};
 		

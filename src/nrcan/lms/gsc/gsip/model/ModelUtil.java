@@ -1,11 +1,17 @@
 package nrcan.lms.gsc.gsip.model;
 
+import static nrcan.lms.gsc.gsip.Constants.BASE_URI;
+import static nrcan.lms.gsc.gsip.Constants.PERSISTENT_URI;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.rdf.model.Model;
@@ -14,6 +20,10 @@ import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
+
+import nrcan.lms.gsc.gsip.Constants;
+import nrcan.lms.gsc.gsip.Manager;
+import nrcan.lms.gsc.gsip.conf.Configuration;
 
 public class ModelUtil {
 	/**
@@ -82,6 +92,65 @@ public class ModelUtil {
 		}
 		else
 			return u;
+	}
+	
+	public static String getAlternateResource(String rs)
+	{
+		Configuration c = Manager.getInstance().getConfiguration();
+		String baseuri = (String) c.getParameter(BASE_URI);
+		Object outuri = c.getParameter(PERSISTENT_URI,null); // can be null
+		if (!baseuri.equals(outuri) && outuri != null)
+			return rs.replace( (String)outuri,baseuri);
+		else
+			return rs;
+	}
+	
+	/**
+	 * serialize JSON with or without callback
+	 * @param mdl9
+	 * @param callBack
+	 * @return
+	 */
+	public static Response serializeJSONLD(Model mdl,String callBack)
+	{
+		String pre = "";
+		String post = "";
+		if (callBack != null && callBack.trim().length() > 0)
+		{
+			pre = callBack.trim() + "(";
+			post = ")";
+		}
+		StringWriter w = new StringWriter();
+		mdl = getAlternateModel(mdl);
+		mdl.write(w, "JSON-LD");
+		return Response.ok(pre + w.toString() + post).type(MediaType.APPLICATION_JSON_TYPE).build();
+	}
+	
+	/**
+	 * This is for debugging or running the system on a alternate site.
+	 * It converts the baseURI of resources in 
+	 * into a site specific URI (using configuration variable proxdevuri).
+	 * This help developers and tester running the system outside the official deployment (on a testserver)
+	 * 
+	 * This 
+	 * 
+	 * 
+	 * @param mdl
+	 * @return a new model with all {baseuri}/ turned into {proxdevuri}/.
+	 */
+	public static Model getAlternateModel(Model mdl)
+	{
+		Configuration c = Manager.getInstance().getConfiguration();
+		String baseuri = (String) c.getParameter(BASE_URI);
+		Object outuri = c.getParameter(PERSISTENT_URI,null); // can be null
+		Boolean convert = c.getParameterAsBoolean(Constants.CONVERT_TO_BASEURI, true);
+		// need to convert ?
+		if (convert && !baseuri.equals(outuri) && outuri != null)
+			return  ModelUtil.alternateResource(mdl, baseuri, (String)outuri);
+		else
+			return mdl;
+		
+
 	}
 
 }
