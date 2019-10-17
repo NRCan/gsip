@@ -118,11 +118,11 @@ public class ModelWrapper {
 	 * @param defaultLabel
 	 * @return
 	 */
-	public String getPreferredLabel(String resource,String language,String defaultLabel)
+	/**public String getPreferredLabel(String resource,String language,String defaultLabel)
 	{
 		Resource res = model.getResource(getFullUri(resource));
 		return getPreferredLabel(res,language,defaultLabel);
-	}
+	} **/
 
 	/**
 	 * Find a label for this language for this Resource, expressed as a Jena Resource.  If language is null or no label matches this language
@@ -132,8 +132,9 @@ public class ModelWrapper {
 	 * @param defaultLabel
 	 * @return
 	 */
-	private String getPreferredLabel(Resource res,String language,String defaultLabel)
+	public String getPreferredLabel(Resource res,String language,String defaultLabel)
 	{
+		
 		
 		StmtIterator s = res.listProperties(RDFS.label);
 		String atLeastThisOne = null;
@@ -596,6 +597,21 @@ public class ModelWrapper {
 		return getTypeLabel(this.contextResource);
 	}
 	
+	
+	/**
+	 * For some reason, getPropertyResourceValue does not work with literal (?) in a blank node (?)
+	 * @param p
+	 * @return
+	 */
+	private String getLiteralPropertyValue(Resource res,Property p)
+	{
+		Statement stmt = res.getProperty(p);
+		if (stmt == null)
+			return null;
+		else
+			return stmt.getObject().asLiteral().toString();
+		
+	}
 	/**
 	 * Get the URLs for the remove resource (we assume this is a data node)
 	 * @param res. data resource. can be a blank node
@@ -605,10 +621,10 @@ public class ModelWrapper {
 	public List<Link> getUrls(Resource res,boolean useResourceUri)
 	{
 		List<Link> urls = new ArrayList<Link>();
-		Resource pUrl = res.getPropertyResourceValue(SCHEMA.url);
+		String url = getLiteralPropertyValue(res,SCHEMA.url);
 		
 		// if the url list is empty and we are allowed to use the resource uri, do so
-		if (pUrl==null)
+		if (url==null)
 		{
 			if (useResourceUri && res.isURIResource())
 			{
@@ -624,7 +640,6 @@ public class ModelWrapper {
 			else
 			{
 				// we expect a literal
-				String url = pUrl.toString();
 				// if there is only 1 format, 
 				List<String> formats = getFormats(res);
 				if (formats.size() < 2)
@@ -646,6 +661,7 @@ public class ModelWrapper {
 	
 	public String getConformsTo(Resource res)
 	{
+		
 		Resource c = res.getPropertyResourceValue(DCTerms.conformsTo);
 		if (c != null)
 			return c.toString();

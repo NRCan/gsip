@@ -16,7 +16,7 @@ schema:subjectOf [
    schema:provider <http://gin.gw-info.net> ;
    dct:conformsTo <https://www.opengis.net/def/gwml2> ;
 	dct:format "text/xml","text/html","application/vnd.geo+json";
-   schema:url "https://gin.geosciences.ca/GinService/rs/FeatureTypes/query?uri=${p0}"
+   schema:url "https://gin.geosciences.ca/GinService/rs/FeatureTypes/query?uri=${resource}"
 ].
 <#if hasStatements == 'false'>
 <${resource}> rdfs:label "${p2}".
