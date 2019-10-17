@@ -87,16 +87,17 @@ ${model.encode("JSON-LD")}
 							
 							<#list model.getRepresentations() as r>
 								<div class="representation">
-								<table>
-								<tr><th colspan="2"><strong>${model.getPreferredLabel(r, "en", "No label")}</strong></th></tr>
-								<tr><td><b>Conforms to : </b> ${model.getConformsTo(r)}</td><td><b>   Provider : </b> ${model.getProvider(r)}</td></tr>
+								<table width="100%">
+								<tr bgcolor="#ebf0fa"><th>${model.getPreferredLabel(r, "en", "No label")}</th></tr>
+								<tr><td><b>Conforms to : </b> <a href="${model.getConformsTo(r)}">${model.getConformsTo(r)}</a></td></tr>
+								<tr><td><b>Provider : </b> <a href="${model.getProvider(r)}">${model.getProvider(r)}</a></td></tr>
 								<#assign links = []>
 								<#list model.getUrls(r,true) as url>
 								<#assign link><a href="${url.getUrl()}">${url.getLabel()}</a></#assign>
 								<#assign links = links + [link]>
 								</#list>
 								<tr><td colspan=2>
-								${links?join(", ")}
+								<b>Formats :</b> ${links?join(", ")}
 								</td></tr>
 								
 								
