@@ -51,6 +51,14 @@ var JSONLDHELPER = (function(){
 		}
 	}
 	
+	function isBlank(r)
+	{
+		// check if a node is a blank node
+		// r is a string, can be either a http:// or a urn:  or a _: something.
+		// the latter is a blank node
+		return r.startsWith("_:");
+	}
+	
 	function getRepresentation(o,collection)	
 	// get the representations 
 	// o is the resource, collection is the list of available resources
@@ -148,6 +156,18 @@ var JSONLDHELPER = (function(){
 		return returnRep;
 	}
 	
+	// return the URL of the resource (subjectOf)
+	// if this resource is blank, look for a URL, otherwise, look for @id
+	function getUrl(o)
+	{
+		var id = o["@id"];
+		if (isBlank(id))
+			return o["url"];
+		else
+			return id;
+		
+	}
+	
 	function hasFormat(o,formatCheck)
 	// check if geojson format available in resource
 	
@@ -174,7 +194,8 @@ var JSONLDHELPER = (function(){
 		filterAssociation: filterAssociation,
 		hasFormat: hasFormat,
 		castArray: castArray,
-		getRep: getRep
+		getRep: getRep,
+		getUrl: getUrl
 	}
 	
 })();
