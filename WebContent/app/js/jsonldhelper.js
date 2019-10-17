@@ -120,7 +120,7 @@ var JSONLDHELPER = (function(){
 			if (SAMEAS == property) continue;
 			if (IMAGE == property) continue;
 			if (NAME == property) continue;
-			// amélioration ? prendre seulement ceux qui on des valeurs qui ont un @id
+			// amélioration ? prendre seulement ceux qui ont des valeurs qui ont un @id
 			// (en assumant que toutes les valeurs sont du même type)
 			
 			props.push(property);
