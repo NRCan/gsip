@@ -45,7 +45,7 @@ public class Data {
 	@GET
 	public Response getData(@QueryParam("callback") String callback,@HeaderParam("Accept") String accepts,@QueryParam("f") String format)
 	{
-		Logger.getAnonymousLogger().log(Level.INFO, "Accept : [" + accepts + "]" );
+		//Logger.getAnonymousLogger().log(Level.INFO, "Accept : [" + accepts + "]" );
 	
 		//TODO: this function is a mess, need to partition
 		MediaType mimeType = null;
