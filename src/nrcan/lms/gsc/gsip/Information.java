@@ -342,8 +342,8 @@ public class Information {
 			if (first) {first = false; continue;}
 			infoUri.append("/"+segment.getPath());
 		}
-		Logger.getAnonymousLogger().log(Level.INFO, "processed URI:" + uriInfo.getPath());
-		Logger.getAnonymousLogger().log(Level.INFO,"/id/ URI:" + infoUri);
+		//Logger.getAnonymousLogger().log(Level.INFO, "processed URI:" + uriInfo.getPath());
+		//Logger.getAnonymousLogger().log(Level.INFO,"/id/ URI:" + infoUri);
 		return infoUri.toString();
 		// 
 	}
