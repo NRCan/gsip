@@ -20,8 +20,8 @@
     dc:description "Representation of the data node: the cross-node relations. Contains triples like: CAN_Watershed downstream-of US_Watershed"@en ;
     #void:dataDump <https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf> ;
     dct:format       "text/turtle" , "application/rdf+xml" , "application/json-ld" ;
-    schema:url "https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf"
-    schema:distribution <https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf> .
+    schema:url "https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf";
+    schema:distribution <https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf> 
 
     ],
     [
