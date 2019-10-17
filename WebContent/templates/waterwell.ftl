@@ -15,7 +15,7 @@ schema:subjectOf [
     rdfs:label "Information depuis la Cache RIES"@fr,"Information from GIN Cache"@en;
    schema:provider <http://gin.gw-info.net> ;
    dct:conformsTo <https://www.opengis.net/def/gwml2> ;
-	dct:format "text/xml","text/html","application/vnd.geo+json";
+	dct:format "text/xml";
    schema:url "https://gin.geosciences.ca/GinService/rs/FeatureTypes/query?uri=${resource}"
 ].
 <#if hasStatements == 'false'>
