@@ -16,31 +16,31 @@
     [
     # <https://geoconnex.ca/data/CAN_LOD_Node_feature_links>
     rdfs:type void:Linkset, schema:Dataset ;
-    dc:title "Related features in connected nodes"@en ;
+    rdfs:label "Related features in connected nodes"@en ;
     dc:description "Representation of the data node: the cross-node relations. Contains triples like: CAN_Watershed downstream-of US_Watershed"@en ;
     #void:dataDump <https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf> ;
     dct:format       "text/turtle" , "application/rdf+xml" , "application/json-ld" ;
-    schema:url "https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf";
+    schema:url "https://geoconnex.ca/node/cross";
     schema:distribution <https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf> 
 
     ],
     [
     #<https://geoconnex.ca/data/CAN_LOD_NodeCatalog>
     rdfs:type void:Dataset, schema:Dataset ;
-    dc:title "Catalog of features"@en ;
+    rdfs:label "Catalog of features"@en ;
     dc:description "Representation of the data node: catalog of features i.e. /id/s. Contains triples like: CAN_Watershed gsip:inNodeCatalog /id/CAN_LOD_Node"@en ;
     #void:dataDump <https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf> ;
-    schema:url "https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf";
+    schema:url "https://geoconnex.ca/node/all";
     dct:format       "text/turtle" , "application/rdf+xml" , "application/json-ld" ;
     schema:distribution <https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf>
     ],
     [
     #<https://geoconnex.ca/data/CAN_LOD_Node_datanode_links>
     rdfs:type void:LinkSet, schema:Dataset ;
-    dc:title "Connected nodes"@en ;
+    rdfs:label "Connected nodes"@en ;
     dc:description "Representation containing links between data nodes. Only contains triples like: /id/CAN_LOD_Node connectedTo /id/US_LOD_Node"@en ;
     dct:format       "text/turtle" , "application/rdf+xml" , "application/json-ld" ;
-    schema:url "https://geoconnex.ca/data/CAN_LOD_Node_datanode_links";
+    schema:url "https://geoconnex.ca/node/connect";
     void:target <https://geoconnex.ca/info/CAN_LOD_Node>, <https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node> ;
     void:property <https://geoconnex.ca/properties/id/connectedTo>
   ].
