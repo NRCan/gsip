@@ -1,3 +1,3 @@
 # the whole thing
-CONSTRUCT {?s ? ?o.}
+CONSTRUCT {?s ?p ?o.}
 WHERE {?s ?p ?o.}
