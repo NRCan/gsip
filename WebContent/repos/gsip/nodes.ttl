@@ -18,14 +18,14 @@
     rdfs:label "Related features in connected nodes"@en ;
     dc:description "Representation of the data node: the cross-node relations. Contains triples like: CAN_Watershed downstream-of US_Watershed"@en ;
     dct:format       "text/turtle" , "application/rdf+xml" , "application/json-ld" ;
-    schema:url "https://geoconnex.ca/node/cross";
+    schema:url "https://geoconnex.ca/gsip/node/cross";
     schema:distribution <https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf> 
     ],
     [
     rdfs:type void:Dataset, schema:Dataset ;
     rdfs:label "Catalog of features"@en ;
     dc:description "Representation of the data node: catalog of features i.e. /id/s. Contains triples like: CAN_Watershed gsip:inNodeCatalog /id/CAN_LOD_Node"@en ;
-    schema:url "https://geoconnex.ca/node/all";
+    schema:url "https://geoconnex.ca/gsip/node/all";
     dct:format       "text/turtle" , "application/rdf+xml" , "application/json-ld" ;
     schema:distribution <https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf>
     ],
@@ -34,7 +34,7 @@
     rdfs:label "Connected nodes"@en ;
     dc:description "Representation containing links between data nodes. Only contains triples like: /id/CAN_LOD_Node connectedTo /id/US_LOD_Node"@en ;
     dct:format       "text/turtle" , "application/rdf+xml" , "application/json-ld" ;
-    schema:url "https://geoconnex.ca/node/connect";
+    schema:url "https://geoconnex.ca/gsip/node/connect";
     void:target <https://geoconnex.ca/info/CAN_LOD_Node>, <https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node> ;
     void:property <https://geoconnex.ca/properties/id/connectedTo>
   ].
