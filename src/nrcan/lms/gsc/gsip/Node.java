@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -37,16 +38,16 @@ import nrcan.lms.gsc.gsip.util.MediaTypeUtil.InfoOutputFormat;
 public class Node {
 	@Context UriInfo uriInfo;
 	@GET
-	@Path("cross")
+	@Path("{sub}")
 	/**
-	 * return all the triples that contains an outward resource (or a non-local resource)
-	 * don't return triples that have literal, just res - pred - res
+	 * return an arbitrary set of node defined on the sparql query in a template
+	 * @param sub : path is node/<sub> , sub will become the name of the template (node_<sub>.fht)
 	 * @param callback
 	 * @param accepts
 	 * @param format
 	 * @return
 	 */
-	public Response getCrossNode(@QueryParam("callback") String callback,@HeaderParam("Accept") String accepts,@QueryParam("f") String format)
+	public Response getNodeData(@PathParam("sub") String sub,@QueryParam("callback") String callback,@HeaderParam("Accept") String accepts,@QueryParam("f") String format)
 	{
 		InfoOutputFormat of = MediaTypeUtil.getOutputFormat(format, accepts);
 		
@@ -61,7 +62,7 @@ public class Node {
 		// at the point, we have a format
 		try
 		{
-		String sparql = this.constructSparql(null,"node_cross.ftl");
+		String sparql = this.constructSparql(null,"node_" + sub+".ftl");
 		//Logger.getAnonymousLogger().log(Level.INFO,sparql);
 		// server is specified in servlet initialisation
 
@@ -90,7 +91,18 @@ public class Node {
 	}
 	
 	
-	public  static String constructSparql(Map<String,Object> p,String template) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException
+	/**
+	 * return a transformed template
+	 * @param p parameters passed to the template
+	 * @param template template name
+	 * @return
+	 * @throws TemplateNotFoundException
+	 * @throws MalformedTemplateNameException
+	 * @throws ParseException
+	 * @throws IOException
+	 * @throws TemplateException
+	 */
+	private String constructSparql(Map<String,Object> p,String template) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException
 	{
 		TemplateManager tm = TemplateManager.getInstance();
 		return tm.transform(p==null?new HashMap<String,Object>():p,template);
