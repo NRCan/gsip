@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:void="http://rdfs.org/ns/void#"
+    xmlns:schema="http://schema.org/"
+    xmlns:dc="http://purl.org/dc/terms/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+    
+    <void:DatasetDescription rdf:about="https://geoconnex.ca/info/CAN_LOD_Node">
+        
+        <foaf:primaryTopic>
+       
+            <void:Dataset rdf:about="https://geoconnex.ca/id/CAN_LOD_Node">
+
+                <void:subset>
+                    <void:Dataset rdf:about="https://geoconnex.ca/data/CAN_LOD_Node_feature_links">
+                        <dc:title xml:lang="en">CAN_LOD_Node_feature_links</dc:title>
+                        <dc:description xml:lang="en">Representation of the data node: the cross-node relations. Contains triples like: CAN_Watershed downstream-of US_Watershed</dc:description>
+                        <void:dataDump rdf:resource="https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf"/>
+                    </void:Dataset>
+                </void:subset>
+                
+                <void:subset>
+                    <void:Dataset rdf:about="https://geoconnex.ca/data/CAN_LOD_NodeCatalog">
+                        <dc:title xml:lang="en">CAN_LOD_NodeCatalog</dc:title>
+                        <dc:description xml:lang="en">Representation of the data node: catalog of features i.e. /id/s. Contains triples like: : CAN_Watershed  gsip:inNodeCatalog /id/CAN_LOD_Node</dc:description>
+                        <void:dataDump rdf:resource="https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf"/>
+                    </void:Dataset>
+                </void:subset>
+           
+                <void:subset>
+                    <void:LinkSet rdf:about="https://geoconnex.ca/data/CAN_LOD_Node_datanode_links">
+                        <dc:title xml:lang="en">CAN_LOD_Node_datanode_links</dc:title>
+                        <dc:description xml:lang="en">Representation containing links between data nodes. Only contains triples like: /id/CAN_LOD_Node connectedTo /id/US_LOD_Node</dc:description>
+                        <void:subjectTarget rdf:resource="https://geoconnex.ca/info/CAN_LOD_Node"/>
+                        <void:objectTarget rdf:resource="https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node"/>
+                        <void:linkPredicate rdf:resource="https://geoconnex.ca/properties/id/connectedTo"/>
+                    </void:LinkSet>
+                </void:subset>
+           
+            </void:Dataset>
+            
+        </foaf:primaryTopic>
+
+    </void:DatasetDescription>
+    
+</rdf:RDF>
