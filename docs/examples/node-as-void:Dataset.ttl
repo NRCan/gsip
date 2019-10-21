@@ -3,7 +3,7 @@
 @prefix schema: <http://schema.org/> .
 @prefix dc: <http://purl.org/dc/terms/> .
 
-<https://geoconnex.ca/info/CAN_LOD_Node>
+<https://geoconnex.ca/id/CAN_LOD_Node>
   rdfs:type void:Dataset, schema:Dataset ;
   dc:title "Canadian Linked Open Data (LOD) node"@en ;
   dc:description "Representation of the data node"@en ;
