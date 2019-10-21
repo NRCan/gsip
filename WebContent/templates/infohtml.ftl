@@ -60,17 +60,25 @@ ${model.encode("JSON-LD")}
 								title="Display page in RDF/XML format"
 								alt="View in RDF/XML format"
 								src="${host}/app/img/rdfxmlicon.png"
-								style="max-width: 35px; padding: 10px 5px 0 5px" /></a><a
+								style="max-width: 35px; padding: 10px 5px 0 5px" />
+							</a>
+							<a
 								href="${model.getContextResourceUri()}?f=json"
 								target="_blank"><img class="img-fluid"
 								title="Display page in JSON-LD format"
 								alt="View in JSON-LD format"
 								src="${host}/app/img/jsonicon.png"
-								style="max-width: 35px; padding: 10px 5px 0 5px" /></a><a
+								style="max-width: 35px; padding: 10px 5px 0 5px" /></a>
+							<a
 								href="${model.getContextResourceUri()}?f=ttl"
 								target="_blank"><img class="img-fluid"
 								title="Display page in TTL format" alt="View in TTL format"
 								src="${host}/app/img/ttlicon.png"
+								style="max-width: 35px; padding: 10px 5px 0 5px" /></a>
+
+							<a href="${model.getNonInfoUri()}LOD_Node/CAN_Hydro_LOD_Node" 
+								target="_blank"> <img class="img_fluid"  
+								title="This node" alt="Access this node" src="${host}/app/img/node.png" 
 								style="max-width: 35px; padding: 10px 5px 0 5px" /></a>
 						</div>
 					</div>
@@ -152,13 +160,14 @@ ${model.encode("JSON-LD")}
 							<a href="${image[0]}" target="_blank">
 								<img src="${image[0]}" class="img-thumbnail img-fluid"/>
 							</a>
-					</div>
-					</#if>
+						</div>
+						</#if>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<footer class="mastfoot mt-auto">
 		<div class="inner">
 			<img class="img-fluid" alt="Government of Canada logo"
