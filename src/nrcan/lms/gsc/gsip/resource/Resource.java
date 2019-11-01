@@ -60,9 +60,9 @@ public class Resource {
 		// convert persistentUri to baseURI is required
 		if (needConversion())
 		{
-			return Response.ok(getConvertedResource("/resources/" + folder+"/"+item+".json")).build();
+			return Response.ok(getConvertedResource("/resources/" + folder+"/"+item+".json")).type("application/vnd.geo+json").build();
 		}
-		else return Response.ok(context.getResourceAsStream("/resources/" + folder+"/"+item+".json")).build();
+		else return Response.ok(context.getResourceAsStream("/resources/" + folder+"/"+item+".json")).type("application/vnd.geo+json").build();
 		}
 		catch(Exception ex)
 		{
