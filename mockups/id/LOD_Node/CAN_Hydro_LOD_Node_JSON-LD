@@ -1,0 +1,13 @@
+[
+  {
+    "@id": "https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081604",
+    "https://www.opengis.net/def/hy_features/ontology/hyf/lowerCatchment": [
+      {
+        "@id": "https://geoconnex.ca/id/catchment/02OJ*CA"
+      }
+    ]
+  },
+  {
+    "@id": "https://geoconnex.ca/id/catchment/02OJ*CA"
+  }
+]
