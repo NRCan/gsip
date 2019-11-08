@@ -2,6 +2,7 @@
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix schema: <http://schema.org/>.
 @prefix void: <http://rdfs.org/ns/void#> .
+@prefix selfie: <https://opengeospatial.github.io/SELFIE/>. # need a real namespace
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 
 # modified from https://github.com/NRCan/GSIP/tree/master/docs/examples
@@ -23,7 +24,7 @@
                       <https://geoconnex.ca/data/node/connect>.
 
     <https://geoconnex.ca/data/node/cross>
-    rdfs:type void:Linkset, schema:Dataset ;
+    rdfs:type void:Linkset, schema:Dataset,selfie:DataNode_FeatureLinkSet;
     rdfs:label "Related features in connected nodes"@en ;
     dc:description "Representation of the data node: the cross-node relations. Contains triples like: CAN_Watershed downstream-of US_Watershed"@en ;
     schema:provider <http://gin.geosciences.ca> ;
@@ -31,7 +32,7 @@
     dct:format       "application/x-turtle" , "application/rdf+xml" , "application/ld+json".
   
    <https://geoconnex.ca/data/node/all>
-    rdfs:type void:Dataset, schema:Dataset ;
+    rdfs:type void:Dataset, schema:Dataset,selfie:DataNode_FeatureCatalog ;
     rdfs:label "Catalog of features"@en ;
     schema:provider <http://gin.geosciences.ca> ;
     dct:conformsTo <https://opengeospatial.github.io/SELFIE/> ;
@@ -39,7 +40,7 @@
     dct:format       "application/x-turtle" , "application/rdf+xml" , "application/ld+json".
  
     <https://geoconnex.ca/data/node/connect>
-    rdfs:type void:LinkSet, schema:Dataset ;
+    rdfs:type void:LinkSet, schema:Dataset,selfie:DataNode_ConnectionLinkSet;
     rdfs:label "Connected nodes"@en ;
     schema:provider <http://gin.geosciences.ca> ;
     dct:conformsTo <https://opengeospatial.github.io/SELFIE/> ;
