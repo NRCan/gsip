@@ -72,7 +72,7 @@ public class ModelUtil {
 		m.write(out, syntax);
 		String result = out.toString();
 		// replace resource
-		String n = result.replaceAll("<" + inPrefix, "<"+outPrefix);
+		String n = result.replaceAll("<"+ inPrefix, "<"+outPrefix);
 		Model newModel = ModelFactory.createDefaultModel();
 		try {
 			newModel.read(IOUtils.toInputStream(n, "UTF-8"),null,"TURTLE");
