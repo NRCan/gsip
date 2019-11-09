@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:data xmlns:p="urn:x-gsip:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:x-gsip:1.0 file:///C:/java64_8/gsip/WebContent/schemas/data.xsd">
 	<!--  each elements are parsed into p1 to p{n}.  p0 = "data/x/y/z.." -->
-	<p:match pattern="LOD_Node/.*">
+	<p:match pattern="node/.*">
 		<p:mime-type>application/x-turtle</p:mime-type>
-		<p:source>https://raw.githubusercontent.com/jvanulde/GSIP-1/master/mockups/id/LOD_Node/${p2}_TTL</p:source>
+		<p:source>${gsip}/node/${p2}?f=ttl</p:source>
 	</p:match>
-		<p:match pattern="LOD_Node/.*">
+		<p:match pattern="node/.*">
 		<p:mime-type>application/ld+json</p:mime-type>
-		<p:source>https://raw.githubusercontent.com/jvanulde/GSIP-1/master/mockups/id/LOD_Node/${p2}_JSON-LD</p:source>
+		<p:source>${gsip}/node/${p2}?f=jsonld</p:source>
 	</p:match>
-		<p:match pattern="LOD_Node/.*">
+		<p:match pattern="node/.*">
 		<p:mime-type>application/rdf+xml</p:mime-type>
-		<p:source>https://raw.githubusercontent.com/jvanulde/GSIP-1/master/mockups/id/LOD_Node/${p2}_RDF</p:source>
+		<p:source>${gsip}/node/${p2}?f=rdf</p:source>
 	</p:match>
 </p:data>
 

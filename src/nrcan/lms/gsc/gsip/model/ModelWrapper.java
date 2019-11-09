@@ -77,6 +77,17 @@ public class ModelWrapper {
 	}
 	
 	
+	/**
+	 * return the URI up to /id/ 
+	 * @return
+	 */
+	public String getNonInfoUri()
+	{
+		int s = contextResource.toString().indexOf("/id/");
+		return contextResource.toString().substring(0, s) + "/id/";
+		
+	}
+	
 	
 	/**
 	 * if convertion is on, the client has a local URI.  If this local uri is used in the namespace, it should be mapped to persistent
