@@ -20,12 +20,14 @@ import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.riot.RDFFormat;
 
 import nrcan.lms.gsc.gsip.Constants;
 import nrcan.lms.gsc.gsip.Manager;
 import nrcan.lms.gsc.gsip.conf.Configuration;
 
 public class ModelUtil {
+	public static final String JSON_LD_SYNTAX = "JSONLD_FLATTEN_PRETTY";
 	/**
 	 * Just serialize to a string
 	 * @param mdl
@@ -122,7 +124,8 @@ public class ModelUtil {
 		}
 		StringWriter w = new StringWriter();
 		mdl = getAlternateModel(mdl);
-		mdl.write(w, "JSON-LD");
+		RDFDataMgr.write(w,mdl,RDFFormat.RDFJSON);
+		//mdl.write(w, RDFFormat.JSONLD_COMPACT_PRETTY);
 		return Response.ok(pre + w.toString() + post).type(MediaType.APPLICATION_JSON_TYPE).build();
 	}
 	
