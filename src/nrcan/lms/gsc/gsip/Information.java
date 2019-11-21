@@ -102,7 +102,7 @@ public class Information {
 		// get a model from the sparql endpoint
 		try
 		{
-		String sparql = this.constructSparql(idUri);
+		String sparql = constructSparql(idUri);
 		//Logger.getAnonymousLogger().log(Level.INFO,sparql);
 		// server is specified in servlet initialisation
 
