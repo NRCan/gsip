@@ -73,8 +73,11 @@ public class Information {
 	
 	@GET
 	@Produces({MediaType.TEXT_HTML,MediaType.TEXT_XML,MediaType.APPLICATION_JSON,APPLICATION_RDFXML,APPLICATION_TURTLE,TEXT_TURTLE})
-	public Response getResource(@QueryParam("f") String format,@QueryParam("callback") String callback,@HeaderParam("Accept") String accepted,@QueryParam("lang") String lang)
+	public Response getResource(@QueryParam("format") String format,@QueryParam("f") String f,@QueryParam("callback") String callback,@HeaderParam("Accept") String accepted,@QueryParam("lang") String lang)
 	{
+		
+		if (format == null)
+			format = f;
 		
 		String locale = RequestUtil.getLocale(lang,request.getLocale());
 			
