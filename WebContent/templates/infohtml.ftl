@@ -91,7 +91,7 @@ ${model.encode("JSON-LD")}
 							<#else>
 						<div class="col-sm-12 col-md-12">
 							</#if>
-							<h3>Representation:</h3>
+							<h3>Representations:</h3>
 							
 							<#list model.getRepresentations() as r>
 								<div class="representation">
