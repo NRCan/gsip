@@ -1,0 +1,31 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix schema: <http://schema.org/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+
+<https://geoconnex.ca/info/CAN_LOD_Node>
+  rdfs:type void:Dataset, schema:Dataset ;
+  dc:title "Canadian Linked Open Data (LOD) node"@en ;
+  dc:description "Representation of the data node"@en ;
+  void:subset <https://geoconnex.ca/data/CAN_LOD_Node_feature_links>, <https://geoconnex.ca/data/CAN_LOD_NodeCatalog>, <https://geoconnex.ca/data/CAN_LOD_Node_datanode_links> .
+
+<https://geoconnex.ca/data/CAN_LOD_Node_feature_links>
+  rdfs:type void:Linkset, schema:Dataset ;
+  dc:title "Related features in connected nodes"@en ;
+  dc:description "Representation of the data node: the cross-node relations. Contains triples like: CAN_Watershed downstream-of US_Watershed"@en ;
+  void:dataDump <https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf> ;
+  schema:distribution <https://geoconnex.ca/data/CAN_LOD_Node_feature_links.rdf> .
+
+<https://geoconnex.ca/data/CAN_LOD_NodeCatalog>
+  rdfs:type void:Dataset, schema:Dataset ;
+  dc:title "Catalog of features"@en ;
+  dc:description "Representation of the data node: catalog of features i.e. /id/s. Contains triples like: CAN_Watershed gsip:inNodeCatalog /id/CAN_LOD_Node"@en ;
+  void:dataDump <https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf> ;
+  schema:distribution <https://geoconnex.ca/data/CAN_LOD_NodeCatalog.rdf> .
+
+<https://geoconnex.ca/data/CAN_LOD_Node_datanode_links>
+  rdfs:type void:LinkSet, schema:Dataset ;
+  dc:title "Connected nodes"@en ;
+  dc:description "Representation containing links between data nodes. Only contains triples like: /id/CAN_LOD_Node connectedTo /id/US_LOD_Node"@en ;
+  void:target <https://geoconnex.ca/info/CAN_LOD_Node>, <https://cida-test.er.usgs.gov/chyld-pilot/id/LOD_Node/US_Hydro_LOD_Node> ;
+  void:property <https://geoconnex.ca/properties/id/connectedTo> .

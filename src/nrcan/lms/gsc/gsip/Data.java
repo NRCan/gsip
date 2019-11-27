@@ -43,10 +43,13 @@ import static nrcan.lms.gsc.gsip.Constants.TEXT_HTML;
 public class Data {
 	@Context UriInfo uriInfo;
 	@GET
-	public Response getData(@QueryParam("callback") String callback,@HeaderParam("Accept") String accepts,@QueryParam("f") String format)
+	public Response getData(@QueryParam("callback") String callback,@HeaderParam("Accept") String accepts,@QueryParam("format") String format,@QueryParam("f") String f)
 	{
 		//Logger.getAnonymousLogger().log(Level.INFO, "Accept : [" + accepts + "]" );
 	
+		if (format == null)
+			format = f;
+		
 		//TODO: this function is a mess, need to partition
 		MediaType mimeType = null;
 		String pattern = getPattern(uriInfo); // should return everything after /data/
