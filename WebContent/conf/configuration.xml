@@ -2,6 +2,7 @@
 <p:configuration xmlns:p="urn:x-gsip:1.0">
 	<p:types>
 		<p:type mime-type="application/vnd.geo+json" formats="geojson"/>
+		<p:type mime-type="application/geo+json" sameAs="application/vnd.geo+json"/>
 		<p:type mime-type="text/csv" formats="csv"/>
 		<p:type mime-type="text/xml; subtype=gml/3.2.1" formats="gml"/>
 		<p:type mime-type="text/xml" formats="xml"/>
