@@ -75,7 +75,8 @@ public class ModelUtil {
 		String n = result.replaceAll("<"+ inPrefix, "<"+outPrefix);
 		Model newModel = ModelFactory.createDefaultModel();
 		try {
-			newModel.read(IOUtils.toInputStream(n, "UTF-8"),null,"TURTLE");
+			RDFDataMgr.read(newModel, IOUtils.toInputStream(n,"UTF-8"),Lang.TURTLE);
+			//newModel.read(IOUtils.toInputStream(n, "UTF-8"),null,"TURTLE");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			Logger.getAnonymousLogger().log(Level.SEVERE, "Failed to convert Model",e);

@@ -5,6 +5,8 @@ import static nrcan.lms.gsc.gsip.Constants.TEXT_TURTLE;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.StringWriter;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -115,7 +117,6 @@ public class Node {
 			@Override
 			public void write(OutputStream os) throws IOException
 			{
-			
 				
 				RDFDataMgr.write(os,ModelUtil.getAlternateModel(mdl),format);
 			}
