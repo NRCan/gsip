@@ -352,8 +352,38 @@ A value starting by http or https is considered as a SPARQL endpoint. Otherwise,
 
 [source,xml]
 ----
-<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter>
+<p:parameter name="gsip">http://localhost:9999/bigdata/namespace/kb/sparql</p:parameter>
 ----
+
+===== BlazeGraph
+
+The example above points to the "default" blazegraph endpoint.  Note that the blazegraph documentation mentions that the default endpoint is
+
+`http://localhost:9999/bigdata/sparql` (port depends of configuration)
+
+but Jena complains with a 404.  You can find the correct endpoint using
+
+`curl localhost:9999/bigdata/namespace` to retrieve the endpoints.
+
+[source,xml]
+----
+<rdf:RDF
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<rdf:Description rdf:nodeID="node1dr9s22r9x69">
+        <rdf:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
+        <title xmlns="http://purl.org/dc/terms/">kb</title>
+        <Namespace xmlns="http://www.bigdata.com/rdf#/features/KB/">kb</Namespace>
+        <sparqlEndpoint xmlns="http://rdfs.org/ns/void#" rdf:resource="http://localhost:9999/bigdata/namespace/kb/sparql"/>
+        <uriRegexPattern xmlns="http://rdfs.org/ns/void#">^.*</uriRegexPattern>
+</rdf:Description>
+
+</rdf:RDF>
+
+----
+ 
+The sparqlEndpoint tag contains the correct endpoint.-
+
 
 
 [source,xml]
