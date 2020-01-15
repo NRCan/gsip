@@ -160,7 +160,7 @@ function hash(s) {
 			//console.warn('uri_id:');
 			//console.warn(uri_id);
 
-			var curentGeojsonURL = addUrlParameter(r['@id'],'f','geojson');
+			var curentGeojsonURL = addUrlParameter(JSONLDHELPER.getUrl(r),'f','geojson');
 
 			$('#' + uri_id).append( " <a geojson='" + curentGeojsonURL + "' class='geojsonLink' href=''> <img title='Get geometry' alt='Get geometry' src='img/mapicon.png' width='15px'/></a>");
 			

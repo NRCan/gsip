@@ -8,6 +8,10 @@
       <param-name>jersey.config.server.provider.packages</param-name>
       <param-value>nrcan.lms.gsc.gsip</param-value>
     </init-param>
+     <init-param>
+      <param-name>jersey.config.server.contentLength.buffer</param-name>
+      <param-value>0</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>default</servlet-name>

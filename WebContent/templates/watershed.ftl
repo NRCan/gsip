@@ -10,21 +10,19 @@
 @prefix hy: <http://geosciences.ca/def/hydraulic#>.
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix ex: <http://gin.gw-info.net/example#>.
+@prefix schema: <http://schema.org/>.
 
 <${resource}> a <http://geosciences.ca/def/hyf/1.0#Watershed>;
 rdfs:label "Upstream watershed of ${p2}"@en,"Bassin versant en amont de ${p2}"@fr;
-rdfs:seeAlso
+schema:subjectOf
 	<${baseUri}/data/waterbody/CHYF/POS/CHYF/${p2}>.
 
 
 <${baseUri}/data/waterbody/CHYF/POS/CHYF/${p2}>
 rdfs:label  "CHyF upstream watershed representation upstream of ${p2}"@en,
 					"Representation de CHyF en amont en amont de ${p2}"@fr;
-		a dcat:Dataset;
-		ex:theme <${baseUri}/def/themes/Watershed>;
-		ex:structure <https://www.w3.org/GeoJSON/>;
-		ex:semantic <http://gin.gw-info.net/CHyF/def/semantic/CHyF>;
-		ex:source <http://chyf.ca>;
+    	dct:conformsTo <https://www.opengis.net/def/hyf> ;
+    	schema:provider <https://chyf.ca/>;
 		dct:format "application/vnd.geo+json","text/html";
 		dct:language "en","fr".
 

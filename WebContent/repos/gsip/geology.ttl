@@ -4,6 +4,7 @@
 @prefix mdq:    <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#> .
 @prefix mdl:    <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage#> .
 @prefix dct: <http://purl.org/dc/terms/>.
+@prefix schema: <http://schema.org/>.
 
 @prefix iso19150-2: <http://def.isotc211.org/iso19150-2/2012/base#> .
 @prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
@@ -36,38 +37,54 @@
 
 <https://geoconnex.ca/id/geologicUnits/000000/GSCC0005300099> a gsmlb:GeologicUnit;
 rdfs:label "Beauharnois Formation"@en,"Formation de Beauharnois"@fr;
+schema:name "Beauharnois Formation";
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/000000/GSCC00053000990>.
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/000000/GSCC00053000990>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/000000/GSCC00053000990> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4> 
+.
 
 <https://geoconnex.ca/id/geologicUnits/001000/GSCC00053001728> a gsmlb:GeologicUnit;
 rdfs:label "Bourret Formation"@en,"Formation de Bourret"@fr;
+schema:name "Bourret Formation";
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/001000/GSCC00053001728>.
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/001000/GSCC00053001728>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/001000/GSCC00053001728> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/001000/GSCC00053001039> a gsmlb:GeologicUnit;
 rdfs:label "B&acute;cancour Formation"@en,"Formation de B&eacute;cancour"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/001000/GSCC00053001039>.
+schema:name "B&acute;cancour Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/001000/GSCC00053001039>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/001000/GSCC00053001039> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/009000/GSCC00053009589> a gsmlb:GeologicUnit;
 rdfs:label "Melbourne Formations"@en,"Formations de Melbourne"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/009000/GSCC00053009589>.
+schema:name "Melbourne Formations";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/009000/GSCC00053009589>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/009000/GSCC00053009589> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/GSCC00053017020> a gsmlb:GeologicUnit;
 rdfs:label "Cairnside Formation"@en,"Formation de Cairnside"@fr;
+schema:name "Cairnside Formation";
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/017000/GSCC00053017020>.
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/017000/GSCC00053017020>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/017000/GSCC00053017020> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 #Drummondville Olistostrom
 #Olistostrome de Drummondville
@@ -75,34 +92,46 @@ rdfs:label "Weblex"@fr,"Weblex"@en.
 <https://geoconnex.ca/id/geologicUnits/004000/GSCC00053004304> a gsmlb:GeologicUnit;
 rdfs:label "Dunham Formation"@en,"Formation de Dunham"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/004000/GSCC00053004304>.
+schema:name "Dunham Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/004000/GSCC00053004304>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/004000/GSCC00053004304> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/004000/GSCC00053004304> a gsmlb:GeologicUnit;
 rdfs:label "Formation de Dunham"@fr,"Dunham Formation"@en;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/004000/GSCC00053004304>.
+schema:name "Formation de Dunham";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/004000/GSCC00053004304>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/004000/GSCC00053004304> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/005000/GSCC00053005580> a gsmlb:GeologicUnit;
 rdfs:label "Gilman Formation"@en,"Formation de Gilman"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/005000/GSCC00053005580>.
+schema:name "Gilman Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/005000/GSCC00053005580>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/005000/GSCC00053005580> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/016000/GSCC00053016953> a gsmlb:GeologicUnit;
 rdfs:label "Cheshire Member"@en,"Membre de Cheshire"@fr;
+schema:name "Cheshire Member";
 gsmlb:rank rank:formation;
 gsmlb:hierarchyLink [ a gsmlb:GeologicUnitHierachy;
                     gsmlb:targetUnit <https://geoconnex.ca/id/geologicUnits/005000/GSCC00053005580>;
                     gsmlb:GeologicUnitHierarchy.role guhr:stratigraphic
                     ];
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/016000/GSCC00053016953>.
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/016000/GSCC00053016953>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/016000/GSCC00053016953> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 #Gilman Formation, Frelighsburg Member
 #Formation de Gilman, Membre de Frelighsburg
@@ -113,56 +142,77 @@ rdfs:label "Weblex"@fr,"Weblex"@en.
 <https://geoconnex.ca/id/geologicUnits/005000/GSCC00053005781> a gsmlb:GeologicUnit;
 rdfs:label "Granby Formation"@en,"Formation de Granby"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/005000/GSCC00053005781>.
+schema:name "Granby Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/005000/GSCC00053005781>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/005000/GSCC00053005781> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/006000/GSCC00053006880> a gsmlb:GeologicUnit;
 rdfs:label "Iberville Formation"@en,"Formation d'Iberville"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/006000/GSCC00053006880>.
+schema:name "Iberville Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/006000/GSCC00053006880>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/006000/GSCC00053006880> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008293> a gsmlb:GeologicUnit;
 rdfs:label "Laval Formation"@en,"Formation de Laval"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008293>.
+schema:name "Laval Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008293>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008293> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 
 <https://geoconnex.ca/id/geologicUnits/011000/GSCC00053011490> a gsmlb:GeologicUnit;
 rdfs:label "Pamelia Formation"@en,"Formation de Pamelia"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/011000/GSCC00053011490>.
+schema:name "Pamelia Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/011000/GSCC00053011490>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/011000/GSCC00053011490> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008397> a gsmlb:GeologicUnit;
 rdfs:label "Leray Member"@en,"Membre de Leray"@fr;
 gsmlb:rank rank:member;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008397>;
+schema:name "Leray Member";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008397>;
 gsmlb:hierarchyLink [ a gsmlb:GeologicUnitHierachy;
                     gsmlb:targetUnit <https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008833>;
                     gsmlb:GeologicUnitHierarchy.role guhr:stratigraphic
                     ].
 <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008397> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008833> a gsmlb:GeologicUnit;
 rdfs:label "Lowville Formation"@en,"Formation de Lowville"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008833>.
+schema:name "Lowville Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008833>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008833> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/009000/GSCC00053009344> a gsmlb:GeologicUnit;
 rdfs:label "Mawcook Formation"@en,"Formation de Mawcook"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/009000/GSCC00053009344>.
+schema:name "Mawcook Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/009000/GSCC00053009344>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/009000/GSCC00053009344> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 #Monteregian Hills
 #Collines Mont&eacute;r&eacute;giennes
@@ -170,16 +220,22 @@ rdfs:label "Weblex"@fr,"Weblex"@en.
 <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010067> a gsmlb:GeologicUnit;
 rdfs:label "Montreal Formation"@en,"Formation de Montr&eacute"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/010000/GSCC00053010067>.
+schema:name "Montreal Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/010000/GSCC00053010067>.
  <https://geoconnex.ca/data/weblex/gsc/weblex/010000/GSCC00053010067> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010757> a gsmlb:GeologicUnit;
 rdfs:label "Nicolet Formation"@en,"Formation de Nicolet"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/010000/GSCC00053010757>.
+schema:name "Nicolet Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/010000/GSCC00053010757>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/010000/GSCC00053010757> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 #Ophiolite Complexes
 #Complexes ophiolitiques
@@ -187,30 +243,42 @@ rdfs:label "Weblex"@fr,"Weblex"@en.
 <https://geoconnex.ca/id/geologicUnits/011000/GSCC00053011889> a gsmlb:GeologicUnit;
 rdfs:label "Pinnacle Formation"@en,"Formation de Pinnacle"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/011000/GSCC00053011889>.
+schema:name "Pinnacle Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/011000/GSCC00053011889>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/011000/GSCC00053011889>  dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/012000/GSCC00053012027> a gsmlb:GeologicUnit;
 rdfs:label "Pontgrav&eacute; Formation"@en,"Formation de Pontgrav&eacute;"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/012000/GSCC00053012027>.
+schema:name "Pontgrav&eacute; Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/012000/GSCC00053012027>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/012000/GSCC00053012027>  dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/014000/GSCC00053014353> a gsmlb:GeologicUnit;
 rdfs:label "Saint-Daniel Formation"@en,"Formation de Saint-Daniel"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/014000/GSCC00053014353>.
+schema:name "Saint-Daniel Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/014000/GSCC00053014353>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/014000/GSCC00053014353> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008398> a gsmlb:GeologicUnit;
 rdfs:label "Les Fonds Formation"@en,"Formation Les Fonds"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008398>.
+schema:name "Les Fonds Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008398>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/008000/GSCC00053008398> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 #Sainte-Sabine Formation
 #Formations de Sainte-Sabine
@@ -218,30 +286,42 @@ rdfs:label "Weblex"@fr,"Weblex"@en.
 <https://geoconnex.ca/id/geologicUnits/014000/GSCC00053014607> a gsmlb:GeologicUnit;
 rdfs:label "Stony Point Formation"@en,"Formation de Stony Point"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/014000/GSCC00053014607>.
+schema:name "Stony Point Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/014000/GSCC00053014607>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/014000/GSCC00053014607> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/014000/GSCC00053014821> a gsmlb:GeologicUnit;
 rdfs:label "Sweetsburg Formation"@en,"Formation de Sweetsburg"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/014000/GSCC00053014821>.
+schema:name "Sweetsburg Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/014000/GSCC00053014821>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/014000/GSCC00053014821> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/003000/GSCC00053015117> a gsmlb:GeologicUnit;
 rdfs:label "Theresa Formation"@en,"Formation de Theresa"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/003000/GSCC00053015117>.
+schema:name "Theresa Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/003000/GSCC00053015117>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/003000/GSCC00053015117> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015207> a gsmlb:GeologicUnit;
 rdfs:label "Tibbit Hill Formation"@en,"Formation de Tibbit Hill"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015207>.
+schema:name "Tibbit Hill Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015207>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015207> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 
 # Tetreauville F https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015084.html
@@ -251,62 +331,83 @@ rdfs:label "Weblex"@fr,"Weblex"@en.
 <https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015084> a gsmlb:GeologicUnit;
 rdfs:label "T&eacute;treauville Formation (Region of Montreal)"@en,"Formation de T&eacute;treauville (Region de Montreal)"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015084>;
+schema:name "T&eacute;treauville Formation (Region of Montreal)";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015084>;
 gsmlb:hierarchyLink [ a gsmlb:GeologicUnitHierachy;
                     gsmlb:targetUnit <https://geoconnex.ca/id/geologicUnits/017000/GSCC00053017020>;
                     gsmlb:GeologicUnitHierarchy.role guhr:stratigraphic
                     ].
 <https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015084> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658> a gsmlb:GeologicUnit;
 rdfs:label "Neuville Formation"@en,"Formation de Neuville"@fr;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/010000/GSCC00053010658>;
+schema:name "Neuville Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/010000/GSCC00053010658>;
 gsmlb:hierarchyLink [ a gsmlb:GeologicUnitHierachy;
                     gsmlb:targetUnit <https://geoconnex.ca/id/geologicUnits/017000/GSCC00053017020>;
                     gsmlb:GeologicUnitHierarchy.role guhr:stratigraphic
                     ].
 <https://geoconnex.ca/data/weblex/gsc/weblex/010000/GSCC00053010658>  dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/006000/GSCC00053006003> a gsmlb:GeologicUnit;
 rdfs:label "Grondines Member"@en,"Membre de Grondines"@fr;
 gsmlb:rank rank:member;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/006000/GSCC00053006003>;
+schema:name "Grondines Member";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/006000/GSCC00053006003>;
 gsmlb:hierarchyLink [ a gsmlb:GeologicUnitHierachy;
                     gsmlb:targetUnit <https://geoconnex.ca/id/geologicUnits/GSCC00053010658>;
                     gsmlb:GeologicUnitHierarchy.role guhr:stratigraphic
                     ].
 <https://geoconnex.ca/data/weblex/gsc/weblex/006000/GSCC00053006003>  dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/017000/GSCC00053017020> a gsmlb:GeologicUnit;
 rdfs:label "Trenton Group"@en,"Groupe de Trenton"@fr;
 gsmlb:rank rank:group;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/017000/GSCC00053017020>.
+schema:name "Trenton Group";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/017000/GSCC00053017020>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/017000/GSCC00053017020>  dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015716> a gsmlb:GeologicUnit;
 rdfs:label "Utica Shale"@en,"Shale d'Utica"@fr;
 gsmlb:rank rank:group;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015716>, <http://ngmdb.usgs.gov/Geolex/NewUnits/unit_4218>.
+schema:name "Utica Shale";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015716>, <http://ngmdb.usgs.gov/Geolex/NewUnits/unit_4218>.
 
 <https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015716>  dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 <http://ngmdb.usgs.gov/Geolex/NewUnits/unit_4218>  dct:format "text/html";
 rdfs:label "USGS Lexicon".
 
 <https://geoconnex.ca/id/geologicUnits/016000/GSCC00053016262> a gsmlb:GeologicUnit;
 rdfs:label "West Sutton Formation"@en,"Formation de West Sutton"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/016000/GSCC00053016262>.
+schema:name "West Sutton Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/016000/GSCC00053016262>.
 <https://geoconnex.ca/data/weblex/gsc/weblex/016000/GSCC00053016262> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/016000/GSCC00053016353> a gsmlb:GeologicUnit;
 rdfs:label "White Brook Formation"@en,"Formation de White Brook"@fr;
 gsmlb:rank rank:formation;
-rdfs:seeAlso <https://geoconnex.ca/data/weblex/gsc/weblex/016000/GSCC00053016353>.
+schema:name "White Brook Formation";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/016000/GSCC00053016353>.
  <https://geoconnex.ca/data/weblex/gsc/weblex/016000/GSCC00053016353> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en.
+rdfs:label "Weblex"@fr,"Weblex"@en;
+schema:provider <https://opengeospatial.github.io/SELFIE/>;
+dct:conformsTo <https://www.opengis.net/def/gsml4>.

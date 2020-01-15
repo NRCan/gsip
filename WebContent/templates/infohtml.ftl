@@ -26,6 +26,9 @@
 	padding: 10px 10px 10px 10px;
 }
 </style>
+<script language="" type="application/ld+json">
+${model.encode("JSON-LD")}
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -55,19 +58,27 @@
 							<a href="${model.getContextResourceUri()}?f=rdf"
 								target="_blank"><img class="img-fluid"
 								title="Display page in RDF/XML format"
-								alt="View in RFF/XML format"
+								alt="View in RDF/XML format"
 								src="${host}/app/img/rdfxmlicon.png"
-								style="max-width: 35px; padding: 10px 5px 0 5px" /></a><a
+								style="max-width: 35px; padding: 10px 5px 0 5px" />
+							</a>
+							<a
 								href="${model.getContextResourceUri()}?f=json"
 								target="_blank"><img class="img-fluid"
 								title="Display page in JSON-LD format"
 								alt="View in JSON-LD format"
 								src="${host}/app/img/jsonicon.png"
-								style="max-width: 35px; padding: 10px 5px 0 5px" /></a><a
+								style="max-width: 35px; padding: 10px 5px 0 5px" /></a>
+							<a
 								href="${model.getContextResourceUri()}?f=ttl"
 								target="_blank"><img class="img-fluid"
 								title="Display page in TTL format" alt="View in TTL format"
 								src="${host}/app/img/ttlicon.png"
+								style="max-width: 35px; padding: 10px 5px 0 5px" /></a>
+
+							<a href="${model.getNonInfoUri()}LOD_Node/CAN_Hydro_LOD_Node" 
+								target="_blank"> <img class="img_fluid"  
+								title="This node" alt="Access this node" src="${host}/app/img/node.png" 
 								style="max-width: 35px; padding: 10px 5px 0 5px" /></a>
 						</div>
 					</div>
@@ -80,18 +91,27 @@
 							<#else>
 						<div class="col-sm-12 col-md-12">
 							</#if>
-							<h3>Representation:</h3>
-							<ul>
+							<h3>Representations:</h3>
+							
 							<#list model.getRepresentations() as r>
-								<li><samp>
-										<strong>${model.getPreferredLabel(r, "en", "No label")}</strong>
-										<#list model.getFormats(r) as f>
-											<a href="${model.getFormatOverride(r,f)}">${f}</a>
-										</#list>
-									</samp>
-								</li>
+								<div class="representation">
+								<table width="100%">
+								<tr bgcolor="#ebf0fa"><th>${model.getPreferredLabel(r, "en", "No label")}</th></tr>
+								<tr><td><b>Conforms to : </b> <a href="${model.getConformsTo(r)}">${model.getConformsTo(r)}</a></td></tr>
+								<tr><td><b>Provider : </b> <a href="${model.getProvider(r)}">${model.getProvider(r)}</a></td></tr>
+								<#assign links = []>
+								<#list model.getUrls(r,true) as url>
+								<#assign link><a href="${url.getUrl()}">${url.getLabel()}</a></#assign>
+								<#assign links = links + [link]>
+								</#list>
+								<tr><td colspan=2>
+								<b>Formats :</b> ${links?join(", ")}
+								</td></tr>
+								
+								
 							</#list>
-							</ul>
+							</table>
+							</div>
 							<h3>Related Features:</h3>
 							<ul class="nav nav-tabs" role="tablist">
 								<li class="nav-item"><a class="nav-link active"
@@ -108,8 +128,8 @@
 										<li><strong>${p}:</strong>
 										<#list grp[p] as link>
 										<a
-											href="${link.getUrl()}"
-											title="${link.getUrl()}">${link.getResLabel()}</a>
+											href="${link.getUrl()!'none'}"
+											title="${link.getUrl()!'none'}">${link.getResLabel()}</a>
 										</#list>
 
 										</li>
@@ -140,13 +160,14 @@
 							<a href="${image[0]}" target="_blank">
 								<img src="${image[0]}" class="img-thumbnail img-fluid"/>
 							</a>
-					</div>
-					</#if>
+						</div>
+						</#if>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<footer class="mastfoot mt-auto">
 		<div class="inner">
 			<img class="img-fluid" alt="Government of Canada logo"
@@ -171,8 +192,6 @@
 
 	</script>
 </body>
-<script language="" type="application/ld+json">
-${model.encode("JSON-LD")}
-</script>
+
 </html>
 <html></html>

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.jena.dboe.jenax.Txn;
+//import org.apache.jena.dboe.jenax.Txn;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.DatasetFactory;
@@ -49,7 +49,7 @@ public class EmbeddedStore extends TripleStoreImpl {
 			}
 			catch(Exception ex)
 			{
-				Logger.getAnonymousLogger().log(Level.SEVERE, "Failed to execute [" + sparql + "]");
+				Logger.getAnonymousLogger().log(Level.SEVERE, "Failed to execute [" + sparql + "]",ex);
 				return null;
 			}
 			

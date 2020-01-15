@@ -286,6 +286,62 @@ The role of GSIP mediator is to turn a /data/ URL into another URL and redirect 
 
 The mediator check in the data folder for a pattern that matches the /data/ URL and the format requested (eg, geojson). If a matches exist, it uses the associated FreeMarker template and rewrites a new URL. This new URL is either a) sent back to the client as a HTTP 303 see seeAlso, or the mediator pulls the content from the remote server and streams the file as-is to the client.
 
+== /node/
+
+WARNING: this is only available in the `selfie` branch (https://github.com/NRCan/GSIP/tree/selfie) for now.
+
+The `/node/` endpoint is a utility service to extract information from the RDF catalog.  The information to be extracted is configured by providing SPARQL queries that are executed against the RDF catalog.  
+
+Dereferencing the URL will execute a SPARQL query located in the `/templates` folder. The template name must start with `node_` (to avoid invoking a template that won't generate a proper SPARQL query)
+
+The service is invoked with
+
+http://{service}:{port}/gsip/node/{template}
+
+`{template}` refers to a template named `node_{template}.ftl` in the `templates` folder
+
+Content negotiation and format override (f={format}) apply. The content is available in RDF/XML, Turtle and JSON-LD.
+
+=== SPARQL query template
+
+The template can be any SPARQL query.  Since this is a FreeMarker template, any freemarker command can be used.  At this point, there are not parameters passed to the template (it could change in the future).  
+
+To be proper RDF, the SPARQL query MUST be a https://www.w3.org/TR/rdf-sparql-query/#construct[CONSTRUCT] query. https://www.w3.org/TR/rdf-sparql-query/#select[SELECT] doesn't generate RDF graphs. 
+
+
+.very simple sparql query that extracts all statement with `<https://geoconnex.ca/id/connectedTo>` predicate
+[source,sparql]
+----
+# get all the triples that has drains-into relationship
+CONSTRUCT {?s <https://geoconnex.ca/id/connectedTo> ?o.}
+WHERE {?s <https://geoconnex.ca/id/connectedTo> ?o}
+----
+ 
+.More complex query that extracts all statement where the subject and the object are IRI (URIs) and they both start with `https://geoconnex.ca`
+
+[source,sparql]
+----
+# get all triple that has a resource as an object and either subject or object are non local (not geoconnex)
+CONSTRUCT {?s ?p ?o.}
+WHERE {?s ?p ?o. 
+FILTER (isIRI(?s) &&  isIRI(?o)
+  && 
+!(
+	STRSTARTS(STR(?s),"https://geoconnex.ca") 
+	&& 
+	STRSTARTS(STR(?o),"https://geoconnex.ca")
+ )
+)
+}
+----
+
+Note that the RDF catalog ALWAYS contains persistant URI, event if you are running in local mode (http://localhost for instance).  The translation is done at the serialisation.  So, SPARQL must be created as if the system was in production.
+
+WARNING: There is an important caveat.  On the fly statements (see dynamic) won't be included since they are not physically in the RDF catalog.  
+
+
+
+
 ==== Configuration
 
 GSIP can use an external SPARQL endpoint or has its own internal RDF catalog.
@@ -296,8 +352,38 @@ A value starting by http or https is considered as a SPARQL endpoint. Otherwise,
 
 [source,xml]
 ----
-<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter>
+<p:parameter name="gsip">http://localhost:9999/bigdata/namespace/kb/sparql</p:parameter>
 ----
+
+===== BlazeGraph
+
+The example above points to the "default" blazegraph endpoint.  Note that the blazegraph documentation mentions that the default endpoint is
+
+`http://localhost:9999/bigdata/sparql` (port depends of configuration)
+
+but Jena complains with a 404.  You can find the correct endpoint using
+
+`curl localhost:9999/bigdata/namespace` to retrieve the endpoints.
+
+[source,xml]
+----
+<rdf:RDF
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<rdf:Description rdf:nodeID="node1dr9s22r9x69">
+        <rdf:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
+        <title xmlns="http://purl.org/dc/terms/">kb</title>
+        <Namespace xmlns="http://www.bigdata.com/rdf#/features/KB/">kb</Namespace>
+        <sparqlEndpoint xmlns="http://rdfs.org/ns/void#" rdf:resource="http://localhost:9999/bigdata/namespace/kb/sparql"/>
+        <uriRegexPattern xmlns="http://rdfs.org/ns/void#">^.*</uriRegexPattern>
+</rdf:Description>
+
+</rdf:RDF>
+
+----
+ 
+The sparqlEndpoint tag contains the correct endpoint.-
+
 
 
 [source,xml]

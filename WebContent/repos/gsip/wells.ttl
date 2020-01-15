@@ -2,8 +2,10 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix hy: <http://geosciences.ca/def/hydraulic#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-<https://geoconnex.ca/id/waterwells/qc.1981_4671_100> a gw:GW_Well;rdfs:label "Puits 1981_4671_100"@fr,"Water well 1981_4671_100"@en;
+<https://geoconnex.ca/id/waterwells/qc.1981_4671_100> a gw:GW_Well;rdfs:label "Puits 1981_4671_100"@fr,
+"Water well 1981_4671_100"@en;
 hy:downstreamOf <https://geoconnex.ca/id/up_watershed/-73.569242,45.018687>.
+
 <https://geoconnex.ca/id/up_watershed/-73.569242,45.018687> rdfs:label "upstream of 1981_4671_100"@en,"En amont de 1981_4671_100"@fr.
 <https://geoconnex.ca/id/waterwells/qc.1982_8740_100> a gw:GW_Well;rdfs:label "Puits 1982_8740_100"@fr,"Water well 1982_8740_100"@en;
 hy:downstreamOf <https://geoconnex.ca/id/up_watershed/-73.137752,45.329774>.

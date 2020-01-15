@@ -39,8 +39,11 @@ public class NonInformationUri {
 	 * @param callback
 	 * @return
 	 */
-	public Response redirectToResource(@QueryParam("f") String format,@QueryParam("callback") String callback)
+	public Response redirectToResource(@QueryParam("f") String f,@QueryParam("format") String format,@QueryParam("callback") String callback)
 	{
+		if (format==null)
+			format = f;
+		
 		URI newLocation = null;
 		// rebuild a /info/ uri from the /id/
 		Configuration conf = Manager.getInstance().getConfiguration();
