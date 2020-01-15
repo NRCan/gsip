@@ -54,10 +54,7 @@
 
 
 <!-- 		<p:parameter name="triplestore">http://localhost:8080/fuseki/gsip_file</p:parameter> -->
-		<p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
- <!--  blazegraph connection  -->
- <!--			<p:parameter name="triplestore">http://localhost:9999/bigdata/namespace/kb/sparql</p:parameter> -->
-			
+			<p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
 
 		<p:parameter name="infoTemplate">infohtml.ftl</p:parameter> <!--  default  -->
 		<!--  special template for geologic units (pattern starts after /id/) -->
