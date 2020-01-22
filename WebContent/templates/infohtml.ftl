@@ -11,7 +11,6 @@
 <title>Resource</title>
 <link href="${host}/app/css/bootstrapmin.css" rel="stylesheet" />
 <link href="${host}/app/css/navbartopfixed.css" rel="stylesheet" />
-
 <style type="text/css">
 /* Footer */
 .mastfoot {
