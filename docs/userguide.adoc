@@ -384,23 +384,20 @@ but Jena complains with a 404.  You can find the correct endpoint using
  
 The sparqlEndpoint tag contains the correct endpoint.-
 
+==== local stores
 
+For development, testing or dealing with a small static triple store, it's possible to point to a local folder containing .ttl files
 
-[source,xml]
-----
-<p:parameter name="triplestore">/repos/gsip</p:parameter>
-----
-
-Another option is to use pseudo protocol `webapp:`
+`webapp:` is a pseudo protocol telling GSIP the folder is located in the servlet webapp folder (here `{tomcat application folder}/gsip/webapp/repos/gsip`).
 
 [source,xml]
 ----
 <p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
 ----
 
-`webapp:` is a pseudo protocol telling GSIP the folder is located in the servlet webapp folder (here `{tomcat application folder}/gsip/webapp/repos/gsip`).
+This is also useful when the only option to deploy the application and the data is through Tomcat application manager.
 
-This is useful when the only option to deploy the application and the data is through Tomcat application manager.
+Note that GSIP will take some time at startup to load the .ttl files and compute inferrence.  Large dataset might exceed Tomcat timeout setting (at which point it will conclude the application failed to start).  You might have to boost (eg: https://docs.bmc.com/docs/ars91/en/increasing-the-shutdown-timeout-in-the-tomcat-configuration-tool-609073199.html)
 
 == Folder structure
 

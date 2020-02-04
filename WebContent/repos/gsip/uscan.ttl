@@ -1,0 +1,97 @@
+@prefix sp:    <http://www.opengeospatial.org/standards/geosparql/> .
+@prefix hy:    <https://www.opengis.net/def/hy_features/ontology/hyf/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+    sp:sfIntersects <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081007-drainage_basin> .
+    
+ <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081007-drainage_basin> rdfs:label 
+    "Riviere aux Brochets: total upstream drainage basin"@en.
+    
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+    sp:sfIntersects <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081005-drainage_basin> .
+    
+     <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081005-drainage_basin> rdfs:label 
+    "Riviere aux Brochets: total upstream drainage basin"@en.
+    
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>   
+    sp:sfIntersects  <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081006>.
+    
+     <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081006> rdfs:label 
+     "Ruisseau Morpions"@en.
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1> 
+    sp:sfIntersects  <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081505> .
+    
+    <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081505> rdfs:label 
+    "Bullis Brook-Great Chazy River"@en.
+
+<https://geoconnex.ca/id/catchment/02OJ*CA>
+    hy:contributingCatchment  <https://cida-test.er.usgs.gov/chyld-pilot/id/hu_nexus/02OJ*CA-inflow>.
+    
+    <https://cida-test.er.usgs.gov/chyld-pilot/id/hu_nexus/02OJ*CA-inflow> rdfs:label 
+    "Nexus contributing to Little River - Riviere Richelieu"@en.
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+    sp:sfIntersects <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081505-drainage_basin>.
+    
+    <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081505-drainage_basin> rdfs:label 
+    "Bullis Brook-Great Chazy River: total upstream drainage basin"@en.
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+    sp:sfIntersects <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081006-drainage_basin>.
+    
+    <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081006-drainage_basin> rdfs:label
+"Ruisseau Morpions: total upstream drainage basin"@en.
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+    sp:sfIntersects <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081203>.
+  
+  <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081203> rdfs:label "Mud Creek"@en.
+  
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+    sp:sfIntersects <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081507-drainage_basin> .
+    
+    <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081507-drainage_basin>  rdfs:label 
+    "Outlet Great Chazy River: total upstream drainage basin"@en.
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+    sp:sfIntersects <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081102-drainage_basin>.
+    
+    <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081102-drainage_basin> rdfs:label 
+    "Carman Brook-Missisquoi Bay: total upstream drainage basin"@en.
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+    sp:sfIntersects <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081005>.
+    
+     <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081005> rdfs:label 
+     "Riviere aux Brochets"@en.
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+    sp:sfIntersects <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081507>.
+    
+    <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081507> rdfs:label 
+    "Outlet Great Chazy River"@en.
+
+<https://geoconnex.ca/id/catchment/02OJ*CA>
+    hy:upperCatchment <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081604-drainage_basin>.
+    
+    <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081604-drainage_basin> rdfs:label 
+    "Lake Champlain: total upstream drainage basin"@en.
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+    sp:sfIntersects <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081203-drainage_basin>.
+    
+    <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081203-drainage_basin> rdfs:label 
+    "Mud Creek: total upstream drainage basin"@en.
+
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1>
+    sp:sfIntersects <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081007>.
+    
+    <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081007> rdfs:label "Riviere aux Brochets"@en.
+
+<https://geoconnex.ca/id/catchment/02OJ*CA>
+    hy:upperCatchment <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081604>.
+    
+    <https://cida-test.er.usgs.gov/chyld-pilot/id/hu/041504081604> rdfs:label "Lake Champlain"@en.

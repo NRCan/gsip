@@ -18,6 +18,7 @@
 <https://geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node> rdfs:label "Hydrography Linked Data Node - Canada"@en, "Noeud de donnees liees - Canada"@fr.
 
 
+
 <https://geoconnex.ca/id/LOD_Node/CAN_Hydro_LOD_Node> 
     schema:subjectOf  <https://geoconnex.ca/data/node/all>,  
                       <https://geoconnex.ca/data/node/cross>,
