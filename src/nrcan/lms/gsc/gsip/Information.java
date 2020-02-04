@@ -263,9 +263,13 @@ public class Information {
 	}
 	
 	
+	// Added supress warning because compiled expected generics (<T> templates) and
+	// Jena does not use any in the example code.  need to test it, but for now just shut the compiler up
+	@SuppressWarnings("unchecked")
 	public  static String constructSparql(String resource) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException
 	{
 		TemplateManager tm = TemplateManager.getInstance();
+		@SuppressWarnings("rawtypes")
 		Map p = new HashMap<String,Object>();
 		p.put("resource", resource);
 		return tm.transform(p,"describe.ftl" );
