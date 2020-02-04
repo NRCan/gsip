@@ -124,6 +124,19 @@ public class TemplateManager {
 		return sw.toString();
 	}
 	
+	public boolean templateExists(String templatefile)
+	{
+		Template t;
+		try {
+			t = freemarkerConfiguration.getTemplate(templatefile);
+		} catch (IOException e) {
+			// if something wrong happens, we'll assume it's not there
+			return false;
+		}
+		return (t != null);
+			
+	}
+	
 	public String getMatchingTemplate(String uri,boolean hasEntry)
 	{
 		

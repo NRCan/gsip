@@ -66,6 +66,7 @@ public class Information {
 	
 	
 	
+	private static final String NIRMIR = "_mir2nir.ftl";
 	@Context UriInfo uriInfo;
 	@Context ServletContext context;
 	@Context HttpHeaders headers;
@@ -246,6 +247,12 @@ public class Information {
 	
 	public  String getIdResource(UriInfo uriInfo)
 	{
+		String userDefinedNir = applyNirTemplate(uriInfo.getAbsolutePath().toString());
+		if (userDefinedNir != null)
+		{
+			return userDefinedNir.trim();
+		}
+			
 		// get the /id/ resource and convert to persistant
 		String persistentUri = Manager.getInstance().getConfiguration().getParameterAsString(PERSISTENT_URI, BASE_URI);
 		// this one is called by /info/, but the real NIR is /id/
@@ -260,6 +267,20 @@ public class Information {
 		//Logger.getAnonymousLogger().log(Level.INFO,"/id/ URI:" + infoUri);
 		return infoUri.toString();
 		// 
+	}
+	
+	
+	private String applyNirTemplate(String mir)
+	{
+		Map<String,Object> parameters = new HashMap<String,Object>();
+		parameters.put("mir", mir);
+		
+		try {
+			return TemplateManager.getInstance().transform(parameters,NIRMIR);
+		} catch (IOException | TemplateException e) {
+			return null;
+		}
+
 	}
 	
 	
