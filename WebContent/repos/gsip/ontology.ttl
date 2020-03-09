@@ -11,7 +11,7 @@
 @prefix gw: <http://geosciences.ca/def/groundwater#>.
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix ex: <http://gin.gw-info.net/example#>.
-@prefix geosparql: <<http://www.opengeospatial.org/standards/geosparql/>.
+@prefix geosparql: <http://www.opengeospatial.org/standards/geosparql/>.
 
 # Ontology used in GSIP
 

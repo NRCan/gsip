@@ -1,5 +1,5 @@
+@prefix geosparql: <http://www.opengeospatial.org/standards/geosparql/>.
 
-@prefix geosparql: <<http://www.opengeospatial.org/standards/geosparql/>.
 <https://geoconnex.ca/id/hydrogeounits/Richelieu1> geosparql:sfIntersects	<https://geoconnex.ca/id/geologicUnits/000000/GSCC00053000990>.
 <https://geoconnex.ca/id/hydrogeounits/Richelieu1> geosparql:sfIntersects	<https://geoconnex.ca/id/geologicUnits/011000/GSCC00053011490>,<https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008397>,<https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008833>.
 <https://geoconnex.ca/id/hydrogeounits/Richelieu1> geosparql:sfIntersects	<https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010067>,<https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658>.
