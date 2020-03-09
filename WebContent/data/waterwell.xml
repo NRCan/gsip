@@ -4,14 +4,14 @@
 	<p:match pattern="gwml/gwml1/gsip/gin/qc\..*">
 		<p:mime-type>text/html</p:mime-type>
 		<!--  can have more -->
-		<p:source>http://gin.gw-info.net/service/api_ngwds:gin2/en/waterMLData/index.html?PROFILE=gin&amp;REQUEST=GetFeature&amp;INFO_FORMAT=text/html&amp;FID=${p5?replace("qc.","urn.ngwd.qc.mef.well_")}&amp;LOCALE=en</p:source>
+		<p:source>https://gin.gw-info.net/service/api_ngwds:gin2/en/waterMLData/index.html?PROFILE=gin&amp;REQUEST=GetFeature&amp;INFO_FORMAT=text/html&amp;FID=${p5?replace("qc.","urn.ngwd.qc.mef.well_")}&amp;LOCALE=en</p:source>
 	</p:match>
 	<p:match pattern="gwml/gwml1/gsip/gin/qc\..*">
 		<p:mime-type>text/xml</p:mime-type>
-		<p:source>http://gin.gw-info.net/service/gin/wfs/gin?REQUEST=GetFeature&amp;INFO_FORMAT=xml&amp;FID=${p5?replace("qc.","urn.ngwd.qc.mef.well_")}</p:source>
+		<p:source>https://gin.gw-info.net/service/gin/wfs/gin?REQUEST=GetFeature&amp;INFO_FORMAT=xml&amp;FID=${p5?replace("qc.","urn.ngwd.qc.mef.well_")}</p:source>
 	</p:match>
 	<p:match pattern="gwml/gwml1/gsip/gin/qc\..*">
 		<p:mime-type>application/vnd.geo+json</p:mime-type>
-		<p:source proxy="true">http://gin.gw-info.net/service/ngwds/en/data/geojson/wells?URL=https://geoconnex.ca/id/waterwells/${p5}</p:source>
+		<p:source proxy="true">https://gin.gw-info.net/service/ngwds/en/data/geojson/wells?URL=https://geoconnex.ca/id/waterwells/${p5}</p:source>
 	</p:match>
 </p:data>
