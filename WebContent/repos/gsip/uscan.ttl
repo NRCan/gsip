@@ -1,5 +1,5 @@
 @prefix sp:    <http://www.opengeospatial.org/standards/geosparql/> .
-@prefix hy:    <https://www.opengis.net/def/hy_features/ontology/hyf/> .
+@prefix hy:    <https://www.opengis.net/def/appschema/hy_features/hyf/> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 
 <https://geoconnex.ca/id/hydrogeounits/Richelieu1>

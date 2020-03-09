@@ -18,12 +18,12 @@ rdfs:label "Richelieu-Yamaska Region Bedrock Geology"@en,"G&acute;ologie du socl
 foaf:primaryTopic <https://geoconnex.ca/id/dataset/gin-13>;
 schema:subjectOf <http://gin.gw-info.net/service/api_ngwds:gin2/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624.html>,<http://gin.gw-info.net/service/ngwds/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624>.
 
-<http://gin.gw-info.net/service/api_ngwds:gin2/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624.html>
+<https://gin.gw-info.net/service/api_ngwds:gin2/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624.html>
 rdfs:label "Harmonised North American Profile (HTML)"@en,"Profile harmonis&eacute; Nord-am&eacute;ricain (HTML)"@fr;
 dct:format "text/html".
 
 
-<http://gin.gw-info.net/service/ngwds/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624>
+<https://gin.gw-info.net/service/ngwds/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624>
 rdfs:label "Harmonised North American Profile (ISO-19139-XML)"@en,"Profile harmonis&eacute; Nord-am&eacute;ricain (ISO-19139-XML)"@fr;
 dct:format "text/xml".
 
