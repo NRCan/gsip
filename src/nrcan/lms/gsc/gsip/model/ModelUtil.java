@@ -23,6 +23,7 @@ import org.apache.jena.riot.RDFDataMgr;
 
 import nrcan.lms.gsc.gsip.Constants;
 import nrcan.lms.gsc.gsip.Manager;
+import nrcan.lms.gsc.gsip.RequestUtil;
 import nrcan.lms.gsc.gsip.conf.Configuration;
 
 public class ModelUtil {
@@ -95,10 +96,10 @@ public class ModelUtil {
 			return u;
 	}
 	
-	public static String getAlternateResource(String rs)
+	public static String getAlternateResource(String rs,String baseuri)
 	{
 		Configuration c = Manager.getInstance().getConfiguration();
-		String baseuri = (String) c.getParameter(BASE_URI);
+		//String baseuri = (String) c.getParameter(BASE_URI);
 		Object outuri = c.getParameter(PERSISTENT_URI,null); // can be null
 		if (!baseuri.equals(outuri) && outuri != null)
 			return rs.replace( (String)outuri,baseuri);
@@ -112,8 +113,9 @@ public class ModelUtil {
 	 * @param callBack
 	 * @return
 	 */
-	public static Response serializeJSONLD(Model mdl,String callBack)
+	public static Response serializeJSONLD(Model mdl,String callBack,String baseUri)
 	{
+	
 		String pre = "";
 		String post = "";
 		if (callBack != null && callBack.trim().length() > 0)
@@ -122,7 +124,7 @@ public class ModelUtil {
 			post = ")";
 		}
 		StringWriter w = new StringWriter();
-		mdl = getAlternateModel(mdl);
+		mdl = getAlternateModel(mdl,baseUri);
 		mdl.write(w, "JSON-LD");
 		return Response.ok(pre + w.toString() + post).type(MediaType.APPLICATION_JSON_TYPE).build();
 	}
@@ -139,10 +141,10 @@ public class ModelUtil {
 	 * @param mdl
 	 * @return a new model with all {baseuri}/ turned into {proxdevuri}/.
 	 */
-	public static Model getAlternateModel(Model mdl)
+	public static Model getAlternateModel(Model mdl,String baseuri)
 	{
 		Configuration c = Manager.getInstance().getConfiguration();
-		String baseuri = (String) c.getParameter(BASE_URI);
+		//String baseuri = (String) c.getParameter(BASE_URI);
 		Object outuri = c.getParameter(PERSISTENT_URI,null); // can be null
 		Boolean convert = c.getParameterAsBoolean(Constants.CONVERT_TO_BASEURI, true);
 		// need to convert ?

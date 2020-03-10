@@ -31,7 +31,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpStatus;
 import org.apache.jena.rdf.model.Model;
@@ -126,6 +126,9 @@ public class Information {
 		
 		// if the model is still empty, return a 404
 		
+		// we need to figure current base URI
+		String baseUri = RequestUtil.getBaseUri(uriInfo.getRequestUri().toString(), "/info/");
+		
 		if (storedModel.isEmpty()) 
 				return Response.status(HttpStatus.SC_NOT_FOUND).entity("resource " + idUri + " not found").build();
 		//TODO: add a validation to check if persitentURI is defined in a prefix (not sure what will happen at this point)
@@ -134,7 +137,7 @@ public class Information {
 		{
 			case ioTURTLE : return serializeModel(storedModel,Lang.TURTLE,TEXT_TURTLE);
 			case ioRDFXML : return serializeModel(storedModel,Lang.RDFXML,APPLICATION_RDFXML);
-			case ioJSONLD : return ModelUtil.serializeJSONLD(storedModel,callback);
+			case ioJSONLD : return ModelUtil.serializeJSONLD(storedModel,callback,baseUri);
 			case ioXML : return serializeModel(storedModel,Lang.RDFXML,MediaType.TEXT_XML);
 			default : return serializeHTML(storedModel,idUri,locale);
 		}
@@ -143,6 +146,7 @@ public class Information {
 		catch(Exception ex)
 		{
 			// boom, return an error message
+			ex.printStackTrace();
 			Response.status(HttpStatus.SC_BAD_REQUEST).entity("Bad request for " + idUri + "\n" + ex.getMessage()).build();
 		}
 		
@@ -162,13 +166,14 @@ public class Information {
 	 */
 	private Response serializeHTML(Model model,String resource,String locale)
 	{
-		ModelWrapper mw = new ModelWrapper(ModelUtil.getAlternateModel(model),ModelUtil.getAlternateResource(resource));
+		String baseUri = RequestUtil.getBaseUri(uriInfo.getRequestUri().toString(), "/info/");
+		ModelWrapper mw = new ModelWrapper(ModelUtil.getAlternateModel(model,baseUri),ModelUtil.getAlternateResource(resource,baseUri));
 		// get the template used to create 
 		String htmlTemplate = Configuration.getInstance().getHtmlTemplate(mw.getContextResourceUri());
 		String out = null;
 		try{
 			Map<String,Object> p = new HashMap<String,Object>();
-			p.put("host",Configuration.getInstance().getParameter("gsip"));
+			p.put("host",uriInfo.getBaseUri().toString());
 			// note: HTML template always work with persistent model, the conversion is done in the wrapper
 			// TODO: what a mess
 			p.put("model", mw);
@@ -206,8 +211,8 @@ public class Information {
 			public void write(OutputStream os) throws IOException
 			{
 			
-				
-				RDFDataMgr.write(os,ModelUtil.getAlternateModel(mdl),format);
+				String baseUri = RequestUtil.getBaseUri(uriInfo.getRequestUri().toString(), "/info/");
+				RDFDataMgr.write(os,ModelUtil.getAlternateModel(mdl,baseUri),format);
 			}
 		};
 		
@@ -241,7 +246,9 @@ public class Information {
 		
 		// get the configuration parameters
 		mp.putAll(Configuration.getInstance().getParameters());
-		
+		// add baseUri 
+		mp.put("baseUri", RequestUtil.getBaseUri(uriInfo.getRequestUri().toString(),"/info/"));
+		mp.put("gsip",StringUtils.chop(uriInfo.getBaseUri().toString()));
 		return mp;
 	}
 	

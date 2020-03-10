@@ -9,6 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -16,6 +17,7 @@ import org.apache.http.HttpStatus;
 
 import nrcan.lms.gsc.gsip.Constants;
 import nrcan.lms.gsc.gsip.Manager;
+import nrcan.lms.gsc.gsip.RequestUtil;
 
 import static nrcan.lms.gsc.gsip.Constants.APPLICATION_GEOJSON;
 
@@ -43,6 +45,7 @@ public class Resource {
 	
 	
 	@Context ServletContext context;
+	@Context UriInfo uriInfo;
 	@GET
 	@Produces({MediaType.APPLICATION_JSON,APPLICATION_GEOJSON})
 	public Response getJsonResource(@PathParam("category") String folder,@PathParam("item") String item)
@@ -87,7 +90,8 @@ public class Resource {
 		
 		String persistentUri = Manager.getInstance().getConfiguration().getParameterAsString(Constants.PERSISTENT_URI, null);
 
-		String baseUri = Manager.getInstance().getConfiguration().getParameterAsString(Constants.BASE_URI,context.getContextPath());
+		String baseUri = RequestUtil.getBaseUri(uriInfo.getRequestUri().toString(),"/resources/");
+		//String baseUri = Manager.getInstance().getConfiguration().getParameterAsString(Constants.BASE_URI,context.getContextPath());
 		if (path.endsWith(".json"))
 		{
 			//TODO: this is a terrible hack

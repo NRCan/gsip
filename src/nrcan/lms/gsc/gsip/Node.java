@@ -10,6 +10,7 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
@@ -67,7 +68,7 @@ public class Node {
 		String sparql = this.constructSparql(null,"node_" + sub+".ftl");
 		//Logger.getAnonymousLogger().log(Level.INFO,sparql);
 		// server is specified in servlet initialisation
-
+		String baseUri = RequestUtil.getBaseUri(uriInfo.getRequestUri().toString(),"/node/");
 		// get model from triple store
 		TripleStore j = Manager.getInstance().getTripleStore();
 		Model storedModel = j.getSparqlConstructModel(sparql);
@@ -75,7 +76,7 @@ public class Node {
 		{
 			case ioTURTLE : return serializeModel(storedModel,Lang.TURTLE,TEXT_TURTLE);
 			case ioRDFXML : return serializeModel(storedModel,Lang.RDFXML,APPLICATION_RDFXML);
-			case ioJSONLD : return ModelUtil.serializeJSONLD(storedModel,callback);
+			case ioJSONLD : return ModelUtil.serializeJSONLD(storedModel,callback,baseUri);
 			case ioXML : return serializeModel(storedModel,Lang.RDFXML,MediaType.TEXT_XML);
 
 		}
@@ -117,8 +118,8 @@ public class Node {
 			@Override
 			public void write(OutputStream os) throws IOException
 			{
-				
-				RDFDataMgr.write(os,ModelUtil.getAlternateModel(mdl),format);
+				String baseUri = RequestUtil.getBaseUri(uriInfo.getRequestUri().toString(), "/node/");
+				RDFDataMgr.write(os,ModelUtil.getAlternateModel(mdl,baseUri),format);
 			}
 		};
 		

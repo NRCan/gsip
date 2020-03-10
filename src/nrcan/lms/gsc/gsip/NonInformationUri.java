@@ -48,7 +48,7 @@ public class NonInformationUri {
 		// rebuild a /info/ uri from the /id/
 		Configuration conf = Manager.getInstance().getConfiguration();
 		
-		StringBuilder infoUri = new StringBuilder(conf.getParameter(APP_URI) + "/info");
+		StringBuilder infoUri = new StringBuilder(uriInfo.getBaseUri() + "info");
 		boolean first = true;
 		for(PathSegment segment: uriInfo.getPathSegments())
 		{

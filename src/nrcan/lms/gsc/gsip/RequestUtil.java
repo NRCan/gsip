@@ -26,4 +26,16 @@ public class RequestUtil {
 			return Configuration.getInstance().getDefaultLanguage();
 	}
 
+	/**
+	 * return whatever stands in from on segment, segment is either /id/ or /info/
+	 * @param uri
+	 * @param segment
+	 * @return
+	 */
+	public static String getBaseUri(String uri,String segment)
+	{
+		String [] components = uri.split(segment);
+		return components[0];
+	}
+
 }

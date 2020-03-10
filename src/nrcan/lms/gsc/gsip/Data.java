@@ -339,6 +339,9 @@ public class Data {
 			path.append("/"+p.getPath());
 		}
 		
+		// add gsip as the baseUri
+		s.put("gsip",StringUtils.chop(uriInfo.getBaseUri().toString()));
+		
 		s.put("p0", path.toString()); // p0 = whole path starting from data/
 		// now put other usefull stuff
 		// hmm.. this was probably ignored ?
