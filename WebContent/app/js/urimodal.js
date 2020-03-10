@@ -51,7 +51,6 @@ var uriModal = (function(){
 		
 	//Modal display with feature selected
 	function showModalwithFeature(featureuri){
-		//var myUrl = 'http://s-stf-gin.nrn.nrcan.gc.ca:8085/gsip/id/waterwell/ca.gc.gov.wells.' + featureID + '?f=jsonld';
 		var myUrl = featureuri + '?f=jsonld';
 		$.ajax({
 			url: myUrl,

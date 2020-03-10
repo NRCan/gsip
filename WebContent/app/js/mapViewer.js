@@ -258,7 +258,7 @@ var mapViewer = (function(){
           new ol.layer.Image({
           		//extent: [-13884991, 2870341, -7455066, 6338219],
           		source: new ol.source.ImageWMS({
-            		url: 'http://geogratis.gc.ca/maps/CBMT',
+            		url: 'https://geogratis.gc.ca/maps/CBMT',
             		params: {'LAYERS': 'CBMT'},
            			ratio: 1,
             		serverType: 'geoserver'
@@ -403,7 +403,6 @@ var mapViewer = (function(){
 			info.push( 'Found ' + features.length + ' features. <br/> Zoom in to query')
 		  }else{
 			for (var i = 0, ii = features.length; i < ii; ++i) {
-				//info.push(' <a title="Get Resource" target="_blank" href="http://s-stf-ngwd.nrn.nrcan.gc.ca:8085/cocoon/devHeryk/lod/uri?uri=' + features[i].get('uri') + '">' + features[i].get('name') +'</a> ' + '<a href="" class="uriSelected" featureuri="' + features[i].get('uri') + '"><img src="img/linkedData.png" title="Linked data" alt="Linked data" width="15px"/></a>');
 				info.push(' <a title="Get Resource" href="" class="geturiwebpage" featureuri="' + features[i].get('uri') + '">' + features[i].get('name') +'</a> ' + '<a href="" class="uriSelected" featureuri="' + features[i].get('uri') + '"><img src="img/linkedData.png" title="Linked data" alt="Linked data" width="15px"/></a>');
 			}
 		  }
