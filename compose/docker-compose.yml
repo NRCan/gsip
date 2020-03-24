@@ -4,6 +4,7 @@ services:
         image: dcplab/proxy:1.0.0
         ports:
             - "80:80"
+            - "443:443"
         networks:
             - net_gsip
     gsip:
@@ -11,6 +12,13 @@ services:
         environment:
             - GSIP_BASEURI=http://localhost
             - GSIP_APP=http://localhost/gsip
+            - GSIP_TRIPLESTORE=http://blaze:8080/bigdata/namespace/kb/sparql
+        networks:
+            - net_gsip
+    blaze:
+        image: lyrasis/blazegraph:2.1.5
+        ports:
+            - "8080:8080"
         networks:
             - net_gsip
 networks:
