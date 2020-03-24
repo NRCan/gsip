@@ -1,5 +1,12 @@
 # Uploading data 
 
+to start 
+
+```console
+docker-compose up -d
+```
+ 
+
 To load data in blazegraph, https://github.com/blazegraph/database/wiki/REST_API
 
 ```console
@@ -17,3 +24,9 @@ Server: Jetty(9.4.12.v20180830)
 ```
 
 (milleage might vary)
+
+## Sparql endpoint
+```console
+curl "http://localhost/sparql?query=describe%20<https://geoconnex.ca/id/hydrogeounits/Richelieu1>"
+```
+
