@@ -11,9 +11,7 @@ services:
         environment:
             - GSIP_BASEURI=http://localhost
             - GSIP_APP=http://localhost/gsip
-            - GSIP_TRIPLESTORE=http://blaze:9999/bigdata/namespace/kb/sparql
         networks:
             - net_gsip
-
 networks:
     net_gsip:
