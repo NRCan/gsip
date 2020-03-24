@@ -29,7 +29,7 @@
 		
 <!--  depending of the environment this works and how Apache modrewrite is configured  -->
 
-		<p:parameter name="baseUri">https://geoconnex.ca</p:parameter> 	
+		<!-- <p:parameter name="baseUri">https://geoconnex.ca</p:parameter> -->	
 <!--	
 		<p:parameter name="gsip">https://geoconnex.ca/gsip</p:parameter>
 		<p:parameter name="proxdevuri">https://geoconnex.ca</p:parameter> 
@@ -45,16 +45,21 @@
 		<p:parameter name="gsip">http://s-stf-gin.nrn.nrcan.gc.ca:8085/gsip</p:parameter> 
 -->
 		
+		<!--  using ENV variables if available 
+		GSIP_BASEURI, GISP_APP, will default to http://localhost and http://localhost/gsip -->
 
-		<p:parameter name="baseUri">http://localhost:8080/gsip</p:parameter> 
+<!-- 
+		<p:parameter name="baseUri">http://localhost</p:parameter>
+		<p:parameter name="gsip">http://localhost/gsip</p:parameter> 
+-->
+		<p:parameter name="baseUri">${GSIP_BASEURI}</p:parameter> 
+ 		<p:parameter name="gsip">${GSIP_APP}</p:parameter> 
 
- 		<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter> 
 
 
-
-
+		<!--  using ENV variable GSIP_TRIPLESTORE, defaults to webapps:repos/gsip  -->
 <!-- 		<p:parameter name="triplestore">http://localhost:8080/fuseki/gsip_file</p:parameter> -->
-			<p:parameter name="triplestore">webapp:repos/gsip</p:parameter>
+			<p:parameter name="triplestore">${GSIP_TRIPLESTORE}</p:parameter>
 
 		<p:parameter name="infoTemplate">infohtml.ftl</p:parameter> <!--  default  -->
 		<!--  special template for geologic units (pattern starts after /id/) -->

@@ -1,9 +1,14 @@
 package nrcan.lms.gsc.gsip.conf;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -13,8 +18,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
+import org.apache.commons.io.IOUtils;
+
+import freemarker.template.TemplateException;
 import nrcan.lms.gsc.gsip.Constants;
 import nrcan.lms.gsc.gsip.conf.ParametersType.Parameter;
+import nrcan.lms.gsc.gsip.template.TemplateManager;
 
 
 
@@ -29,6 +39,9 @@ public class Configuration {
 	public static final String DEFAULT_LANGUAGE = "en";
 	public static final String HTML_TEMPLATE = "infoTemplate";
 	public static final String CONF_FILE = "conf/configuration.xml";
+	private static final String GSIP_BASEURI = "http://localhost:8080";
+	private static final String GSIP_APP = "http://localhost:8080/gsip";
+	private static final String GSIP_TRIPLESTORE = "webapp:repos/gsip";
 	// Hashtable are threadsafe, so we are technically good accessing 
 	private Hashtable<String,String> formatToMime = null;
 	private Hashtable<String,String> mimeToFormat = null;
@@ -58,7 +71,7 @@ public class Configuration {
 	 * @param srv
 	 * @return
 	 */
-	public static synchronized Configuration getInstance(ServletContext srv)
+	public static synchronized Configuration getInstance(ServletContext srv) 
 	{
 		// synchronised because you don't want this to be call while conf is being intialised
 		//TODO: bad design, the servlet context exists during a request, must make sure it's loaded by Listener first
@@ -67,7 +80,7 @@ public class Configuration {
 				// if instance.conf is null, this means the configuration is not loaded
 				String confile = srv.getInitParameter("conf");				
 				ConfigurationSingleHolder.instance.init(srv,confile);
-			} catch (JAXBException e) {
+			} catch (JAXBException | IOException e) {
 				// TODO Auto-generated catch block
 				Logger.getAnonymousLogger().log(Level.SEVERE,"Failed to load configuration",e);
 				return null;
@@ -120,13 +133,42 @@ public class Configuration {
 			return null; // this will generate a npe
 	}
 	
-	private void init(ServletContext ctx,String confile) throws JAXBException
+	private String getConfigurationDocument(ServletContext ctx,String src) throws IOException
 	{
+		String conf = IOUtils.toString(ctx.getResourceAsStream(src), StandardCharsets.UTF_8);
+		// prepare parameters
+		Map<String,String> params = new HashMap<String,String>();
+		params.put("GSIP_BASEURI", getSysEnv("GSIP_BASEURI",GSIP_BASEURI));
+		params.put("GSIP_APP", getSysEnv("GSIP_APP",GSIP_APP));
+		params.put("GSIP_TRIPLESTORE", getSysEnv("GSIP_TRIPLESTORE",GSIP_TRIPLESTORE));
+		
+		
+		try {
+			return TemplateManager.getInstance(ctx).applyTemplate(conf, params);
+		
+		} catch (TemplateException e) {
+			Logger.getAnonymousLogger().log(Level.SEVERE,"Error in template",e);
+			return conf;
+		}
+		
+		
+	}
+	
+	private String getSysEnv(String env,String defaultValue)
+	{
+		String v = System.getenv(env);
+		return v==null?defaultValue:v;
+	}
+	
+	private void init(ServletContext ctx,String confile) throws JAXBException, IOException
+	{
+		String confDoc = getConfigurationDocument(ctx,confile==null?CONF_FILE:confile);
 		JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
 		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-	    JAXBElement<ConfigurationType> unmarshalledObject = 
+	    @SuppressWarnings("unchecked")
+		JAXBElement<ConfigurationType> unmarshalledObject = 
 	            (JAXBElement<ConfigurationType>)unmarshaller.unmarshal(
-	                ctx.getResourceAsStream(confile==null?CONF_FILE:confile));
+	            		IOUtils.toInputStream(confDoc,Charset.forName("UTF-8")));
 	    conf = unmarshalledObject.getValue();
 	    
 	    // load the types
