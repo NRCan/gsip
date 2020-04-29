@@ -92,6 +92,7 @@ ${model.encode("JSON-LD")}
 							<#else>
 						<div class="col-sm-12 col-md-12">
 							</#if>
+							<small>(unclassified - non classifié)</small>
 							<h3>Representations:</h3>
 							
 							<#list model.getRepresentations() as r>
@@ -167,8 +168,9 @@ ${model.encode("JSON-LD")}
 				</div>
 			</div>
 		</div>
+		<a href="https://www.nrcan.gc.ca/terms-and-conditions/10847" target="_blank"><small>[Terms and conditions of use]</small></a>  <a href="https://www.rncan.gc.ca/avis/10848" target="_blank"><small>[Conditions régissant l'utilisation]</small></a>
+		
 	</div>
-
 	<footer class="mastfoot mt-auto">
 		<div class="inner">
 			<img class="img-fluid" alt="Government of Canada logo"
@@ -195,4 +197,4 @@ ${model.encode("JSON-LD")}
 </body>
 
 </html>
-<html></html>
+
