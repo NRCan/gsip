@@ -24,8 +24,6 @@ services:
 # WARNING, must remain "blaze" because of a hack i'm not even sure it actually fixes anything
     blaze:
         image: lyrasis/blazegraph:2.1.5
-        ports:
-            - "8080:8080"
         networks:
             - net_gsip
         volumes:
