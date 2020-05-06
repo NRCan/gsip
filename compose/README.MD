@@ -1,10 +1,22 @@
-# Uploading data 
+# Launch GSIP
+
+
+
 
 to start 
 
 ```console
 docker-compose up -d
 ```
+
+ When the system is launched for the first time, the database is empty. Filling the data can be done using a trigger on the gsip_uploader or by manually loading the data 
+ 
+ ## load data using POST
+
+'CAUTION: This curl command is tricky. If you specify just -x DELETE without the --get then it will ignore the ?s parameter and remove EVERYTHING in the default KB instance!'
+
+curl --get -X DELETE -H 'Accept: application/xml' 'http://localhost:8080/bigdata/sparql' --data-urlencode 's=<http://www.w3.org/People/Berners-Lee/card#i>'
+
  
 
 To load data in blazegraph, https://github.com/blazegraph/database/wiki/REST_API
@@ -23,6 +35,8 @@ Server: Jetty(9.4.12.v20180830)
 
 ```
 
+## loading with bulk load
+
 (milleage might vary)
 
 ## Sparql endpoint
@@ -40,4 +54,6 @@ using cURL (needs URL encoding)
 curl "http://localhost/sparql?query=describe%20<https://geoconnex.ca/id/hydrogeounits/Richelieu1>"
 curl "http://localhost/sparql?query=select%20%3Fa%20WHERE%20%7B%3Fa%20a%20%3Chttps%3A%2F%2Fwww.opengis.net%2Fdef%2Fappschema%2Fhy_features%2Fhyf%2FHY_Catchment%3E%3B%7D"
 ```
+
+
 

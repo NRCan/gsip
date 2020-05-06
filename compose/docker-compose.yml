@@ -7,6 +7,10 @@ services:
             - "443:443"
         networks:
             - net_gsip
+        depends_on:
+            - "blaze"
+            - "gsip"
+            - "uploader"
     gsip:
         image: dcplab/gsip:2.0.0
         environment:
@@ -15,11 +19,41 @@ services:
             - GSIP_TRIPLESTORE=http://blaze:8080/bigdata/namespace/kb/sparql
         networks:
             - net_gsip
+        depends_on:
+            - "blaze"
+# WARNING, must remain "blaze" because of a hack i'm not even sure it actually fixes anything
     blaze:
         image: lyrasis/blazegraph:2.1.5
         ports:
             - "8080:8080"
         networks:
             - net_gsip
+        volumes:
+            - "bulk:/usr/bulk"
+    uploader:
+        image : dcplab/uploader:1.0.0
+        networks:
+            - net_gsip
+        links:
+            - "blaze:blaze"
+        depends_on:
+            - "blaze"
+        environment :
+            - GSIP_TARGET_SHARED=/usr/bulk
+            - GSIP_ORIGIN_SHARED=/usr/bulk
+            - GSIP_BUCKET_ROOT=gin-ries-1
+            # set local folder if needed, will override S3
+            - GSIP_LOCAL_FOLDER=/temp/bulk
+            - GSIP_BLAZE_URL=http://blaze:8080/bigdata/namespace/kb
+            - GSIP_BLAZE_BULK=http://blaze:8080/bigdata/dataloader
+            # -GSIP_TRIPLE_FOLDER=infered
+            - GSIP_DEFAULT_GRAPH=https://geoconnex.ca
+            # if you don't want data to be removed from source (GSIP_BUCKET_ROOT or GSIP_LOCAL_FOLDER, set to false)
+            #- GSIP_CLEAN_SRC=false
+        volumes:
+            - "bulk:/usr/bulk"
+            - "c:\\temp\\bulk:/temp/bulk"
 networks:
     net_gsip:
+volumes:
+  bulk:
