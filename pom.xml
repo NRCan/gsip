@@ -30,6 +30,21 @@
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
+      
+      <plugin>
+  <groupId>org.codehaus.cargo</groupId>
+  <artifactId>cargo-maven2-plugin</artifactId>
+  <version>1.7.0</version>
+  <configuration>
+  <property name="cargo.servlet.port" value="8080"/>
+    <container>
+      <containerId>tomcat8x</containerId>
+      <zipUrlInstaller>
+          <url>https://repo1.maven.org/maven2/org/apache/tomcat/tomcat/8.5.9/tomcat-8.5.9.zip</url>
+      </zipUrlInstaller>
+    </container>
+  </configuration>
+</plugin>
      
          
          
