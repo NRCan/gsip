@@ -29,6 +29,29 @@ You can create a .war by running maven from the root of the project (where the .
 
 You might want to edit the context file in /META-INF/context.xml to set database location first (or edit the file after it is deployed in Tomcat and restart the application)
 
+To execute with local embedded database
+
+Windows 
+
+```
+SET GSIP_APP=http://localhost:8080/gsip
+SET GSIP_BASEURI=http://localhost:8080/gsip
+SET GSIP_TRIPLESTORE=webapp:repos/gsip
+
+mvn cargo:run
+```
+
+Linux
+
+```
+export GSIP_APP=http://localhost:8080/gsip
+export GSIP_BASEURI=http://localhost:8080/gsip
+export GSIP_TRIPLESTORE=webapp:repos/gsip
+
+mvn cargo:run
+```
+
+            
 
 ## Demo application
 
