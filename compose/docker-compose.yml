@@ -12,7 +12,7 @@ services:
             - "gsip"
             - "uploader"
     gsip:
-        image: dcplab/gsip:2.0.0
+        image: dcplab/gsip:2.0.1
         environment:
             - GSIP_BASEURI=http://localhost
             - GSIP_APP=http://localhost/gsip
