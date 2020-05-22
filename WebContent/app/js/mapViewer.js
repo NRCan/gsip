@@ -187,7 +187,8 @@ var mapViewer = (function(){
 //LAYER CREATION - Playground Layer (Layer used for loading external LD GeoJSON)
 
 		var vectorPlayground = new ol.layer.Vector({
-			source:new ol.source.Vector(),
+			//source:new ol.source.Vector(),
+			source:new ol.source.Vector({format: new ol.format.GeoJSON({dataProjection: 'EPSG:4326'})}),
 			style: styleFunction
 		});
 		
@@ -538,20 +539,63 @@ var mapViewer = (function(){
 
 	function playgroundUpdate(geojsonUrl){
 		
+		
 		var addNewSource = new ol.source.Vector({
 			url: geojsonUrl,
-			format: new ol.format.GeoJSON()
+			format: new ol.format.GeoJSON({dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'})
 		});
-		
+
+
+
 		map.getLayers().forEach(function(el) {
 			if (el.get('name') === 'vectorPlayground') {
+
+				//console.log(el.getSource());
 				
-				//*if(el.source !== "undefined"){el.source.clear(true)};
+				/*
+				//Old way of changing highlighted features by changing vectorPlayground layer source
 				el.setSource(addNewSource);
+				//console.log('Updated vectorPlayground layer object:');
 				//console.log(el);
+				//console.log(map.getView().getProjection().getCode());
+				//console.log(el.getSource().getProjection().getCode());
+				//console.log(el.getSource());
+				*/
+
+				
+				// Update layer geometries by adding selected geometries to it (keeps the previous geometries as selected)...
+				console.log('Updating vectorPlayground layer...');
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', geojsonUrl);
+				xhr.onload = function() {
+					if (xhr.status == 200) {
+
+						el.getSource().addFeatures(
+							addNewSource.getFormat().readFeatures(xhr.responseText));	
+
+						/*console.log('Show Geojson:')
+						console.log(xhr.responseText);
+						console.log('Updated Map object:');
+						console.log(map);
+						console.log('Updated VectorPlayground layer object:');
+						console.log(el);
+						console.log('Various VectorPlayground layer info')
+						console.log(el.getStyle());
+						console.log(el.getVisible());
+						console.log(el.getZIndex());
+						console.log(el.getOpacity());
+						console.log(map.getView().getProjection().getCode());
+						console.log('End of various layer info')*/
+					} else {
+						console.log('Error accessing remote data');
+					}
+				}
+				xhr.send();
+				
+
+
 			}
 		});
-		
 	};
 	
 
