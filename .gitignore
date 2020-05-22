@@ -19,4 +19,4 @@ target/*
 *.war
 dploy/
 bfg-1.13.0.jar
-
+*.~lock*
