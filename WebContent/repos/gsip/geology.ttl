@@ -23,8 +23,8 @@
 # add those URI (unit) in the landing page for the
 # metadata list units, units have landing page, landing page list other datasets (including 1G)
 
-#Metadata <http://gin.gw-info.net/service/api_ngwds:gin2/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624.html>
-# <http://gin.gw-info.net/SpatialConversionEngine/gw_data/get/13>
+#Metadata <https://gin.gw-info.net/service/api_ngwds:gin2/en/metadata/nap/b99aa12b-e974-90ce-7452-53c146be5624.html>
+# <https://gin.gw-info.net/SpatialConversionEngine/gw_data/get/13>
 # f syntax functions !
 
 
