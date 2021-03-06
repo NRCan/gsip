@@ -400,11 +400,18 @@ var mapViewer = (function(){
           var info = [];
 		  //console.log(features);
 		  
-		  if (features.length > 6){
+		  if (features.length > 25){
 			info.push( 'Found ' + features.length + ' features. <br/> Zoom in to query')
 		  }else{
 			for (var i = 0, ii = features.length; i < ii; ++i) {
-				info.push(' <a title="Get Resource" href="" class="geturiwebpage" featureuri="' + features[i].get('uri') + '">' + features[i].get('name') +'</a> ' + '<a href="" class="uriSelected" featureuri="' + features[i].get('uri') + '"><img src="img/linkedData.png" title="Linked data" alt="Linked data" width="15px"/></a>');
+				if (typeof features[i].get('uri') !== 'undefined')
+					{
+						info.push(' <a title="Get Resource" href="" class="geturiwebpage" featureuri="' + features[i].get('uri') + '">' + features[i].get('name') +'</a> ' + '<a href="" class="uriSelected" featureuri="' + features[i].get('uri') + '"><img src="img/linkedData.png" title="Linked data" alt="Linked data" width="15px"/></a>');
+					}
+				else
+					{
+					info.push(features[i].get('name'));
+					}
 			}
 		  }
 		  
@@ -433,8 +440,8 @@ var mapViewer = (function(){
 	 
 	$(document).on("click", ".geturiwebpage" , function(event){ 
 			event.preventDefault();
-			debug('on_click .getwebpage .this:');
-			debug(this);
+			//debug('on_click .getwebpage .this:');
+			//debug(this);
 			//showModalwithFeature($(this).attr('featureuri'));
 			//EVT.emit("uri-selected", $(this).attr('featureuri'));
 			var featureuri = $(this).attr('featureuri');
@@ -460,7 +467,11 @@ var mapViewer = (function(){
 						urlOfHtmlFormat = rep[0]["@id"];
 					};
 					window.open(urlOfHtmlFormat,'_blank');
-				}
+				},
+			error: function(XMLHttpRequest, textStatus, errorThrown)
+			{
+				window.open(featureuri,'_blank');
+			}
 			});
 	});
 

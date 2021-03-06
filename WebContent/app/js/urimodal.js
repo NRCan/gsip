@@ -214,7 +214,7 @@ function hash(s) {
 		
 			footer_html = footer_html +'<li id="' + current_id + '"><strong>' + z['proplabel'] + '</strong>: ' + JSONLDHELPER.getLabel(z,'en') + ' <a href="" class="getLinkedData" featureuri="' + z['@id'] + '"><img src="img/linkedData.png" title="Linked data" alt="Linked data" width="15px"/></a>' + '<a target="_blank" href="' + z['@id'] +'">' + '<img title="View linked data in web page" alt="View linked data in web page" src="img/htmllogo.png" width="25px"/></a>' + '</li>';
 			
-			console.warn(current_id);
+			//console.warn(current_id);
 
 			/*$(document).on("click", "#" + current_id +  " a[getLinkedData]" , function(event){ 
 				event.preventDefault();
@@ -337,8 +337,8 @@ function hash(s) {
 		
 		var collection = props_collection;
 		collection.push(o);
-		console.log('All resources:');
-		console.log(collection);
+		//console.log('All resources:');
+		//console.log(collection);
 		checkGeojson(collection);
 		/**/
 		//checkGeojson(o);
