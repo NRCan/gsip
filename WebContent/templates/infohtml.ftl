@@ -145,7 +145,7 @@ ${model.encode("JSON-LD")}
 							</#if>
 							<!--<small>(unclassified - non classifié)</small>-->
 							<h3>Available Representations:</h3>
-							<!--<i class="material-icons">arrow_left</i><i class="material-icons">arrow_drop_down</i>-->
+							<!--<i class="material-icons">arrow_right</i><i class="material-icons">arrow_drop_down</i>-->
 
 							<#assign collapsableId = 0>
 							<#assign collapsableShow = ''>
@@ -159,7 +159,7 @@ ${model.encode("JSON-LD")}
 								<#assign collapsableShow_arrow = 'arrow_drop_down'>
 							<#else>
 								<#assign collapsableShow = ''>
-								<#assign collapsableShow_arrow = 'arrow_left'>
+								<#assign collapsableShow_arrow = 'arrow_right'>
 							</#if>
 
 
@@ -311,12 +311,12 @@ ${model.encode("JSON-LD")}
 	<script type="text/javascript">
 		$('.collapse').on('hide.bs.collapse', function () {
 			var getallcardheadericons = '.card-header ' + ' h2' + ' button' + ' .material-icons' ;
-			$(getallcardheadericons).text('arrow_left');
+			$(getallcardheadericons).text('arrow_right');
 
 		});
 		$('.collapse').on('show.bs.collapse', function () {
 			var getallcardheadericons = '.card-header ' + ' h2' + ' button' + ' .material-icons' ;
-			$(getallcardheadericons).text('arrow_left');
+			$(getallcardheadericons).text('arrow_right');
 		});
 
 		$('.collapse').on('shown.bs.collapse', function () {
