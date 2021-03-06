@@ -3,8 +3,8 @@
 @prefix schema: <http://schema.org/>.
 <${resource}> 
 schema:subjectOf <${baseUri}/data/gwml/gwml1/gsip/gin/${p2}>;
-<http://schema.org/name> "${p2}";
-<http://schema.org/image> <http://ngwd-bdnes.cits.nrcan.gc.ca/Reference/uri-cgi/feature/gsc/waterwell/${p2?replace("qc.","ca.qc.gov.wells.")}?format=png>.
+<http://schema.org/name> "${p2}"; 
+<http://schema.org/image> <https://gin.gw-info.net/Reference/uri-cgi/feature/gsc/waterwell/${p2?replace("qc.","ca.qc.gov.wells.")}?format=png>.
 <${baseUri}/data/gwml/gwml1/gsip/gin/${p2}>
    rdfs:label "Information depuis RIES"@fr,"Information from GIN"@en;
    schema:provider <http://gin.gw-info.net> ;
