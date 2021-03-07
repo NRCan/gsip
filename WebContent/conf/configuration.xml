@@ -49,8 +49,8 @@
 		GSIP_BASEURI, GISP_APP, will default to http://localhost and http://localhost/gsip -->
 
 <!-- 
-		<p:parameter name="baseUri">http://localhost</p:parameter>
-		<p:parameter name="gsip">http://localhost/gsip</p:parameter> 
+		<p:parameter name="baseUri">http://localhost:8080</p:parameter>
+		<p:parameter name="gsip">http://localhost:8080/gsip</p:parameter> 
 -->
 		<p:parameter name="baseUri">${GSIP_BASEURI}</p:parameter> 
  		<p:parameter name="gsip">${GSIP_APP}</p:parameter> 
