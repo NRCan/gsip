@@ -12,6 +12,7 @@
 @prefix ex: <http://gin.gw-info.net/example#>.
 @prefix geosparql: <http://www.opengeospatial.org/standards/geosparql/>.
 @prefix gsip: <https://geoconnex.ca/def/> .
+@prefix hy:   <https://www.opengis.net/def/hy_features/ontology/hyf/> .
 
 # Ontology used in GSIP
 
