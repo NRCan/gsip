@@ -1,4 +1,4 @@
-@prefix hy: <https://www.opengis.net/def/appschema/hy_features/hyf/> .
+@prefix hy: <https://www.opengis.net/def/hy_features/ontology/hyf/>.
 @prefix geosparql: <http://www.opengeospatial.org/standards/geosparql/>.
 @prefix gsip: <https://geoconnex.ca/def/> .
 

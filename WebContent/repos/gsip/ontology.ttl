@@ -44,6 +44,9 @@ gw:GW_AquiferSystem rdf:type owl:Class;
 
 hy:HY_Waterbody rdf:type owl:Class;
 	rdfs:label "Water Body"@en,"Corps d'eau"@fr.
+
+hy:HY_River rdf:type owl:Class; rdfs:subclassOf hy:HY_WaterBody; 
+rdfs:label "Riviere"@fr,"River"@en.
 	
 # sparql
 
