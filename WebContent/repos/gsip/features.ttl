@@ -10,11 +10,12 @@
 @prefix fn: <http://www.w3.org/2005/xpath-functions#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dct: <http://purl.org/dc/terms/>.
-@prefix hy: <https://www.opengis.net/def/hy_features/ontology/hyf/>.
+@prefix hy: <https://www.opengis.net/def/hy_features/ontology/hyf/>. 
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix ex: <http://gin.gw-info.net/example#>.
 @prefix gw: <http://geosciences.ca/def/groundwater#>.
 @prefix schema: <http://schema.org/>.
+@prefix gsip: <https://geoconnex.ca/def/> .
 
 <https://geoconnex.ca/id/waterbody/9483b203be4111d892e2080020a0f4c9> a hy:HY_WaterBody;
 rdfs:label "Plan d'eau: Ruisseau a l'Ours"@fr, "Water body: Ruisseau a l'Ours"@en;
@@ -304,45 +305,59 @@ schema:subjectOf <https://en.wikipedia.org/wiki/Richelieu_River>,<https://fr.wik
 
 # connection to watershed
 
-<https://geoconnex.ca/id/catchment/02OJ*DH> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/catchment/02OJ*DG> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/catchment/02OJ*DF> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/catchment/02OJ*DE> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/catchment/02OJ*DD> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/catchment/02OJ*DC> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/catchment/02OJ*DB> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/catchment/02OJ*DA> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/catchment/02OJ*CF> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/catchment/02OJ*BC> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/catchment/02OJ*AB> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/catchment/02OJ*AA> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*DH> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*DG> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*DF> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*DE> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*DD> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*DC> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*DB> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*DA> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*CF> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*BC> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*AB> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/catchment/02OJ*AA> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
 
-<https://geoconnex.ca/id/catchment/02OJ*BC> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
-<https://geoconnex.ca/id/catchment/02OJ*DB> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
-<https://geoconnex.ca/id/catchment/02OJ*DE> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
-<https://geoconnex.ca/id/catchment/02OJ*DC> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
-<https://geoconnex.ca/id/catchment/02OJ*CE> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
-<https://geoconnex.ca/id/catchment/02OJ*AA> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
-<https://geoconnex.ca/id/catchment/02OJ*AB> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
-<https://geoconnex.ca/id/catchment/02OJ*DA> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
+<https://geoconnex.ca/id/catchment/02OJ*BC> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
+<https://geoconnex.ca/id/catchment/02OJ*DB> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
+<https://geoconnex.ca/id/catchment/02OJ*DE> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
+<https://geoconnex.ca/id/catchment/02OJ*DC> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
+<https://geoconnex.ca/id/catchment/02OJ*CE> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
+<https://geoconnex.ca/id/catchment/02OJ*AA> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
+<https://geoconnex.ca/id/catchment/02OJ*AB> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
+<https://geoconnex.ca/id/catchment/02OJ*DA> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
 
-<https://geoconnex.ca/id/catchment/02OJ*DB> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*BB> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*CF> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*AA> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*AB> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*CD> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*CB> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*CC> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*CE> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*DC> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*CA> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*DA> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*BA> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/catchment/02OJ*BC> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*DB> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*BB> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*CF> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*AA> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*AB> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*CD> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*CB> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*CC> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*CE> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*DC> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*CA> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*DA> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*BA> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
+<https://geoconnex.ca/id/catchment/02OJ*BC> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
 
 # river and aquifer system intersect hydrogeo units 1 and 2
 
-<https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9> hy:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>,<https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+<https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9> gsip:hydraulically-connected-to <https://geoconnex.ca/id/hydrogeounits/Richelieu1>,<https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
+
+
+
+<https://geoconnex.ca/id/catchment/02OJ*DH> hy:outflow <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>.
+<https://geoconnex.ca/id/catchment/02OJ*DF> hy:outflow <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>.
+<https://geoconnex.ca/id/catchment/02OJ*DE> hy:outflow <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>.
+<https://geoconnex.ca/id/catchment/02OJ*DD> hy:outflow <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>.
+<https://geoconnex.ca/id/catchment/02OJ*DB> hy:outflow <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>.
+<https://geoconnex.ca/id/catchment/02OJ*DA> hy:outflow <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>.
+<https://geoconnex.ca/id/catchment/02OJ*BC> hy:outflow <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>.
+<https://geoconnex.ca/id/catchment/02OJ*DF> hy:outflow <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>.
+<https://geoconnex.ca/id/catchment/02OJ*CE> hy:outflow <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>.
+<https://geoconnex.ca/id/catchment/02OJ*CD> hy:outflow <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>.
+<https://geoconnex.ca/id/catchment/02OJ*CA> hy:outflow <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9>.
 
 

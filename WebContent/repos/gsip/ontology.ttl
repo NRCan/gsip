@@ -7,11 +7,12 @@
 @prefix fn: <http://www.w3.org/2005/xpath-functions#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dct: <http://purl.org/dc/terms/>.
-@prefix hy: <https://www.opengis.net/def/appschema/hy_features/hyf/>.
+@prefix hy: <https://www.opengis.net/def/hy_features/ontology/hyf/>.
 @prefix gw: <http://geosciences.ca/def/groundwater#>.
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix ex: <http://gin.gw-info.net/example#>.
 @prefix geosparql: <http://www.opengeospatial.org/standards/geosparql/>.
+@prefix gsip: <https://geoconnex.ca/def/> .
 
 # Ontology used in GSIP
 
@@ -80,32 +81,8 @@ hy:containingCatchment rdf:type owl:ObjectProperty,owl:TransitiveProperty.
 hy:containedcatchment rdf:type owl:ObjectProperty,owl:TransitiveProperty;
 	owl:inverseOf hy:containingCatchment.
 
+hy:outflow rdf:type owl:ObjectProperty; owl:inverseOf hy:inflow.
 
-# gsip properties
-
-hy:located-on rdf:type owl:ObjectProperty.
-
-hy:location-for rdf:type owl:ObjectProperty;
-  owl:inverseOf hy:located-on.
-
-hy:near rdf:type owl:ObjectProperty ,
-	owl:SymmetricProperty.
-	
-hy:sameAs rdf:type owl:ObjectProperty ,
-	owl:SymmetricProperty.
-
-hy:close-to rdf:type owl:ObjectProperty ,
-	owl:SymmetricProperty.
-
-hy:measures rdf:type owl:ObjectProperty;
-	owl:inverseOf hy:measuredBy.
-hy:measuredBy rdf:type owl:ObjectProperty.
-
-hy:hydraulically-connected-to rdf:type owl:ObjectProperty ,
-	owl:SymmetricProperty.
-
-
-	
 hy:downstreamOf rdf:type owl:ObjectPropert,owl:TransitiveProperty;
 	owl:inverseOf hy:upstreamOf.
 hy:upstreamOf rdf:type owl:ObjectProperty,owl:TransitiveProperty.
@@ -113,6 +90,32 @@ hy:upstreamOf rdf:type owl:ObjectProperty,owl:TransitiveProperty.
 hy:upstreamWaterbody rdf:type owl:ObjectProperty,owl:TransitiveProperty;
 	owl:inverseOf hy:downstreamWaterbody.
 hy:downstreamWaterbody rdf:type owl:ObjectProperty,owl:TransitiveProperty.
+
+# gsip properties
+
+gsip:located-on rdf:type owl:ObjectProperty.
+
+gsip:location-for rdf:type owl:ObjectProperty;
+  owl:inverseOf hy:located-on.
+
+gsip:near rdf:type owl:ObjectProperty ,
+	owl:SymmetricProperty.
+	
+gsip:sameAs rdf:type owl:ObjectProperty ,
+	owl:SymmetricProperty.
+
+gsip:close-to rdf:type owl:ObjectProperty ,
+	owl:SymmetricProperty.
+
+gsip:measures rdf:type owl:ObjectProperty;
+	owl:inverseOf gsip:measuredBy.
+gsip:measuredBy rdf:type owl:ObjectProperty.
+
+gsip:hydraulically-connected-to rdf:type owl:ObjectProperty ,
+	owl:SymmetricProperty.
+
+
+
 
 # GWML 
 
