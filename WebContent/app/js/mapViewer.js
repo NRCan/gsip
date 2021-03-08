@@ -550,13 +550,10 @@ var mapViewer = (function(){
 
 	function playgroundUpdate(geojsonUrl){
 		
-		
 		var addNewSource = new ol.source.Vector({
 			url: geojsonUrl,
 			format: new ol.format.GeoJSON({dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'})
 		});
-
-
 
 		map.getLayers().forEach(function(el) {
 			if (el.get('name') === 'vectorPlayground') {

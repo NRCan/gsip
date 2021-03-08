@@ -359,6 +359,7 @@ function hash(s) {
 			addGeom2Map($(this).attr('geojson'))
 		});*/
 
+		$(document).off("click",".geojsonLink");
 		$(document).on("click",".geojsonLink",function(event){
 			event.preventDefault();
 			//console.log($(this).attr('geojson'));
