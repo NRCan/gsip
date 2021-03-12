@@ -264,7 +264,11 @@ gw:gwAquiferSystemPart
   <https://geoconnex.ca/id/hydrogeounits/Richelieu4>,
   <https://geoconnex.ca/id/hydrogeounits/Richelieu5>.
 
-
+  <https://geoconnex.ca/id/hydrogeounits/Richelieu1> schema:image <https://gin.gw-info.net/service/ngwds/en/wms/ngwd-wms/inset?REQUEST=GetMap&SERVICE=WMS&VERSION=1.1.1&LAYERS=area&STYLES=&FORMAT=image/png&BGCOLOR=0xFFFFFF&TRANSPARENT=TRUE&SRS=EPSG:4326&BBOX=-73.6883387829505,44.9741147159004,-72.8050177950318,45.6366054568393&WIDTH=400&HEIGHT=300&TABLE=gw_data.hydrogeological_units&FIELD=id&ID=1>.
+  <https://geoconnex.ca/id/hydrogeounits/Richelieu2> schema:image <https://gin.gw-info.net/service/ngwds/en/wms/ngwd-wms/inset?REQUEST=GetMap&SERVICE=WMS&VERSION=1.1.1&LAYERS=area&STYLES=&FORMAT=image/png&BGCOLOR=0xFFFFFF&TRANSPARENT=TRUE&SRS=EPSG:4326&BBOX=-73.5986876377091,45.3337367828915,-72.5095434474234,46.1505949256057&WIDTH=400&HEIGHT=300&TABLE=gw_data.hydrogeological_units&FIELD=id&ID=2>.
+  <https://geoconnex.ca/id/hydrogeounits/Richelieu3> schema:image <https://gin.gw-info.net/service/ngwds/en/wms/ngwd-wms/inset?REQUEST=GetMap&SERVICE=WMS&VERSION=1.1.1&LAYERS=area&STYLES=&FORMAT=image/png&BGCOLOR=0xFFFFFF&TRANSPARENT=TRUE&SRS=EPSG:4326&BBOX=-73.3657957298783,44.9695294754976,-72.0491532440985,45.9570113398324&WIDTH=400&HEIGHT=300&TABLE=gw_data.hydrogeological_units&FIELD=id&ID=3>.
+  <https://geoconnex.ca/id/hydrogeounits/Richelieu4> schema:image <https://gin.gw-info.net/service/ngwds/en/wms/ngwd-wms/inset?REQUEST=GetMap&SERVICE=WMS&VERSION=1.1.1&LAYERS=area&STYLES=&FORMAT=image/png&BGCOLOR=0xFFFFFF&TRANSPARENT=TRUE&SRS=EPSG:4326&BBOX=-73.0027158253816,44.9753153202183,-72.1167089460643,45.6398204797062&WIDTH=400&HEIGHT=300&TABLE=gw_data.hydrogeological_units&FIELD=id&ID=4>.
+  <https://geoconnex.ca/id/hydrogeounits/Richelieu5> schema:image <https://gin.gw-info.net/service/ngwds/en/wms/ngwd-wms/inset?REQUEST=GetMap&SERVICE=WMS&VERSION=1.1.1&LAYERS=area&STYLES=&FORMAT=image/png&BGCOLOR=0xFFFFFF&TRANSPARENT=TRUE&SRS=EPSG:4326&BBOX=-73.3885747084599,45.1204099338932,-72.5268975189717,45.7666678260093&WIDTH=400&HEIGHT=300&TABLE=gw_data.hydrogeological_units&FIELD=id&ID=5>.
 
 <https://geoconnex.ca/id/aquiferSystems/Richelieu>
         a                 gw:GW_AquiferSystem;
