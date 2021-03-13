@@ -274,28 +274,34 @@ gw:gwAquiferSystemPart
         a                 gw:GW_AquiferSystem;
         schema:image <https://www.researchgate.net/profile/Rene_Lefebvre/publication/235342204/figure/fig4/AS:668350657093650@1536358622460/Hydrogeological-contexts-of-Monteregie-Est.jpg>;
         rdfs:label        "Aquifer system : Richelieu"@en , "Systeme aquif&egrave;re : Richelieu"@fr ;
-        schema:subjectOf  [ rdfs:label       "Hydrogeological contexts of Monteregie Est"@en , "Contexte hydrogeologique de Monteregie Est"@fr ;
-                            dct:conformsTo   <https://jpeg.org/> ;
-                            dct:format       "image/jpeg" ;
-                            schema:provider  <https://www.researchgate.net> ;
-                            schema:url       "https://www.researchgate.net/profile/Rene_Lefebvre/publication/235342204/figure/fig4/AS:668350657093650@1536358622460/Hydrogeological-contexts-of-Monteregie-Est.jpg"
-                          ] ;
-        schema:subjectOf  [ rdfs:label       "Hydrogeological contexts of Monteregie Est"@en , "Contexte hydrogeologique de Monteregie Est"@fr ;
-                            dct:conformsTo   <https://www.w3.org/TR/html52/> ;
-                            dct:format       "text/html" ;
-                            schema:provider  <https://www.researchgate.net> ;
-                            schema:url       "https://www.researchgate.net/figure/Hydrogeological-contexts-of-Monteregie-Est_fig4_235342204"
-                          ] ;
+       # schema:subjectOf  [ rdfs:label       "Hydrogeological contexts of Monteregie Est"@en , "Contexte hydrogeologique de Monteregie Est"@fr ;
+       #                     dct:conformsTo   <https://jpeg.org/> ;
+       #                     dct:format       "image/jpeg" ;
+       #                     schema:provider  <https://www.researchgate.net> ;
+       #                     schema:url       "https://www.researchgate.net/profile/Rene_Lefebvre/publication/235342204/figure/fig4/AS:668350657093650@1536358622460/Hydrogeological-contexts-of-Monteregie-Est.jpg"
+       #                   ] ;
+       # schema:subjectOf  [ rdfs:label       "Hydrogeological contexts of Monteregie Est"@en , "Contexte hydrogeologique de Monteregie Est"@fr ;
+       #                     dct:conformsTo   <https://www.w3.org/TR/html52/> ;
+       #                     dct:format       "text/html" ;
+       #                     schema:provider  <https://www.researchgate.net> ;
+       #                     schema:url       "https://www.researchgate.net/figure/Hydrogeological-contexts-of-Monteregie-Est_fig4_235342204"
+       #                   ] ;
         schema:subjectOf  [ rdfs:label       "Richelieu - Yamaska aquifer system"@en , "Système aquifère Richelieu - Yamaska"@fr ;
                             dct:conformsTo   <http://gin.gw-info.net> ;
                             dct:format       "text/html" ;
                             schema:provider  <http://gin.gw-info.net> ;
                             schema:url       "https://gin.gw-info.net/service/api_ngwds:gin2/en/rdf/describe.html?q=urn%3Ageoscience.data.gc.ca%3Aid%3AaquiferSystem%3ARichelieuYamaska"
                           ] ;
-        <http://www.opengeospatial.org/standards/geosparql/sfIntersects>
+        schema:subjectOf <https://geoconnex.ca/gsip/data/aquiferSystem/gwml/gwml/Richelieu>;
+                <http://www.opengeospatial.org/standards/geosparql/sfIntersects>
                 <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9> ;
         <http://www.w3.org/2002/07/owl#sameAs>
                 <https://geoconnex.ca/id/aquiferSystems/Richelieu> .
+        <https://geoconnex.ca/gsip/data/aquiferSystem/gwml/gwml/Richelieu> rdfs:label "Hydrogeological contexts of Monteregie Est"@en , "Contexte hydrogeologique de Monteregie Est"@fr ;
+        	 dct:conformsTo   <https://www.w3.org/TR/html52/> ;
+             dct:format       "image/jpeg","text/html".
+             
+
 
 
 

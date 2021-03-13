@@ -10,4 +10,12 @@
 		<p:mime-type>application/vnd.geo+json</p:mime-type>
 		<p:source>${gsip}/resources/aq/${p5?replace("Richelieu","aq")}</p:source>
 	</p:match>
+	<p:match pattern="aquiferSystem/gwml/gwml/Richelieu">
+			<p:mime-type>text/html</p:mime-type>
+		<p:source>https://www.researchgate.net/figure/Hydrogeological-contexts-of-Monteregie-Est_fig4_235342204</p:source>
+	</p:match>
+		<p:match pattern="aquiferSystem/gwml/gwml/Richelieu" >
+			<p:mime-type>image/jpeg</p:mime-type>
+		<p:source>https://www.researchgate.net/profile/Rene_Lefebvre/publication/235342204/figure/fig4/AS:668350657093650@1536358622460/Hydrogeological-contexts-of-Monteregie-Est.jpg</p:source>
+	</p:match>
 </p:data>

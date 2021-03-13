@@ -196,6 +196,7 @@ ${model.encode("JSON-LD")}
 												<#case "application/x-turtle"><img class="img-fluid" title="Display in TTL (Turtle) format" alt="Display in TTL (Turtle) format" src="${host}/app/img/ttlicon.png" style="max-width: 35px; padding: 10px 5px 0 5px"/><#break>
 												<#case "text/html"><img class="img-fluid" title="Display web page" alt="Display web page" src="${host}/app/img/htmlicon.png" style="max-width: 35px; padding: 10px 5px 0 5px"/><#break>
 												<#case "text/plain"><img class="img-fluid" title="Display in plain text format" alt="Display in plain text format" src="${host}/app/img/txticon.png" style="max-width: 35px; padding: 10px 5px 0 5px"/><#break>
+												<#case "image/jpeg"><img class="img-fluid" title="Display in jpeg" alt="Display in jpeg" src="${host}/app/img/jpg-outline.png" style="max-width: 35px;padding: 10px 5px 0 5px"/><#break>
 												<#case "application/vnd.geo+json"><img class="img-fluid" title="Display in GeoJSON format" alt="Display in GeoJSON format" src="${host}/app/img/geojsonicon.png" style="max-width: 35px; padding: 10px 5px 0 5px"/><#break>
 												<#default><img class="img-fluid" title="Display in ${url.getLabel()} format" alt="Display in ${url.getLabel()} format" src="${host}/app/img/othericon.png" style="max-width: 35px; padding: 10px 5px 0 5px"/></#switch></a></#assign>
 									<#assign links = links + [link]>
