@@ -292,12 +292,12 @@ gw:gwAquiferSystemPart
                             schema:provider  <http://gin.gw-info.net> ;
                             schema:url       "https://gin.gw-info.net/service/api_ngwds:gin2/en/rdf/describe.html?q=urn%3Ageoscience.data.gc.ca%3Aid%3AaquiferSystem%3ARichelieuYamaska"
                           ] ;
-        schema:subjectOf <https://geoconnex.ca/gsip/data/aquiferSystem/gwml/gwml/Richelieu>;
+        schema:subjectOf <https://geoconnex.ca/data/aquiferSystem/gwml/gwml/Richelieu>;
                 <http://www.opengeospatial.org/standards/geosparql/sfIntersects>
                 <https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9> ;
         <http://www.w3.org/2002/07/owl#sameAs>
                 <https://geoconnex.ca/id/aquiferSystems/Richelieu> .
-        <https://geoconnex.ca/gsip/data/aquiferSystem/gwml/gwml/Richelieu> rdfs:label "Hydrogeological contexts of Monteregie Est"@en , "Contexte hydrogeologique de Monteregie Est"@fr ;
+        <https://geoconnex.ca/data/aquiferSystem/gwml/gwml/Richelieu> rdfs:label "Hydrogeological contexts of Monteregie Est"@en , "Contexte hydrogeologique de Monteregie Est"@fr ;
         	 dct:conformsTo   <https://www.w3.org/TR/html52/> ;
              dct:format       "image/jpeg","text/html".
              
