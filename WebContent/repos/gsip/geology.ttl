@@ -46,18 +46,19 @@ schema:provider <https://opengeospatial.github.io/SELFIE/>;
 dct:conformsTo <https://www.opengis.net/def/gsml4> 
 .
 
+# no weblex link anymore, and not spatial representation either.  I keep it here just as a placeholder
 <https://geoconnex.ca/id/geologicUnits/001000/GSCC00053001728> a gsmlb:GeologicUnit;
 rdfs:label "Bourret Formation"@en,"Formation de Bourret"@fr;
 schema:name "Bourret Formation";
-gsmlb:rank rank:formation;
-schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/001000/GSCC00053001728>.
-<https://geoconnex.ca/data/weblex/gsc/weblex/001000/GSCC00053001728> dct:format "text/html","text/xml","application/json";
-rdfs:label "Weblex"@fr,"Weblex"@en;
-schema:provider <https://opengeospatial.github.io/SELFIE/>;
-dct:conformsTo <https://www.opengis.net/def/gsml4>.
+gsmlb:rank rank:formation. 
+#schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/001000/GSCC00053001728>.
+#<https://geoconnex.ca/data/weblex/gsc/weblex/001000/GSCC00053001728> dct:format "text/html","text/xml","application/json";
+#rdfs:label "Weblex"@fr,"Weblex"@en;
+#schema:provider <https://opengeospatial.github.io/SELFIE/>;
+#dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
 <https://geoconnex.ca/id/geologicUnits/001000/GSCC00053001039> a gsmlb:GeologicUnit;
-rdfs:label "B&acute;cancour Formation"@en,"Formation de B&eacute;cancour"@fr;
+rdfs:label "Becancour Formation"@en,"Formation de B&eacute;cancour"@fr;
 gsmlb:rank rank:formation;
 schema:name "B&acute;cancour Formation";
 schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/001000/GSCC00053001039>.
@@ -118,6 +119,7 @@ schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/005000/GSCC0005300
 rdfs:label "Weblex"@fr,"Weblex"@en;
 schema:provider <https://opengeospatial.github.io/SELFIE/>;
 dct:conformsTo <https://www.opengis.net/def/gsml4>.
+
 
 <https://geoconnex.ca/id/geologicUnits/016000/GSCC00053016953> a gsmlb:GeologicUnit;
 rdfs:label "Cheshire Member"@en,"Membre de Cheshire"@fr;
@@ -303,12 +305,15 @@ rdfs:label "Weblex"@fr,"Weblex"@en;
 schema:provider <https://opengeospatial.github.io/SELFIE/>;
 dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
-<https://geoconnex.ca/id/geologicUnits/003000/GSCC00053015117> a gsmlb:GeologicUnit;
+# changed to 015000/GSCC00053015117.html
+# old: <https://geoconnex.ca/id/geologicUnits/003000/GSCC00053015117>
+# new  <https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015117>
+<https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015117> a gsmlb:GeologicUnit;
 rdfs:label "Theresa Formation"@en,"Formation de Theresa"@fr;
 gsmlb:rank rank:formation;
 schema:name "Theresa Formation";
-schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/003000/GSCC00053015117>.
-<https://geoconnex.ca/data/weblex/gsc/weblex/003000/GSCC00053015117> dct:format "text/html","text/xml","application/json";
+schema:subjectOf <https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015117>.
+<https://geoconnex.ca/data/weblex/gsc/weblex/015000/GSCC00053015117> dct:format "text/html","text/xml","application/json";
 rdfs:label "Weblex"@fr,"Weblex"@en;
 schema:provider <https://opengeospatial.github.io/SELFIE/>;
 dct:conformsTo <https://www.opengis.net/def/gsml4>.
@@ -328,6 +333,7 @@ dct:conformsTo <https://www.opengis.net/def/gsml4>.
 # Neuville https://geoconnex.ca/data/weblex/gsc/weblex/010000/GSCC00053010658.html
 # Grondines M, part of Neuville https://geoconnex.ca/data/weblex/gsc/weblex/006000/GSCC00053006003.html
 
+
 <https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015084> a gsmlb:GeologicUnit;
 rdfs:label "T&eacute;treauville Formation (Region of Montreal)"@en,"Formation de T&eacute;treauville (Region de Montreal)"@fr;
 gsmlb:rank rank:formation;
@@ -342,6 +348,7 @@ rdfs:label "Weblex"@fr,"Weblex"@en;
 schema:provider <https://opengeospatial.github.io/SELFIE/>;
 dct:conformsTo <https://www.opengis.net/def/gsml4>.
 
+
 <https://geoconnex.ca/id/geologicUnits/010000/GSCC00053010658> a gsmlb:GeologicUnit;
 rdfs:label "Neuville Formation"@en,"Formation de Neuville"@fr;
 schema:name "Neuville Formation";
@@ -354,6 +361,8 @@ gsmlb:hierarchyLink [ a gsmlb:GeologicUnitHierachy;
 rdfs:label "Weblex"@fr,"Weblex"@en;
 schema:provider <https://opengeospatial.github.io/SELFIE/>;
 dct:conformsTo <https://www.opengis.net/def/gsml4>.
+
+
 
 <https://geoconnex.ca/id/geologicUnits/006000/GSCC00053006003> a gsmlb:GeologicUnit;
 rdfs:label "Grondines Member"@en,"Membre de Grondines"@fr;

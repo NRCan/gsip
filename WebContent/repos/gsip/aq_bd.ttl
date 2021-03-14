@@ -7,7 +7,7 @@
 <https://geoconnex.ca/id/hydrogeounits/Richelieu2> geosparql:sfIntersects	 <https://geoconnex.ca/id/geologicUnits/006000/GSCC00053006880>.
 <https://geoconnex.ca/id/hydrogeounits/Richelieu1> geosparql:sfIntersects	 <https://geoconnex.ca/id/geologicUnits/006000/GSCC00053006880>.
 <https://geoconnex.ca/id/hydrogeounits/Richelieu1> geosparql:sfIntersects	<https://geoconnex.ca/id/geologicUnits/008000/GSCC00053008293>.
-<https://geoconnex.ca/id/hydrogeounits/Richelieu1> geosparql:sfIntersects	<https://geoconnex.ca/id/geologicUnits/003000/GSCC00053015117>.
+<https://geoconnex.ca/id/hydrogeounits/Richelieu1> geosparql:sfIntersects	<https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015117>.
 <https://geoconnex.ca/id/hydrogeounits/Richelieu1> geosparql:sfIntersects	<https://geoconnex.ca/id/geologicUnits/000000/GSCC00053000990>.
 <https://geoconnex.ca/id/hydrogeounits/Richelieu2> geosparql:sfIntersects	<https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015716>.
 <https://geoconnex.ca/id/hydrogeounits/Richelieu1> geosparql:sfIntersects	<https://geoconnex.ca/id/geologicUnits/015000/GSCC00053015716>.
