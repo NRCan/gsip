@@ -15,11 +15,11 @@ public class Link {
 	private String mimetype;
 	public String getLabel()
 	{
-		return label;
+		return label==null?"":label;
 	}
 	public String getUrl()
 	{
-		return url;
+		return url == null?"":url;
 	}
 	
 	/**
@@ -44,7 +44,7 @@ public class Link {
 	
 	public String getResLabel()
 	{
-		return resLabel;
+		return resLabel==null?"":resLabel;
 	}
 	
 	public Link(String label,String url,String resLabel)
@@ -61,7 +61,7 @@ public class Link {
 	
 	public String getMimeType()
 	{
-		return mimetype;
+		return mimetype==null?"":mimetype;
 	}
 
 }
