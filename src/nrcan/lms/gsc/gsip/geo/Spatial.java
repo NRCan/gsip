@@ -84,10 +84,15 @@ public class Spatial {
 		// the table must be a valid table name, nothing else
 		
 		try{
+		if (isValid(table))
+		{
 		String sql = String.format(SQL, table);
 		
 		ResponseStreamer rs = new ResponseStreamer(new DatasetHandler(db,sql));
 		return Response.ok(rs).type("application/vnd.geo+json").build();
+		}
+		else
+			return Response.status(HttpStatus.SC_NOT_ACCEPTABLE).entity("Not acceptable").build();
 		}
 		catch(Exception ex)
 		{
