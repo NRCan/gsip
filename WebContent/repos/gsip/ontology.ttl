@@ -50,12 +50,12 @@ rdfs:label "Riviere"@fr,"River"@en.
 	
 # sparql
 
-# hy:inside rdf:type owl:ObjectProperty,owl:TransitiveProperty.
-# hy:contains rdf:type owl:ObjectProperty,owl:TransitiveProperty;
-#        owl:inverseOf hy:inside.
+ geosparql:inside rdf:type owl:ObjectProperty,owl:TransitiveProperty.
+ geosparql:contains rdf:type owl:ObjectProperty,owl:TransitiveProperty;
+        owl:inverseOf geosparql:inside.
 
-#hy:overlaps rdf:type owl:ObjectProperty ,
-#	owl:SymmetricProperty.
+geosparql:overlaps rdf:type owl:ObjectProperty ,
+	owl:SymmetricProperty.
 
 # properties
 	
