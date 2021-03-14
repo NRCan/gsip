@@ -52,22 +52,15 @@
 <https://geoconnex.ca/id/swmonitoring/MDDELCC_030421> gsip:sameAs <https://geoconnex.ca/id/swmonitoring/WSC_02OJ026>.
 
 
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030415> geosparql:sfWithin <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030415> geosparql:sfWithin <https://geoconnex.ca/id/catchment/02OJ*AB>.
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030421> geosparql:sfWithin <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030421> geosparql:sfWithin <https://geoconnex.ca/id/catchment/02OJ*BC>.
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030429> geosparql:sfWithin <https://geoconnex.ca/id/hydrogeounits/Richelieu2>.
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030429> geosparql:sfWithin <https://geoconnex.ca/id/catchment/02OJ*AB>.
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030430> geosparql:sfWithin <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/swmonitoring/MDDELCC_030430> geosparql:sfWithin <https://geoconnex.ca/id/catchment/02OJ*CD>.
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ007> geosparql:sfWithin <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ007> geosparql:sfWithin <https://geoconnex.ca/id/catchment/02OJ*CF>.
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016> geosparql:sfWithin <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016> geosparql:sfWithin <https://geoconnex.ca/id/catchment/02OJ*CE>.
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ024> geosparql:sfWithin <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ024> geosparql:sfWithin <https://geoconnex.ca/id/catchment/02OJ*AB>.
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ026> geosparql:sfWithin <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
-<https://geoconnex.ca/id/swmonitoring/WSC_02OJ026> geosparql:sfWithin <https://geoconnex.ca/id/catchment/02OJ*BC>.
+
+<https://geoconnex.ca/id/swmonitoring/MDDELCC_030415> gsip:measures <https://geoconnex.ca/id/catchment/02OJ*AB>.
+<https://geoconnex.ca/id/swmonitoring/MDDELCC_030421> gsip:measures <https://geoconnex.ca/id/catchment/02OJ*BC>.
+<https://geoconnex.ca/id/swmonitoring/MDDELCC_030429> gsip:measures <https://geoconnex.ca/id/catchment/02OJ*AB>.
+<https://geoconnex.ca/id/swmonitoring/MDDELCC_030430> gsip:measures <https://geoconnex.ca/id/catchment/02OJ*CD>.
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ007> gsip:measures <https://geoconnex.ca/id/catchment/02OJ*CF>.
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ016> gsip:measures <https://geoconnex.ca/id/catchment/02OJ*CE>.
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ024> gsip:measures <https://geoconnex.ca/id/catchment/02OJ*AB>.
+<https://geoconnex.ca/id/swmonitoring/WSC_02OJ026> gsip:measures <https://geoconnex.ca/id/catchment/02OJ*BC>.
 
 <https://geoconnex.ca/id/catchment/02OJ*CD> geosparql:sfOverlaps <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
 <https://geoconnex.ca/id/catchment/02OJ*CB> geosparql:sfOverlaps <https://geoconnex.ca/id/hydrogeounits/Richelieu1>.
