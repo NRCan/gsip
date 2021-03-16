@@ -56,7 +56,7 @@ public class Spatial {
 			"        'uri', uri\r\n" + 
 			"     )\r\n" + 
 			" )\r\n" + 
-			" FROM  %s";
+			" FROM  %s LIMIT 500";
 	public static final String SQL_FILTER = "SELECT json_build_object(\r\n" + 
 			"    'type',       'Feature',\r\n" + 
 			"    'id',         id,\r\n" + 
