@@ -1,6 +1,6 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/>.
-@prefix schema: <http://schema.org/>.
+@prefix schema: <https://schema.org/>.
 <${resource}> 
 schema:subjectOf [
 	schema:url "${gsip}/geo/remote/gsip/rich_bedrock/${p3}";

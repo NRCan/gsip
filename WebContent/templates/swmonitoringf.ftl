@@ -1,14 +1,14 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix hy: <http://geosciences.ca/def/hydraulic#>.
-@prefix schema: <http://schema.org/>.
+@prefix schema: <https://schema.org/>.
 <${resource}> 
 schema:subjectOf <${baseUri}/data/swmonitoring/WML2/historical/WSC/${p2}>,<${baseUri}/data/swmonitoring/WFS3/hydrometric-stations/WSC/${p2}>,
 <${baseUri}/data/swmonitoring/WFS3/hydrometric-annual-peaks/WSC/${p2}>,
 <${baseUri}/data/swmonitoring/WFS3/hydrometric-annual-statistics/WSC/${p2}>,
 <${baseUri}/data/swmonitoring/WFS3/hydrometric-monthly-mean/WSC/${p2}>,
 <${baseUri}/data/swmonitoring/WFS3/hydrometric-daily-mean/WSC/${p2}>;
-<http://schema.org/name> "${p2}";
+<https://schema.org/name> "${p2}";
 a hy:HY_HydrometricStation.
 <${baseUri}/data/swmonitoring/WML2/historical/WSC/${p2}>
    rdfs:label "Donnees historiques"@fr,"Historical data"@en;

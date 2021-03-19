@@ -15,7 +15,7 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix ex: <http://gin.gw-info.net/example#>.
 @prefix gw: <http://geosciences.ca/def/groundwater#>.
-@prefix schema: <http://schema.org/>.
+@prefix schema: <https://schema.org/>.
 
 
 <https://geoconnex.ca/id/aquifers/bc.aq.1> a gw:GW_HydrogeoUnit;

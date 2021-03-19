@@ -10,7 +10,7 @@
 @prefix hy: <http://geosciences.ca/def/hydraulic#>.
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix ex: <http://gin.gw-info.net/example#>.
-@prefix schema: <http://schema.org/>.
+@prefix schema: <https://schema.org/>.
 
 <${resource}> a <http://geosciences.ca/def/hyf/1.0#Watershed>;
 rdfs:label "Upstream watershed of ${p2}"@en,"Bassin versant en amont de ${p2}"@fr;

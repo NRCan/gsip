@@ -137,7 +137,7 @@ ${model.encode("JSON-LD")}
 				</blockquote>
 				<div class="container">
 					<div class="row">
-						<#assign image = model.getPropertyResource("http://schema.org/image")>
+						<#assign image = model.getPropertyResource("https://schema.org/image")>
 						<#if image?has_content>
 						<div class="col-sm-12 col-md-8">
 							<#else>

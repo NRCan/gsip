@@ -7,7 +7,7 @@ import org.apache.jena.rdf.model.ResourceFactory;
 
 public class SCHEMA {
 	// code base on package org.apache.jena.vocabulary;
-	public static final String uri="http://schema.org/";
+	public static final String uri="https://schema.org/";
 	 protected static final Resource resource( String local )
      { return ResourceFactory.createResource( uri + local ); }
 

@@ -1,6 +1,6 @@
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/>.
-@prefix schema: <http://schema.org/>.
+@prefix schema: <https://schema.org/>.
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix selfie: <https://opengeospatial.github.io/SELFIE/>. # need a real namespace
 @prefix dc: <http://purl.org/dc/elements/1.1/>.

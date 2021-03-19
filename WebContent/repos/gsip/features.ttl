@@ -14,23 +14,23 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix ex: <http://gin.gw-info.net/example#>.
 @prefix gw: <http://geosciences.ca/def/groundwater#>.
-@prefix schema: <http://schema.org/>.
+@prefix schema: <https://schema.org/>.
 @prefix gsip: <https://geoconnex.ca/def/> .
 @prefix geosparql: <http://www.opengeospatial.org/standards/geosparql/>.
 
-<https://geoconnex.ca/id/waterbody/9483b203be4111d892e2080020a0f4c9> a hy:HY_WaterBody;
+<https://geoconnex.ca/id/waterbody/9483b203be4111d892e2080020a0f4c9> a hy:HY_WaterBody,schema:RiverBodyOfWater;
 rdfs:label "Plan d'eau: Ruisseau a l'Ours"@fr, "Water body: Ruisseau a l'Ours"@en;
  schema:name "Water body: Ruisseau a l'Ours".
 
-<https://geoconnex.ca/id/waterbody/1e041853be2d11d892e2080020a0f4c9> a hy:HY_WaterBody;
+<https://geoconnex.ca/id/waterbody/1e041853be2d11d892e2080020a0f4c9> a hy:HY_WaterBody,schema:RiverBodyOfWater;
 rdfs:label  "Plan d'eau: Riviere L'Acadie"@fr, "Water body: Riviere L'Acadie"@en;
  schema:name "Water body: Riviere L'Acadie".
 
-<https://geoconnex.ca/id/waterbody/3effba23be2a11d892e2080020a0f4c9> a hy:HY_WaterBody;
+<https://geoconnex.ca/id/waterbody/3effba23be2a11d892e2080020a0f4c9> a hy:HY_WaterBody,schema:RiverBodyOfWater;
 rdfs:label  "Plan d'eau: Riviere des Hurons"@fr, "Water body: Riviere des Hurons"@en;
  schema:name "Water body: Riviere des Hurons".
 
-<https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9> a hy:HY_WaterBody;
+<https://geoconnex.ca/id/waterbody/60c56a06be4911d892e2080020a0f4c9> a hy:HY_WaterBody,schema:RiverBodyOfWater;
 rdfs:label "Plan d'eau: Riviere Richelieu"@fr, "Water body: Riviere Richelieu"@en;
  schema:name "Water body: Riviere Richelieu".
 

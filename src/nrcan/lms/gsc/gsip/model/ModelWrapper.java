@@ -50,7 +50,7 @@ public class ModelWrapper {
 
 	private Model model;
 	private Resource contextResource;
-	public static final String SCHEMAORG = "http://schema.org/";
+	public static final String SCHEMAORG = "https://schema.org/";
 	//TODO. I should get the default baseUri from context, not hardcoded
 	public ModelWrapper(Model m,String contextResource)
 	{

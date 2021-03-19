@@ -1,9 +1,9 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/>.
-@prefix schema: <http://schema.org/>.
+@prefix schema: <https://schema.org/>.
 <${resource}> 
 schema:subjectOf <${baseUri}/data/waterbody/CGNDB/CGNDB/CGNDB/${p2}>,<${baseUri}/data/waterbody/CHYF/CHYF/CHYF/${p2}>;
-<http://schema.org/name> "${p2}".
+<https://schema.org/name> "${p2}".
 <${baseUri}/data/waterbody/CGNDB/CGNDB/CGNDB/${p2}>
 	dct:format "application/vnd.google-earth.kml+xml","text/html","application/json";
 	rdfs:label "Geogratis"@en,"Geogratis"@fr;

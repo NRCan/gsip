@@ -2,7 +2,7 @@ var JSONLDHELPER = (function(){
 	
 	//INTERNAL CONSTANTS
 	//const SEEALSO = "http://www.w3.org/2000/01/rdf-schema#seeAlso";
-	//const SUBJECTOF = "http://schema.org/subjectOf"
+	//const SUBJECTOF = "https://schema.org/subjectOf"
 	//const LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
 	//const FORMAT = "http://purl.org/dc/terms/format";
 	//TODO: use a JSON-LD library to do proper mapping between property URIs and local names.  
