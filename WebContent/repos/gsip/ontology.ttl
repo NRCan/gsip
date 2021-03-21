@@ -63,8 +63,8 @@ geosparql:overlaps rdf:type owl:ObjectProperty ,
 #hy:drains-into rdf:type owl:ObjectProperty;
 #	owl:inverseOf hy:drains.
 
-#hy:lowerCatchment rdf:type owl:ObjectProperty;
-#owl:inverseOf  hy:upperCatchment.
+hy:lowerCatchment rdf:type owl:ObjectProperty;
+owl:inverseOf  hy:upperCatchment.
 
 #hy:drains rdf:type owl:ObjectProperty.
 
