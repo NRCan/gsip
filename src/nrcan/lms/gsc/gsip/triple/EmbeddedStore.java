@@ -83,8 +83,9 @@ public class EmbeddedStore extends TripleStoreImpl {
 			String ext = name.substring(name.lastIndexOf("."));
 			if (".RDF".equalsIgnoreCase(ext) || ".TTL".equalsIgnoreCase(ext))
 			{
+				Logger.getAnonymousLogger().log(Level.INFO, " # Loading " + f.getAbsolutePath());
 				RDFDataMgr.read(m, f.getAbsolutePath());
-				Logger.getAnonymousLogger().log(Level.INFO, " # loaded " + f.getAbsolutePath());
+				Logger.getAnonymousLogger().log(Level.INFO, " done");
 			}
 			else
 			{
