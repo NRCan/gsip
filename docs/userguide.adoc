@@ -487,6 +487,29 @@ The second section is a list of configuration keys used be the application.
 | defaultLanguage | assumed language |
 |========
 
+==== Environment variable
+
+You can now pass environment variables which will be subsituted in the config file
+
+[source,xml]
+----
+		<p:parameter name="baseUri">${GSIP_BASEURI}</p:parameter> 
+ 		<p:parameter name="gsip">${GSIP_APP}</p:parameter> 
+		<p:parameter name="triplestore">${GSIP_TRIPLESTORE}</p:parameter>
+----
+
+You can use different names, just make sure they match the ones you pass.  For example, with docker, a local.env file is provided using the env above
+
+.local.env
+[source,txt]
+----
+GSIP_APP=http://localhost:8080/gsip
+GSIP_BASEURI=http://localhost:8080/gsip
+GSIP_TRIPLESTORE=webapp:repos/gsip
+----
+
+=== URI substitution mechanisms
+
 Because the application works on the concept of resolving URI to representation, it means that /id/ URI are unique identifier AND location.  This can be a problem when the GSIP runs on a different location than the persistent URI.  Any resolution will immediately go to the persistent location instead of the location where GSIP is running.  This is obviously a problem when one tries to run GSIP in a developpement or a staging environment. It means that one needs to maintain different copies of the RDF catalog.
 
 The confiuration allows instead of convert back and forth between the URI where GSIP is running and the persistent URI (the one that would normally be used in production).  The mediator will substitute baseUri to persistentUri before querying the database and substitute it back in the response.

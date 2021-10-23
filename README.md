@@ -21,35 +21,26 @@ Find documentation in `/docs` folder
 
 [User Guide](docs/userguide.adoc)
 
-## Deployment
+## Build and use
 
-You can create a .war by running maven from the root of the project (where the .pom is)
+Dockerfile is multistage, first part will build the code and the second part is a running instance
 
-`mvn package war:war`
+### Build it
 
-You might want to edit the context file in /META-INF/context.xml to set database location first (or edit the file after it is deployed in Tomcat and restart the application)
+`docker build -t gsip .`
 
-To execute with local embedded database
+### Run it
 
-Windows 
+`docker run -d -p 8080:8080 --env-file local.env --name gsip gsip`
 
-```
-SET GSIP_APP=http://localhost:8080/gsip
-SET GSIP_BASEURI=http://localhost:8080/gsip
-SET GSIP_TRIPLESTORE=webapp:repos/gsip
+`local.env` contains values to run on localhost with port 8080.  You'll need to change those values if you change port and run another host
 
-mvn cargo:run
-```
+### Use it
 
-Linux
+A small demo app is available at 
 
-```
-export GSIP_APP=http://localhost:8080/gsip
-export GSIP_BASEURI=http://localhost:8080/gsip
-export GSIP_TRIPLESTORE=webapp:repos/gsip
+http://localhost:8080/gsip/app/index.html
 
-mvn cargo:run
-```
 
             
 
