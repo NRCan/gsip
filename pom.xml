@@ -29,25 +29,7 @@
           <warSourceDirectory>WebContent</warSourceDirectory>
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
-      </plugin>
-      
-      <plugin>
-  <groupId>org.codehaus.cargo</groupId>
-  <artifactId>cargo-maven2-plugin</artifactId>
-  <version>1.7.0</version>
-  <configuration>
-  <property name="cargo.servlet.port" value="8080"/>
-    <container>
-      <containerId>tomcat8x</containerId>
-      <zipUrlInstaller>
-          <url>https://repo1.maven.org/maven2/org/apache/tomcat/tomcat/8.5.9/tomcat-8.5.9.zip</url>
-      </zipUrlInstaller>
-    </container>
-  </configuration>
-</plugin>
-     
-         
-         
+      </plugin>     
     </plugins>
   </build>
   <dependencies>
@@ -107,11 +89,12 @@
       <version>2.7.8</version>
     </dependency>
     -->
+ 
     
 <dependency>
     <groupId>org.slf4j</groupId>
     <artifactId>slf4j-simple</artifactId>
-    <version>1.6.4</version>
+    <version>1.7.32</version>
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/com.github.eprst/murmur3 -->
@@ -164,13 +147,13 @@
     <version>2.13.0</version>
 </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet-core -->
+
 <dependency>
     <groupId>org.glassfish.jersey.containers</groupId>
     <artifactId>jersey-container-servlet</artifactId>
     <version>${version.jersey}</version>
 </dependency>
-  
+ 
   
   <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 <dependency>
@@ -190,12 +173,14 @@
     <artifactId>jersey-hk2</artifactId>
     <version>${version.jersey}</version>
 </dependency>
-
+<!-- UNUSED  -->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-processing</artifactId>
             <version>${version.jersey}</version>
         </dependency>
+        
+ 
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-multipart</artifactId>
@@ -239,7 +224,7 @@
     <version>2.12.1</version>
 </dependency>
 -->
-<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+<!-- UNUSED https://mvnrepository.com/artifact/commons-codec/commons-codec -->
 <dependency>
     <groupId>commons-codec</groupId>
     <artifactId>commons-codec</artifactId>
@@ -317,7 +302,7 @@
  -->
  
 
-<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+<!--   https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
 <dependency>
     <groupId>javax.xml.bind</groupId>
     <artifactId>jaxb-api</artifactId>
