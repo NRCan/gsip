@@ -1,9 +1,22 @@
-FROM maven:3.6.3-jdk-8-slim AS builder
-COPY 
-RUN cd /gsip && mvn package
+# build
+FROM maven:3.8.3-openjdk-11-slim AS build
+COPY src /usr/src/gsip/src
+COPY WebContent /usr/src/gsip/WebContent
+COPY pom.xml /usr/src/gsip
+RUN mvn -f /usr/src/gsip/pom.xml clean package
 
+#tomcat 10
+###
+# Expose ports
+###
 
-FROM tomcat:8.5.40-jre8-alpine AS deploy
-EXPOSE 8080 8080
-COPY --from=builder /gsip/target/gsip.war /usr/local/tomcat/webapps/
+FROM tomcat:10-jdk11-corretto AS app
+
+EXPOSE 8080 8443
+
+WORKDIR ${CATALINA_HOME}
+
+COPY --from=build /usr/src/gsip/target/gsip.war /usr/local/tomcat/webapps/
+HEALTHCHECK CMD curl --fail http://localhost:8080/gsip/id/x/x || exit 1
+
 
