@@ -5,5 +5,5 @@
 // Generated on: 2018.06.02 at 04:13:43 PM EDT 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "urn:x-gsip:1.0", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@jakarta.xml.bind.annotation.XmlSchema(namespace = "urn:x-gsip:1.0", elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package nrcan.lms.gsc.gsip.conf;

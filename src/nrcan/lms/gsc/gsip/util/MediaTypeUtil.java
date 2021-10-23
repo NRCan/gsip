@@ -9,7 +9,8 @@ import java.util.Comparator;
 import java.util.List;
 
 
-import javax.ws.rs.core.MediaType;
+
+import jakarta.ws.rs.core.MediaType;
 
 import nrcan.lms.gsc.gsip.util.MediaTypeUtil.InfoOutputFormat;
 

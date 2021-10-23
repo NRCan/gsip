@@ -1,5 +1,5 @@
-FROM tomcat:8.5.40-jre8-alpine
-
+#FROM tomcat:8.5.40-jre8-alpine
+FROM nirmata/tomcat9-alpine-jre12-openj9
 
 ###
 # Expose ports

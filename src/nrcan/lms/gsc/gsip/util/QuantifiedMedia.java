@@ -1,6 +1,7 @@
 package nrcan.lms.gsc.gsip.util;
 
-import javax.ws.rs.core.MediaType;
+
+import jakarta.ws.rs.core.MediaType;
 
 public class QuantifiedMedia {
 	public double q = 1.0;

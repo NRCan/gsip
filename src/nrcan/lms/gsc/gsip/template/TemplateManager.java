@@ -1,5 +1,6 @@
 package nrcan.lms.gsc.gsip.template;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -8,11 +9,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-import javax.servlet.ServletContext;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+import jakarta.servlet.ServletContext;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.IOUtils;
 
@@ -34,10 +35,18 @@ public class TemplateManager {
 	private boolean initialised = false;
 	private void init(ServletContext context)
 	{
-		freemarkerConfiguration = new Configuration(Configuration.VERSION_2_3_23);
+		freemarkerConfiguration = new Configuration(Configuration.VERSION_2_3_31);
 		if (context != null)
 		{
-		freemarkerConfiguration.setServletContextForTemplateLoading(context, "templates");
+		String path = context.getRealPath("") + "templates";
+		Logger.getAnonymousLogger().log(Level.INFO,"Templates are read from " + path);
+		try {
+			freemarkerConfiguration.setDirectoryForTemplateLoading(new File(path));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			Logger.getAnonymousLogger().log(Level.SEVERE,"Failed to initialize template path " + path,e);
+		}
+		//freemarkerConfiguration.setServletContextForTemplateLoading(context, "templates");
 		freemarkerConfiguration.setDefaultEncoding("UTF-8");
 		
 		initialised = true;

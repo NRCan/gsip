@@ -12,16 +12,18 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import javax.servlet.ServletContext;
-import javax.ws.rs.core.MediaType;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+import jakarta.servlet.ServletContext;
+
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.IOUtils;
 
 import freemarker.template.TemplateException;
+import jakarta.ws.rs.core.MediaType;
 import nrcan.lms.gsc.gsip.Constants;
 import nrcan.lms.gsc.gsip.conf.ParametersType.Parameter;
 import nrcan.lms.gsc.gsip.template.TemplateManager;

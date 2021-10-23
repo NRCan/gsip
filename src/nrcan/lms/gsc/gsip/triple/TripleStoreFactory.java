@@ -6,7 +6,7 @@ import static nrcan.lms.gsc.gsip.Constants.TRIPLE_STORE;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 /**
  * Create a TripleStore based on configuration.  So far, this only create a link to a remote Fuseki
