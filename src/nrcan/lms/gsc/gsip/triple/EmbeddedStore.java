@@ -28,6 +28,7 @@ import org.apache.jena.reasoner.Reasoner;
 import org.apache.jena.reasoner.ReasonerRegistry;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.tdb.TDBFactory;
 
 public class EmbeddedStore extends TripleStoreImpl {
 
@@ -35,6 +36,7 @@ public class EmbeddedStore extends TripleStoreImpl {
 	public void close() {
 		// TODO Auto-generated method stub
 		super.close();
+		TDBFactory.release(ds);
 		ds.close();
 	}
 
