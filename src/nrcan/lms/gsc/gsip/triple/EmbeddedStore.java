@@ -74,7 +74,7 @@ public class EmbeddedStore extends TripleStoreImpl {
 	private void initServer(List<File> datasets)
 	{
 		// if the file in folder, get all the files in the folder
-		ds = DatasetFactory.createTxnMem();
+		ds = DatasetFactory.createGeneral();
 		// add the model
 		Model m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RDFS_INF);
 		
