@@ -180,6 +180,7 @@ public class Information {
 			// get all configuration variables
 			p.putAll(Manager.getInstance().getConfiguration().getParameters());
 			out = TemplateManager.getInstance().transform(p, htmlTemplate);
+			mw.close();
 		}
 		catch(Exception ex)
 		{

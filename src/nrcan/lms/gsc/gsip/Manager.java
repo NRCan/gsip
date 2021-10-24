@@ -89,13 +89,17 @@ public class Manager {
 		}
 	}
 	
+	
+	
 	public void terminate()
 	{
+		
 		conf = null;
 		template = null;
 		if (store != null) store.close();
 		store = null;
 		data = null;
+		
 		
 		
 	}

@@ -30,6 +30,8 @@ public class Listener implements ServletContextListener {
 		//TODO: clear any resource (none so far)
 		Manager.getInstance().terminate();
 		Logger.getAnonymousLogger().log(Level.INFO,"### Application has stopped - killing running tasks !");
+		
+
 
 	}
 

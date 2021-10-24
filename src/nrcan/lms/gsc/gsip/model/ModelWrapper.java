@@ -681,5 +681,10 @@ public class ModelWrapper {
 		else
 			return "N/A";
 	}
+	
+	public void close()
+	{
+		this.model.close();
+	}
 
 }
