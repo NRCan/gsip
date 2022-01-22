@@ -9,7 +9,6 @@ RUN mvn -f /usr/src/gsip/pom.xml clean package
 ###
 # Expose ports
 ###
-
 FROM tomcat:jre11-openjdk-slim-buster AS app
 
 EXPOSE 8080 8443
