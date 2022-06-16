@@ -1,5 +1,5 @@
 # build
-FROM maven:3.8.4-openjdk-11-slim AS build
+FROM maven:3.8.6-openjdk-11-slim AS build
 COPY src /usr/src/gsip/src
 COPY WebContent /usr/src/gsip/WebContent
 COPY pom.xml /usr/src/gsip
