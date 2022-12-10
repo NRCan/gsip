@@ -6,7 +6,7 @@
   <packaging>war</packaging>
    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <version.jersey>3.0.3</version.jersey>
+        <version.jersey>3.0.4</version.jersey>
     </properties>
   <build>
   <finalName>gsip</finalName>
@@ -15,7 +15,7 @@
     
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.10.1</version>
         <configuration>
           <source>11</source>
           <target>11</target>
@@ -24,7 +24,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
-        <version>2.6</version>
+        <version>3.3.2</version>
         <configuration>
           <warSourceDirectory>WebContent</warSourceDirectory>
           <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -41,13 +41,13 @@
 <dependency>
     <groupId>org.apache.jena</groupId>
     <artifactId>apache-jena-libs</artifactId>
-    <version>4.2.0</version>
+    <version>4.4.0</version>
     <type>pom</type>
 </dependency>
 <dependency>
     <groupId>org.apache.jena</groupId>
     <artifactId>jena-core</artifactId>
-    <version>4.2.0</version>
+    <version>4.6.0</version>
 </dependency>
 
 <!-- 
@@ -94,7 +94,7 @@
 <dependency>
     <groupId>org.slf4j</groupId>
     <artifactId>slf4j-simple</artifactId>
-    <version>1.7.32</version>
+    <version>1.7.36</version>
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/com.github.eprst/murmur3 -->
@@ -144,7 +144,7 @@
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-core</artifactId>
-    <version>2.13.0</version>
+    <version>2.13.4</version>
 </dependency>
 
 
@@ -207,7 +207,7 @@
 <dependency>
     <groupId>net.sf.saxon</groupId>
     <artifactId>Saxon-HE</artifactId>
-    <version>10.6</version>
+    <version>11.4</version>
 </dependency>
 
      
@@ -228,7 +228,7 @@
 <dependency>
     <groupId>commons-codec</groupId>
     <artifactId>commons-codec</artifactId>
-    <version>1.14</version>
+    <version>1.15</version>
 </dependency>
 
 
@@ -236,14 +236,14 @@
 <dependency>
     <groupId>com.github.davidmoten</groupId>
     <artifactId>geo</artifactId>
-    <version>0.7.1</version>
+    <version>0.8.0</version>
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
 <dependency>
     <groupId>commons-net</groupId>
     <artifactId>commons-net</artifactId>
-    <version>3.8.0</version>
+    <version>3.9.0</version>
 </dependency>
 
 
@@ -290,7 +290,7 @@
 <dependency>
     <groupId>com.sun.istack</groupId>
     <artifactId>istack-commons-runtime</artifactId>
-    <version>4.1.0-M1</version>
+    <version>4.1.1</version>
 </dependency>
 
 <!-- 
