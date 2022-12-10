@@ -1,5 +1,5 @@
 # build
-FROM maven:3.8.3-openjdk-11-slim AS build
+FROM maven:3.8.6-openjdk-11-slim AS build
 COPY src /usr/src/gsip/src
 COPY WebContent /usr/src/gsip/WebContent
 COPY pom.xml /usr/src/gsip
@@ -9,7 +9,6 @@ RUN mvn -f /usr/src/gsip/pom.xml clean package
 ###
 # Expose ports
 ###
-
 FROM tomcat:jre11-openjdk-slim-buster AS app
 
 EXPOSE 8080 8443
