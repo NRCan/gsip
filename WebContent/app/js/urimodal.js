@@ -255,7 +255,8 @@ function hash(s) {
 			 {
 				 
 				if (typeof(y) === 'object') y = y["@id"]; // if no @id, not much we can do
-			 	var tag = convertUri2Id(x+y);
+			 	if (y == undefined) return;
+                                 var tag = convertUri2Id(x+y);
 				//var res = y["@id"];
 				//propsObjCollection.push(resources[res]);
 				if (typeof(resources[y]) == "undefined")
