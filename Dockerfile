@@ -1,5 +1,5 @@
 # build
-FROM maven:3.8.6-openjdk-11-slim AS build
+FROM maven:3.8-openjdk-18-slim AS build
 
 # Latest Docker Maven - prob too new
 #---------------------------------------------------
